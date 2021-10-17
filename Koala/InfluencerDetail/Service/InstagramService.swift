@@ -15,6 +15,7 @@ struct InstagramService {
         request.allHTTPHeaderFields = HttpUtility.shared.headers
 
         HttpUtility.shared.request(request as URLRequest, resultType: InstaAccModel.self) { response in
+            print(response?.code)
             _ = completionHandler(response)
         }
     }

@@ -9,18 +9,19 @@ import Foundation
 
 class InfluencerDetailViewModel: ObservableObject {
     
-    @Published var influencerModel: InfluencerDataModel = InfluencerDataModel()
+    @Published var influencerDetailModel: InfluencerDetailModel = InfluencerDetailModel()
     private let igService: InstagramService = InstagramService()
     private var igFollowersCount: Int = 1
     
     func callGetAccInfo(username: String) {
         igService.getAccInfo(username: username) { response in
+            
             DispatchQueue.main.async {
-                self.influencerModel.username = response?.data.username ?? ""
-                self.influencerModel.posts = response?.data.figures.posts ?? 0
+                self.influencerDetailModel.username = response?.data.username ?? ""
+                self.influencerDetailModel.posts = response?.data.figures.posts ?? 0
                 self.igFollowersCount = response?.data.figures.followers ?? 1
-                self.influencerModel.followers = self.igFollowersCount
-                self.influencerModel.following = response?.data.figures.followings ?? 0
+                self.influencerDetailModel.followers = self.igFollowersCount
+                self.influencerDetailModel.following = response?.data.figures.followings ?? 0
             }
         }
     }
@@ -35,14 +36,13 @@ class InfluencerDetailViewModel: ObservableObject {
                     
                     let engagementRate = self.calcEngagementRate(likes: likes, comments: comments, followers: Double(self.igFollowersCount))
                     
-                    print(engagementRate)
                     ERs.append(engagementRate)
                 }
             }
             
             DispatchQueue.main.async {
                 let avgOfERs = ERs.reduce(0, +) / 20
-                self.influencerModel.engagementRate = avgOfERs
+                self.influencerDetailModel.engagementRate = avgOfERs
             }
         }
     }

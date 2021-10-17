@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct InfluencerDataModel {
+struct InfluencerDetailModel {
     var username: String = ""
     var posts: Int = 0
     var followers: Int = 1
