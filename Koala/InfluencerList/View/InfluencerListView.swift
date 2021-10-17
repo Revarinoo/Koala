@@ -15,17 +15,19 @@ struct InfluencerListView: View {
         NavigationView {
             List {
                 ForEach(influencerListVM.influencersModel) { influencer in
-                    VStack(alignment: .leading) {
-                        Text(influencer.name)
-                            .font(.headline)
-                            .bold()
-                        HStack {
-                            Text(influencer.igUsername)
-                                .font(.caption)
-                            Spacer()
-                            Text("Mulai dari Rp. \(influencer.ratePrice)")
-                                .font(.caption)
+                    NavigationLink(destination: InfluencerDetailView(username: influencer.igUsername)) {
+                        VStack(alignment: .leading) {
+                            Text(influencer.name)
+                                .font(.headline)
                                 .bold()
+                            HStack {
+                                Text(influencer.igUsername)
+                                    .font(.caption)
+                                Spacer()
+                                Text("Mulai dari Rp. \(influencer.ratePrice)")
+                                    .font(.caption)
+                                    .bold()
+                            }
                         }
                     }
                 }
