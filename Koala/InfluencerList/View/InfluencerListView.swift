@@ -14,24 +14,20 @@ struct InfluencerListView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(influencerListVM.influencersModel) { influencer in
-                    NavigationLink(destination: Text("Next Page")) {
-                        HStack {
-                            WebImage(url: URL(string: influencer.photo))
-                                .resizable()
-                                .frame(width: 150, height: 150)
-
-                            VStack(alignment: .leading) {
-                                Text(influencer.name)
-                                    .font(.headline)
-                                    .bold()
+            ZStack {
+                Color.bgColorView.edgesIgnoringSafeArea(.all)
+                ScrollView {
+                    VStack(spacing: 16) {
+                        ForEach(influencerListVM.influencersModel) { influencer in
+                            NavigationLink(destination: Text("NexT Page")) {
+                                InfluencerCardList(photoURL: influencer.photo, categories: influencer.category, name: influencer.name, location: influencer.location, price: influencer.ratePrice, ER: influencer.rateEngagement, rating: influencer.rating)
+                                    .padding(.horizontal, 10)
                             }
                         }
                     }
                 }
             }
-            .navigationTitle("Influencer List")
+            .navigationBarHidden(true)
         }
         .onAppear() {
             influencerListVM.callGetInfluencerList()

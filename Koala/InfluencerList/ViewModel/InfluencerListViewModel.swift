@@ -24,8 +24,8 @@ class InfluencerListViewModel: ObservableObject {
                     let category = influencer.categories
                     let price = influencer.price
                     let location = influencer.location ?? "Jakarta"
-                    let rating = influencer.rating ?? 4.2
-                    let engagementRate = influencer.engagement_rate ?? 3.5
+                    let rating = influencer.rating ?? 4.1231
+                    let engagementRate = influencer.engagement_rate ?? 3.751
                     
                     let influencerModel = InfluencerListModel(id: id, name: name, photo: photo, location: location, rating: rating, category: category, ratePrice: price, rateEngagement: engagementRate)
                     

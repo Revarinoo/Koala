@@ -10,6 +10,19 @@
 		2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */; };
 		2F99D364271D8309003DD86C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D363271D8309003DD86C /* SDWebImageSwiftUI */; };
 		2F99D391271DC6CE003DD86C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D390271DC6CE003DD86C /* Alamofire */; };
+		2FA40E3F271DE3180095A812 /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA40E3E271DE3180095A812 /* ThemeColor.swift */; };
+		2FA40E41271DE3980095A812 /* ThemeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA40E40271DE3980095A812 /* ThemeFont.swift */; };
+		2FA40E4C271DE9F70095A812 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA40E43271DE9F60095A812 /* Poppins-Thin.ttf */; };
+		2FA40E4D271DE9F70095A812 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA40E44271DE9F60095A812 /* Poppins-SemiBold.ttf */; };
+		2FA40E4E271DE9F70095A812 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA40E45271DE9F60095A812 /* Poppins-Medium.ttf */; };
+		2FA40E4F271DE9F70095A812 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA40E46271DE9F60095A812 /* Poppins-Light.ttf */; };
+		2FA40E50271DE9F70095A812 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA40E47271DE9F60095A812 /* Poppins-Bold.ttf */; };
+		2FA40E51271DE9F70095A812 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA40E48271DE9F60095A812 /* Poppins-Black.ttf */; };
+		2FA40E52271DE9F70095A812 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA40E49271DE9F70095A812 /* Poppins-ExtraBold.ttf */; };
+		2FA40E53271DE9F70095A812 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA40E4A271DE9F70095A812 /* Poppins-ExtraLight.ttf */; };
+		2FA40E54271DE9F70095A812 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA40E4B271DE9F70095A812 /* Poppins-Regular.ttf */; };
+		2FA40E57271DF44E0095A812 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA40E56271DF44E0095A812 /* ColorExtension.swift */; };
+		2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA40E59271DFB2C0095A812 /* NumberFormatterExtension.swift */; };
 		2FBC8B97271C2E09007E7B76 /* HttpUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8B96271C2E09007E7B76 /* HttpUtility.swift */; };
 		2FBC8BB1271C3725007E7B76 /* InfluencerListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8BB0271C3725007E7B76 /* InfluencerListService.swift */; };
 		2FBC8BB3271C37CC007E7B76 /* InfluencerListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8BB2271C37CC007E7B76 /* InfluencerListResponse.swift */; };
@@ -29,6 +42,20 @@
 
 /* Begin PBXFileReference section */
 		2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCardList.swift; sourceTree = "<group>"; };
+		2FA40E3E271DE3180095A812 /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
+		2FA40E40271DE3980095A812 /* ThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFont.swift; sourceTree = "<group>"; };
+		2FA40E43271DE9F60095A812 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		2FA40E44271DE9F60095A812 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		2FA40E45271DE9F60095A812 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		2FA40E46271DE9F60095A812 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		2FA40E47271DE9F60095A812 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		2FA40E48271DE9F60095A812 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
+		2FA40E49271DE9F70095A812 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		2FA40E4A271DE9F70095A812 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
+		2FA40E4B271DE9F70095A812 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		2FA40E55271DEB340095A812 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2FA40E56271DF44E0095A812 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = Koala/Utilities/Extensions/ColorExtension.swift; sourceTree = SOURCE_ROOT; };
+		2FA40E59271DFB2C0095A812 /* NumberFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterExtension.swift; sourceTree = "<group>"; };
 		2FBC8B96271C2E09007E7B76 /* HttpUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpUtility.swift; sourceTree = "<group>"; };
 		2FBC8BB0271C3725007E7B76 /* InfluencerListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerListService.swift; sourceTree = "<group>"; };
 		2FBC8BB2271C37CC007E7B76 /* InfluencerListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerListResponse.swift; sourceTree = "<group>"; };
@@ -60,6 +87,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FA40E3D271DE2F50095A812 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				2FA40E42271DE9DA0095A812 /* Fonts */,
+				2FA40E3E271DE3180095A812 /* ThemeColor.swift */,
+				2FA40E40271DE3980095A812 /* ThemeFont.swift */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
+		2FA40E42271DE9DA0095A812 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2FA40E48271DE9F60095A812 /* Poppins-Black.ttf */,
+				2FA40E47271DE9F60095A812 /* Poppins-Bold.ttf */,
+				2FA40E49271DE9F70095A812 /* Poppins-ExtraBold.ttf */,
+				2FA40E4A271DE9F70095A812 /* Poppins-ExtraLight.ttf */,
+				2FA40E46271DE9F60095A812 /* Poppins-Light.ttf */,
+				2FA40E45271DE9F60095A812 /* Poppins-Medium.ttf */,
+				2FA40E4B271DE9F70095A812 /* Poppins-Regular.ttf */,
+				2FA40E44271DE9F60095A812 /* Poppins-SemiBold.ttf */,
+				2FA40E43271DE9F60095A812 /* Poppins-Thin.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		2FA40E58271DF45A0095A812 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2FA40E56271DF44E0095A812 /* ColorExtension.swift */,
+				2FA40E59271DFB2C0095A812 /* NumberFormatterExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		2FBC8B98271C2E39007E7B76 /* InfluencerList */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +193,7 @@
 				F75CEE6D2713E80D00E36A1F /* KoalaApp.swift */,
 				F75CEE6F2713E80D00E36A1F /* ContentView.swift */,
 				F75CEE712713E80F00E36A1F /* Assets.xcassets */,
+				2FA40E55271DEB340095A812 /* Info.plist */,
 				F75CEE732713E80F00E36A1F /* Preview Content */,
 			);
 			path = Koala;
@@ -147,9 +210,9 @@
 		F75CEE7B2713E89D00E36A1F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				2FA40E3D271DE2F50095A812 /* Themes */,
+				2FA40E58271DF45A0095A812 /* Extensions */,
 				2FBC8B96271C2E09007E7B76 /* HttpUtility.swift */,
-				F75CEE842713E96A00E36A1F /* Fonts */,
-				F75CEE832713E96400E36A1F /* Extensions */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -211,20 +274,6 @@
 				F75CEE8D27143BF100E36A1F /* LoginView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		F75CEE832713E96400E36A1F /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		F75CEE842713E96A00E36A1F /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,8 +342,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA40E53271DE9F70095A812 /* Poppins-ExtraLight.ttf in Resources */,
+				2FA40E51271DE9F70095A812 /* Poppins-Black.ttf in Resources */,
+				2FA40E52271DE9F70095A812 /* Poppins-ExtraBold.ttf in Resources */,
+				2FA40E4C271DE9F70095A812 /* Poppins-Thin.ttf in Resources */,
+				2FA40E4F271DE9F70095A812 /* Poppins-Light.ttf in Resources */,
+				2FA40E50271DE9F70095A812 /* Poppins-Bold.ttf in Resources */,
+				2FA40E4D271DE9F70095A812 /* Poppins-SemiBold.ttf in Resources */,
 				F75CEE752713E80F00E36A1F /* Preview Assets.xcassets in Resources */,
+				2FA40E54271DE9F70095A812 /* Poppins-Regular.ttf in Resources */,
 				F75CEE722713E80F00E36A1F /* Assets.xcassets in Resources */,
+				2FA40E4E271DE9F70095A812 /* Poppins-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,23 +363,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				2FBC8BB5271C38E8007E7B76 /* InfluencerListModel.swift in Sources */,
 				2FBC8BB7271C3994007E7B76 /* InfluencerListViewModel.swift in Sources */,
 				2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */,
 				2FBC8B97271C2E09007E7B76 /* HttpUtility.swift in Sources */,
+				2FA40E41271DE3980095A812 /* ThemeFont.swift in Sources */,
 				2FBC8BB9271C3C66007E7B76 /* InfluencerListView.swift in Sources */,
+				2FA40E57271DF44E0095A812 /* ColorExtension.swift in Sources */,
 				2FBC8BB3271C37CC007E7B76 /* InfluencerListResponse.swift in Sources */,
-
 				F75CEE8827143BCF00E36A1F /* User.swift in Sources */,
 				F75CEE8E27143BF100E36A1F /* LoginView.swift in Sources */,
 				F75CEE8C27143BE900E36A1F /* LoginService.swift in Sources */,
-
 				F75CEE702713E80D00E36A1F /* ContentView.swift in Sources */,
 				2FBC8BB1271C3725007E7B76 /* InfluencerListService.swift in Sources */,
 				F75CEE6E2713E80D00E36A1F /* KoalaApp.swift in Sources */,
 				F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */,
+				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
 				F75CEE8627143BC300E36A1F /* LoginRepository.swift in Sources */,
+				2FA40E3F271DE3180095A812 /* ThemeColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +514,7 @@
 				DEVELOPMENT_TEAM = PKF8ACHM24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Koala/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -485,6 +545,7 @@
 				DEVELOPMENT_TEAM = PKF8ACHM24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Koala/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
