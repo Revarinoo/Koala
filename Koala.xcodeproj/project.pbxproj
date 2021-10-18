@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */; };
+		2F99D364271D8309003DD86C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D363271D8309003DD86C /* SDWebImageSwiftUI */; };
+		2F99D391271DC6CE003DD86C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D390271DC6CE003DD86C /* Alamofire */; };
+		2FBC8B97271C2E09007E7B76 /* HttpUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8B96271C2E09007E7B76 /* HttpUtility.swift */; };
+		2FBC8BB1271C3725007E7B76 /* InfluencerListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8BB0271C3725007E7B76 /* InfluencerListService.swift */; };
+		2FBC8BB3271C37CC007E7B76 /* InfluencerListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8BB2271C37CC007E7B76 /* InfluencerListResponse.swift */; };
+		2FBC8BB5271C38E8007E7B76 /* InfluencerListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8BB4271C38E8007E7B76 /* InfluencerListModel.swift */; };
+		2FBC8BB7271C3994007E7B76 /* InfluencerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8BB6271C3994007E7B76 /* InfluencerListViewModel.swift */; };
+		2FBC8BB9271C3C66007E7B76 /* InfluencerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8BB8271C3C66007E7B76 /* InfluencerListView.swift */; };
 		F75CEE6E2713E80D00E36A1F /* KoalaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE6D2713E80D00E36A1F /* KoalaApp.swift */; };
 		F75CEE702713E80D00E36A1F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE6F2713E80D00E36A1F /* ContentView.swift */; };
 		F75CEE722713E80F00E36A1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75CEE712713E80F00E36A1F /* Assets.xcassets */; };
@@ -19,6 +28,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCardList.swift; sourceTree = "<group>"; };
+		2FBC8B96271C2E09007E7B76 /* HttpUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpUtility.swift; sourceTree = "<group>"; };
+		2FBC8BB0271C3725007E7B76 /* InfluencerListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerListService.swift; sourceTree = "<group>"; };
+		2FBC8BB2271C37CC007E7B76 /* InfluencerListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerListResponse.swift; sourceTree = "<group>"; };
+		2FBC8BB4271C38E8007E7B76 /* InfluencerListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerListModel.swift; sourceTree = "<group>"; };
+		2FBC8BB6271C3994007E7B76 /* InfluencerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerListViewModel.swift; sourceTree = "<group>"; };
+		2FBC8BB8271C3C66007E7B76 /* InfluencerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerListView.swift; sourceTree = "<group>"; };
 		F75CEE6A2713E80D00E36A1F /* Koala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koala.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75CEE6D2713E80D00E36A1F /* KoalaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoalaApp.swift; sourceTree = "<group>"; };
 		F75CEE6F2713E80D00E36A1F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,12 +52,59 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F99D364271D8309003DD86C /* SDWebImageSwiftUI in Frameworks */,
+				2F99D391271DC6CE003DD86C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FBC8B98271C2E39007E7B76 /* InfluencerList */ = {
+			isa = PBXGroup;
+			children = (
+				2FBC8B9C271C2E5B007E7B76 /* Model */,
+				2FBC8B9B271C2E56007E7B76 /* View */,
+				2FBC8B9A271C2E50007E7B76 /* ViewModel */,
+				2FBC8B99271C2E4A007E7B76 /* Service */,
+			);
+			path = InfluencerList;
+			sourceTree = "<group>";
+		};
+		2FBC8B99271C2E4A007E7B76 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2FBC8BB0271C3725007E7B76 /* InfluencerListService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		2FBC8B9A271C2E50007E7B76 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FBC8BB6271C3994007E7B76 /* InfluencerListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FBC8B9B271C2E56007E7B76 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FBC8BB8271C3C66007E7B76 /* InfluencerListView.swift */,
+				2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FBC8B9C271C2E5B007E7B76 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FBC8BB2271C37CC007E7B76 /* InfluencerListResponse.swift */,
+				2FBC8BB4271C38E8007E7B76 /* InfluencerListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F75CEE612713E80D00E36A1F = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +124,7 @@
 		F75CEE6C2713E80D00E36A1F /* Koala */ = {
 			isa = PBXGroup;
 			children = (
+				2FBC8B98271C2E39007E7B76 /* InfluencerList */,
 				F75CEE7D2713E8CF00E36A1F /* Login */,
 				F75CEE7C2713E8C400E36A1F /* Components */,
 				F75CEE7B2713E89D00E36A1F /* Utilities */,
@@ -83,6 +147,7 @@
 		F75CEE7B2713E89D00E36A1F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				2FBC8B96271C2E09007E7B76 /* HttpUtility.swift */,
 				F75CEE842713E96A00E36A1F /* Fonts */,
 				F75CEE832713E96400E36A1F /* Extensions */,
 			);
@@ -178,6 +243,10 @@
 			dependencies = (
 			);
 			name = Koala;
+			packageProductDependencies = (
+				2F99D363271D8309003DD86C /* SDWebImageSwiftUI */,
+				2F99D390271DC6CE003DD86C /* Alamofire */,
+			);
 			productName = Koala;
 			productReference = F75CEE6A2713E80D00E36A1F /* Koala.app */;
 			productType = "com.apple.product-type.application";
@@ -206,6 +275,10 @@
 				Base,
 			);
 			mainGroup = F75CEE612713E80D00E36A1F;
+			packageReferences = (
+				2F99D362271D8309003DD86C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				2F99D38F271DC6CE003DD86C /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = F75CEE6B2713E80D00E36A1F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -232,10 +305,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
+				2FBC8BB5271C38E8007E7B76 /* InfluencerListModel.swift in Sources */,
+				2FBC8BB7271C3994007E7B76 /* InfluencerListViewModel.swift in Sources */,
+				2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */,
+				2FBC8B97271C2E09007E7B76 /* HttpUtility.swift in Sources */,
+				2FBC8BB9271C3C66007E7B76 /* InfluencerListView.swift in Sources */,
+				2FBC8BB3271C37CC007E7B76 /* InfluencerListResponse.swift in Sources */,
+
 				F75CEE8827143BCF00E36A1F /* User.swift in Sources */,
 				F75CEE8E27143BF100E36A1F /* LoginView.swift in Sources */,
 				F75CEE8C27143BE900E36A1F /* LoginService.swift in Sources */,
+
 				F75CEE702713E80D00E36A1F /* ContentView.swift in Sources */,
+				2FBC8BB1271C3725007E7B76 /* InfluencerListService.swift in Sources */,
 				F75CEE6E2713E80D00E36A1F /* KoalaApp.swift in Sources */,
 				F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */,
 				F75CEE8627143BC300E36A1F /* LoginRepository.swift in Sources */,
@@ -443,6 +526,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2F99D362271D8309003DD86C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		2F99D38F271DC6CE003DD86C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2F99D363271D8309003DD86C /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F99D362271D8309003DD86C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		2F99D390271DC6CE003DD86C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F99D38F271DC6CE003DD86C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F75CEE622713E80D00E36A1F /* Project object */;
 }
