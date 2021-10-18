@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct InfluencerListView: View {
     
@@ -15,17 +16,15 @@ struct InfluencerListView: View {
         NavigationView {
             List {
                 ForEach(influencerListVM.influencersModel) { influencer in
-                    NavigationLink(destination: InfluencerDetailView(username: influencer.igUsername)) {
-                        VStack(alignment: .leading) {
-                            Text(influencer.name)
-                                .font(.headline)
-                                .bold()
-                            HStack {
-                                Text(influencer.igUsername)
-                                    .font(.caption)
-                                Spacer()
-                                Text("Mulai dari Rp. \(influencer.ratePrice)")
-                                    .font(.caption)
+                    NavigationLink(destination: Text("Next Page")) {
+                        HStack {
+                            WebImage(url: URL(string: influencer.photo))
+                                .resizable()
+                                .frame(width: 150, height: 150)
+
+                            VStack(alignment: .leading) {
+                                Text(influencer.name)
+                                    .font(.headline)
                                     .bold()
                             }
                         }
