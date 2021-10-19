@@ -167,6 +167,46 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D2995586271E64E80025D0CB /* Homepage */ = {
+			isa = PBXGroup;
+			children = (
+				D2995587271E64E80025D0CB /* ViewModels */,
+				D2995588271E64E80025D0CB /* Models */,
+				D2995589271E64E80025D0CB /* Reposiitories */,
+				D299558A271E64E80025D0CB /* Views */,
+			);
+			name = Homepage;
+			path = Koala/Homepage;
+			sourceTree = SOURCE_ROOT;
+		};
+		D2995587271E64E80025D0CB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D2995588271E64E80025D0CB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D2995589271E64E80025D0CB /* Reposiitories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reposiitories;
+			sourceTree = "<group>";
+		};
+		D299558A271E64E80025D0CB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F75CEE612713E80D00E36A1F = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +226,7 @@
 		F75CEE6C2713E80D00E36A1F /* Koala */ = {
 			isa = PBXGroup;
 			children = (
+				D2995586271E64E80025D0CB /* Homepage */,
 				2FBC8B98271C2E39007E7B76 /* InfluencerList */,
 				F75CEE7D2713E8CF00E36A1F /* Login */,
 				F75CEE7C2713E8C400E36A1F /* Components */,
