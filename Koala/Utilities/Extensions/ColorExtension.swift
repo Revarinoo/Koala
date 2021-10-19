@@ -11,4 +11,10 @@ extension Color {
     public static var bgColorView: Color {
         return Color("background")
     }
+    public static var orange1: Color {
+        return Color("orange1")
+    }
+    public static var orange2: Color {
+        return Color("orange2")
+    }
 }
