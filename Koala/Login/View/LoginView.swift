@@ -2,18 +2,14 @@
 //  LoginView.swift
 //  Koala
 //
-//  Created by Revarino Putra on 11/10/21. Edited by Jonathan Clive
-//
+//  Created by Revarino Putra on 11/10/21.
+//  Edited by Jonathan Clive & Syahrul Fadholi
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct LoginView: View {
     
     @ObservedObject var loginVM = LoginViewModel()
-    
-    @State private var email: String = ""
-    @State private var password: String = ""
     
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
@@ -35,29 +31,39 @@ struct LoginView: View {
                         Text("Email")
                             .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                             .foregroundColor(Color("darkGray"))
-                        TextField("Enter your email", text: $email)
+                        TextField("Enter your email", text: $loginVM.loginModel.email)
                             .textFieldStyle(OvalTextFieldStyle())
                         Text("Password")
                             .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                             .foregroundColor(Color("darkGray"))
-                        SecureField("Enter your password", text: $password)
+                        SecureField("Enter your password", text: $loginVM.loginModel.password)
                             .textFieldStyle(OvalTextFieldStyle())
                         Spacer()
                     }
                     
-                    Button {
-                        print("tapped")
-                        loginVM.callLoginInfluencer(email: email, password: password)
-                    } label: {
-                        Text("Sign In")
-                        .padding(15)
-                        .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
-                        .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
-                    }
-                    .foregroundColor(.white)
-                    .background(Color("primary"))
-                    .cornerRadius(15)
-                    .padding(.bottom, 8)
+                    NavigationLink(
+                        destination: Text("Login Success"),
+                        isActive: $loginVM.loginModel.navigate,
+                        label: {
+                            Button {
+                                print("tapped")
+                                if(loginVM.validateUserInputs()) {
+                                    loginVM.callLoginInfluencer()
+                                }
+                            } label: {
+                                Text("Sign In")
+                                .padding(15)
+                                .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
+                                .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
+                            }
+                            .foregroundColor(.white)
+                            .background(Color("primary"))
+                            .cornerRadius(15)
+                            .padding(.bottom, 8)
+                            .alert(isPresented: $loginVM.loginModel.isPresentingErrorAlert, content: {
+                                Alert(title: Text("Alert"), message: Text(loginVM.loginModel.errorMessage), dismissButton: .cancel(Text("Ok")))
+                            })
+                        })
                     
                     HStack(alignment: .center){
                         Text("Not registered yet?")
@@ -71,14 +77,10 @@ struct LoginView: View {
                         }
                     }
                 }
-//                .edgesIgnoringSafeArea(.bottom)
                 .frame(maxHeight: .infinity, alignment: .center)
                 .padding(31)
                 .background(Color.white.ignoresSafeArea(edges: .bottom))
                 .cornerRadius(15)
-                
-                
-//                .navigationBarTitle("Sign In")
                 .toolbar {
                     ToolbarItem(placement: .navigation) {
                         HStack {
@@ -98,17 +100,5 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
-    }
-}
-
-struct OvalTextFieldStyle: TextFieldStyle {
-    func _body(configuration: TextField<Self._Label>) -> some View {
-        configuration
-            .padding(10)
-            .background(Color("lightGray"))
-            .cornerRadius(10)
-            .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-            .padding(.bottom, 5)
-            .padding(.top, -5)
     }
 }

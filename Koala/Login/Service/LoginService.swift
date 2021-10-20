@@ -2,13 +2,14 @@
 //  LoginService.swift
 //  Koala
 //
-//  Created by Revarino Putra on 11/10/21. Edited by Jonathan Clive.
-//
+//  Created by Revarino Putra on 11/10/21.
+//  Edited by Jonathan Clive & Syahrul Fadholi
 
 import Foundation
 
 struct LoginService {
-    func postBusiness(postRequest: LoginModel, completionHandler:@escaping(_ result: LoginResponseBusiness?)->Void) {
+    
+    func loginBusiness(_ postRequest: LoginRequest, completionHandler:@escaping(_ result: LoginResponseBusiness?)->Void) {
         
         let request = NSMutableURLRequest(url: NSURL(string: "http://127.0.0.1:8000/api/login")! as URL)
         request.httpMethod = "post"
@@ -20,8 +21,11 @@ struct LoginService {
         }
     }
     
-    func postInfluencer(postRequest: LoginModel, completionHandler:@escaping(_ result: LoginResponseInfluencer?)->Void) {
+    func loginInfluencer(_ postRequest: LoginRequest, completionHandler:@escaping(_ result: LoginResponseInfluencer?)->Void) {
         
+        print(postRequest.email)
+        print(postRequest.password)
+        print(postRequest.type_role)
         let request = NSMutableURLRequest(url: NSURL(string: "http://127.0.0.1:8000/api/login")! as URL)
         request.httpMethod = "post"
         request.addValue("application/json", forHTTPHeaderField: "content-type")
@@ -31,7 +35,4 @@ struct LoginService {
             _ = completionHandler(response)
         }
     }
-    
-//    func postInfluencer
-
 }
