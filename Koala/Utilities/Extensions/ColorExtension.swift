@@ -17,4 +17,7 @@ extension Color {
     public static var orange2: Color {
         return Color("orange2")
     }
+    public static var checkbox: Color {
+        return Color("checkbox")
+    }
 }

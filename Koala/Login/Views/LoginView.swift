@@ -2,7 +2,7 @@
 //  LoginView.swift
 //  Koala
 //
-//  Created by Revarino Putra on 11/10/21.
+//  Created by Revarino Putra on 11/10/21. Edited by Jonathan Clive
 //
 
 import SwiftUI
@@ -105,5 +105,7 @@ struct OvalTextFieldStyle: TextFieldStyle {
             .background(Color("lightGray"))
             .cornerRadius(10)
             .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+            .padding(.bottom, 5)
+            .padding(.top, -5)
     }
 }
