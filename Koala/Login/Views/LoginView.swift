@@ -10,6 +10,8 @@ import SDWebImageSwiftUI
 
 struct LoginView: View {
     
+    @ObservedObject var loginVM = LoginViewModel()
+    
     @State private var email: String = ""
     @State private var password: String = ""
     
@@ -45,6 +47,7 @@ struct LoginView: View {
                     
                     Button {
                         print("tapped")
+                        loginVM.callLoginInfluencer(email: email, password: password)
                     } label: {
                         Text("Sign In")
                         .padding(15)

@@ -32,13 +32,13 @@
 		846C55CF271F2092006C94DD /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C55CE271F2092006C94DD /* RegisterView.swift */; };
 		846C55D1271F304C006C94DD /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C55D0271F304C006C94DD /* CheckBoxView.swift */; };
 		846C55D32720255A006C94DD /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C55D22720255A006C94DD /* LoginModel.swift */; };
-		846C55D527202566006C94DD /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C55D427202566006C94DD /* LoginResponse.swift */; };
+		846C55D727202905006C94DD /* LoginResponseBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C55D627202905006C94DD /* LoginResponseBusiness.swift */; };
+		846C55D927202916006C94DD /* LoginResponseInfluencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C55D827202916006C94DD /* LoginResponseInfluencer.swift */; };
 		F75CEE6E2713E80D00E36A1F /* KoalaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE6D2713E80D00E36A1F /* KoalaApp.swift */; };
 		F75CEE702713E80D00E36A1F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE6F2713E80D00E36A1F /* ContentView.swift */; };
 		F75CEE722713E80F00E36A1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75CEE712713E80F00E36A1F /* Assets.xcassets */; };
 		F75CEE752713E80F00E36A1F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75CEE742713E80F00E36A1F /* Preview Assets.xcassets */; };
 		F75CEE8627143BC300E36A1F /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE8527143BC300E36A1F /* LoginRepository.swift */; };
-		F75CEE8827143BCF00E36A1F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE8727143BCF00E36A1F /* User.swift */; };
 		F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE8927143BD800E36A1F /* LoginViewModel.swift */; };
 		F75CEE8C27143BE900E36A1F /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE8B27143BE900E36A1F /* LoginService.swift */; };
 		F75CEE8E27143BF100E36A1F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE8D27143BF100E36A1F /* LoginView.swift */; };
@@ -69,14 +69,14 @@
 		846C55CE271F2092006C94DD /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisterView.swift; path = ../../../../../RegisterView.swift; sourceTree = "<group>"; };
 		846C55D0271F304C006C94DD /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		846C55D22720255A006C94DD /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
-		846C55D427202566006C94DD /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		846C55D627202905006C94DD /* LoginResponseBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseBusiness.swift; sourceTree = "<group>"; };
+		846C55D827202916006C94DD /* LoginResponseInfluencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseInfluencer.swift; sourceTree = "<group>"; };
 		F75CEE6A2713E80D00E36A1F /* Koala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koala.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75CEE6D2713E80D00E36A1F /* KoalaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoalaApp.swift; sourceTree = "<group>"; };
 		F75CEE6F2713E80D00E36A1F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F75CEE712713E80F00E36A1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F75CEE742713E80F00E36A1F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F75CEE8527143BC300E36A1F /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
-		F75CEE8727143BCF00E36A1F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F75CEE8927143BD800E36A1F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F75CEE8B27143BE900E36A1F /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		F75CEE8D27143BF100E36A1F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -273,9 +273,9 @@
 		F75CEE7F2713E91B00E36A1F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F75CEE8727143BCF00E36A1F /* User.swift */,
 				846C55D22720255A006C94DD /* LoginModel.swift */,
-				846C55D427202566006C94DD /* LoginResponse.swift */,
+				846C55D827202916006C94DD /* LoginResponseInfluencer.swift */,
+				846C55D627202905006C94DD /* LoginResponseBusiness.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -394,6 +394,7 @@
 				2FBC8BB5271C38E8007E7B76 /* InfluencerListModel.swift in Sources */,
 				846C55D32720255A006C94DD /* LoginModel.swift in Sources */,
 				2FBC8BB7271C3994007E7B76 /* InfluencerListViewModel.swift in Sources */,
+				846C55D727202905006C94DD /* LoginResponseBusiness.swift in Sources */,
 				2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */,
 				2FBC8B97271C2E09007E7B76 /* HttpUtility.swift in Sources */,
 				2FA40E41271DE3980095A812 /* ThemeFont.swift in Sources */,
@@ -401,7 +402,7 @@
 				2FA40E57271DF44E0095A812 /* ColorExtension.swift in Sources */,
 				2FBC8BB3271C37CC007E7B76 /* InfluencerListResponse.swift in Sources */,
 				846C55CF271F2092006C94DD /* RegisterView.swift in Sources */,
-				F75CEE8827143BCF00E36A1F /* User.swift in Sources */,
+				846C55D927202916006C94DD /* LoginResponseInfluencer.swift in Sources */,
 				F75CEE8E27143BF100E36A1F /* LoginView.swift in Sources */,
 				846C55D1271F304C006C94DD /* CheckBoxView.swift in Sources */,
 				F75CEE8C27143BE900E36A1F /* LoginService.swift in Sources */,
@@ -411,7 +412,6 @@
 				F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */,
 				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
 				F75CEE8627143BC300E36A1F /* LoginRepository.swift in Sources */,
-				846C55D527202566006C94DD /* LoginResponse.swift in Sources */,
 				2FA40E3F271DE3180095A812 /* ThemeColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
