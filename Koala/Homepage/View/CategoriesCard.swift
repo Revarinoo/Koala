@@ -18,7 +18,8 @@ struct CategoriesCard: View {
                 .cornerRadius(10)
                 .shadow(color: .gray, radius: 3, x: 1, y: 2)
             
-            /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+            Text("Button").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                .foregroundColor(.black)
             
         }
     }

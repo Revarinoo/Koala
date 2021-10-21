@@ -42,7 +42,7 @@ struct HomepageView: View {
                         .foregroundColor(.black)
                 }
                 
-            }.padding(.leading,16).padding(.trailing, 16)
+            }.padding(.leading,16).padding([.top, .trailing], 16.0)
             ScrollView(.vertical){
                 VStack(spacing: 12){
                     ForEach (0..<5){ i in
