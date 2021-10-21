@@ -9,8 +9,8 @@ import SwiftUI
 
 struct PriceRange: View {
     
-    @State var minPrice: String = ""
-    @State var maxPrice: String = ""
+    @State var minPrice: Int = 0
+    @State var maxPrice: Int = 0
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -18,14 +18,14 @@ struct PriceRange: View {
                 .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                 .foregroundColor(.black)
             HStack {
-                TextField("Minimum price", text: $minPrice)
+                TextField("Minimum price", value: $minPrice, formatter: NumberFormatter.currency)
                     .textFieldStyle(OvalTextFieldStyle())
                     .keyboardType(.numberPad)
                 Image(systemName: "minus")
                     .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                     .foregroundColor(ThemeColor.gray)
                     .padding(EdgeInsets(top: 0, leading: 4, bottom: 6, trailing: 4))
-                TextField("Maximum price", text: $maxPrice)
+                TextField("Maximum price", value: $maxPrice, formatter: NumberFormatter.currency)
                     .textFieldStyle(OvalTextFieldStyle())
                     .keyboardType(.numberPad)
             }
@@ -35,7 +35,7 @@ struct PriceRange: View {
 }
 
 struct PriceRange_Previews: PreviewProvider {
-
+    
     static var previews: some View {
         PriceRange().previewLayout(.sizeThatFits)
     }

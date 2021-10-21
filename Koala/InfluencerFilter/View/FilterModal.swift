@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FilterModal: View {
     
+    @Binding var isPresented: Bool
     @State var rating: Int = 0
     
     var body: some View {
@@ -28,22 +29,15 @@ struct FilterModal: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") {
-                        print("Cancel tapped!")
+                        isPresented = false
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
-                        print("Save tapped!")
+                        isPresented = false
                     }
                 }
             }
         }
-    }
-}
-
-struct FilterModal_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        FilterModal()
     }
 }

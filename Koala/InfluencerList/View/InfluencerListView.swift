@@ -11,21 +11,26 @@ import SDWebImageSwiftUI
 struct InfluencerListView: View {
     
     @ObservedObject var influencerListVM = InfluencerListViewModel()
+    @State var isFilterModalShown: Bool = false
     
     var body: some View {
         NavigationView {
             ZStack {
                 Color.bgColorView.edgesIgnoringSafeArea(.all)
                 VStack {
-                    HStack {
-                        Image("filterIcon")
-                            .font(Font.custom(ThemeFont.poppinsMedium, size: 10))
-                            .padding(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
-                            .background(ThemeColor.primary)
-                            .cornerRadius(10)
-                        Spacer()
-                    }
-                    .padding(EdgeInsets(top: -2, leading: 10, bottom: 8, trailing: 0))
+                    Button(action: {
+                        self.isFilterModalShown = true
+                    }, label: {
+                        HStack {
+                            Image("filterIcon")
+                                .font(Font.custom(ThemeFont.poppinsMedium, size: 10))
+                                .padding(EdgeInsets(top: 6, leading: 20, bottom: 6, trailing: 20))
+                                .background(ThemeColor.primary)
+                                .cornerRadius(10)
+                            Spacer()
+                        }
+                        .padding(EdgeInsets(top: -2, leading: 10, bottom: 8, trailing: 0))
+                    })
                     
                     ScrollView {
                         VStack(spacing: 16) {
@@ -43,6 +48,9 @@ struct InfluencerListView: View {
         }
         .onAppear() {
             influencerListVM.callGetInfluencerList()
+        }
+        .sheet(isPresented: $isFilterModalShown) {
+            FilterModal(isPresented: $isFilterModalShown)
         }
     }
 }

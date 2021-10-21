@@ -22,3 +22,12 @@ extension Int {
        return formatter.string(from: NSNumber(value: self))!
    }
 }
+
+extension NumberFormatter {
+    static var currency: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "id_ID")
+        formatter.numberStyle = .currency
+        return formatter
+    }
+}
