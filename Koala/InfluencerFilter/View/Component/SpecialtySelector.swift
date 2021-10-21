@@ -47,7 +47,7 @@ struct SpecialtySelector: View {
                 }
             }
         }
-        .padding(.horizontal, 18)
+        .padding(.horizontal)
     }
 }
 

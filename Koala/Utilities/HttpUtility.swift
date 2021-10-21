@@ -16,7 +16,7 @@ final class HttpUtility {
         "x-rapidapi-host": "instagram85.p.rapidapi.com",
         "x-rapidapi-key": "972dec3e88msh0481a1317c5f2acp1281aajsn0ccb5fdf65db" ]
 
-    func request<T:Decodable>(_ urlRequest: URLRequest, resultType:T.Type, completionHandler:@escaping(_ reuslt: T?)-> Void) {
+    func request<T:Decodable>(_ urlRequest: URLRequest, resultType:T.Type, completionHandler:@escaping(_ result: T?)-> Void) {
 
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if(error == nil && data != nil) {

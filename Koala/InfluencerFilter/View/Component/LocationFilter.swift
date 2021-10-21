@@ -30,7 +30,7 @@ struct LocationFilter: View {
                 }
             })
         }
-        .padding(.horizontal, 18)
+        .padding(.horizontal)
     }
 }
 
