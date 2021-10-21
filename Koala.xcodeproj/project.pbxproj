@@ -23,6 +23,11 @@
 		2FA40E54271DE9F70095A812 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA40E4B271DE9F70095A812 /* Poppins-Regular.ttf */; };
 		2FA40E57271DF44E0095A812 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA40E56271DF44E0095A812 /* ColorExtension.swift */; };
 		2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA40E59271DFB2C0095A812 /* NumberFormatterExtension.swift */; };
+		2FACD8422721108F00E9F578 /* ConstantVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FACD8412721108F00E9F578 /* ConstantVariable.swift */; };
+		2FACD8442721137F00E9F578 /* FilterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FACD8432721137F00E9F578 /* FilterModal.swift */; };
+		2FACD8472721173800E9F578 /* LocationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FACD8462721173800E9F578 /* LocationFilter.swift */; };
+		2FACD84927211A7600E9F578 /* SpecialtySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FACD84827211A7600E9F578 /* SpecialtySelector.swift */; };
+		2FACD84B272144D700E9F578 /* PriceRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FACD84A272144D700E9F578 /* PriceRange.swift */; };
 		2FBC8B97271C2E09007E7B76 /* HttpUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8B96271C2E09007E7B76 /* HttpUtility.swift */; };
 		2FBC8BB1271C3725007E7B76 /* InfluencerListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8BB0271C3725007E7B76 /* InfluencerListService.swift */; };
 		2FBC8BB3271C37CC007E7B76 /* InfluencerListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8BB2271C37CC007E7B76 /* InfluencerListResponse.swift */; };
@@ -56,6 +61,11 @@
 		2FA40E55271DEB340095A812 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2FA40E56271DF44E0095A812 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = Koala/Utilities/Extensions/ColorExtension.swift; sourceTree = SOURCE_ROOT; };
 		2FA40E59271DFB2C0095A812 /* NumberFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterExtension.swift; sourceTree = "<group>"; };
+		2FACD8412721108F00E9F578 /* ConstantVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantVariable.swift; sourceTree = "<group>"; };
+		2FACD8432721137F00E9F578 /* FilterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModal.swift; sourceTree = "<group>"; };
+		2FACD8462721173800E9F578 /* LocationFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFilter.swift; sourceTree = "<group>"; };
+		2FACD84827211A7600E9F578 /* SpecialtySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtySelector.swift; sourceTree = "<group>"; };
+		2FACD84A272144D700E9F578 /* PriceRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRange.swift; sourceTree = "<group>"; };
 		2FBC8B96271C2E09007E7B76 /* HttpUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpUtility.swift; sourceTree = "<group>"; };
 		2FBC8BB0271C3725007E7B76 /* InfluencerListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerListService.swift; sourceTree = "<group>"; };
 		2FBC8BB2271C37CC007E7B76 /* InfluencerListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerListResponse.swift; sourceTree = "<group>"; };
@@ -122,6 +132,57 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		2FACD83C2721069900E9F578 /* InfluencerFilter */ = {
+			isa = PBXGroup;
+			children = (
+				2FACD8402721078A00E9F578 /* Model */,
+				2FACD83F2721078500E9F578 /* View */,
+				2FACD83E2721077E00E9F578 /* ViewModel */,
+				2FACD83D2721077700E9F578 /* Service */,
+			);
+			path = InfluencerFilter;
+			sourceTree = "<group>";
+		};
+		2FACD83D2721077700E9F578 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		2FACD83E2721077E00E9F578 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FACD83F2721078500E9F578 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FACD845272116F900E9F578 /* Component */,
+				2FACD8432721137F00E9F578 /* FilterModal.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FACD8402721078A00E9F578 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2FACD845272116F900E9F578 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				2FACD8462721173800E9F578 /* LocationFilter.swift */,
+				2FACD84827211A7600E9F578 /* SpecialtySelector.swift */,
+				2FACD84A272144D700E9F578 /* PriceRange.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		2FBC8B98271C2E39007E7B76 /* InfluencerList */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +247,7 @@
 		F75CEE6C2713E80D00E36A1F /* Koala */ = {
 			isa = PBXGroup;
 			children = (
+				2FACD83C2721069900E9F578 /* InfluencerFilter */,
 				2FBC8B98271C2E39007E7B76 /* InfluencerList */,
 				F75CEE7D2713E8CF00E36A1F /* Login */,
 				F75CEE7C2713E8C400E36A1F /* Components */,
@@ -213,6 +275,7 @@
 				2FA40E3D271DE2F50095A812 /* Themes */,
 				2FA40E58271DF45A0095A812 /* Extensions */,
 				2FBC8B96271C2E09007E7B76 /* HttpUtility.swift */,
+				2FACD8412721108F00E9F578 /* ConstantVariable.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -369,13 +432,18 @@
 				2FBC8B97271C2E09007E7B76 /* HttpUtility.swift in Sources */,
 				2FA40E41271DE3980095A812 /* ThemeFont.swift in Sources */,
 				2FBC8BB9271C3C66007E7B76 /* InfluencerListView.swift in Sources */,
+				2FACD84B272144D700E9F578 /* PriceRange.swift in Sources */,
 				2FA40E57271DF44E0095A812 /* ColorExtension.swift in Sources */,
+				2FACD8442721137F00E9F578 /* FilterModal.swift in Sources */,
+				2FACD8422721108F00E9F578 /* ConstantVariable.swift in Sources */,
+				2FACD84927211A7600E9F578 /* SpecialtySelector.swift in Sources */,
 				2FBC8BB3271C37CC007E7B76 /* InfluencerListResponse.swift in Sources */,
 				F75CEE8827143BCF00E36A1F /* User.swift in Sources */,
 				F75CEE8E27143BF100E36A1F /* LoginView.swift in Sources */,
 				F75CEE8C27143BE900E36A1F /* LoginService.swift in Sources */,
 				F75CEE702713E80D00E36A1F /* ContentView.swift in Sources */,
 				2FBC8BB1271C3725007E7B76 /* InfluencerListService.swift in Sources */,
+				2FACD8472721173800E9F578 /* LocationFilter.swift in Sources */,
 				F75CEE6E2713E80D00E36A1F /* KoalaApp.swift in Sources */,
 				F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */,
 				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
