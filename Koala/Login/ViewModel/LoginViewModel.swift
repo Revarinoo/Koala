@@ -6,12 +6,16 @@
 //  Edited by Syahrul Fadholi
 
 import Foundation
+import SwiftUI
 
 class LoginViewModel: ObservableObject {
     
     @Published var loginModel: LoginModel = LoginModel()
     private let loginService: LoginService = LoginService()
     private let loginValidation = LoginValidation()
+    
+    @AppStorage("role", store: .standard) var role = "Business"
+    @AppStorage("JWT", store: .standard) var token = ""
     
     func validateUserInputs() -> Bool {
 
@@ -26,17 +30,20 @@ class LoginViewModel: ObservableObject {
         return true
     }
 
-    func callLoginInfluencer() {
+    func login() {
         
-        let loginRequest = LoginRequest(email: loginModel.email, password: loginModel.password, type_role: "Influencer")
-        loginService.loginInfluencer(loginRequest) { response in
+        let loginRequest = LoginRequest(email: loginModel.email, password: loginModel.password, type_role: role)
+        loginService.login(loginRequest) { response in
             DispatchQueue.main.async {
-                if let token = response?.token {
-                    print(token)
-                    self.loginModel.navigate = true
-                } else {
-                    self.loginModel.errorMessage = "The provided credentials do not match our records."
-                    self.loginModel.isPresentingErrorAlert = true
+                if let code = response?.code, let message = response?.message {
+                    if code == 201, let token = response?.access_token {
+                        self.loginModel.navigate = true
+                        self.token = token
+                    }
+                    else {
+                        self.loginModel.errorMessage = message
+                        self.loginModel.isPresentingErrorAlert = true
+                    }
                 }
             }
         }

@@ -42,13 +42,13 @@ struct LoginView: View {
                     }
                     
                     NavigationLink(
-                        destination: Text("Login Success"),
+                        destination: Text("Login Success").navigationBarBackButtonHidden(true),
                         isActive: $loginVM.loginModel.navigate,
                         label: {
                             Button {
                                 print("tapped")
                                 if(loginVM.validateUserInputs()) {
-                                    loginVM.callLoginInfluencer()
+                                    loginVM.login()
                                 }
                             } label: {
                                 Text("Sign In")
