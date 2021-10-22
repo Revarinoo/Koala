@@ -10,9 +10,9 @@ import SwiftUI
 struct PromotionCard: View {
     var body: some View {
         HStack{
-            VStack(spacing: 6){
+            VStack(alignment: .leading, spacing: 6){
                 Text("Welcoming Offer").font(Font.custom(ThemeFont.poppinsRegular, size: 12))
-                    .multilineTextAlignment(.leading)
+                        .multilineTextAlignment(.leading)
                 Text("10% off your first order with influencer").font(Font.custom(ThemeFont.poppinsSemiBold, size: 14))
                 Button(action:{}){
                     Text("Book Influencer").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
@@ -23,7 +23,7 @@ struct PromotionCard: View {
             }.padding(.leading, 16)
             Image("offer").padding()
         }
-            .padding(.horizontal, 10)
+        .padding(10)
             .padding(.vertical, 2)
             .background(ThemeColor.primaryLight)
             .cornerRadius(10)

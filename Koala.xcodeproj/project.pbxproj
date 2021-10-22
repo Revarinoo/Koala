@@ -38,6 +38,9 @@
 		D28D625827201ECB00BE7345 /* CategoriesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D625727201ECB00BE7345 /* CategoriesServices.swift */; };
 		D28D625A27205B6000BE7345 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D625927205B6000BE7345 /* ProfileButton.swift */; };
 		D28D625C2720957500BE7345 /* PromotionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D625B2720957500BE7345 /* PromotionCard.swift */; };
+		D28EC2A72722521700FCEA2B /* RecommendationInfluencerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC2A62722521700FCEA2B /* RecommendationInfluencerModel.swift */; };
+		D28EC2A92722536400FCEA2B /* RecommendationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC2A82722536400FCEA2B /* RecommendationViewModel.swift */; };
+		D291034E27212A550008B0DE /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291034D27212A550008B0DE /* CategoryViewModel.swift */; };
 		D299558C271E65EB0025D0CB /* HomepageCategoriesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299558B271E65EB0025D0CB /* HomepageCategoriesCard.swift */; };
 		D2995592271F0D120025D0CB /* CategoriesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2995591271F0D120025D0CB /* CategoriesCard.swift */; };
 		F75CEE6E2713E80D00E36A1F /* KoalaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE6D2713E80D00E36A1F /* KoalaApp.swift */; };
@@ -82,6 +85,9 @@
 		D28D625727201ECB00BE7345 /* CategoriesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesServices.swift; sourceTree = "<group>"; };
 		D28D625927205B6000BE7345 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		D28D625B2720957500BE7345 /* PromotionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionCard.swift; sourceTree = "<group>"; };
+		D28EC2A62722521700FCEA2B /* RecommendationInfluencerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationInfluencerModel.swift; sourceTree = "<group>"; };
+		D28EC2A82722536400FCEA2B /* RecommendationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewModel.swift; sourceTree = "<group>"; };
+		D291034D27212A550008B0DE /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		D299558B271E65EB0025D0CB /* HomepageCategoriesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageCategoriesCard.swift; sourceTree = "<group>"; };
 		D2995591271F0D120025D0CB /* CategoriesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCard.swift; sourceTree = "<group>"; };
 		F75CEE6A2713E80D00E36A1F /* Koala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koala.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +210,8 @@
 		D2995587271E64E80025D0CB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D291034D27212A550008B0DE /* CategoryViewModel.swift */,
+				D28EC2A82722536400FCEA2B /* RecommendationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -214,6 +222,7 @@
 				D2577BC5271F239B00E7AC5D /* Categories.swift */,
 				D2577BC7271F23BE00E7AC5D /* RecommendationInfluencer.swift */,
 				D28D6253271FBC9600BE7345 /* HomepageViewConstant.swift */,
+				D28EC2A62722521700FCEA2B /* RecommendationInfluencerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -461,7 +470,10 @@
 				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
 				D2577BC6271F239B00E7AC5D /* Categories.swift in Sources */,
 				F75CEE8627143BC300E36A1F /* LoginRepository.swift in Sources */,
+				D28EC2A72722521700FCEA2B /* RecommendationInfluencerModel.swift in Sources */,
+				D28EC2A92722536400FCEA2B /* RecommendationViewModel.swift in Sources */,
 				D28D625627201E8300BE7345 /* RecommendationInfluencerService.swift in Sources */,
+				D291034E27212A550008B0DE /* CategoryViewModel.swift in Sources */,
 				D28D6254271FBC9600BE7345 /* HomepageViewConstant.swift in Sources */,
 				2FA40E3F271DE3180095A812 /* ThemeColor.swift in Sources */,
 				D299558C271E65EB0025D0CB /* HomepageCategoriesCard.swift in Sources */,

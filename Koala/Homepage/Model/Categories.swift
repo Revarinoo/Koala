@@ -7,3 +7,15 @@
 
 import Foundation
 
+struct Categories: Identifiable{
+    let id = UUID()
+    var categoryName: String
+    var categoryImage: String
+}
+
+struct categoryBody: Codable {
+    let categories: [String]
+}
+
+
+

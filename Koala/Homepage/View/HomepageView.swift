@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct HomepageView: View {
+    @ObservedObject var recomenndationList = RecommendationViewModel()
+    
+    //
+    @State var categories : [String] = ["Coffee"]
+    
     var body: some View {
         VStack{
             HStack(spacing: 5){
@@ -32,7 +37,7 @@ struct HomepageView: View {
                 
             }.padding(.leading,16).padding(.trailing, 16)
             HomepageCategoriesCard()
-            PromotionCard()
+            PromotionCard().padding(.leading,16).padding(.trailing, 16)
             HStack{
                 Text("Recommendation").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                     .foregroundColor(.black)
@@ -45,15 +50,17 @@ struct HomepageView: View {
             }.padding(.leading,16).padding([.top, .trailing], 16.0)
             ScrollView(.vertical){
                 VStack(spacing: 12){
-                    ForEach (0..<5){ i in
-                        RecommendationInfluencerCard(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", categories: ["Coffee", "Street Food", "Drinks"], name: "Alex Ferdinand Sr.", location: "Jakarta Barat", price: 165000, ER: 3.5, rating: 4.3).padding(.leading,16).padding(.trailing, 16)
+                    ForEach (recomenndationList.recommendationModel){ i in
+                        RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
                     }
                 }
             }
         }
         .padding(.top, 25)
         .background(ThemeColor.background.ignoresSafeArea())
-        
+        .onAppear() {
+            recomenndationList.callGetInfluencerList(categories: categories)
+        }
     }
 }
 

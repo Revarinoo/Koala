@@ -9,16 +9,13 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct RecommendationInfluencerCard: View {
-    let photoURL: String
+    let photoURL: String?
     let categories: [String]
     let name: String
-    let location: String
     let price: Int
-    let ER: Double
-    let rating: Double
     var body: some View {
         HStack {
-            WebImage(url: URL(string: photoURL))
+            WebImage(url: URL(string: photoURL ?? "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg"))
                 .resizable()
                 .frame(width: 80, height: 80)
                 .cornerRadius(10)
@@ -65,7 +62,7 @@ struct RecommendationInfluencerCard: View {
 
 struct RecommendationInfluencerCard_Previews: PreviewProvider {
     static var previews: some View {
-        RecommendationInfluencerCard(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", categories: ["Coffee", "Street Food", "Drinks"], name: "Alex Ferdinand Sr.", location: "Jakarta Barat", price: 165000, ER: 3.5, rating: 4.3)
+        RecommendationInfluencerCard(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", categories: ["Coffee", "Street Food", "Drinks"], name: "Alex Ferdinand Sr.", price: 165000)
             .previewLayout(.sizeThatFits)
     }
 }

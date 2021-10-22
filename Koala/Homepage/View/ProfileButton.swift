@@ -27,7 +27,6 @@ struct ProfileButton: View {
                 .frame(width: 122.0, height: 36.0)
                 .background(Color.white)
                 .cornerRadius(50)
-            
         }
     }
 }

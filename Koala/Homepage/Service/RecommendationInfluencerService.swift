@@ -7,27 +7,26 @@
 
 import Foundation
 
-struct RecommendationInfluencerSevice {
+struct RecommendationInfluencerService {
     
-    func getInfluencerList(completionHandler:@escaping(_ result: InfluencerListResponse?)->Void) {
+    func getInfluencerList(completionHandler:@escaping(_ result: RecommendationInfluencers?)->Void) {
         
-        //Sementara pakai endpoint yg influencer list dulu
-        
-        let request = NSMutableURLRequest(url: NSURL(string: "http://127.0.0.1:8000/api/influencers")! as URL)
+        let request = NSMutableURLRequest(url: NSURL(string: HttpUtility.endpoint + "recommended/influencers?categories[]=Coffee")! as URL)
         request.allHTTPHeaderFields = HttpUtility.shared.headers
 
-        HttpUtility.shared.request(request as URLRequest, resultType: InfluencerListResponse.self) { response in
+        HttpUtility.shared.request(request as URLRequest, resultType: RecommendationInfluencers.self) { response in
             _ = completionHandler(response)
         }
     }
     
-    func getInfluencerRatePrice(_ influencerID: Int, completionHandler:@escaping(_ result: InfluencerRatePrice?)->Void) {
-        
-        let request = NSMutableURLRequest(url: NSURL(string: "http://127.0.0.1:8000/api/influencer/rate/\(influencerID)")! as URL)
-        request.allHTTPHeaderFields = HttpUtility.shared.headers
+    func getRecomended(categories: [String], completionHandler:@escaping(_ result: RecommendationInfluencers?)->Void) {
+            var urlRequest = URLRequest(url: URL(string: HttpUtility.endpoint + "recommended/influencers")!)
+                    urlRequest.httpMethod = "post"
+                    urlRequest.addValue("application/json", forHTTPHeaderField: "content-type")
+                    urlRequest.httpBody = try? JSONEncoder().encode(categoryBody(categories: categories))
 
-        HttpUtility.shared.request(request as URLRequest, resultType: InfluencerRatePrice.self) { response in
-            _ = completionHandler(response)
+            HttpUtility.shared.request(urlRequest, resultType: RecommendationInfluencers.self) { response in
+               completionHandler(response)
+            }
         }
-    }
 }
