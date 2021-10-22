@@ -16,7 +16,7 @@ struct FilterModal: View {
         NavigationView {
             VStack(alignment:.leading, spacing: 16) {
                 Divider()
-                    .padding(.bottom)
+                    .padding(.bottom, 8)
                     .frame(maxWidth: .infinity)
                 LocationFilter()
                 SpecialtySelector()

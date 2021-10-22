@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SpecialtySelector: View {
     
+    @ObservedObject var specialtyVM = SpecialtyViewModel()
     var phoneWidth = UIScreen.main.bounds.width
     let columns = [
         GridItem(.flexible(minimum: 115, maximum: 130)),
@@ -23,27 +24,26 @@ struct SpecialtySelector: View {
                     .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                     .foregroundColor(.black)
                 Spacer()
-                Button(action: {
-                    
-                }, label: {
-                    Text("See more")
-                        .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
-                        .foregroundColor(.black)
-                })
             }
             LazyVGrid(columns: columns) {
-                ForEach(ConstantVariable.specialties.prefix(6), id: \.self) { item in
-                    Text(item)
-                        .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                        .padding(.vertical, 4)
-                        .frame(minWidth: 115)
-                        .foregroundColor(ThemeColor.primary)
-                        .background(ThemeColor.primaryLight)
-                        .cornerRadius(5)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(ThemeColor.primary, lineWidth: 1)
-                        )
+                ForEach(specialtyVM.specialties.indices) { index in
+                    Button(action: {
+                        if specialtyVM.countSpecialtyClicked() < 3 || specialtyVM.specialties[index].isClicked == true {
+                            specialtyVM.specialties[index].isClicked.toggle()
+                        }
+                    }, label: {
+                        Text(specialtyVM.specialties[index].name)
+                            .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
+                            .padding(.vertical, 4)
+                            .frame(minWidth: 115)
+                            .foregroundColor(specialtyVM.specialties[index].isClicked ? ThemeColor.primary : ThemeColor.grayDark)
+                            .background(specialtyVM.specialties[index].isClicked ? ThemeColor.primaryLight : .white)
+                            .cornerRadius(5)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(specialtyVM.specialties[index].isClicked ? ThemeColor.primary : ThemeColor.grayDark, lineWidth: 1)
+                            )
+                    })
                 }
             }
         }

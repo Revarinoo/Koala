@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2F6C2C2727214F560026EF3E /* EngagementRateSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C2627214F560026EF3E /* EngagementRateSlider.swift */; };
 		2F6C2C2927215DE70026EF3E /* RatingStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C2827215DE70026EF3E /* RatingStar.swift */; };
+		2F6C2C30272259250026EF3E /* SpecialtyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C2F272259250026EF3E /* SpecialtyModel.swift */; };
+		2F6C2C32272259E00026EF3E /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C31272259E00026EF3E /* FilterModel.swift */; };
+		2F6C2C34272268F60026EF3E /* SpecialtyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C33272268F60026EF3E /* SpecialtyViewModel.swift */; };
 		2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */; };
 		2F99D364271D8309003DD86C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D363271D8309003DD86C /* SDWebImageSwiftUI */; };
 		2F99D391271DC6CE003DD86C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D390271DC6CE003DD86C /* Alamofire */; };
@@ -55,6 +58,9 @@
 /* Begin PBXFileReference section */
 		2F6C2C2627214F560026EF3E /* EngagementRateSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngagementRateSlider.swift; sourceTree = "<group>"; };
 		2F6C2C2827215DE70026EF3E /* RatingStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingStar.swift; sourceTree = "<group>"; };
+		2F6C2C2F272259250026EF3E /* SpecialtyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyModel.swift; sourceTree = "<group>"; };
+		2F6C2C31272259E00026EF3E /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
+		2F6C2C33272268F60026EF3E /* SpecialtyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyViewModel.swift; sourceTree = "<group>"; };
 		2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCardList.swift; sourceTree = "<group>"; };
 		2FA40E3E271DE3180095A812 /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		2FA40E40271DE3980095A812 /* ThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFont.swift; sourceTree = "<group>"; };
@@ -193,6 +199,7 @@
 		2FACD83E2721077E00E9F578 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2F6C2C33272268F60026EF3E /* SpecialtyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -209,6 +216,8 @@
 		2FACD8402721078A00E9F578 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2F6C2C2F272259250026EF3E /* SpecialtyModel.swift */,
+				2F6C2C31272259E00026EF3E /* FilterModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -475,13 +484,16 @@
 				2FACD84B272144D700E9F578 /* PriceRange.swift in Sources */,
 				2FA40E57271DF44E0095A812 /* ColorExtension.swift in Sources */,
 				2FACD8442721137F00E9F578 /* FilterModal.swift in Sources */,
+				2F6C2C32272259E00026EF3E /* FilterModel.swift in Sources */,
 				2FACD8422721108F00E9F578 /* ConstantVariable.swift in Sources */,
 				2FACD84927211A7600E9F578 /* SpecialtySelector.swift in Sources */,
+				2F6C2C30272259250026EF3E /* SpecialtyModel.swift in Sources */,
 				2FACD83827207EFF00E9F578 /* LoginValidation.swift in Sources */,
 				2FA40E57271DF44E0095A812 /* ColorExtension.swift in Sources */,
 				2FACD83427206CCE00E9F578 /* LoginRequest.swift in Sources */,
 				2FBC8BB3271C37CC007E7B76 /* InfluencerListResponse.swift in Sources */,
 				846C55D927202916006C94DD /* LoginResponseInfluencer.swift in Sources */,
+				2F6C2C34272268F60026EF3E /* SpecialtyViewModel.swift in Sources */,
 				F75CEE8E27143BF100E36A1F /* LoginView.swift in Sources */,
 				846C55D1271F304C006C94DD /* CheckBoxView.swift in Sources */,
 				2F6C2C2727214F560026EF3E /* EngagementRateSlider.swift in Sources */,
