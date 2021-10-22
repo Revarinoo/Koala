@@ -12,6 +12,9 @@
 		2F6C2C30272259250026EF3E /* SpecialtyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C2F272259250026EF3E /* SpecialtyModel.swift */; };
 		2F6C2C32272259E00026EF3E /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C31272259E00026EF3E /* FilterModel.swift */; };
 		2F6C2C34272268F60026EF3E /* SpecialtyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C33272268F60026EF3E /* SpecialtyViewModel.swift */; };
+		2F6C2C3D27228D780026EF3E /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C3C27228D780026EF3E /* SplashScreen.swift */; };
+		2F6C2C3F272290FF0026EF3E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C3E272290FF0026EF3E /* OnboardingView.swift */; };
+		2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C402722B6990026EF3E /* OnboardViewModel.swift */; };
 		2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */; };
 		2F99D364271D8309003DD86C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D363271D8309003DD86C /* SDWebImageSwiftUI */; };
 		2F99D391271DC6CE003DD86C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D390271DC6CE003DD86C /* Alamofire */; };
@@ -61,6 +64,9 @@
 		2F6C2C2F272259250026EF3E /* SpecialtyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyModel.swift; sourceTree = "<group>"; };
 		2F6C2C31272259E00026EF3E /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
 		2F6C2C33272268F60026EF3E /* SpecialtyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyViewModel.swift; sourceTree = "<group>"; };
+		2F6C2C3C27228D780026EF3E /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		2F6C2C3E272290FF0026EF3E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		2F6C2C402722B6990026EF3E /* OnboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewModel.swift; sourceTree = "<group>"; };
 		2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCardList.swift; sourceTree = "<group>"; };
 		2FA40E3E271DE3180095A812 /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		2FA40E40271DE3980095A812 /* ThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFont.swift; sourceTree = "<group>"; };
@@ -131,6 +137,7 @@
 		2F6C2C36272273100026EF3E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2F6C2C402722B6990026EF3E /* OnboardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -138,6 +145,8 @@
 		2F6C2C37272273190026EF3E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2F6C2C3C27228D780026EF3E /* SplashScreen.swift */,
+				2F6C2C3E272290FF0026EF3E /* OnboardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -525,6 +534,7 @@
 				2FA40E57271DF44E0095A812 /* ColorExtension.swift in Sources */,
 				2FACD8442721137F00E9F578 /* FilterModal.swift in Sources */,
 				2F6C2C32272259E00026EF3E /* FilterModel.swift in Sources */,
+				2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */,
 				2FACD8422721108F00E9F578 /* ConstantVariable.swift in Sources */,
 				2FACD84927211A7600E9F578 /* SpecialtySelector.swift in Sources */,
 				2F6C2C30272259250026EF3E /* SpecialtyModel.swift in Sources */,
@@ -533,6 +543,7 @@
 				2FACD83427206CCE00E9F578 /* LoginRequest.swift in Sources */,
 				2FBC8BB3271C37CC007E7B76 /* InfluencerListResponse.swift in Sources */,
 				846C55D927202916006C94DD /* LoginResponseInfluencer.swift in Sources */,
+				2F6C2C3F272290FF0026EF3E /* OnboardingView.swift in Sources */,
 				2F6C2C34272268F60026EF3E /* SpecialtyViewModel.swift in Sources */,
 				F75CEE8E27143BF100E36A1F /* LoginView.swift in Sources */,
 				846C55D1271F304C006C94DD /* CheckBoxView.swift in Sources */,
@@ -542,6 +553,7 @@
 				2FBC8BB1271C3725007E7B76 /* InfluencerListService.swift in Sources */,
 				2FACD8472721173800E9F578 /* LocationFilter.swift in Sources */,
 				F75CEE6E2713E80D00E36A1F /* KoalaApp.swift in Sources */,
+				2F6C2C3D27228D780026EF3E /* SplashScreen.swift in Sources */,
 				F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */,
 				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
 				2F6C2C2927215DE70026EF3E /* RatingStar.swift in Sources */,
