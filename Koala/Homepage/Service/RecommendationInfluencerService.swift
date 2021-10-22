@@ -2,7 +2,7 @@
 //  RecommendationInfluencerService.swift
 //  Koala
 //
-//  Created by Sholihatul Richas on 20/10/21.
+//  Created by Sholihatul Richas & Revarino Putra on 20/10/21.
 //
 
 import Foundation
