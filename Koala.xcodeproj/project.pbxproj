@@ -117,6 +117,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F6C2C35272273040026EF3E /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				2F6C2C38272273200026EF3E /* Model */,
+				2F6C2C37272273190026EF3E /* View */,
+				2F6C2C36272273100026EF3E /* ViewModel */,
+				2F6C2C39272273260026EF3E /* Service */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		2F6C2C36272273100026EF3E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2F6C2C37272273190026EF3E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F6C2C38272273200026EF3E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2F6C2C39272273260026EF3E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		2FA40E3D271DE2F50095A812 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +337,7 @@
 		F75CEE6C2713E80D00E36A1F /* Koala */ = {
 			isa = PBXGroup;
 			children = (
+				2F6C2C35272273040026EF3E /* Onboarding */,
 				2FACD83C2721069900E9F578 /* InfluencerFilter */,
 				2FBC8B98271C2E39007E7B76 /* InfluencerList */,
 				F75CEE7D2713E8CF00E36A1F /* Login */,
