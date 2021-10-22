@@ -43,6 +43,8 @@
 		F75CEE8C27143BE900E36A1F /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE8B27143BE900E36A1F /* LoginService.swift */; };
 		F75CEE8E27143BF100E36A1F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE8D27143BF100E36A1F /* LoginView.swift */; };
 		F76CE8752721C4B40055D58C /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CE8742721C4B40055D58C /* AuthResponse.swift */; };
+		F76CE879272275B90055D58C /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CE878272275B90055D58C /* RegisterViewModel.swift */; };
+		F76CE87B272275D20055D58C /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CE87A272275D20055D58C /* RegisterService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +84,8 @@
 		F75CEE8B27143BE900E36A1F /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		F75CEE8D27143BF100E36A1F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F76CE8742721C4B40055D58C /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		F76CE878272275B90055D58C /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		F76CE87A272275D20055D58C /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +208,8 @@
 		844DEF2A27226832000C33C0 /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				F76CE877272275740055D58C /* Service */,
+				F76CE8762722756D0055D58C /* ViewModels */,
 				844DEF2B2722683B000C33C0 /* View */,
 			);
 			path = Register;
@@ -323,6 +329,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F76CE8762722756D0055D58C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F76CE878272275B90055D58C /* RegisterViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F76CE877272275740055D58C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F76CE87A272275D20055D58C /* RegisterService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -429,6 +451,8 @@
 				F75CEE702713E80D00E36A1F /* ContentView.swift in Sources */,
 				2FBC8BB1271C3725007E7B76 /* InfluencerListService.swift in Sources */,
 				F75CEE6E2713E80D00E36A1F /* KoalaApp.swift in Sources */,
+				F76CE87B272275D20055D58C /* RegisterService.swift in Sources */,
+				F76CE879272275B90055D58C /* RegisterViewModel.swift in Sources */,
 				F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */,
 				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
 				F76CE8752721C4B40055D58C /* AuthResponse.swift in Sources */,

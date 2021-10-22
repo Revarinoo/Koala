@@ -12,11 +12,7 @@ struct RegisterView: View {
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
     }
-    
-    @State private var name: String = ""
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var passwordConfirm: String = ""
+    @StateObject var registerVM = RegisterViewModel()
     @State private var agree: Bool = false
     
     var body: some View {
@@ -35,22 +31,22 @@ struct RegisterView: View {
                         Text("Name")
                             .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                             .foregroundColor(Color("darkGray"))
-                        TextField("Enter your email", text: $name)
+                        TextField("Enter your email", text: $registerVM.name)
                             .textFieldStyle(OvalTextFieldStyle())
                         Text("Email")
                             .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                             .foregroundColor(Color("darkGray"))
-                        TextField("Enter your email", text: $email)
+                        TextField("Enter your email", text: $registerVM.email)
                             .textFieldStyle(OvalTextFieldStyle())
                         Text("Password")
                             .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                             .foregroundColor(Color("darkGray"))
-                        SecureField("Enter your password", text: $password)
+                        SecureField("Enter your password", text: $registerVM.password)
                             .textFieldStyle(OvalTextFieldStyle())
                         Text("Confirm Password")
                             .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                             .foregroundColor(Color("darkGray"))
-                        SecureField("Enter your password confirmation", text: $passwordConfirm)
+                        SecureField("Enter your password confirmation", text: $registerVM.passwordConfirm)
                             .textFieldStyle(OvalTextFieldStyle())
                     }
                     
@@ -62,7 +58,6 @@ struct RegisterView: View {
                                 .font(Font.custom(ThemeFont.poppinsRegular, size: 13))
                                 .foregroundColor(Color("darkGray"))
                             Button {
-                                print("tapped")
                             } label: {
                                 Text("Terms and Condition")
                                     .font(Font.custom(ThemeFont.poppinsRegular, size: 13))
@@ -75,25 +70,26 @@ struct RegisterView: View {
                     
                     Spacer()
                     
-                    Button {
-                        print("tapped")
-                    } label: {
-                        Text("Sign In")
-                        .padding(15)
-                        .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
-                        .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
+                    NavigationLink(destination: Text("Home"), isActive: $registerVM.isAuthenticate) {
+                        Button {
+                            registerVM.register()
+                        } label: {
+                            Text("Sign Up")
+                            .padding(15)
+                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
+                            .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
+                        }
+                        .foregroundColor(.white)
+                        .background(Color("primary"))
+                        .cornerRadius(15)
+                        .padding(.bottom, 8)
                     }
-                    .foregroundColor(.white)
-                    .background(Color("primary"))
-                    .cornerRadius(15)
-                    .padding(.bottom, 8)
                     HStack(alignment: .center){
                         Text("Not registered yet?")
                             .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
                         Button {
-                            print("tappppeddd")
                         } label: {
-                            Text("Create Account")
+                            Text("Sign In")
                                 .foregroundColor(.black)
                                 .font(Font.custom(ThemeFont.poppinsBold, size: 12))
                         }
