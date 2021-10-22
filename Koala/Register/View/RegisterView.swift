@@ -83,7 +83,13 @@ struct RegisterView: View {
                         .background(Color("primary"))
                         .cornerRadius(15)
                         .padding(.bottom, 8)
+                        .alert(isPresented: $registerVM.isPresentingErrorAlert, content: {
+                            Alert(title: Text("Alert"), message: Text(registerVM.errorMessage), dismissButton: .cancel(Text("Ok")))
+                        })
+                        
                     }
+                    .disabled(!agree)
+                    .opacity(agree ? 1 : 0.5)
                     HStack(alignment: .center){
                         Text("Not registered yet?")
                             .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
