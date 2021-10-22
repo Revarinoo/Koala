@@ -9,7 +9,7 @@ import Foundation
 
 class OnboardViewModel: ObservableObject {
     
-    @Published var specialties: [SpecialtyModel] = [
+    @Published var interest: [SpecialtyModel] = [
         SpecialtyModel(name: "Asian", isClicked: false),
         SpecialtyModel(name: "Coffee", isClicked: false),
         SpecialtyModel(name: "Dessert", isClicked: false),
@@ -26,10 +26,10 @@ class OnboardViewModel: ObservableObject {
     ]
     
     func countSpecialtyClicked() -> Int {
-        return self.specialties.filter({$0.isClicked == true}).count
+        return self.interest.filter({$0.isClicked == true}).count
     }
     
     func getSpecialtyClicked() -> [String] {
-        return self.specialties.filter({$0.isClicked == true}).map { $0.name }
+        return self.interest.filter({$0.isClicked == true}).map { $0.name }
     }
 }
