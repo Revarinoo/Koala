@@ -10,6 +10,7 @@ import SwiftUI
 struct OnboardingView: View {
     
     @ObservedObject var onboardVM = OnboardViewModel()
+    @State var nextNavigation: Bool = false
     let columns = [
         GridItem(.flexible(minimum: 115, maximum: 130)),
         GridItem(.flexible(minimum: 115, maximum: 130)),
@@ -41,6 +42,7 @@ struct OnboardingView: View {
                             if onboardVM.countSpecialtyClicked() < 3 || onboardVM.specialties[index].isClicked == true {
                                 onboardVM.specialties[index].isClicked.toggle()
                             }
+                            print(onboardVM.getSpecialtyClicked())
                         }, label: {
                             Text(onboardVM.specialties[index].name)
                                 .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
@@ -56,10 +58,31 @@ struct OnboardingView: View {
                         })
                     }
                 }
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
+                .padding(.bottom, 36)
+                
+                NavigationLink(
+                    destination: Text("Hompage"),
+                    isActive: $nextNavigation,
+                    label: {
+                        Button {
+                            nextNavigation.toggle()
+                        } label: {
+                            Text("Next")
+                                .padding(15)
+                                .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
+                                .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
+                        }
+                        .foregroundColor(.white)
+                        .background(ThemeColor.primary)
+                        .cornerRadius(15)
+                        .padding(.bottom, 8)
+                    })
+                
+                
             }
             .padding(.horizontal)
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
             
         }
     }

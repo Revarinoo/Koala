@@ -47,7 +47,6 @@ struct SplashScreen: View {
                             .padding(.bottom, 8)
                         })
                     
-                    
                     Button {
                         print("I'm an Influencer Tapped")
                     } label: {
