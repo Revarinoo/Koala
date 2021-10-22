@@ -54,6 +54,7 @@ struct RegisterView: View {
                             .textFieldStyle(OvalTextFieldStyle())
                     }
                     
+                    
                     HStack (alignment: .top){
                         CheckBoxView(checked: $agree)
                         VStack (alignment: .leading) {
@@ -68,7 +69,9 @@ struct RegisterView: View {
                                     .foregroundColor(.black)
                             }
                         }
+                        Spacer()
                     }
+                    .padding(.top, 5)
                     
                     Spacer()
                     
