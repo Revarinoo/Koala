@@ -10,7 +10,7 @@ import SwiftUI
 struct OvalTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
-            .padding(10)
+            .padding(15)
             .background(Color("lightGray"))
             .cornerRadius(10)
             .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
