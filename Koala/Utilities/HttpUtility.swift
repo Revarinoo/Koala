@@ -10,6 +10,7 @@ import Foundation
 final class HttpUtility {
     
     static let shared = HttpUtility()
+    static let endpoint = "http://127.0.0.1:8000/api/"
     private init(){}
     
     public let headers = [
