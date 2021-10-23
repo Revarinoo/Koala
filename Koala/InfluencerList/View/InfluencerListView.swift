@@ -16,18 +16,30 @@ struct InfluencerListView: View {
         NavigationView {
             ZStack {
                 Color.bgColorView.edgesIgnoringSafeArea(.all)
-                ScrollView {
-                    VStack(spacing: 16) {
-                        ForEach(influencerListVM.influencersModel) { influencer in
-                            NavigationLink(destination: Text("NexT Page")) {
-                                InfluencerCardList(photoURL: influencer.photo, categories: influencer.category, name: influencer.name, location: influencer.location, price: influencer.ratePrice, ER: influencer.rateEngagement, rating: influencer.rating)
-                                    .padding(.horizontal, 10)
+                VStack {
+                    HStack {
+                        Image("filterIcon")
+                            .font(Font.custom(ThemeFont.poppinsMedium, size: 10))
+                            .padding(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+                            .background(ThemeColor.primary)
+                            .cornerRadius(10)
+                        Spacer()
+                    }
+                    .padding(EdgeInsets(top: -2, leading: 10, bottom: 8, trailing: 0))
+                    
+                    ScrollView {
+                        VStack(spacing: 16) {
+                            ForEach(influencerListVM.influencersModel) { influencer in
+                                NavigationLink(destination: Text("NexT Page")) {
+                                    InfluencerCardList(photoURL: influencer.photo, categories: influencer.category, name: influencer.name, location: influencer.location, price: influencer.ratePrice, ER: influencer.rateEngagement, rating: influencer.rating)
+                                        .padding(.horizontal, 10)
+                                }
                             }
                         }
                     }
                 }
             }
-            .navigationBarHidden(true)
+            .navigationBarTitle(Text("Influencer List"), displayMode: .inline)
         }
         .onAppear() {
             influencerListVM.callGetInfluencerList()
