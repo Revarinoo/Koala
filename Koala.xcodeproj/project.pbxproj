@@ -29,6 +29,7 @@
 		2FBC8BB5271C38E8007E7B76 /* InfluencerListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8BB4271C38E8007E7B76 /* InfluencerListModel.swift */; };
 		2FBC8BB7271C3994007E7B76 /* InfluencerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8BB6271C3994007E7B76 /* InfluencerListViewModel.swift */; };
 		2FBC8BB9271C3C66007E7B76 /* InfluencerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8BB8271C3C66007E7B76 /* InfluencerListView.swift */; };
+		D21476242723F4B2009985BD /* RecommendationInfluencerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21476232723F4B2009985BD /* RecommendationInfluencerModel.swift */; };
 		D2577BC4271F11BD00E7AC5D /* HomepageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2577BC3271F11BD00E7AC5D /* HomepageView.swift */; };
 		D2577BC6271F239B00E7AC5D /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2577BC5271F239B00E7AC5D /* Categories.swift */; };
 		D2577BC8271F23BE00E7AC5D /* RecommendationInfluencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2577BC7271F23BE00E7AC5D /* RecommendationInfluencer.swift */; };
@@ -38,7 +39,6 @@
 		D28D625827201ECB00BE7345 /* CategoriesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D625727201ECB00BE7345 /* CategoriesServices.swift */; };
 		D28D625A27205B6000BE7345 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D625927205B6000BE7345 /* ProfileButton.swift */; };
 		D28D625C2720957500BE7345 /* PromotionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D625B2720957500BE7345 /* PromotionCard.swift */; };
-		D28EC2A72722521700FCEA2B /* RecommendationInfluencerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC2A62722521700FCEA2B /* RecommendationInfluencerModel.swift */; };
 		D28EC2A92722536400FCEA2B /* RecommendationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC2A82722536400FCEA2B /* RecommendationViewModel.swift */; };
 		D291034E27212A550008B0DE /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291034D27212A550008B0DE /* CategoryViewModel.swift */; };
 		D299558C271E65EB0025D0CB /* HomepageCategoriesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299558B271E65EB0025D0CB /* HomepageCategoriesCard.swift */; };
@@ -76,6 +76,7 @@
 		2FBC8BB4271C38E8007E7B76 /* InfluencerListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerListModel.swift; sourceTree = "<group>"; };
 		2FBC8BB6271C3994007E7B76 /* InfluencerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerListViewModel.swift; sourceTree = "<group>"; };
 		2FBC8BB8271C3C66007E7B76 /* InfluencerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerListView.swift; sourceTree = "<group>"; };
+		D21476232723F4B2009985BD /* RecommendationInfluencerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationInfluencerModel.swift; sourceTree = "<group>"; };
 		D2577BC3271F11BD00E7AC5D /* HomepageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageView.swift; sourceTree = "<group>"; };
 		D2577BC5271F239B00E7AC5D /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		D2577BC7271F23BE00E7AC5D /* RecommendationInfluencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationInfluencer.swift; sourceTree = "<group>"; };
@@ -85,7 +86,6 @@
 		D28D625727201ECB00BE7345 /* CategoriesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesServices.swift; sourceTree = "<group>"; };
 		D28D625927205B6000BE7345 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		D28D625B2720957500BE7345 /* PromotionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionCard.swift; sourceTree = "<group>"; };
-		D28EC2A62722521700FCEA2B /* RecommendationInfluencerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationInfluencerModel.swift; sourceTree = "<group>"; };
 		D28EC2A82722536400FCEA2B /* RecommendationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewModel.swift; sourceTree = "<group>"; };
 		D291034D27212A550008B0DE /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		D299558B271E65EB0025D0CB /* HomepageCategoriesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageCategoriesCard.swift; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 				D2577BC5271F239B00E7AC5D /* Categories.swift */,
 				D2577BC7271F23BE00E7AC5D /* RecommendationInfluencer.swift */,
 				D28D6253271FBC9600BE7345 /* HomepageViewConstant.swift */,
-				D28EC2A62722521700FCEA2B /* RecommendationInfluencerModel.swift */,
+				D21476232723F4B2009985BD /* RecommendationInfluencerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -470,13 +470,13 @@
 				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
 				D2577BC6271F239B00E7AC5D /* Categories.swift in Sources */,
 				F75CEE8627143BC300E36A1F /* LoginRepository.swift in Sources */,
-				D28EC2A72722521700FCEA2B /* RecommendationInfluencerModel.swift in Sources */,
 				D28EC2A92722536400FCEA2B /* RecommendationViewModel.swift in Sources */,
 				D28D625627201E8300BE7345 /* RecommendationInfluencerService.swift in Sources */,
 				D291034E27212A550008B0DE /* CategoryViewModel.swift in Sources */,
 				D28D6254271FBC9600BE7345 /* HomepageViewConstant.swift in Sources */,
 				2FA40E3F271DE3180095A812 /* ThemeColor.swift in Sources */,
 				D299558C271E65EB0025D0CB /* HomepageCategoriesCard.swift in Sources */,
+				D21476242723F4B2009985BD /* RecommendationInfluencerModel.swift in Sources */,
 				D2995592271F0D120025D0CB /* CategoriesCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
