@@ -12,6 +12,12 @@ struct RegisterRequest: Encodable {
     let email: String
     let password: String
     let type_role: String
+    let platform_name: String?
+    let socialmedia_id: String?
+    let engagement_rate: Double?
+    let followers: Int?
+    let average_likes: Double?
+    let average_comments: Double?
 }
 
 class RegisterService {

@@ -16,8 +16,9 @@ class RegisterViewModel: ObservableObject {
     @Published var isAuthenticate = false
     @Published var isPresentingErrorAlert = false
     @Published var errorMessage = ""
+    @Published var username = ""
     
-    @AppStorage("role", store: .standard) var role = "Business"
+    @AppStorage("role", store: .standard) var role = "Influencer"
     @AppStorage("JWT", store: .standard) var token = ""
     
     private let registerService: RegisterService = RegisterService()
@@ -46,7 +47,7 @@ class RegisterViewModel: ObservableObject {
     
     func register() {
         if !validate() { isPresentingErrorAlert.toggle() }
-        registerService.register(RegisterRequest(name: name, email: email, password: password, type_role: role)) { response in
+        registerService.register(RegisterRequest(name: name, email: email, password: password, type_role: role, platform_name: "Instagram", socialmedia_id: username, engagement_rate: 32.2, followers: 10000, average_likes: 1000, average_comments: 100)) { response in
             if let code = response?.code, let message = response?.message {
                 if code == 201, let access_token = response?.access_token {
                     DispatchQueue.main.async {
