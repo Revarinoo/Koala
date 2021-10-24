@@ -47,9 +47,10 @@
 		2FBC8BB9271C3C66007E7B76 /* InfluencerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC8BB8271C3C66007E7B76 /* InfluencerListView.swift */; };
 		2FCB0B1A272462690017C9D6 /* SecureInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B19272462690017C9D6 /* SecureInputView.swift */; };
 		2FCB0B1D2724E8160017C9D6 /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B1C2724E8160017C9D6 /* RegisterRequest.swift */; };
-		2FCB0B1F2724FDCE0017C9D6 /* InstagramRapidAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B1E2724FDCE0017C9D6 /* InstagramRapidAPIService.swift */; };
 		2FCB0B232724FE5E0017C9D6 /* InstaFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B212724FE5D0017C9D6 /* InstaFeedModel.swift */; };
 		2FCB0B242724FE5E0017C9D6 /* InstaAccModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B222724FE5E0017C9D6 /* InstaAccModel.swift */; };
+		2FCB0B282725186B0017C9D6 /* FeedIgFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B272725186B0017C9D6 /* FeedIgFetcher.swift */; };
+		2FCB0B2A2725202A0017C9D6 /* AccountInfoFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B292725202A0017C9D6 /* AccountInfoFetcher.swift */; };
 		844DEF2D2722684A000C33C0 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DEF2C2722684A000C33C0 /* RegisterView.swift */; };
 		846C55D1271F304C006C94DD /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C55D0271F304C006C94DD /* CheckBoxView.swift */; };
 		846C55D32720255A006C94DD /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C55D22720255A006C94DD /* LoginModel.swift */; };
@@ -121,9 +122,10 @@
 		2FBC8BB8271C3C66007E7B76 /* InfluencerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerListView.swift; sourceTree = "<group>"; };
 		2FCB0B19272462690017C9D6 /* SecureInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureInputView.swift; sourceTree = "<group>"; };
 		2FCB0B1C2724E8160017C9D6 /* RegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
-		2FCB0B1E2724FDCE0017C9D6 /* InstagramRapidAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramRapidAPIService.swift; sourceTree = "<group>"; };
 		2FCB0B212724FE5D0017C9D6 /* InstaFeedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaFeedModel.swift; sourceTree = "<group>"; };
 		2FCB0B222724FE5E0017C9D6 /* InstaAccModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaAccModel.swift; sourceTree = "<group>"; };
+		2FCB0B272725186B0017C9D6 /* FeedIgFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedIgFetcher.swift; sourceTree = "<group>"; };
+		2FCB0B292725202A0017C9D6 /* AccountInfoFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoFetcher.swift; sourceTree = "<group>"; };
 		844DEF2C2722684A000C33C0 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		846C55D0271F304C006C94DD /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		846C55D22720255A006C94DD /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -579,7 +581,8 @@
 			isa = PBXGroup;
 			children = (
 				F76CE87A272275D20055D58C /* RegisterService.swift */,
-				2FCB0B1E2724FDCE0017C9D6 /* InstagramRapidAPIService.swift */,
+				2FCB0B272725186B0017C9D6 /* FeedIgFetcher.swift */,
+				2FCB0B292725202A0017C9D6 /* AccountInfoFetcher.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 				D28D625C2720957500BE7345 /* PromotionCard.swift in Sources */,
 				2FBC8B97271C2E09007E7B76 /* HttpUtility.swift in Sources */,
 				2FA40E41271DE3980095A812 /* ThemeFont.swift in Sources */,
+				2FCB0B2A2725202A0017C9D6 /* AccountInfoFetcher.swift in Sources */,
 				D2577BC8271F23BE00E7AC5D /* RecommendationInfluencer.swift in Sources */,
 				2FBC8BB9271C3C66007E7B76 /* InfluencerListView.swift in Sources */,
 				2FACD84B272144D700E9F578 /* PriceRange.swift in Sources */,
@@ -727,7 +731,7 @@
 				D28D625627201E8300BE7345 /* RecommendationInfluencerService.swift in Sources */,
 				D291034E27212A550008B0DE /* CategoryViewModel.swift in Sources */,
 				D28D6254271FBC9600BE7345 /* HomepageViewConstant.swift in Sources */,
-				2FCB0B1F2724FDCE0017C9D6 /* InstagramRapidAPIService.swift in Sources */,
+				2FCB0B282725186B0017C9D6 /* FeedIgFetcher.swift in Sources */,
 				2FA40E3F271DE3180095A812 /* ThemeColor.swift in Sources */,
 				D299558C271E65EB0025D0CB /* HomepageCategoriesCard.swift in Sources */,
 				D21476242723F4B2009985BD /* RecommendationInfluencerModel.swift in Sources */,

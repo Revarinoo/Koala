@@ -8,8 +8,6 @@
 import Foundation
 
 struct InstaAccModel: Codable {
-    let code: Int
-    let message: String
     let data: AccountData
 }
 

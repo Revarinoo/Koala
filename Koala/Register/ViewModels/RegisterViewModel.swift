@@ -20,8 +20,9 @@ class RegisterViewModel: ObservableObject {
     @AppStorage("role", store: .standard) var role = "Influencer"
     @AppStorage("JWT", store: .standard) var token = ""
     
+    private let accountInfoFetcher: AccountInfoFetcher = AccountInfoFetcher()
+    private let feedIgFetcher: FeedIgFetcher = FeedIgFetcher()
     private let registerService: RegisterService = RegisterService()
-    private let igService: InstagramRapidAPIService = InstagramRapidAPIService()
     
     private var igFollowersCount: Int = 1
     private var igEngagementRate: Double = 0.0
@@ -42,9 +43,6 @@ class RegisterViewModel: ObservableObject {
             return false
         }
         
-        self.callGetAccInfo(username)
-        self.callGetFeedData(username)
-        
         return true
     }
     
@@ -59,22 +57,36 @@ class RegisterViewModel: ObservableObject {
         return ER
     }
     
-    func callGetAccInfo(_ username: String) {
-        igService.getAccInfo(username: username) { response in
-            DispatchQueue.main.async {
-                self.igFollowersCount = response?.data.figures.followers ?? 1
+    func callGetAccInfo() {
+        accountInfoFetcher.fetchInfo(username) { [unowned self] result in
+
+            switch result {
+            case .success(let profile):
+                
+                self.igFollowersCount = profile.figures.followers
+            
+                DispatchQueue.main.async {
+                    callGetFeedData()
+                }
+                
+            case .failure(let error):
+                print("Request failed with error: \(error)")
             }
+            
         }
     }
     
-    func callGetFeedData(_ username: String) {
-        var likes: [Double] = []
-        var comments: [Double] = []
-        var ERs: [Double] = []
-        
-        igService.getFeedData(username: username) { response in
-            if let responseData = response?.data {
-                for igPost in responseData.prefix(20) {
+    func callGetFeedData() {
+        feedIgFetcher.fetchFeed(username) { [unowned self] result in
+            
+            var likes: [Double] = []
+            var comments: [Double] = []
+            var ERs: [Double] = []
+            
+            switch result {
+            case .success(let feed):
+                
+                for igPost in feed.prefix(20) {
                     let likesCount = Double(igPost.figures.likes_count)
                     let commentsCount = Double(igPost.figures.comments_count)
                     let engagementRate = self.calcEngagementRate(likes: likesCount, comments: commentsCount, followers: Double(self.igFollowersCount))
@@ -84,10 +96,6 @@ class RegisterViewModel: ObservableObject {
                     ERs.append(engagementRate)
                 }
                 
-                self.callRegisterService()
-            }
-            
-            DispatchQueue.main.async {
                 let avgOfLikes = likes.reduce(0, +) / 20
                 let avgOfComments = comments.reduce(0, +) / 20
                 let avgOfERs = ERs.reduce(0, +) / 20
@@ -95,7 +103,16 @@ class RegisterViewModel: ObservableObject {
                 self.igAvgLikes = avgOfLikes
                 self.igAvgComments = avgOfComments
                 self.igEngagementRate = avgOfERs
+                
+                DispatchQueue.main.async {
+                    
+                    callRegisterService()
+                }
+                
+            case .failure(let error):
+                print("Request failed with error: \(error)")
             }
+            
         }
     }
     
@@ -107,13 +124,6 @@ class RegisterViewModel: ObservableObject {
                     DispatchQueue.main.async {
                         self.token = access_token
                         self.isAuthenticate = true
-
-                        print("register sucess")
-                        print(self.igFollowersCount)
-                        print(self.igAvgLikes)
-                        print(self.igAvgComments)
-                        print(self.igEngagementRate)
-                        print(self.token)
                     }
                 }
                 else {
@@ -128,5 +138,7 @@ class RegisterViewModel: ObservableObject {
     
     func register() {
         if !validate() { isPresentingErrorAlert.toggle() }
+        
+        callGetAccInfo()
     }
 }

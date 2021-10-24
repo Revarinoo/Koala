@@ -8,8 +8,6 @@
 import Foundation
 
 struct InstaFeedModel: Codable {
-    let code: Int
-    let message: String
     let data: [FeedData]
 }
 
