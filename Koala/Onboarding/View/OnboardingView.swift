@@ -62,7 +62,7 @@ struct OnboardingView: View {
                 .padding(.bottom, 64)
                 
                 NavigationLink(
-                    destination: HomepageView(),
+                    destination: HomepageView(categories: onboardVM.getSpecialtyClicked()),
                     isActive: $nextNavigation,
                     label: {
                         Button {

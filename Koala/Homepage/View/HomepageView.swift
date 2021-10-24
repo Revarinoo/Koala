@@ -10,8 +10,12 @@ import SwiftUI
 struct HomepageView: View {
     @ObservedObject var recomenndationList = RecommendationViewModel()
     
-    //
-    @State var categories : [String] = ["Coffee"]
+    
+    var categories : [String]
+    
+    init(categories: [String]) {
+        self.categories = categories
+    }
     
     var body: some View {
         VStack {
@@ -68,6 +72,6 @@ struct HomepageView: View {
 
 struct HomepageView_Previews: PreviewProvider {
     static var previews: some View {
-        HomepageView()
+        HomepageView(categories: ["Coffee"])
     }
 }
