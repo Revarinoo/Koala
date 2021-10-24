@@ -3,7 +3,7 @@
 //  Koala
 //
 //  Created by Sholihatul Richas on 19/10/21.
-//
+//  Edited by Syahrul Fadholi
 
 import SwiftUI
 
@@ -14,7 +14,7 @@ struct HomepageView: View {
     @State var categories : [String] = ["Coffee"]
     
     var body: some View {
-        VStack{
+        VStack {
             HStack(spacing: 5){
                 ProfileButton(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: "Kenneth J")
                 Spacer()
@@ -56,6 +56,8 @@ struct HomepageView: View {
                 }
             }
         }
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
         .padding(.top, 25)
         .background(ThemeColor.background.ignoresSafeArea())
         .onAppear() {

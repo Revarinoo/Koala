@@ -62,7 +62,7 @@ struct OnboardingView: View {
                 .padding(.bottom, 64)
                 
                 NavigationLink(
-                    destination: Text("Hompage"),
+                    destination: HomepageView(),
                     isActive: $nextNavigation,
                     label: {
                         Button {

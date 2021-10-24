@@ -13,7 +13,7 @@ struct RegisterInfluencerView: View {
         VStack (alignment: .leading) {
             Text("Instagram Username")
                 .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
-                .foregroundColor(Color("darkGray"))
+                .foregroundColor(ThemeColor.grayDark)
             TextField("Enter your instagram username", text: $constant)
                 .textFieldStyle(OvalTextFieldStyle())
         }

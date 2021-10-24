@@ -12,7 +12,6 @@ class RegisterViewModel: ObservableObject {
     @Published var name: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
-    @Published var passwordConfirm: String = ""
     @Published var isAuthenticate = false
     @Published var isPresentingErrorAlert = false
     @Published var errorMessage = ""
@@ -24,10 +23,6 @@ class RegisterViewModel: ObservableObject {
     private let registerService: RegisterService = RegisterService()
     
     func validate() -> Bool {
-        if password != passwordConfirm {
-            errorMessage = "Password did not match!"
-            return false
-        }
         if(email.isEmpty || password.isEmpty){
            errorMessage = "User email and password cannot be empty!"
             return false
