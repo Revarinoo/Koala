@@ -3,7 +3,7 @@
 //  Koala
 //
 //  Created by Revarino Putra on 22/10/21.
-//
+//  Edited by Syahrul Fadholi
 
 import Foundation
 import SwiftUI
@@ -21,33 +21,99 @@ class RegisterViewModel: ObservableObject {
     @AppStorage("JWT", store: .standard) var token = ""
     
     private let registerService: RegisterService = RegisterService()
+    private let igService: InstagramRapidAPIService = InstagramRapidAPIService()
+    
+    private var igFollowersCount: Int = 1
+    private var igEngagementRate: Double = 0.0
+    private var igAvgLikes: Double = 0.0
+    private var igAvgComments: Double = 0.0
     
     func validate() -> Bool {
-        if(email.isEmpty || password.isEmpty){
+        if email.isEmpty || password.isEmpty {
            errorMessage = "User email and password cannot be empty!"
             return false
         }
-        if(!isValidEmail(value: email)){
+        if !isValidEmail(value: email) {
             errorMessage = "Email format is incorrect!"
             return false
         }
+        if username.isEmpty {
+            errorMessage = "Username Instagram cannot be empty!"
+            return false
+        }
+        
+        self.callGetAccInfo(username)
+        self.callGetFeedData(username)
+        
         return true
     }
     
-    private func isValidEmail(value: String) -> Bool
-    {
+    private func isValidEmail(value: String) -> Bool {
         let regex = try! NSRegularExpression(pattern: "(^[0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,64}$)", options: .caseInsensitive)
         return regex.firstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count)) != nil
     }
     
-    func register() {
-        if !validate() { isPresentingErrorAlert.toggle() }
-        registerService.register(RegisterRequest(name: name, email: email, password: password, type_role: role, platform_name: "Instagram", socialmedia_id: username, engagement_rate: 32.2, followers: 10000, average_likes: 1000, average_comments: 100)) { response in
+    private func calcEngagementRate(likes: Double, comments: Double, followers: Double) -> Double {
+        
+        let ER = (likes + comments) / followers * 100
+        return ER
+    }
+    
+    func callGetAccInfo(_ username: String) {
+        igService.getAccInfo(username: username) { response in
+            DispatchQueue.main.async {
+                self.igFollowersCount = response?.data.figures.followers ?? 1
+            }
+        }
+    }
+    
+    func callGetFeedData(_ username: String) {
+        var likes: [Double] = []
+        var comments: [Double] = []
+        var ERs: [Double] = []
+        
+        igService.getFeedData(username: username) { response in
+            if let responseData = response?.data {
+                for igPost in responseData.prefix(20) {
+                    let likesCount = Double(igPost.figures.likes_count)
+                    let commentsCount = Double(igPost.figures.comments_count)
+                    let engagementRate = self.calcEngagementRate(likes: likesCount, comments: commentsCount, followers: Double(self.igFollowersCount))
+                    
+                    likes.append(likesCount)
+                    comments.append(commentsCount)
+                    ERs.append(engagementRate)
+                }
+                
+                self.callRegisterService()
+            }
+            
+            DispatchQueue.main.async {
+                let avgOfLikes = likes.reduce(0, +) / 20
+                let avgOfComments = comments.reduce(0, +) / 20
+                let avgOfERs = ERs.reduce(0, +) / 20
+                
+                self.igAvgLikes = avgOfLikes
+                self.igAvgComments = avgOfComments
+                self.igEngagementRate = avgOfERs
+            }
+        }
+    }
+    
+    func callRegisterService() {
+        registerService.register(
+            RegisterRequest(name: name, email: email, password: password, type_role: role, platform_name: "Instagram", socialmedia_id: username, engagement_rate: self.igEngagementRate, followers: self.igFollowersCount, average_likes: self.igAvgLikes, average_comments: self.igAvgComments)) { response in
             if let code = response?.code, let message = response?.message {
                 if code == 201, let access_token = response?.access_token {
                     DispatchQueue.main.async {
                         self.token = access_token
                         self.isAuthenticate = true
+
+                        print("register sucess")
+                        print(self.igFollowersCount)
+                        print(self.igAvgLikes)
+                        print(self.igAvgComments)
+                        print(self.igEngagementRate)
+                        print(self.token)
                     }
                 }
                 else {
@@ -58,5 +124,9 @@ class RegisterViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func register() {
+        if !validate() { isPresentingErrorAlert.toggle() }
     }
 }
