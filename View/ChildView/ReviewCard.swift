@@ -35,6 +35,7 @@ struct ReviewCard: View {
                     .foregroundColor(Color.init(hex: "541605"))
             }
             .padding(.leading, 10)
+            .frame(width: 80)
             VStack {
                 HStack {
                     Text("\(message)")
