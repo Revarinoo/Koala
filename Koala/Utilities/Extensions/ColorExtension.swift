@@ -11,7 +11,16 @@ extension Color {
     public static var bgColorView: Color {
         return Color("background")
     }
-<<<<<<< HEAD
+    
+    public static var orange1: Color {
+        return Color("orange1")
+    }
+    public static var orange2: Color {
+        return Color("orange2")
+    }
+    public static var checkbox: Color {
+        return Color("checkbox")
+    }
     
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -36,15 +45,5 @@ extension Color {
             blue:  Double(b) / 255,
             opacity: Double(a) / 255
         )
-=======
-    public static var orange1: Color {
-        return Color("orange1")
-    }
-    public static var orange2: Color {
-        return Color("orange2")
-    }
-    public static var checkbox: Color {
-        return Color("checkbox")
->>>>>>> main
     }
 }
