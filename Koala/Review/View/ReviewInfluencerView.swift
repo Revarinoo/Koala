@@ -57,7 +57,7 @@ struct ReviewInfluencerView: View {
                     Text("with \(name)?")
                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 24))
                 }
-                VStack(spacing: 4) {
+                VStack(spacing: 8) {
                     HStack {
                         ForEach(1..<maximumRating + 1) { number in
                             self.image(for: number)
@@ -84,13 +84,14 @@ struct ReviewInfluencerView: View {
                 VStack {
                     TextEditor(text: $comment)
                         .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
-                        .foregroundColor(ThemeColor.grayDark)
+                        .foregroundColor(ThemeColor.grayHeavy)
                         .disableAutocorrection(true)
                         .frame(maxHeight: 180)
+                        .shadow(color: ThemeColor.gray, radius: 8, x: 0, y: 5)
                 }
                 .overlay(RoundedRectangle(cornerRadius: 10)
-                            .stroke(.white, lineWidth: 5))
-                .padding(.horizontal, 18)
+                            .stroke(.white, lineWidth: 10))
+                .padding(.horizontal, 20)
                 
                 NavigationLink(
                     destination: Text("Review Success").navigationBarBackButtonHidden(true),
