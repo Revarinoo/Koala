@@ -195,6 +195,45 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		78B933302726576D0040882D /* InfluencerDetail */ = {
+			isa = PBXGroup;
+			children = (
+				78B93332272657830040882D /* Model */,
+				78B93331272657790040882D /* View */,
+				78B93333272658620040882D /* ViewModel */,
+				78B93334272658700040882D /* Service */,
+			);
+			path = InfluencerDetail;
+			sourceTree = "<group>";
+		};
+		78B93331272657790040882D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		78B93332272657830040882D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		78B93333272658620040882D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		78B93334272658700040882D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		D2995586271E64E80025D0CB /* Homepage */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +307,7 @@
 		F75CEE6C2713E80D00E36A1F /* Koala */ = {
 			isa = PBXGroup;
 			children = (
+				78B933302726576D0040882D /* InfluencerDetail */,
 				D2995586271E64E80025D0CB /* Homepage */,
 				2FBC8B98271C2E39007E7B76 /* InfluencerList */,
 				F75CEE7D2713E8CF00E36A1F /* Login */,
