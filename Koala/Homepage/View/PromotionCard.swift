@@ -35,6 +35,7 @@ struct PromotionCard: View {
                             .background(ThemeColor.primary)
                             .cornerRadius(10)
                     })
+                
             }.padding(.leading, 16)
             Image("offer").padding()
         }

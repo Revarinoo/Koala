@@ -8,20 +8,31 @@
 import SwiftUI
 
 struct CategoriesCard: View {
+    
     let image :String
     let category : String
+    
+    @State var gotoInfluencerList: Bool = false
+    
     var body: some View {
         
-        VStack(spacing: 6){
-            Button(action: {
-            }) {
-                Image(image).resizable().frame(width: 45, height: 45, alignment: .center)
-                    .scaledToFit()
-            }
-                .frame(width: 64.0, height: 64.0)
-                .background(Color(UIColor(named: "primary")!))
-                .cornerRadius(10)
-                .shadow(color: .gray, radius: 3, x: 1, y: 2)
+        VStack(spacing: 6) {
+            NavigationLink(
+                destination: InfluencerListView(filters: [category]),
+                isActive: $gotoInfluencerList,
+                label: {
+                    Button(action: {
+                        gotoInfluencerList.toggle()
+                    }) {
+                        Image(image).resizable().frame(width: 45, height: 45, alignment: .center)
+                    }
+                        .frame(width: 64.0, height: 64.0)
+                        .background(Color(UIColor(named: "primary")!))
+                        .cornerRadius(10)
+                        .shadow(color: .gray, radius: 3, x: 1, y: 2)
+                })
+
+            
             
             Text(category).font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                 .foregroundColor(.black)

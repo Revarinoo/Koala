@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F1D57802726539800E4354C /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D577F2726539800E4354C /* SearchBar.swift */; };
+		2F1D578227266F5A00E4354C /* RecommendedInfluencerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D578127266F5A00E4354C /* RecommendedInfluencerList.swift */; };
 		2F6C2C2727214F560026EF3E /* EngagementRateSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C2627214F560026EF3E /* EngagementRateSlider.swift */; };
 		2F6C2C2927215DE70026EF3E /* RatingStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C2827215DE70026EF3E /* RatingStar.swift */; };
 		2F6C2C30272259250026EF3E /* SpecialtyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C2F272259250026EF3E /* SpecialtyModel.swift */; };
@@ -84,6 +86,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F1D577F2726539800E4354C /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		2F1D578127266F5A00E4354C /* RecommendedInfluencerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedInfluencerList.swift; sourceTree = "<group>"; };
 		2F6C2C2627214F560026EF3E /* EngagementRateSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngagementRateSlider.swift; sourceTree = "<group>"; };
 		2F6C2C2827215DE70026EF3E /* RatingStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingStar.swift; sourceTree = "<group>"; };
 		2F6C2C2F272259250026EF3E /* SpecialtyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyModel.swift; sourceTree = "<group>"; };
@@ -173,6 +177,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F1D578327266FB300E4354C /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		2F6C2C35272273040026EF3E /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,8 +364,9 @@
 		2FBC8B9B271C2E56007E7B76 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2F1D578327266FB300E4354C /* Component */,
 				2FBC8BB8271C3C66007E7B76 /* InfluencerListView.swift */,
-				2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */,
+				2F1D578127266F5A00E4354C /* RecommendedInfluencerList.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -522,6 +535,7 @@
 				2FACD83A2720811300E9F578 /* OvalTextFieldStyle.swift */,
 				2FCB0B19272462690017C9D6 /* SecureInputView.swift */,
 				D2900DC427267CA700D6E901 /* TabBar.swift */,
+				2F1D577F2726539800E4354C /* SearchBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -679,6 +693,7 @@
 			files = (
 				2FACD83B2720811300E9F578 /* OvalTextFieldStyle.swift in Sources */,
 				2FBC8BB5271C38E8007E7B76 /* InfluencerListModel.swift in Sources */,
+				2F1D578227266F5A00E4354C /* RecommendedInfluencerList.swift in Sources */,
 				F76CE87D2723B5010055D58C /* RegisterInfluencerView.swift in Sources */,
 				846C55D32720255A006C94DD /* LoginModel.swift in Sources */,
 				2FBC8BB7271C3994007E7B76 /* InfluencerListViewModel.swift in Sources */,
@@ -699,6 +714,7 @@
 				D2900DC527267CA700D6E901 /* TabBar.swift in Sources */,
 				2F6C2C32272259E00026EF3E /* FilterModel.swift in Sources */,
 				2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */,
+				2F1D57802726539800E4354C /* SearchBar.swift in Sources */,
 				2FACD8422721108F00E9F578 /* ConstantVariable.swift in Sources */,
 				2FACD84927211A7600E9F578 /* SpecialtySelector.swift in Sources */,
 				2F6C2C30272259250026EF3E /* SpecialtyModel.swift in Sources */,
