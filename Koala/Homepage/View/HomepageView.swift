@@ -19,10 +19,8 @@ struct HomepageView: View {
                 ProfileButton(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: "Kenneth J")
                 Spacer()
                 Button(action:{}){
-                    Image(systemName: "magnifyingglass").imageScale(.medium)
-                }
-                Button(action:{}){
-                    Image(systemName: "bell").imageScale(.medium)
+                    Image(systemName: "bell")
+                        .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
                 }
             }
             .padding(.horizontal, 16.0)
@@ -30,11 +28,6 @@ struct HomepageView: View {
                 Text("Browse Category").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                     .foregroundColor(.black)
                 Spacer()
-                Button(action:{}){
-                    Text("See more ").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                        .foregroundColor(.black)
-                }
-                
             }.padding(.leading,16).padding(.trailing, 16)
             HomepageCategoriesCard()
             PromotionCard().padding(.leading,16).padding(.trailing, 16)

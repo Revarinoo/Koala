@@ -27,6 +27,7 @@ struct PromotionCard: View {
             .padding(.vertical, 2)
             .background(ThemeColor.primaryLight)
             .cornerRadius(10)
+        frame(height: 136, alignment: .center)
             .shadow(color: .gray, radius: 3, x: 1, y: 2)
     }
 }
