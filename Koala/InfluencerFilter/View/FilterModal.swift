@@ -10,6 +10,8 @@ import SwiftUI
 struct FilterModal: View {
     
     @Binding var isPresented: Bool
+//    @Binding var selectedSpecialty: [String]
+//    @Binding var filters: [String]
     @State var rating: Int = 0
     
     var body: some View {

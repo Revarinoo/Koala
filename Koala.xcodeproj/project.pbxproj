@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F1D57802726539800E4354C /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D577F2726539800E4354C /* SearchBar.swift */; };
 		2F6C2C2727214F560026EF3E /* EngagementRateSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C2627214F560026EF3E /* EngagementRateSlider.swift */; };
 		2F6C2C2927215DE70026EF3E /* RatingStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C2827215DE70026EF3E /* RatingStar.swift */; };
 		2F6C2C30272259250026EF3E /* SpecialtyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C2F272259250026EF3E /* SpecialtyModel.swift */; };
@@ -83,6 +84,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F1D577F2726539800E4354C /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		2F6C2C2627214F560026EF3E /* EngagementRateSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngagementRateSlider.swift; sourceTree = "<group>"; };
 		2F6C2C2827215DE70026EF3E /* RatingStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingStar.swift; sourceTree = "<group>"; };
 		2F6C2C2F272259250026EF3E /* SpecialtyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyModel.swift; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 			children = (
 				2FACD83A2720811300E9F578 /* OvalTextFieldStyle.swift */,
 				2FCB0B19272462690017C9D6 /* SecureInputView.swift */,
+				2F1D577F2726539800E4354C /* SearchBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -695,6 +698,7 @@
 				2FACD8442721137F00E9F578 /* FilterModal.swift in Sources */,
 				2F6C2C32272259E00026EF3E /* FilterModel.swift in Sources */,
 				2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */,
+				2F1D57802726539800E4354C /* SearchBar.swift in Sources */,
 				2FACD8422721108F00E9F578 /* ConstantVariable.swift in Sources */,
 				2FACD84927211A7600E9F578 /* SpecialtySelector.swift in Sources */,
 				2F6C2C30272259250026EF3E /* SpecialtyModel.swift in Sources */,
