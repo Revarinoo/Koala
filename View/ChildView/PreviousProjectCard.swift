@@ -36,6 +36,7 @@ struct PreviousProjectCard: View {
         .frame(width: 106, height: 182)
         .background(Color.init(hex: "FFF1ED"))
         .cornerRadius(10)
+        .shadow(color: .gray, radius: 3, x: 1, y: 2)
     }
 }
 
