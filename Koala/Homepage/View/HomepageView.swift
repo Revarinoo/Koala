@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct HomepageView: View {
-    @ObservedObject var recomenndationList = RecommendationViewModel()
     
+    @ObservedObject var recomenndationList = RecommendationViewModel()
+    @State var toRecommendedInfluencerList: Bool = false
     
     var categories : [String]
     
@@ -46,10 +47,17 @@ struct HomepageView: View {
                 Text("Recommendation").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                     .foregroundColor(.black)
                 Spacer()
-                Button(action:{}){
-                    Text("See more ").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                        .foregroundColor(.black)
-                }
+                NavigationLink(
+                    destination: RecommendedInfluencerList(categories: categories),
+                    isActive: $toRecommendedInfluencerList,
+                    label: {
+                        Button {
+                            toRecommendedInfluencerList.toggle()
+                        } label: {
+                            Text("See more ").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                                .foregroundColor(.black)
+                        }
+                    })
                 
             }.padding(.leading,16).padding([.top, .trailing], 16.0)
             ScrollView(.vertical){
