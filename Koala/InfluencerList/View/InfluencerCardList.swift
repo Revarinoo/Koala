@@ -28,7 +28,7 @@ struct InfluencerCardList: View {
                 .padding(.leading, 12)
             VStack(alignment: .leading, spacing: 2) {
                 HStack(spacing: 4) {
-                    ForEach(categories, id: \.self) { category in
+                    ForEach(categories.prefix(3), id: \.self) { category in
                         Text(category)
                             .font(Font.custom(ThemeFont.poppinsMedium, size: 10))
                             .padding(.horizontal, 10)
@@ -89,7 +89,7 @@ struct InfluencerCardList: View {
 
 struct InfluencerCardList_Previews: PreviewProvider {
     static var previews: some View {
-        InfluencerCardList(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", categories: ["Coffee", "Street Food"], name: "Alex Ferdinand Sr.", location: "Jakarta Barat", price: 165000, ER: 3.5, rating: 4.3)
+        InfluencerCardList(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", categories: ["Coffee", "Street Food", "Bakery", "Korean Food"], name: "Alex Ferdinand Sr.", location: "Jakarta Barat", price: 165000, ER: 3.5, rating: 4.3)
             .previewLayout(.sizeThatFits)
     }
 }

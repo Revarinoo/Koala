@@ -21,7 +21,7 @@ class CategoryViewModel: ObservableObject{
          Categories(categoryName: "Snack", categoryImage: "snack"),
          Categories(categoryName: "Asian", categoryImage: "asian"),
          Categories(categoryName: "Drinks", categoryImage: "drinks"),
-         Categories(categoryName: "Fat Food", categoryImage: "fastfood"),
+         Categories(categoryName: "Fast Food", categoryImage: "fastfood"),
          Categories(categoryName: "Vegetarian", categoryImage: "vegetarian"),
          Categories(categoryName: "Vegan", categoryImage: "vegan")
         ]
