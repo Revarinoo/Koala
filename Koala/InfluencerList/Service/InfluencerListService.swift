@@ -19,12 +19,12 @@ struct InfluencerListService {
         }
     }
     
-    func getInfluencerRatePrice(_ influencerID: Int, completionHandler:@escaping(_ result: InfluencerRatePrice?)->Void) {
+    func getInfluencerByCategory(_ category: String, completionHandler:@escaping(_ result: InfluencerListResponse?)->Void) {
         
-        let request = NSMutableURLRequest(url: NSURL(string: "http://127.0.0.1:8000/api/influencer/rate/\(influencerID)")! as URL)
+        let request = NSMutableURLRequest(url: NSURL(string: "http://127.0.0.1:8000/api/influencers/\(category)")! as URL)
         request.allHTTPHeaderFields = HttpUtility.shared.headers
 
-        HttpUtility.shared.request(request as URLRequest, resultType: InfluencerRatePrice.self) { response in
+        HttpUtility.shared.request(request as URLRequest, resultType: InfluencerListResponse.self) { response in
             _ = completionHandler(response)
         }
     }

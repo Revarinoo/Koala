@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct InfluencerListView: View {
     
@@ -54,7 +53,19 @@ struct InfluencerListView: View {
                     ScrollView(.horizontal) {
                         HStack(spacing: 8) {
                             ForEach(filters, id: \.self) { filter in
-                                Text(filter)
+                                if filter != "" {
+                                    Text(filter)
+                                        .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
+                                        .padding(.horizontal, 12)
+                                        .padding(.vertical, 6)
+                                        .foregroundColor(ThemeColor.primary)
+                                        .background(ThemeColor.primaryLight)
+                                        .cornerRadius(10)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .stroke(ThemeColor.primary, lineWidth: 1)
+                                        )
+                                }
                             }
                         }
                     }
@@ -76,7 +87,11 @@ struct InfluencerListView: View {
         .accentColor(.white)
         .navigationBarHidden(true)
         .onAppear() {
-            influencerListVM.callGetInfluencerList()
+            if filters[0] != "" {
+                influencerListVM.callGetInfluencerByCategory(filters[0].components(separatedBy: " ").first!)
+            } else {
+                influencerListVM.callGetInfluencerList()
+            }
         }
         .sheet(isPresented: $isFilterModalShown) {
             FilterModal(isPresented: $isFilterModalShown)
@@ -86,6 +101,6 @@ struct InfluencerListView: View {
 
 struct InfluencerListView_Previews: PreviewProvider {
     static var previews: some View {
-        InfluencerListView()
+        InfluencerListView(filters: ["Street Food"])
     }
 }
