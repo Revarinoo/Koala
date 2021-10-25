@@ -16,6 +16,7 @@ struct CategoriesCard: View {
             Button(action: {
             }) {
                 Image(image).resizable().frame(width: 45, height: 45, alignment: .center)
+                    .scaledToFit()
             }
                 .frame(width: 64.0, height: 64.0)
                 .background(Color(UIColor(named: "primary")!))
@@ -31,6 +32,6 @@ struct CategoriesCard: View {
 
 struct CategoriesCard_Previews: PreviewProvider {
     static var previews: some View {
-        CategoriesCard(image: "coffee", category: "Coffee").previewLayout(.sizeThatFits)
+        CategoriesCard(image: "drinks", category: "Coffee").previewLayout(.sizeThatFits)
     }
 }
