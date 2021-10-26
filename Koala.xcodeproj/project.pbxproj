@@ -69,6 +69,8 @@
 		D299558C271E65EB0025D0CB /* HomepageCategoriesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299558B271E65EB0025D0CB /* HomepageCategoriesCard.swift */; };
 		D2995592271F0D120025D0CB /* CategoriesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2995591271F0D120025D0CB /* CategoriesCard.swift */; };
 		D2C3C59C2727A2B700C338B4 /* OngoingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3C59B2727A2B700C338B4 /* OngoingCard.swift */; };
+		D2C3C59E272863F200C338B4 /* CompletedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3C59D272863F200C338B4 /* CompletedCard.swift */; };
+		D2C3C5A02728674400C338B4 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3C59F2728674400C338B4 /* OrderView.swift */; };
 		F75CEE6E2713E80D00E36A1F /* KoalaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE6D2713E80D00E36A1F /* KoalaApp.swift */; };
 		F75CEE702713E80D00E36A1F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE6F2713E80D00E36A1F /* ContentView.swift */; };
 		F75CEE722713E80F00E36A1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75CEE712713E80F00E36A1F /* Assets.xcassets */; };
@@ -145,6 +147,8 @@
 		D299558B271E65EB0025D0CB /* HomepageCategoriesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageCategoriesCard.swift; sourceTree = "<group>"; };
 		D2995591271F0D120025D0CB /* CategoriesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCard.swift; sourceTree = "<group>"; };
 		D2C3C59B2727A2B700C338B4 /* OngoingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingCard.swift; sourceTree = "<group>"; };
+		D2C3C59D272863F200C338B4 /* CompletedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedCard.swift; sourceTree = "<group>"; };
+		D2C3C59F2728674400C338B4 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		F75CEE6A2713E80D00E36A1F /* Koala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koala.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75CEE6D2713E80D00E36A1F /* KoalaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoalaApp.swift; sourceTree = "<group>"; };
 		F75CEE6F2713E80D00E36A1F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -496,6 +500,8 @@
 			isa = PBXGroup;
 			children = (
 				D2C3C59B2727A2B700C338B4 /* OngoingCard.swift */,
+				D2C3C59D272863F200C338B4 /* CompletedCard.swift */,
+				D2C3C59F2728674400C338B4 /* OrderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -761,6 +767,7 @@
 				2FACD8472721173800E9F578 /* LocationFilter.swift in Sources */,
 				F75CEE6E2713E80D00E36A1F /* KoalaApp.swift in Sources */,
 				2F6C2C3D27228D780026EF3E /* SplashScreen.swift in Sources */,
+				D2C3C59E272863F200C338B4 /* CompletedCard.swift in Sources */,
 				F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */,
 				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
 				2F6C2C2927215DE70026EF3E /* RatingStar.swift in Sources */,
@@ -779,6 +786,7 @@
 				2FA40E3F271DE3180095A812 /* ThemeColor.swift in Sources */,
 				D299558C271E65EB0025D0CB /* HomepageCategoriesCard.swift in Sources */,
 				D21476242723F4B2009985BD /* RecommendationInfluencerModel.swift in Sources */,
+				D2C3C5A02728674400C338B4 /* OrderView.swift in Sources */,
 				2FCB0B1A272462690017C9D6 /* SecureInputView.swift in Sources */,
 				D2995592271F0D120025D0CB /* CategoriesCard.swift in Sources */,
 			);
