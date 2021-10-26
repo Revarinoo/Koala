@@ -68,6 +68,7 @@
 		D291034E27212A550008B0DE /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291034D27212A550008B0DE /* CategoryViewModel.swift */; };
 		D299558C271E65EB0025D0CB /* HomepageCategoriesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299558B271E65EB0025D0CB /* HomepageCategoriesCard.swift */; };
 		D2995592271F0D120025D0CB /* CategoriesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2995591271F0D120025D0CB /* CategoriesCard.swift */; };
+		D2C3C59C2727A2B700C338B4 /* OngoingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3C59B2727A2B700C338B4 /* OngoingCard.swift */; };
 		F75CEE6E2713E80D00E36A1F /* KoalaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE6D2713E80D00E36A1F /* KoalaApp.swift */; };
 		F75CEE702713E80D00E36A1F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CEE6F2713E80D00E36A1F /* ContentView.swift */; };
 		F75CEE722713E80F00E36A1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75CEE712713E80F00E36A1F /* Assets.xcassets */; };
@@ -143,6 +144,7 @@
 		D291034D27212A550008B0DE /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		D299558B271E65EB0025D0CB /* HomepageCategoriesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageCategoriesCard.swift; sourceTree = "<group>"; };
 		D2995591271F0D120025D0CB /* CategoriesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCard.swift; sourceTree = "<group>"; };
+		D2C3C59B2727A2B700C338B4 /* OngoingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingCard.swift; sourceTree = "<group>"; };
 		F75CEE6A2713E80D00E36A1F /* Koala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koala.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75CEE6D2713E80D00E36A1F /* KoalaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoalaApp.swift; sourceTree = "<group>"; };
 		F75CEE6F2713E80D00E36A1F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -458,6 +460,46 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D2C3C59627279D3800C338B4 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				D2C3C5972727A27F00C338B4 /* Model */,
+				D2C3C59A2727A29D00C338B4 /* View */,
+				D2C3C5992727A29200C338B4 /* VIewModel */,
+				D2C3C5982727A28700C338B4 /* Service */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		D2C3C5972727A27F00C338B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D2C3C5982727A28700C338B4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D2C3C5992727A29200C338B4 /* VIewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VIewModel;
+			sourceTree = "<group>";
+		};
+		D2C3C59A2727A29D00C338B4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2C3C59B2727A2B700C338B4 /* OngoingCard.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F75CEE612713E80D00E36A1F = {
 			isa = PBXGroup;
 			children = (
@@ -479,6 +521,7 @@
 			children = (
 				2F6C2C35272273040026EF3E /* Onboarding */,
 				D2995586271E64E80025D0CB /* Homepage */,
+				D2C3C59627279D3800C338B4 /* Order */,
 				F75CEE7D2713E8CF00E36A1F /* Login */,
 				844DEF2A27226832000C33C0 /* Register */,
 				2FBC8B98271C2E39007E7B76 /* InfluencerList */,
@@ -729,6 +772,7 @@
 				D2577BC6271F239B00E7AC5D /* Categories.swift in Sources */,
 				D28EC2A92722536400FCEA2B /* RecommendationViewModel.swift in Sources */,
 				D28D625627201E8300BE7345 /* RecommendationInfluencerService.swift in Sources */,
+				D2C3C59C2727A2B700C338B4 /* OngoingCard.swift in Sources */,
 				D291034E27212A550008B0DE /* CategoryViewModel.swift in Sources */,
 				D28D6254271FBC9600BE7345 /* HomepageViewConstant.swift in Sources */,
 				2FCB0B282725186B0017C9D6 /* FeedIgFetcher.swift in Sources */,
