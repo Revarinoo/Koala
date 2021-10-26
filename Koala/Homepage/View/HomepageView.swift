@@ -33,7 +33,7 @@ struct HomepageView: View {
                 Text("Browse Category").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                     .foregroundColor(.black)
                 Spacer()
-            }.padding(.leading,16).padding(.trailing, 16)
+            }.padding(.leading,16).padding(.trailing, 16).padding(.top, 20)
             HomepageCategoriesCard()
             PromotionCard().padding(.leading,16).padding(.trailing, 16)
             HStack{
@@ -52,7 +52,7 @@ struct HomepageView: View {
                         }
                     })
                 
-            }.padding(.leading,16).padding([.top, .trailing], 16.0)
+            }.padding(.leading,16).padding([.trailing], 16.0).padding(.top, 28)
             ScrollView(.vertical){
                 VStack(spacing: 12){
                     ForEach (recomenndationList.recommendationModel){ i in

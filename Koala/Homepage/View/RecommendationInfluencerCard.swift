@@ -29,19 +29,23 @@ struct RecommendationInfluencerCard: View {
                             .padding(.vertical, 2)
                             .foregroundColor(ThemeColor.primary)
                             .background(ThemeColor.primaryLight)
-                            .cornerRadius(5)
                             .frame(height: 20)
+                            .cornerRadius(5)
+                            
                     }
                 }
-                Text(name).scaledToFill()
+                Text(name)
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 18))
                     .foregroundColor(.black)
+                    .scaledToFill()
+                    .frame(width: 200, alignment: .leading)
                 
                 Text("Starts IDR \(price.rupiahFormatter())").scaledToFill()
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(.gray)
+                    .frame(width: 200, alignment: .leading)
                 Spacer()
-            }
+            }.padding(.top, 3)
             Spacer()
             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/){
                 Image(systemName: "chevron.right").resizable()
@@ -55,7 +59,7 @@ struct RecommendationInfluencerCard: View {
         .background(Color.white)
         .frame(height: 95)
         .cornerRadius(10)
-        .shadow(color: .gray, radius: 3, x: 1, y: 2)
+        //.shadow(color: .gray, radius: 3, x: 1, y: 2)
     }
 }
 
