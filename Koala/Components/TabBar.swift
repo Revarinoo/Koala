@@ -12,27 +12,30 @@ struct TabBar: View {
     
     var body: some View {
         TabView(selection: $selectedTab){
-            HomepageView(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? ["Coffee"])
-                .tabItem{
-                    selectedTab == 0 ? Image("discoveractive") : Image("discovergrey")
-                    Text("Discover")
-                }.tag(0)
-            InfluencerListView()
+            NavigationView {
+                HomepageView(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? ["Coffee"])}
+            .tabItem{
+                selectedTab == 0 ? Image("discoveractive") : Image("discovergrey")
+                Text("Discover")
+            }.tag(0)
+            NavigationView{
+                InfluencerListView()}
                 .tabItem{
                     selectedTab == 1 ? Image("influenceractive") : Image("influencergrey")
                     Text("influencer")
                 }.tag(1)
-            Image(systemName: "person")
+            NavigationView{
+                Image(systemName: "person")}
                 .tabItem{
                     selectedTab == 2 ? Image("orderactive") : Image("ordergrey")
                     Text("Orders")
                 }.tag(2)
-            Text("Homepage")
+            NavigationView{Text("Homepage")}
                 .tabItem{
                     selectedTab == 3 ? Image("campaignactive") : Image("campaigngrey")
                     Text("Campaign")
                 }.tag(3)
-            Text("Homepage")
+            NavigationView{Text("Homepage")}
                 .tabItem{
                     selectedTab == 4 ? Image("reportactive") : Image("reportgrey")
                     Text("Report")
