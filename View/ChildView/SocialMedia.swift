@@ -11,7 +11,7 @@ struct SocialMedia: View {
     var body: some View {
         VStack (alignment: .leading, spacing: 14) {
             Text("Social Media")
-                .font(Font.custom(ThemeFont.poppinsMedium, size: 18))
+                .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
             SocialMediaCard()
                 .shadow(color: .gray, radius: 2, x: 0, y: 2)
             
