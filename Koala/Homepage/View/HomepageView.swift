@@ -16,6 +16,9 @@ struct HomepageView: View {
     
     init(categories: [String]) {
         self.categories = categories
+        categoriesDefault.set(categories, forKey: "myKey")
+        let categoriesList = categoriesDefault.object(forKey: "myKey") as? [String]
+        recomenndationList.callGetInfluencerList(categories: categoriesList ?? ["Coffee"])
     }
     
     var body: some View {
@@ -65,9 +68,6 @@ struct HomepageView: View {
         .navigationBarHidden(true)
         .padding(.top, 25)
         .background(ThemeColor.background.ignoresSafeArea())
-        .onAppear() {
-            recomenndationList.callGetInfluencerList(categories: categories)
-        }
     }
 }
 

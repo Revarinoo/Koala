@@ -12,7 +12,7 @@ struct TabBar: View {
     
     var body: some View {
         TabView(selection: $selectedTab){
-            HomepageView(categories: ["Healthy"])
+            HomepageView(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? ["Coffee"])
                 .tabItem{
                     selectedTab == 0 ? Image("discoveractive") : Image("discovergrey")
                     Text("Discover")
