@@ -25,7 +25,7 @@ struct CategoriesCard: View {
                         gotoInfluencerList.toggle()
                     }) {
                         Image(image).resizable().aspectRatio(contentMode: .fit)
-                            .frame( width: 34, height: 34, alignment: .center)
+                            .frame( maxWidth: 34, maxHeight: 34, alignment: .center)
                     }
                         .frame(width: 64.0, height: 64.0)
                         .background(Color(UIColor(named: "primary")!))
