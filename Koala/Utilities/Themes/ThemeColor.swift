@@ -20,4 +20,5 @@ struct ThemeColor {
     static let gray = Color("Gray")
     static let grayDark = Color("darkGray")
     static let darkOrange = Color("darkOrange")
+    static let black = Color("black")
 }

@@ -22,7 +22,7 @@ struct CampaignOrderCard: View {
     }
     
     var body: some View {
-        VStack(spacing: 1) {
+        VStack(spacing: 8) {
             HStack (alignment: .center) {
                 WebImage(url: URL(string: photoURL))
                     .resizable()
