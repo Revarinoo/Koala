@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PreviousProjectVIew: View {
+struct PreviousProjectView: View {
     let previousProjects = PreviousProjectViewModel().previousProjects
     
     var body: some View {
@@ -27,8 +27,8 @@ struct PreviousProjectVIew: View {
     }
 }
 
-struct PreviousProjectVIew_Previews: PreviewProvider {
+struct PreviousProjectView_Previews: PreviewProvider {
     static var previews: some View {
-        PreviousProjectVIew().previewLayout(.sizeThatFits)
+        PreviousProjectView().previewLayout(.sizeThatFits)
     }
 }
