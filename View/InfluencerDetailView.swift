@@ -11,7 +11,7 @@ import MessageUI
 
 struct InfluencerDetailView: View {
     @ObservedObject var influencerDetailViewModel = InfluencerDetailViewModel()
-    
+    @State var isFavorite: Bool = false
     @State var categories: [String] = []
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
@@ -22,7 +22,7 @@ struct InfluencerDetailView: View {
        }
 
     var body: some View {
-        ScrollView(.vertical){
+        ScrollView(.vertical, showsIndicators: false){
             ZStack(alignment: .top){
                 VStack{
                     HStack{
@@ -36,9 +36,10 @@ struct InfluencerDetailView: View {
                         
                         Spacer()
                         
-                        Button(action:{}){
-                            
-                            Image(systemName: "heart")
+                        Button(action:{
+                            self.isFavorite.toggle()
+                        }){
+                            Image(systemName: self.isFavorite == true ? "heart.fill" : "heart")
                                 .resizable()
                                 .foregroundColor(.white)
                                 .scaledToFit()
@@ -95,13 +96,15 @@ struct InfluencerDetailView: View {
                                 self.isShowingMailView.toggle()
                                 print("Tap")
                             }){
-                                Image(systemName: "envelope.circle")
+                                Image(uiImage: UIImage(named: "Message")!)
                                     .resizable()
-                                    .frame(width: 47, height: 47, alignment: .center)
-                                    .foregroundColor(ThemeColor.primary)
+                                    .scaledToFit()
+                                    .frame(width: 50, height: 50)
+                                    .padding(.top, 8)
+                                
                             }
                             
-                        }.padding(.bottom, 10)
+                        }.padding(.bottom, 8)
                         
                         Path() { path in
                             path.move(to: CGPoint(x: 0, y: 0))
