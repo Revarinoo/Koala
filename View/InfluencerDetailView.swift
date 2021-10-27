@@ -11,10 +11,16 @@ import MessageUI
 
 struct InfluencerDetailView: View {
     @ObservedObject var influencerDetailViewModel = InfluencerDetailViewModel()
+    
     @State var categories: [String] = []
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
+    @State var photoURL = "https://assets.teenvogue.com/photos/5fd4d29fe6ff71e902f97c1a/4:3/w_2443,h_1832,c_limit/taylor-evermore-resized.jpg"
     
+    init() {
+          UIScrollView.appearance().bounces = false
+       }
+
     var body: some View {
         ScrollView(.vertical){
             ZStack(alignment: .top){
@@ -39,25 +45,30 @@ struct InfluencerDetailView: View {
                             
                         }.frame(width: 24, height: 24, alignment: .center)
                     }.padding(.horizontal, 16)
-                        .padding(.top, 8)
+                        .padding(.top, 48)
                         .padding(.bottom, 140)
                     
                     VStack{
+                        
                         HStack{
+                            
                             Text(influencerDetailViewModel.influencerModel?.influencer_profile.name ?? "Taylor Swift").font(Font.custom(ThemeFont.poppinsSemiBold, size: 30))
                             Image(systemName: "checkmark.seal.fill")
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 25, height: 25, alignment: .center)
                                 .foregroundColor(Color.orange1)
+                            
                         }
                         
                         Text(influencerDetailViewModel.influencerModel?.influencer_profile.location ?? "Jakarta Utara").font(Font.custom(ThemeFont.poppinsMedium, size: 14)).padding(.bottom, 22)
+                       
                         Text("Specialty").font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                         
                         HStack(spacing: 14) {
                             
                             ForEach(influencerDetailViewModel.influencerModel?.categories ?? [], id: \.self) { category in
+                                
                                 Text(category).scaledToFill()
                                     .frame(width:110)
                                     .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
@@ -70,13 +81,16 @@ struct InfluencerDetailView: View {
                         }.padding(.bottom, 16)
                         
                         HStack{
+                            
                             Button(action:{}){
+                                
                                 Text("Order").font(Font.custom(ThemeFont.poppinsBold, size: 18))
                                     .foregroundColor(Color.white)
                             }.frame(width: 300, height: 50, alignment: .center)
                                 .background(ThemeColor.primary)
                                 .cornerRadius(15)
                                 .shadow(radius: 4)
+                            
                             Button(action:{
                                 self.isShowingMailView.toggle()
                                 print("Tap")
@@ -87,16 +101,24 @@ struct InfluencerDetailView: View {
                                     .foregroundColor(ThemeColor.primary)
                             }
                             
-                        }
-                        .padding(.bottom, 10)
+                        }.padding(.bottom, 10)
                         
                         Path() { path in
                             path.move(to: CGPoint(x: 0, y: 0))
                             path.addLine(to: CGPoint(x: UIScreen.main.bounds.width, y: 0))
                         }
                         .stroke(Color.gray, lineWidth: 0.2)
-                
-                    }.frame(width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height, alignment: .top)
+                        .frame(height: 0.4)
+                        
+                        SocialMedia(influencer: influencerDetailViewModel.influencerModel).padding()
+                        FollowerProfile().padding([.top, .bottom], 16)
+                        
+                        PreviousProjectView(projects: influencerDetailViewModel.influencerModel?.projects)
+                        
+                        ReviewView(projects: influencerDetailViewModel.influencerModel?.projects ?? []).padding()
+                            .padding(.bottom, 32)
+                            
+                    }.frame(width: UIScreen.main.bounds.width, alignment: .top)
                         .ignoresSafeArea()
                         .padding(.top, 60)
                     .background(Color.white)
@@ -105,14 +127,16 @@ struct InfluencerDetailView: View {
                 }
                 
                 VStack{
-                    WebImage(url: URL(string: "https://assets.teenvogue.com/photos/5fd4d29fe6ff71e902f97c1a/4:3/w_2443,h_1832,c_limit/taylor-evermore-resized.jpg"))
+                    
+                    WebImage(url: URL(string: photoURL))
                         .resizable()
                         .scaledToFill()
                         .frame(width: 127, height: 127)
                         .cornerRadius(20.0)
                         .overlay(RoundedRectangle(cornerRadius: 20.0)
                             .stroke(Color.white, lineWidth: 5))
-                }.padding(.top, 115)
+                    
+                }.padding(.top, 150)
                     .disabled(!MFMailComposeViewController.canSendMail())
                         .sheet(isPresented: $isShowingMailView) {
                             MailView(isShowing: $isShowingMailView, result: self.$result, toRecipient: influencerDetailViewModel.influencerModel?.influencer_profile.contact_email ?? "")
@@ -122,9 +146,11 @@ struct InfluencerDetailView: View {
     }.navigationBarHidden(true)
             .onAppear{
 
-                influencerDetailViewModel.callGetInfluencerDetail(influencer_id: 1)
+                influencerDetailViewModel.callGetInfluencerDetail(influencer_id: 2)
                 
-            }.background(ThemeColor.primary.ignoresSafeArea())
+            }
+            .background(ThemeColor.primary.ignoresSafeArea())
+            .ignoresSafeArea()
 }
 
 

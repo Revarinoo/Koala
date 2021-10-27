@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ReviewView: View {
-    let reviews = ReviewViewModel().reviews
+    var projects: [ProjectModel] = []
     
     private func averageRating () -> String {
         var sumRating = 0.0
-        for review in reviews {
-            sumRating += Double(review.rating)
+        for project in projects{
+            sumRating += Double(project.rating)
         }
-        return String(sumRating/Double(reviews.count))
+        sumRating /= Double(projects.count)
+        return sumRating.oneDecimalFormatter
     }
     
     var body: some View {
@@ -34,13 +35,12 @@ struct ReviewView: View {
                     .padding(.leading, -5)
             }
             
-            ScrollView(){
                 VStack(spacing:12){
-                    ForEach(reviews){ i in
-                        ReviewCard(photoURL: i.userImage, name: i.name, message: i.message, rating: i.rating)
+                    ForEach(projects){ project in
+                        ReviewCard(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: project.businessOwner_name, message: project.comment, rating: Int(project.rating))
                     }
                 }
-            }
+            
         }
     }
 }

@@ -9,29 +9,28 @@ import SwiftUI
 
 struct SocialMediaCard: View {
     
-    @State private var username = "claraangg"
-    @State private var followers = "24K"
-    @State private var averageLikes = "1.4K"
-    @State private var averageComments = "80"
-    @State private var engagementRate = "4.12%"
-    
+    var influencer: InfluencerDetailModel?
     var body: some View {
         VStack (alignment: .leading) {
             HStack {
                 Image("ig")
                     .resizable()
                     .frame(width: 45, height: 45)
-                Text("@\(username)")
+                Text("@\(influencer?.platforms[0].socialmedia_id ?? "")")
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
                     .foregroundColor(ThemeColor.darkOrange)
-            }
+            }.padding(.top, 16)
             
             HStack (spacing: 26) {
-                AccountInfo(numbers: $followers, firstString: "Followers")
-                AccountInfo(numbers: $averageLikes, firstString: "Average", secondString: "Likes")
-                AccountInfo(numbers: $averageComments, firstString: "Average", secondString: "Comments")
-                AccountInfo(numbers: $engagementRate, firstString: "Engagement", secondString: "Rate")
-            }
+                if let influencer = influencer {
+                    AccountInfo(numbers: Double(influencer.platforms[0].followers).thousandsFormatter(), firstString: "Followers")
+                    AccountInfo(numbers: influencer.platforms[0].average_likes.thousandsFormatter(), firstString: "Average", secondString: "Likes")
+                    AccountInfo(numbers: influencer.platforms[0].average_comments.thousandsFormatter(), firstString: "Average", secondString: "Comments")
+                    AccountInfo(numbers: "\(influencer.influencer_profile.engagement_rate ?? 0)%", firstString: "Engagement", secondString: "Rate")
+                }
+                
+            }.padding(.bottom, 16)
+            
         }
         .frame(maxWidth: 358, maxHeight: 151)
         .background(Color.init(hex: "FFF1ED"))
@@ -48,7 +47,7 @@ struct SocialMediaCard_Previews: PreviewProvider {
 }
 
 struct AccountInfo: View {
-    @Binding var numbers: String
+    var numbers: String = ""
     var firstString: String = "Followers"
     var secondString: String = ""
     

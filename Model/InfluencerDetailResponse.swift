@@ -37,8 +37,8 @@ struct PlatformResponse: Codable{
 struct ProjectResponse: Codable{
     let order_id: Int
     let business_photo: String?
-    let sum_impressions: Int?
-    let sum_reach: Int?
+    let sum_impressions: Double?
+    let sum_reach: Double?
     let businessOwner_photo: String?
     let businessOwner_name: String
     let comment: String?
