@@ -51,12 +51,12 @@ struct CampaignView: View {
                     ForEach(campaigns){ i in
                         if campaignType.contains("Upcoming") {
                             if i.campaignDate >= Date().addingTimeInterval(-86400) {
-                                CampaignCard(photoURL: i.campaignPhoto, name: i.campaignName, package: i.campaignPackage, date: i.campaignDate, price: i.campaignPrice)
+                                CampaignCard(photoURL: i.campaignPhoto, name: i.campaignName, date: i.campaignDate)
                                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                             }
                         } else {
                             if i.campaignDate < Date().addingTimeInterval(-86400) {
-                                CampaignCard(photoURL: i.campaignPhoto, name: i.campaignName, package: i.campaignPackage, date: i.campaignDate, price: i.campaignPrice)
+                                CampaignCard(photoURL: i.campaignPhoto, name: i.campaignName, date: i.campaignDate)
                                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                                 
                             }
