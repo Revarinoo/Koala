@@ -14,13 +14,12 @@ struct RecommendationInfluencerCard: View {
     let name: String
     let price: Int
     var body: some View {
-        HStack {
+        HStack (){
             WebImage(url: URL(string: photoURL ?? "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg"))
                 .resizable()
-                .frame(width: 80, height: 80)
+                .frame(width: 75, height: 75)
                 .cornerRadius(10)
-                .padding(.all, 10)
-                .padding(.leading, 12)
+                .padding(.leading, 16)
             VStack(alignment: .leading, spacing: 2) {
                 HStack(spacing: 4) {
                     ForEach(categories, id: \.self) { category in
@@ -30,19 +29,23 @@ struct RecommendationInfluencerCard: View {
                             .padding(.vertical, 2)
                             .foregroundColor(ThemeColor.primary)
                             .background(ThemeColor.primaryLight)
+                            .frame(height: 20)
                             .cornerRadius(5)
+                            
                     }
                 }
-                
-                Text(name).scaledToFill()
+                Text(name)
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 18))
                     .foregroundColor(.black)
+                    .scaledToFill()
+                    .frame(width: 200, alignment: .leading)
                 
                 Text("Starts IDR \(price.rupiahFormatter())").scaledToFill()
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(.gray)
-                
-            }
+                    .frame(width: 200, alignment: .leading)
+                Spacer()
+            }.padding(.top, 3)
             Spacer()
             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/){
                 Image(systemName: "chevron.right").resizable()
@@ -54,9 +57,9 @@ struct RecommendationInfluencerCard: View {
         }
         .padding(.vertical, 14)
         .background(Color.white)
-        .frame(height: 124)
+        .frame(height: 95)
         .cornerRadius(10)
-        .shadow(color: .gray, radius: 3, x: 1, y: 2)
+        //.shadow(color: .gray, radius: 3, x: 1, y: 2)
     }
 }
 

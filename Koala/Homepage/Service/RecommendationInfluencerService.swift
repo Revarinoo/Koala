@@ -7,6 +7,8 @@
 
 import Foundation
 
+let categoriesDefault = UserDefaults.standard
+
 struct RecommendationInfluencerService {
     
     func getInfluencerList(completionHandler:@escaping(_ result: RecommendationInfluencers?)->Void) {

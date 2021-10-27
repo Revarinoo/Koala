@@ -28,4 +28,8 @@ class SpecialtyViewModel: ObservableObject {
     func countSpecialtyClicked() -> Int {
         return self.specialties.filter({$0.isClicked == true}).count
     }
+    
+    func getSpecialtyClicked() -> [String] {
+        return self.specialties.filter({$0.isClicked == true}).map { $0.name }
+    }
 }
