@@ -12,7 +12,8 @@ struct KoalaApp: App {
     var body: some Scene {
         WindowGroup {
 //            SplashScreen()
-            ReviewInfluencerView(photoURL: nil, name: "Clara Ang", rating: .constant(4))
+//            RegisterView()
+            TabBar()
         }
     }
 }

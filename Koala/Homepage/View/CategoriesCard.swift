@@ -3,7 +3,7 @@
 //  Koala
 //
 //  Created by Sholihatul Richas on 19/10/21.
-//
+//  Modified by Syahrul Fadholi (Navigation)
 
 import SwiftUI
 
@@ -24,7 +24,8 @@ struct CategoriesCard: View {
                     Button(action: {
                         gotoInfluencerList.toggle()
                     }) {
-                        Image(image).resizable().frame(width: 45, height: 45, alignment: .center)
+                        Image(image).resizable().aspectRatio(contentMode: .fit)
+                            .frame( maxWidth: 34, maxHeight: 34, alignment: .center)
                     }
                         .frame(width: 64.0, height: 64.0)
                         .background(Color(UIColor(named: "primary")!))
@@ -43,6 +44,6 @@ struct CategoriesCard: View {
 
 struct CategoriesCard_Previews: PreviewProvider {
     static var previews: some View {
-        CategoriesCard(image: "coffee", category: "Coffee").previewLayout(.sizeThatFits)
+        CategoriesCard(image: "drinks", category: "Coffee").previewLayout(.sizeThatFits)
     }
 }
