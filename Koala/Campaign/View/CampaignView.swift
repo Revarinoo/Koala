@@ -13,7 +13,7 @@ struct CampaignView: View {
     var campaignTypes = ["Upcoming", "Completed"]
     
     init(){
-        UISegmentedControl.appearance().selectedSegmentTintColor = .orange
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "primary")
         UISegmentedControl.appearance().backgroundColor = .white
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.gray], for: .normal)
@@ -34,7 +34,7 @@ struct CampaignView: View {
                     Text("My Campaigns")
                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 27))
                         .foregroundColor(.black)
-                        .padding(EdgeInsets(top: 0, leading: 28, bottom: 0, trailing: 0))
+                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
                     Spacer()
                 }
             }
@@ -52,16 +52,23 @@ struct CampaignView: View {
                         if campaignType.contains("Upcoming") {
                             if i.campaignDate >= Date().addingTimeInterval(-86400) {
                                 CampaignCard(photoURL: i.campaignPhoto, name: i.campaignName, package: i.campaignPackage, date: i.campaignDate, price: i.campaignPrice)
+                                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                             }
                         } else {
                             if i.campaignDate < Date().addingTimeInterval(-86400) {
                                 CampaignCard(photoURL: i.campaignPhoto, name: i.campaignName, package: i.campaignPackage, date: i.campaignDate, price: i.campaignPrice)
+                                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                                
                             }
                         }
                     }
                 }
             }
         }
+        .ignoresSafeArea()
+        .navigationBarHidden(true)
+        .padding(.top, 10)
+        .background(ThemeColor.background.ignoresSafeArea())
     }
 }
 
