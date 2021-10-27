@@ -51,6 +51,11 @@
 		2FCB0B242724FE5E0017C9D6 /* InstaAccModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B222724FE5E0017C9D6 /* InstaAccModel.swift */; };
 		2FCB0B282725186B0017C9D6 /* FeedIgFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B272725186B0017C9D6 /* FeedIgFetcher.swift */; };
 		2FCB0B2A2725202A0017C9D6 /* AccountInfoFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B292725202A0017C9D6 /* AccountInfoFetcher.swift */; };
+		844D45892727B735008F0869 /* CampaignCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D45882727B735008F0869 /* CampaignCard.swift */; };
+		844D458B2727B73F008F0869 /* CampaignReportCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D458A2727B73F008F0869 /* CampaignReportCard.swift */; };
+		844D458E2727B826008F0869 /* Campaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D458D2727B826008F0869 /* Campaign.swift */; };
+		844D45902728F38D008F0869 /* CampaignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D458F2728F38D008F0869 /* CampaignView.swift */; };
+		844D45932728F997008F0869 /* CampaignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D45922728F997008F0869 /* CampaignViewModel.swift */; };
 		844DEF2D2722684A000C33C0 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DEF2C2722684A000C33C0 /* RegisterView.swift */; };
 		846C55D1271F304C006C94DD /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C55D0271F304C006C94DD /* CheckBoxView.swift */; };
 		846C55D32720255A006C94DD /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C55D22720255A006C94DD /* LoginModel.swift */; };
@@ -126,6 +131,11 @@
 		2FCB0B222724FE5E0017C9D6 /* InstaAccModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaAccModel.swift; sourceTree = "<group>"; };
 		2FCB0B272725186B0017C9D6 /* FeedIgFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedIgFetcher.swift; sourceTree = "<group>"; };
 		2FCB0B292725202A0017C9D6 /* AccountInfoFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoFetcher.swift; sourceTree = "<group>"; };
+		844D45882727B735008F0869 /* CampaignCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignCard.swift; sourceTree = "<group>"; };
+		844D458A2727B73F008F0869 /* CampaignReportCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignReportCard.swift; sourceTree = "<group>"; };
+		844D458D2727B826008F0869 /* Campaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campaign.swift; sourceTree = "<group>"; };
+		844D458F2728F38D008F0869 /* CampaignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignView.swift; sourceTree = "<group>"; };
+		844D45922728F997008F0869 /* CampaignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignViewModel.swift; sourceTree = "<group>"; };
 		844DEF2C2722684A000C33C0 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		846C55D0271F304C006C94DD /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		846C55D22720255A006C94DD /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -383,6 +393,42 @@
 			path = ServiceModel;
 			sourceTree = "<group>";
 		};
+		844D45862727B44D008F0869 /* Campaign */ = {
+			isa = PBXGroup;
+			children = (
+				844D45912728F98A008F0869 /* ViewModel */,
+				844D458C2727B816008F0869 /* Model */,
+				844D45872727B455008F0869 /* View */,
+			);
+			path = Campaign;
+			sourceTree = "<group>";
+		};
+		844D45872727B455008F0869 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				844D45882727B735008F0869 /* CampaignCard.swift */,
+				844D458A2727B73F008F0869 /* CampaignReportCard.swift */,
+				844D458F2728F38D008F0869 /* CampaignView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		844D458C2727B816008F0869 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				844D458D2727B826008F0869 /* Campaign.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		844D45912728F98A008F0869 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				844D45922728F997008F0869 /* CampaignViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		844DEF2A27226832000C33C0 /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +523,7 @@
 		F75CEE6C2713E80D00E36A1F /* Koala */ = {
 			isa = PBXGroup;
 			children = (
+				844D45862727B44D008F0869 /* Campaign */,
 				2F6C2C35272273040026EF3E /* Onboarding */,
 				D2995586271E64E80025D0CB /* Homepage */,
 				F75CEE7D2713E8CF00E36A1F /* Login */,
@@ -681,6 +728,7 @@
 				2FBC8BB7271C3994007E7B76 /* InfluencerListViewModel.swift in Sources */,
 				2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */,
 				F76CE87F2723B9E80055D58C /* RegisterBusinessView.swift in Sources */,
+				844D45892727B735008F0869 /* CampaignCard.swift in Sources */,
 				2FCB0B242724FE5E0017C9D6 /* InstaAccModel.swift in Sources */,
 				D28D625A27205B6000BE7345 /* ProfileButton.swift in Sources */,
 				D2577BCA271F244100E7AC5D /* RecommendationInfluencerCard.swift in Sources */,
@@ -692,6 +740,7 @@
 				2FBC8BB9271C3C66007E7B76 /* InfluencerListView.swift in Sources */,
 				2FACD84B272144D700E9F578 /* PriceRange.swift in Sources */,
 				2FA40E57271DF44E0095A812 /* ColorExtension.swift in Sources */,
+				844D458E2727B826008F0869 /* Campaign.swift in Sources */,
 				2FACD8442721137F00E9F578 /* FilterModal.swift in Sources */,
 				2F6C2C32272259E00026EF3E /* FilterModel.swift in Sources */,
 				2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */,
@@ -702,10 +751,12 @@
 				844DEF2D2722684A000C33C0 /* RegisterView.swift in Sources */,
 				2FA40E57271DF44E0095A812 /* ColorExtension.swift in Sources */,
 				2FACD83427206CCE00E9F578 /* LoginRequest.swift in Sources */,
+				844D45902728F38D008F0869 /* CampaignView.swift in Sources */,
 				D28D625827201ECB00BE7345 /* CategoriesServices.swift in Sources */,
 				2FBC8BB3271C37CC007E7B76 /* InfluencerListResponse.swift in Sources */,
 				2F6C2C3F272290FF0026EF3E /* OnboardingView.swift in Sources */,
 				2F6C2C34272268F60026EF3E /* SpecialtyViewModel.swift in Sources */,
+				844D458B2727B73F008F0869 /* CampaignReportCard.swift in Sources */,
 				2FCB0B232724FE5E0017C9D6 /* InstaFeedModel.swift in Sources */,
 				F75CEE8E27143BF100E36A1F /* LoginView.swift in Sources */,
 				846C55D1271F304C006C94DD /* CheckBoxView.swift in Sources */,
@@ -724,6 +775,7 @@
 				F76CE87B272275D20055D58C /* RegisterService.swift in Sources */,
 				F76CE879272275B90055D58C /* RegisterViewModel.swift in Sources */,
 				F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */,
+				844D45932728F997008F0869 /* CampaignViewModel.swift in Sources */,
 				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
 				F76CE8752721C4B40055D58C /* AuthResponse.swift in Sources */,
 				D2577BC6271F239B00E7AC5D /* Categories.swift in Sources */,
