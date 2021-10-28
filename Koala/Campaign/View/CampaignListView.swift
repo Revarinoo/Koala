@@ -28,11 +28,11 @@ struct CampaignListView: View {
                     })
                     Spacer()
                     Text("Campaign List")
-                        .font(Font.custom(ThemeFont.poppinsSemiBold, size: 17))
+                        .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                         .padding(.trailing)
                     Spacer()
                 }
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 14, trailing: 0))
+                .padding(EdgeInsets(top: 0, leading: 20, bottom: 14, trailing: 0))
                 
                 ScrollView {
                     VStack(spacing: 16) {
