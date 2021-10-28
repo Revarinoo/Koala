@@ -11,6 +11,21 @@ extension Double {
     var oneDecimalFormatter: String {
         return String(format: "%.1f", self).replacingOccurrences(of: ".", with: ",")
     }
+//    var oneDecimalFormatter: String {
+//        return String(format: "%.f", self).replacingOccurrences(of: ".", with: ",")
+//    }
+    func thousandsFormatter() ->String{
+        if (self >= 1000000000) {
+            return "\((self / 1000000000).oneDecimalFormatter) B";
+        }
+        if (self >= 1000000) {
+            return "\((self / 1000000).oneDecimalFormatter)M";
+        }
+        if (self >= 1000) {
+            return "\(Int(self / 1000))K";
+        }
+        return String(Int(self))
+    }
 }
 
 extension Int {
