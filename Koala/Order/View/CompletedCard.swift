@@ -10,7 +10,6 @@ import SDWebImageSwiftUI
 
 struct CompletedCard: View {
     let name: String
-    let productType : String
     let reach: String
     let impression: String
     let engagement: String
@@ -62,6 +61,6 @@ struct CompletedCard: View {
 
 struct CompletedCard_Previews: PreviewProvider {
     static var previews: some View {
-        CompletedCard(name: "Felix Lee", productType: "", reach: "21.5K", impression: "10.8K", engagement: "10.1%").previewLayout(.sizeThatFits)
+        CompletedCard(name: "Felix Lee", reach: "21.5K", impression: "10.8K", engagement: "10.1%").previewLayout(.sizeThatFits)
     }
 }

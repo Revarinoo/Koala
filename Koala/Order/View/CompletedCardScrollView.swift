@@ -13,7 +13,7 @@ struct CompletedCardScrollView: View {
         ScrollView(.vertical){
             VStack{
                 ForEach (completedOrders){completed in
-                    CompletedCard(name: completed.name, productType: "Post", reach: "34K", impression: "3K", engagement: "4.5%").padding([.leading,.trailing], 16)
+                    CompletedCard(name: completed.name, reach: completed.avgReach, impression: completed.avgImpression, engagement: String(completed.avgER.rounded(toPlaces: 1))+"%").padding([.leading,.trailing], 16)
                 }
             }
             Spacer()

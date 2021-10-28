@@ -14,7 +14,7 @@ struct PendingCardScrollView: View {
         ScrollView(.vertical){
             VStack{
                 ForEach (pendingOrders){pendings in
-                    PendingCard(name: pendings.name, productType: "Post", dueDate: pendings.dueDate).padding([.leading,.trailing], 16)
+                    PendingCard(name: pendings.name, productType: pendings.productType, dueDate: pendings.dueDate).padding([.leading,.trailing], 16)
                 }
             }
             Spacer()

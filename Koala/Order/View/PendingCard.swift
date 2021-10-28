@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct PendingCard: View {
     let name: String
-    let productType : String
+    let productType : [String]
     let dueDate : String
     
     var body: some View {
@@ -22,7 +22,8 @@ struct PendingCard: View {
                     .cornerRadius(10)
                 VStack (alignment: .leading, spacing: 6){
                     HStack (spacing: 9){
-                         Text(productType).scaledToFill()
+                        ForEach (productType, id: \.self){
+                            product in Text(product).scaledToFill()
                                 .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 2)
@@ -30,10 +31,22 @@ struct PendingCard: View {
                                 .frame(minWidth: 71, minHeight: 20, alignment: .center)
                                 .background(ThemeColor.primaryLight)
                                 .cornerRadius(5)
+                        }
+                        //ini tes aja
+                        Text("Post").scaledToFill()
+                            .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 2)
+                            .foregroundColor(ThemeColor.primary)
+                            .frame(minWidth: 71, minHeight: 20, alignment: .center)
+                            .background(ThemeColor.primaryLight)
+                            .cornerRadius(5)
+
                     }
                     Text(name).font(Font.custom(ThemeFont.poppinsMedium, size: 18))
                     HStack{
                         Image(systemName: "calendar")
+                        
                         Text(dueDate)
                     }.font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                         .foregroundColor(Color.gray)
@@ -64,6 +77,6 @@ struct PendingCard: View {
 
 struct PendingCard_Previews: PreviewProvider {
     static var previews: some View {
-        PendingCard(name: "James Oliver", productType: "Post", dueDate: "22 December 2021").previewLayout(.sizeThatFits)
+        PendingCard(name: "James Oliver", productType: ["Post"], dueDate: "22 December 2021").previewLayout(.sizeThatFits)
     }
 }

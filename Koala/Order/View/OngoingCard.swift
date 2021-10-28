@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct OngoingCard: View {
     
     let name: String
-    let productType : String
+    let productType : [String]
     let dueDate : String
     
     var body: some View {
@@ -23,7 +23,8 @@ struct OngoingCard: View {
                     .cornerRadius(10)
                 VStack (alignment: .leading, spacing: 6){
                     HStack (spacing: 9){
-                         Text(productType).scaledToFill()
+                        ForEach (productType, id: \.self){
+                            product in Text(product).scaledToFill()
                                 .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 2)
@@ -31,6 +32,7 @@ struct OngoingCard: View {
                                 .frame(minWidth: 71, minHeight: 20, alignment: .center)
                                 .background(ThemeColor.primaryLight)
                                 .cornerRadius(5)
+                        }
                     }
                     Text(name).font(Font.custom(ThemeFont.poppinsMedium, size: 18))
                     HStack{
@@ -62,6 +64,6 @@ struct OngoingCard: View {
 
 struct OngoingCard_Previews: PreviewProvider {
     static var previews: some View {
-        OngoingCard(name: "Bella Anastasia", productType: "Post", dueDate: "28 November 2021").previewLayout(.sizeThatFits)
+        OngoingCard(name: "Bella Anastasia", productType: ["Post"], dueDate: "28 November 2021").previewLayout(.sizeThatFits)
     }
 }
