@@ -40,7 +40,7 @@ struct CompletedCard: View {
                     }
                 }
                 Spacer()
-            }.padding(.top, 16)
+            }.padding(.top, 16).padding(.leading, 16)
             HStack{
                 Spacer()
                 Button(action: {}){
@@ -51,12 +51,12 @@ struct CompletedCard: View {
                 }.frame(height: 38)
                     .background(ThemeColor.primary)
                     .cornerRadius(10)
-            }.padding(.bottom, 9)
+            }.padding(.bottom, 9).padding(.trailing, 16)
             
             
         }
+        .background(Color.white)
         .cornerRadius(10)
-        .padding([.leading,.trailing], 16)
     }
 }
 

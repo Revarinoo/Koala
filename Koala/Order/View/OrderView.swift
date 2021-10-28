@@ -8,22 +8,74 @@
 import SwiftUI
 
 struct OrderView: View {
-    @State private var favoriteColor = 0
+    @State private var orderTypeSelected : OrderStatus = .pending
     init(){
-        UISegmentedControl.appearance().selectedSegmentTintColor = .orange
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ThemeColor.primary)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .reserved)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
+        //UISegmentedControl.appearance().setTitleTextAttributes([.backgroundColor: UIColor.blue], for: .normal)
+        //MyOrderService.getMyOrder(<#MyOrderService#>)
     }
     var body: some View {
-        NavigationView{
-            Picker("What is your favorite color?", selection: $favoriteColor) {
-                Text("Ongoing").tag(0).font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                Text("Completed").tag(1).font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+        NavigationView {
+            VStack{
+                Picker("What is your favorite color?", selection: $orderTypeSelected) {
+                    ForEach (OrderStatus.allCases, id: \.self){
+                        Text($0.rawValue)                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding([.leading, .trailing], 16)
+                ChosenStatus(selectedStatus: orderTypeSelected)
+                
+                
             }
-            .pickerStyle(SegmentedPickerStyle())
-            .foregroundColor(ThemeColor.primary)
-            .padding([.leading, .trailing], 16)
-        }.navigationTitle(Text("My Orders").foregroundColor(.blue))
+            .background(ThemeColor.background.ignoresSafeArea(edges: .bottom))
+            .navigationBarTitle(Text("My Orders"))
+        }
+        
+    }
+    
+}
+
+enum OrderStatus: String, CaseIterable{
+    case pending = "Pending"
+    case upcoming = "Upcoming"
+    case completed = "Completed"
+}
+
+struct ChosenStatus: View {
+    
+    var selectedStatus: OrderStatus
+    
+    var body: some View {
+        switch selectedStatus {
+        case .pending:
+            ScrollView(.vertical){
+                VStack{
+                    ForEach (0..<5){_ in
+                        PendingCard(name: "James Oliver", productType: "Post", dueDate: "4 Aug 2021").padding([.leading,.trailing], 16)
+                    }
+                }
+            }
+            
+        case .upcoming:
+            ScrollView(.vertical){
+                VStack{
+                    ForEach (0..<5){_ in
+                        OngoingCard(name: "Isabella", productType: "Post", dueDate: "31 October 2021").padding([.leading,.trailing], 16)
+                    }
+                }
+            }
+        case .completed:
+            ScrollView(.vertical){
+                VStack{
+                    ForEach (0..<2){_ in
+                        CompletedCard(name: "James Charles", productType: "Post", reach: "34K", impression: "3K", engagement: "4.5%").padding([.leading,.trailing], 16)
+                    }
+                }
+                Spacer()
+            }
+        }
     }
 }
 

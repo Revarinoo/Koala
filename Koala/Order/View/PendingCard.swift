@@ -1,15 +1,14 @@
 //
-//  OngoingCard.swift
+//  PendingCard.swift
 //  Koala
 //
-//  Created by Sholihatul Richas on 26/10/21.
+//  Created by Sholihatul Richas on 28/10/21.
 //
 
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct OngoingCard: View {
-    
+struct PendingCard: View {
     let name: String
     let productType : String
     let dueDate : String
@@ -44,13 +43,16 @@ struct OngoingCard: View {
             HStack{
                 Spacer()
                 Button(action: {}){
-                    Text("Reschedule").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                        .foregroundColor(.white)
+                    Text("Cancel").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                        .foregroundColor(ThemeColor.primary)
                         .padding()
                         .padding([.leading, .trailing])
-                }.frame(height: 38)
-                    .background(ThemeColor.primary)
-                    .cornerRadius(10)
+                }.frame(width: 113, height: 38)
+                    .cornerRadius(12)
+                    .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(ThemeColor.primary, lineWidth: 1)
+                        )
             }.padding(.bottom, 9).padding(.trailing, 15)
             
             
@@ -60,8 +62,8 @@ struct OngoingCard: View {
     }
 }
 
-struct OngoingCard_Previews: PreviewProvider {
+struct PendingCard_Previews: PreviewProvider {
     static var previews: some View {
-        OngoingCard(name: "Bella Anastasia", productType: "Post", dueDate: "28 November 2021").previewLayout(.sizeThatFits)
+        PendingCard(name: "James Oliver", productType: "Post", dueDate: "22 December 2021").previewLayout(.sizeThatFits)
     }
 }
