@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct HomepageView: View {
-    @ObservedObject var recomenndationList = RecommendationViewModel()
     
+    @ObservedObject var recomenndationList = RecommendationViewModel()
+    @State var toRecommendedInfluencerList: Bool = false
     
     var categories : [String]
     
     init(categories: [String]) {
         self.categories = categories
+        categoriesDefault.set(categories, forKey: "myKey")
+        let categoriesList = categoriesDefault.object(forKey: "myKey") as? [String]
+        recomenndationList.callGetInfluencerList(categories: categoriesList ?? ["Coffee"])
     }
     
     var body: some View {
@@ -23,10 +27,8 @@ struct HomepageView: View {
                 ProfileButton(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: "Kenneth J")
                 Spacer()
                 Button(action:{}){
-                    Image(systemName: "magnifyingglass").imageScale(.medium)
-                }
-                Button(action:{}){
-                    Image(systemName: "bell").imageScale(.medium)
+                    Image(systemName: "bell")
+                        .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
                 }
             }
             .padding(.horizontal, 16.0)
@@ -34,24 +36,26 @@ struct HomepageView: View {
                 Text("Browse Category").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                     .foregroundColor(.black)
                 Spacer()
-                Button(action:{}){
-                    Text("See more ").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                        .foregroundColor(.black)
-                }
-                
-            }.padding(.leading,16).padding(.trailing, 16)
+            }.padding(.leading,16).padding(.trailing, 16).padding(.top, 20)
             HomepageCategoriesCard()
             PromotionCard().padding(.leading,16).padding(.trailing, 16)
             HStack{
                 Text("Recommendation").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                     .foregroundColor(.black)
                 Spacer()
-                Button(action:{}){
-                    Text("See more ").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                        .foregroundColor(.black)
-                }
+                NavigationLink(
+                    destination: RecommendedInfluencerList(categories: categories),
+                    isActive: $toRecommendedInfluencerList,
+                    label: {
+                        Button {
+                            toRecommendedInfluencerList.toggle()
+                        } label: {
+                            Text("See more ").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                                .foregroundColor(.black)
+                        }
+                    })
                 
-            }.padding(.leading,16).padding([.top, .trailing], 16.0)
+            }.padding(.leading,16).padding([.trailing], 16.0).padding(.top, 28)
             ScrollView(.vertical){
                 VStack(spacing: 12){
                     ForEach (recomenndationList.recommendationModel){ i in
@@ -64,9 +68,6 @@ struct HomepageView: View {
         .navigationBarHidden(true)
         .padding(.top, 25)
         .background(ThemeColor.background.ignoresSafeArea())
-        .onAppear() {
-            recomenndationList.callGetInfluencerList(categories: categories)
-        }
     }
 }
 
