@@ -14,6 +14,7 @@ struct KoalaApp: App {
 //            SplashScreen()
             InfluencerDetailView()
 //            RegisterView()
+//            LoginView()
         }
     }
 }
