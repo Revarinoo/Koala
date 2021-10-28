@@ -9,9 +9,14 @@ import Foundation
 
 struct MyOrders: Identifiable{
     let id = UUID()
+    let orderID : Int
     var name: String
     var photo: String
     var dueDate: String
     var eR : String
-    var reach: String
+    var orderStatus : String
+    var productType: [String]
+    var avgReach : String
+    var avgImpression: String
+    var avgER: Double
 }

@@ -46,3 +46,19 @@ extension NumberFormatter {
         return formatter
     }
 }
+
+//to get average of float array (Double, Float)
+extension Array where Element: FloatingPoint {
+    
+    var sum: Element {
+        return reduce(0, +)
+    }
+
+    var average: Element {
+        guard !isEmpty else {
+            return 0
+        }
+        return sum / Element(count)
+    }
+
+}

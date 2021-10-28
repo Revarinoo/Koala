@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct OngoingCardScrollView: View {
+    var onGoingOrders : [MyOrders]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView(.vertical){
+            VStack{
+                ForEach (onGoingOrders){ongoingOrders in
+                    OngoingCard(name: ongoingOrders.name, productType: "Post", dueDate: ongoingOrders.dueDate).padding([.leading,.trailing], 16)
+                }
+            }
+        }
     }
 }
 
-struct OngoingCardScrollView_Previews: PreviewProvider {
-    static var previews: some View {
-        OngoingCardScrollView()
-    }
-}
+//struct OngoingCardScrollView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OngoingCardScrollView()
+//    }
+//}

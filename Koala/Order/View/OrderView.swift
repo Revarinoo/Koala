@@ -9,12 +9,14 @@ import SwiftUI
 
 struct OrderView: View {
     @State private var orderTypeSelected : OrderStatus = .pending
+    
+    var pendingOrder : [MyOrders] = []
+    
     init(){
+        
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ThemeColor.primary)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
-        //UISegmentedControl.appearance().setTitleTextAttributes([.backgroundColor: UIColor.blue], for: .normal)
-        //MyOrderService.getMyOrder(<#MyOrderService#>)
     }
     var body: some View {
         NavigationView {
@@ -25,7 +27,7 @@ struct OrderView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding([.leading, .trailing], 16)
-                ChosenStatus(selectedStatus: orderTypeSelected)
+                ChosenStatus(selectedStatus: orderTypeSelected )
                 
                 
             }
@@ -39,42 +41,26 @@ struct OrderView: View {
 
 enum OrderStatus: String, CaseIterable{
     case pending = "Pending"
-    case upcoming = "Upcoming"
+    case ongoing = "Ongoing"
     case completed = "Completed"
 }
 
 struct ChosenStatus: View {
     
     var selectedStatus: OrderStatus
-    
+    @ObservedObject var orderViewModel = OrderViewModel()
+    init(selectedStatus: OrderStatus){
+        self.selectedStatus = selectedStatus
+        orderViewModel.callData()
+    }
     var body: some View {
         switch selectedStatus {
         case .pending:
-            ScrollView(.vertical){
-                VStack{
-                    ForEach (0..<5){_ in
-                        PendingCard(name: "James Oliver", productType: "Post", dueDate: "4 Aug 2021").padding([.leading,.trailing], 16)
-                    }
-                }
-            }
-            
-        case .upcoming:
-            ScrollView(.vertical){
-                VStack{
-                    ForEach (0..<5){_ in
-                        OngoingCard(name: "Isabella", productType: "Post", dueDate: "31 October 2021").padding([.leading,.trailing], 16)
-                    }
-                }
-            }
+            PendingCardScrollView(pendingOrders:orderViewModel.pendingOrders)
+        case .ongoing:
+            OngoingCardScrollView(onGoingOrders: orderViewModel.ongoingOrders)
         case .completed:
-            ScrollView(.vertical){
-                VStack{
-                    ForEach (0..<2){_ in
-                        CompletedCard(name: "James Charles", productType: "Post", reach: "34K", impression: "3K", engagement: "4.5%").padding([.leading,.trailing], 16)
-                    }
-                }
-                Spacer()
-            }
+            CompletedCardScrollView(completedOrders: orderViewModel.completedOrders)
         }
     }
 }
