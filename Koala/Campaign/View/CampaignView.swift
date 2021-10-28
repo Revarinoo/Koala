@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CampaignView: View {
-    let campaigns = CampaignViewModel().campaigns
+//    let campaigns = CampaignViewModel().campaigns
     @State private var campaignType = "Upcoming"
     var campaignTypes = ["Upcoming", "Completed"]
     
@@ -48,20 +48,20 @@ struct CampaignView: View {
             
             ScrollView(.vertical){
                 VStack(spacing: 12){
-                    ForEach(campaigns){ i in
-                        if campaignType.contains("Upcoming") {
-                            if i.campaignDate >= Date().addingTimeInterval(-86400) {
-                                CampaignCard(photoURL: i.campaignPhoto, name: i.campaignName, date: i.campaignDate)
-                                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-                            }
-                        } else {
-                            if i.campaignDate < Date().addingTimeInterval(-86400) {
-                                CampaignCard(photoURL: i.campaignPhoto, name: i.campaignName, date: i.campaignDate)
-                                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-                                
-                            }
-                        }
-                    }
+//                    ForEach(campaigns){ i in
+//                        if campaignType.contains("Upcoming") {
+//                            if i.campaignDate >= Date().addingTimeInterval(-86400) {
+//                                CampaignCard(photoURL: i.campaignPhoto, name: i.campaignName, date: i.campaignDate)
+//                                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+//                            }
+//                        } else {
+//                            if i.campaignDate < Date().addingTimeInterval(-86400) {
+//                                CampaignCard(photoURL: i.campaignPhoto, name: i.campaignName, date: i.campaignDate)
+//                                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+//
+//                            }
+//                        }
+//                    }
                 }
             }
         }

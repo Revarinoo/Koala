@@ -6,12 +6,34 @@
 //
 
 import Foundation
-import Combine
+import SwiftUI
 
 class CampaignViewModel: ObservableObject{
-    @Published var campaigns : [Campaign] =
-        [Campaign(campaignPhoto: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", campaignName: "11 Nov Campaign", campaignPackage: "1x Instagram Post & Story", campaignDate: Date(), campaignPrice: 1500000),
-         Campaign(campaignPhoto: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", campaignName: "12 Des Campaign", campaignPackage: "1x Instagram Post", campaignDate: Date().addingTimeInterval(86400*31), campaignPrice: 1000000),
-         Campaign(campaignPhoto: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", campaignName: "10 Oct Campaign", campaignPackage: "1x Instagram Story", campaignDate: Date().addingTimeInterval(-86400*31), campaignPrice: 500000),
-         Campaign(campaignPhoto: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", campaignName: "9 Sep Campaign", campaignPackage: "1x Instagram Post & Story", campaignDate: Date().addingTimeInterval(-2*86400*31), campaignPrice: 1500000)]
+    
+    @Published var campaignModel: [Campaign] = []
+    private let campaignService: CampaignService = CampaignService()
+    @AppStorage("JWT", store: .standard) var token = ""
+    
+    func callGetCampaigns() {
+        var campaigns: [Campaign] = []
+        campaignService.getCampaign(token) { response in
+            if let responseData = response?.data {
+                for campaign in responseData {
+                    let name = campaign.name
+                    let photo = campaign.photo
+                    let schedule = campaign.schedule
+                    let status = campaign.status
+                    
+                    let campaignModel = Campaign(name: name, photo: photo, schedule: schedule, status: status)
+                    
+                    campaigns.append(campaignModel)
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.campaignModel = campaigns
+            }
+        }
+    }
+    
 }

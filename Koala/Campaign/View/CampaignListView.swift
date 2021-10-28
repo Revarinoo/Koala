@@ -36,12 +36,12 @@ struct CampaignListView: View {
                 
                 ScrollView {
                     VStack(spacing: 16) {
-                        ForEach(campaignListVM.campaignLists) { campaign in
-                            NavigationLink(destination: LoginView()) {
-                                CampaignOrderCard(photoURL: campaign.campaignPhoto, name: campaign.campaignName, date: campaign.campaignDate)
-                                    .padding(.horizontal)
-                            }
-                        }
+//                        ForEach(campaignListVM.campaignLists) { campaign in
+//                            NavigationLink(destination: LoginView()) {
+//                                CampaignOrderCard(photoURL: campaign.campaignPhoto, name: campaign.campaignName, date: campaign.campaignDate)
+//                                    .padding(.horizontal)
+//                            }
+//                        }
                     }
                 }
             }
