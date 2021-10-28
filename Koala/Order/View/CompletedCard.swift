@@ -23,19 +23,22 @@ struct CompletedCard: View {
                     .cornerRadius(10)
                 VStack (alignment: .leading, spacing: 6){
                     Text(name).font(Font.custom(ThemeFont.poppinsMedium, size: 18))
-                    HStack(spacing: 15){
+                    HStack{
                         VStack{
                             Text(reach).font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                             Text("Reach").font(Font.custom(ThemeFont.poppinsRegular, size: 12)).foregroundColor(ThemeColor.primary)
                         }
+                        Spacer()
                         VStack{
                             Text(impression).font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                             Text("Impression").font(Font.custom(ThemeFont.poppinsRegular, size: 12)).foregroundColor(ThemeColor.primary)
                         }
+                        Spacer()
                         VStack{
                             Text(engagement).font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                             Text("Engagement").font(Font.custom(ThemeFont.poppinsRegular, size: 12)).foregroundColor(ThemeColor.primary)
                         }
+                        Spacer()
                     }
                 }
                 Spacer()
