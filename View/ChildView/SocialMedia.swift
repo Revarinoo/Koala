@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct SocialMedia: View {
+    var influencer: InfluencerDetailModel?
     var body: some View {
         VStack (alignment: .leading, spacing: 14) {
             Text("Social Media")
                 .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
-            SocialMediaCard()
-                .shadow(color: .gray, radius: 2, x: 0, y: 2)
+            if let influencer = influencer {
+                SocialMediaCard(influencer: influencer).shadow(color: .gray, radius: 2, x: 0, y: 2)
+            }
             
         }
         .frame(maxWidth: 390, maxHeight: 221)
