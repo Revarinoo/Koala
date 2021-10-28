@@ -12,8 +12,8 @@ struct KoalaApp: App {
     var body: some Scene {
         WindowGroup {
 //            SplashScreen()
-//            RegisterView()
-            TabBar()
+            ReviewInfluencerView(name: "Pandji WWK")
+//            TabBar()
         }
     }
 }

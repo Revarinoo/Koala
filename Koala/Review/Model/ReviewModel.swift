@@ -7,13 +7,10 @@
 
 import Foundation
 
-struct ReviewModel: Codable {
-    var order_id: Int = 0
+struct ReviewModel {
     var comment: String = ""
-    var ratign: Int = 0
-}
-
-struct ReviewResponse: Codable {
-    let code: Int
-    let message: String
+    var rating: Int = 0
+    var errorMessage: String = String()
+    var navigate: Bool = false
+    var isPresentingErrorAlert: Bool = false
 }

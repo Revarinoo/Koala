@@ -13,16 +13,8 @@ struct ReviewInfluencerView: View {
     var photoURL: String?
     var name: String
     
-    @Binding var rating: Int
-    @State var comment: String = ""
-
-    var maximumRating = 5
-
-    var offImage = Image(systemName: "star")
-    var onImage = Image(systemName: "star.fill")
-    
-    @State var backToHistoryView: Bool = false
-    @State var isPresentingAlert: Bool = false
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @ObservedObject var reviewVM = ReviewViewModel()
     
     var body: some View {
         ZStack {
@@ -58,16 +50,7 @@ struct ReviewInfluencerView: View {
                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 24))
                 }
                 VStack(spacing: 8) {
-                    HStack {
-                        ForEach(1..<maximumRating + 1) { number in
-                            self.image(for: number)
-                                .font(Font.system(size: 36))
-                                .foregroundColor(ThemeColor.primary)
-                                .onTapGesture {
-                                    self.rating = number
-                                }
-                        }
-                    }
+                    StarReviewComponent(rating: $reviewVM.reviewModel.rating)
                     Text("Give 1 star for bad service, 5 for great")
                         .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
                         .foregroundColor(ThemeColor.grayDark)
@@ -82,9 +65,9 @@ struct ReviewInfluencerView: View {
                 .padding(EdgeInsets(top: 28, leading: 16, bottom: 8, trailing: 0))
                 
                 VStack {
-                    TextEditor(text: $comment)
+                    TextEditor(text: $reviewVM.reviewModel.comment)
                         .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
-                        .foregroundColor(ThemeColor.grayHeavy)
+                        .foregroundColor(.black)
                         .disableAutocorrection(true)
                         .frame(maxHeight: 180)
                         .shadow(color: ThemeColor.gray, radius: 8, x: 0, y: 5)
@@ -93,42 +76,32 @@ struct ReviewInfluencerView: View {
                             .stroke(.white, lineWidth: 10))
                 .padding(.horizontal, 20)
                 
-                NavigationLink(
-                    destination: Text("Review Success").navigationBarBackButtonHidden(true),
-                    isActive: $backToHistoryView,
-                    label: {
-                        Button {
-                            backToHistoryView.toggle()
-                        } label: {
-                            Text("Submit")
-                            .padding(15)
-                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
-                            .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
-                        }
-                        .foregroundColor(.white)
-                        .background(ThemeColor.primary)
-                        .cornerRadius(12)
-                        .padding(.bottom, 8)
-                        .alert(isPresented: $isPresentingAlert, content: {
-                            Alert(title: Text("Alert"), message: Text("Success"), dismissButton: .cancel(Text("Ok")))
-                        })
-                    })
-                    .padding(EdgeInsets(top: 48, leading: 16, bottom: -24, trailing: 16))
+                Button {
+                    if(reviewVM.validateUserReview()) {
+                        reviewVM.submitReview(orderId: 3)
+                    }
+                } label: {
+                    Text("Submit")
+                    .padding(15)
+                    .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
+                    .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
+                }
+                .foregroundColor(.white)
+                .background(ThemeColor.primary)
+                .cornerRadius(12)
+                .padding(.bottom, 8)
+                .alert(isPresented: $reviewVM.reviewModel.isPresentingErrorAlert, content: {
+                    Alert(title: Text("Alert"), message: Text(reviewVM.reviewModel.errorMessage), dismissButton: .cancel(Text("Ok")))
+                })
+                
+//                NavigationLink(
+//                    destination: Text("Review Success").navigationBarBackButtonHidden(true),
+//                    isActive: $reviewVM.reviewModel.navigate,
+//                    label: {
+//                        
+//                    })
+//                    .padding(EdgeInsets(top: 48, leading: 16, bottom: -24, trailing: 16))
             }
         }
-    }
-    
-    func image(for number: Int) -> Image {
-        if number > rating {
-            return offImage ?? onImage
-        } else {
-            return onImage
-        }
-    }
-}
-
-struct ReviewInfluencerView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReviewInfluencerView(photoURL: nil, name: "Clara Ang", rating: .constant(4))
     }
 }

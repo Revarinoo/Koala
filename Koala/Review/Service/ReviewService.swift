@@ -9,7 +9,7 @@ import Foundation
 
 struct ReviewService {
     
-    func sendReview(_ postRequest: ReviewModel, completionHandler:@escaping(_ result: ReviewResponse?)->Void) {
+    func sendReview(_ postRequest: ReviewRequest, completionHandler:@escaping(_ result: ReviewResponse?)->Void) {
         
         let request = NSMutableURLRequest(url: NSURL(string: "http://127.0.0.1:8000/api/order/review")! as URL)
         request.httpMethod = "post"
