@@ -36,9 +36,15 @@ class OrderViewModel: ObservableObject{
                         
                         for index in 0..<order.product_data.count{
                             productType.append(order.product_data[index].product_type)
-                            reachArr.append(order.product_data[index].reach ?? 0)
-                            impressionArr.append(order.product_data[index].impression ?? 0)
-                            erArr.append(order.product_data[index].er ?? 0)
+                            if let reach = order.product_data[index].reach{
+                                reachArr.append(reach)
+                            }
+                            if let impression = order.product_data[index].impression{
+                                impressionArr.append(impression)
+                            }
+                            if let er = order.product_data[index].er{
+                                erArr.append(er)
+                            }
                         }
                         
                         avgReach = reachArr.reduce(0, +)/reachArr.count
