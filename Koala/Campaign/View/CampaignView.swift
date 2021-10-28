@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CampaignView: View {
 //    let campaigns = CampaignViewModel().campaigns
+    @ObservedObject var campaignList = CampaignViewModel()
     @State private var campaignType = "Upcoming"
     var campaignTypes = ["Upcoming", "Completed"]
     
@@ -17,6 +18,7 @@ struct CampaignView: View {
         UISegmentedControl.appearance().backgroundColor = .white
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.gray], for: .normal)
+        campaignList.callGetCampaigns()
     }
     
     var body: some View {
@@ -48,20 +50,20 @@ struct CampaignView: View {
             
             ScrollView(.vertical){
                 VStack(spacing: 12){
-//                    ForEach(campaigns){ i in
-//                        if campaignType.contains("Upcoming") {
-//                            if i.campaignDate >= Date().addingTimeInterval(-86400) {
-//                                CampaignCard(photoURL: i.campaignPhoto, name: i.campaignName, date: i.campaignDate)
-//                                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-//                            }
-//                        } else {
-//                            if i.campaignDate < Date().addingTimeInterval(-86400) {
-//                                CampaignCard(photoURL: i.campaignPhoto, name: i.campaignName, date: i.campaignDate)
-//                                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-//
-//                            }
-//                        }
-//                    }
+                    ForEach(campaignList.campaignModel) { i in
+                        if campaignType.contains("Upcoming") {
+                            if i.schedule >= Date().addingTimeInterval(-86400) {
+                                CampaignCard(photoURL: i.photo[0], name: i.name, date: i.schedule)
+                                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                            }
+                        } else {
+                            if i.schedule < Date().addingTimeInterval(-86400) {
+                                CampaignCard(photoURL: i.photo[0], name: i.name, date: i.schedule)
+                                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+
+                            }
+                        }
+                    }
                 }
             }
         }

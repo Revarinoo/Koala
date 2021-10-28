@@ -30,7 +30,7 @@ struct CampaignCard: View {
                 Text("\(name)")
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 18))
                     .foregroundColor(.black)
-                Text("\(dateFormat(date:date))")
+                Text("\(dateFormat(date: date))")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
             }
             .padding(.leading, 5)

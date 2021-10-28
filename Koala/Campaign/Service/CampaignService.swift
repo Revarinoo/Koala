@@ -7,18 +7,15 @@
 
 import Foundation
 
-let campaignDefault = UserDefaults.standard
-
 struct CampaignService {
     
-    func getCampaign(_ token: String, completionHandler:@escaping(_ result: Campaigns?)->Void) {
-        var urlRequest = URLRequest(url: URL(string: HttpUtility.endpoint + "campaign")!)
-            urlRequest.httpMethod = "post"
-            urlRequest.addValue("application/json", forHTTPHeaderField: "content-type")
-            urlRequest.httpBody = try? JSONEncoder().encode(CampaignRequest(token: token))
+    func getCampaign(completionHandler:@escaping(_ result: CampaignResponse?)->Void) {
+        
+        let request = NSMutableURLRequest(url: NSURL(string: "http://127.0.0.1:8000/api/campaign")! as URL)
+        request.allHTTPHeaderFields = HttpUtility.shared.headers
 
-        HttpUtility.shared.request(urlRequest, resultType: Campaigns.self) { response in
-           completionHandler(response)
+        HttpUtility.shared.request(request as URLRequest, resultType: CampaignResponse.self) { response in
+            _ = completionHandler(response)
         }
     }
 }

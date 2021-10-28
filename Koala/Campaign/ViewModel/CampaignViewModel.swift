@@ -10,23 +10,33 @@ import SwiftUI
 
 class CampaignViewModel: ObservableObject{
     
-    @Published var campaignModel: [Campaign] = []
+    @Published var campaignModel: [CampaignModel] = []
     private let campaignService: CampaignService = CampaignService()
-    @AppStorage("JWT", store: .standard) var token = ""
+    
+    private func dateFormatter(dateBefore: String) -> Date {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        
+        return dateFormatterGet.date(from: dateBefore) ?? Date()
+    }
     
     func callGetCampaigns() {
-        var campaigns: [Campaign] = []
-        campaignService.getCampaign(token) { response in
+        var campaigns: [CampaignModel] = []
+        var campaignPhotos: [String] = []
+        campaignService.getCampaign() { response in
             if let responseData = response?.data {
                 for campaign in responseData {
                     let name = campaign.name
-                    let photo = campaign.photo
                     let schedule = campaign.schedule
                     let status = campaign.status
                     
-                    let campaignModel = Campaign(name: name, photo: photo, schedule: schedule, status: status)
+                    for picture in campaign.photo! {
+                        campaignPhotos.append(picture)
+                    }
                     
-                    campaigns.append(campaignModel)
+                    let campaign = CampaignModel(name: name!, photo: campaignPhotos, schedule: self.dateFormatter(dateBefore: schedule!), status: status!)
+                    
+                    campaigns.append(campaign)
                 }
             }
             

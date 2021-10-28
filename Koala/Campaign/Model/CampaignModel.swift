@@ -1,21 +1,16 @@
 //
-//  Campaign.swift
+//  CampaignRequest.swift
 //  Koala
 //
-//  Created by Jonathan Clive on 26/10/21.
+//  Created by Jonathan Clive on 28/10/21.
 //
 
 import Foundation
 
-struct Campaigns: Codable {
-    let data: [Campaign]
-    let message: String
-    let code: Int
-}
-
-struct Campaign: Codable {
-    let name: String
-    let photo: String
-    let schedule: String
-    let status: String
+struct CampaignModel: Identifiable {
+    var id: Int = 0
+    var name: String = ""
+    var photo: [String] = []
+    var schedule: Date = Date()
+    var status: String = ""
 }
