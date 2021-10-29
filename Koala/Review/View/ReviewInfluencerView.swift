@@ -14,7 +14,7 @@ struct ReviewInfluencerView: View {
     var name: String
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var reviewVM = ReviewViewModel()
+    @ObservedObject var reviewVM = ReviewPageViewModel()
     
     var body: some View {
         ZStack {

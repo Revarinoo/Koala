@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ReviewViewModel: ObservableObject {
+class ReviewPageViewModel: ObservableObject {
     
     @Published var reviewModel: ReviewModel = ReviewModel()
     private let reviewService: ReviewService = ReviewService()
