@@ -16,11 +16,12 @@ struct InfluencerDetailView: View {
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
     @State var photoURL = "https://assets.teenvogue.com/photos/5fd4d29fe6ff71e902f97c1a/4:3/w_2443,h_1832,c_limit/taylor-evermore-resized.jpg"
+    @State var toCampaignList: Bool = false
     
     init() {
-          UIScrollView.appearance().bounces = false
-       }
-
+        UIScrollView.appearance().bounces = false
+    }
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
             ZStack(alignment: .top){
@@ -63,7 +64,7 @@ struct InfluencerDetailView: View {
                         }
                         
                         Text(influencerDetailViewModel.influencerModel?.influencer_profile.location ?? "Jakarta Utara").font(Font.custom(ThemeFont.poppinsMedium, size: 14)).padding(.bottom, 22)
-                       
+                        
                         Text("Specialty").font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                         
                         HStack(spacing: 14) {
@@ -83,14 +84,21 @@ struct InfluencerDetailView: View {
                         
                         HStack{
                             
-                            Button(action:{}){
-                                
-                                Text("Order").font(Font.custom(ThemeFont.poppinsBold, size: 18))
-                                    .foregroundColor(Color.white)
-                            }.frame(width: 300, height: 50, alignment: .center)
-                                .background(ThemeColor.primary)
-                                .cornerRadius(15)
-                                .shadow(radius: 4)
+                            NavigationLink(
+                                destination: CampaignListView(),
+                                isActive: $toCampaignList,
+                                label: {
+                                    Button {
+                                        toCampaignList.toggle()
+                                    } label: {
+                                        Text("Order").font(Font.custom(ThemeFont.poppinsBold, size: 18))
+                                            .foregroundColor(Color.white)
+                                            .frame(width: 300, height: 50, alignment: .center)
+                                            .background(ThemeColor.primary)
+                                            .cornerRadius(15)
+                                            .shadow(radius: 4)
+                                    }
+                                })
                             
                             Button(action:{
                                 self.isShowingMailView.toggle()
@@ -120,12 +128,12 @@ struct InfluencerDetailView: View {
                         
                         ReviewView(projects: influencerDetailViewModel.influencerModel?.projects ?? []).padding()
                             .padding(.bottom, 32)
-                            
+                        
                     }.frame(width: UIScreen.main.bounds.width, alignment: .top)
                         .ignoresSafeArea()
                         .padding(.top, 60)
-                    .background(Color.white)
-                    .cornerRadius(20, corners: [.topLeft, .topRight])
+                        .background(Color.white)
+                        .cornerRadius(20, corners: [.topLeft, .topRight])
                     
                 }
                 
@@ -137,27 +145,27 @@ struct InfluencerDetailView: View {
                         .frame(width: 127, height: 127)
                         .cornerRadius(20.0)
                         .overlay(RoundedRectangle(cornerRadius: 20.0)
-                            .stroke(Color.white, lineWidth: 5))
+                                    .stroke(Color.white, lineWidth: 5))
                     
                 }.padding(.top, 150)
                     .disabled(!MFMailComposeViewController.canSendMail())
-                        .sheet(isPresented: $isShowingMailView) {
-                            MailView(isShowing: $isShowingMailView, result: self.$result, toRecipient: influencerDetailViewModel.influencerModel?.influencer_profile.contact_email ?? "")
-                        }
-        }
-           
-    }.navigationBarHidden(true)
+                    .sheet(isPresented: $isShowingMailView) {
+                        MailView(isShowing: $isShowingMailView, result: self.$result, toRecipient: influencerDetailViewModel.influencerModel?.influencer_profile.contact_email ?? "")
+                    }
+            }
+            
+        }.navigationBarHidden(true)
             .onAppear{
-
+                
                 influencerDetailViewModel.callGetInfluencerDetail(influencer_id: 2)
                 
             }
             .background(ThemeColor.primary.ignoresSafeArea())
             .ignoresSafeArea()
-}
-
-
-            
+    }
+    
+    
+    
 }
 
 struct InfluencerDetailView_Previews: PreviewProvider {

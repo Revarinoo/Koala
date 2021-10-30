@@ -11,9 +11,8 @@ import SwiftUI
 struct KoalaApp: App {
     var body: some Scene {
         WindowGroup {
-//            RegisterView()
-            InfluencerDetailView()
-
+            SplashScreen()
+//            InfluencerDetailView()
         }
     }
 }
