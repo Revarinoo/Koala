@@ -10,6 +10,7 @@ import SwiftUI
 struct InfluencerListView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @AppStorage("token") var token: String = ""
     @ObservedObject var influencerListVM = InfluencerListViewModel()
     @State var isFilterModalShown: Bool = false
     @State var filters: [String] = [""]
@@ -27,7 +28,6 @@ struct InfluencerListView: View {
                         Image(systemName: "chevron.left")
                             .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
                             .foregroundColor(ThemeColor.primary)
-                            .cornerRadius(10)
                     })
                     Spacer()
                     Text("Influencer List")
@@ -74,9 +74,16 @@ struct InfluencerListView: View {
                 ScrollView {
                     VStack(spacing: 16) {
                         ForEach(influencerListVM.influencersModel.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) })) { influencer in
-                            NavigationLink(destination: LoginView()) {
-                                InfluencerCardList(photoURL: influencer.photo, categories: influencer.category, name: influencer.name, location: influencer.location, price: influencer.ratePrice, ER: influencer.rateEngagement, rating: influencer.rating)
-                                    .padding(.horizontal, 10)
+                            if token.isEmpty {
+                                NavigationLink(destination: LoginView()) {
+                                    InfluencerCardList(photoURL: influencer.photo, categories: influencer.category, name: influencer.name, location: influencer.location, price: influencer.ratePrice, ER: influencer.rateEngagement, rating: influencer.rating)
+                                        .padding(.horizontal, 10)
+                                }
+                            } else {
+                                NavigationLink(destination: InfluencerDetailView()) {
+                                    InfluencerCardList(photoURL: influencer.photo, categories: influencer.category, name: influencer.name, location: influencer.location, price: influencer.ratePrice, ER: influencer.rateEngagement, rating: influencer.rating)
+                                        .padding(.horizontal, 10)
+                                }
                             }
                         }
                     }
@@ -92,6 +99,8 @@ struct InfluencerListView: View {
             } else {
                 influencerListVM.callGetInfluencerList()
             }
+            print("GET TOKEN")
+            print(token)
         }
         .sheet(isPresented: $isFilterModalShown) {
             FilterModal(isPresented: $isFilterModalShown)

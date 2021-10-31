@@ -9,10 +9,16 @@ import SwiftUI
 
 @main
 struct KoalaApp: App {
+    
+    @AppStorage("isNewUser") var isNewUser: Bool = true
+    
     var body: some Scene {
         WindowGroup {
-            SplashScreen()
-//            InfluencerDetailView()
+            if isNewUser {
+                SplashScreen()
+            } else {
+                HomepageView(categories: ["Coffee"])
+            }
         }
     }
 }

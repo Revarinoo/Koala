@@ -11,6 +11,8 @@ struct OnboardingView: View {
     
     @ObservedObject var onboardVM = OnboardViewModel()
     @State var nextNavigation: Bool = false
+    @AppStorage("isNewUser") var isNewUser: Bool?
+    
     let columns = [
         GridItem(.flexible(minimum: 115, maximum: 130)),
         GridItem(.flexible(minimum: 115, maximum: 130)),
@@ -66,6 +68,7 @@ struct OnboardingView: View {
                     isActive: $nextNavigation,
                     label: {
                         Button {
+                            isNewUser = false
                             nextNavigation.toggle()
                         } label: {
                             Text("Next")

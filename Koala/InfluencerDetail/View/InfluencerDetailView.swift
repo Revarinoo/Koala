@@ -10,6 +10,8 @@ import SDWebImageSwiftUI
 import MessageUI
 
 struct InfluencerDetailView: View {
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var influencerDetailViewModel = InfluencerDetailViewModel()
     @State var isFavorite: Bool = false
     @State var categories: [String] = []
@@ -28,12 +30,14 @@ struct InfluencerDetailView: View {
                 VStack{
                     HStack{
                         
-                        Button(action:{}){
+                        Button(action:{
+                            self.presentationMode.wrappedValue.dismiss()
+                        }){
                             Image(systemName: "chevron.left")
-                                .resizable()
+                                .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
                                 .foregroundColor(.white)
                                 .scaledToFit()
-                        }.frame(width: 24, height: 24, alignment: .center)
+                        }
                         
                         Spacer()
                         

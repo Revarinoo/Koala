@@ -54,7 +54,10 @@ struct LoginView: View {
                 }
                 
                 NavigationLink(
-                    destination: Text("Login Success").navigationBarBackButtonHidden(true),
+                    destination:
+                        HomepageView(categories: ["Coffee"])
+                        .navigationBarHidden(true)
+                        .navigationBarBackButtonHidden(true),
                     isActive: $loginVM.loginModel.navigate,
                     label: {
                         Button {
@@ -64,9 +67,9 @@ struct LoginView: View {
                             }
                         } label: {
                             Text("Sign In")
-                            .padding(15)
-                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
-                            .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
+                                .padding(15)
+                                .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
+                                .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
                         }
                         .foregroundColor(.white)
                         .background(ThemeColor.primary)
