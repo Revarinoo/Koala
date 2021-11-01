@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 import MessageUI
 
 struct InfluencerDetailView: View {
-    @ObservedObject var influencerDetailViewModel = InfluencerDetailViewModel()
+    @ObservedObject var influencerDetailViewModel = InfluencerDetailViewModel.shared
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var isFavorite: Bool = false
     @State var categories: [String] = []
@@ -58,7 +58,7 @@ struct InfluencerDetailView: View {
                         
                         HStack{
                             
-                            Text(influencerDetailViewModel.influencerModel?.influencer_profile.name ?? " \(influencerID)").font(Font.custom(ThemeFont.poppinsSemiBold, size: 30))
+                            Text(influencerDetailViewModel.influencerModel?.influencer_profile.name ?? "").font(Font.custom(ThemeFont.poppinsSemiBold, size: 30))
                             Image(systemName: "checkmark.seal.fill")
                                 .resizable()
                                 .scaledToFill()
@@ -124,7 +124,7 @@ struct InfluencerDetailView: View {
                         PreviousProjectView(projects: influencerDetailViewModel.influencerModel?.projects)
                         
                         ReviewView(projects: influencerDetailViewModel.influencerModel?.projects ?? []).padding()
-                            .padding(.bottom, 32)
+                            .padding(.bottom, 86)
                             
                     }.frame(width: UIScreen.main.bounds.width, alignment: .top)
                         .ignoresSafeArea()

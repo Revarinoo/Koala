@@ -9,7 +9,7 @@ import Foundation
 import CloudKit
 
 class InfluencerDetailViewModel: ObservableObject {
-    
+    static let shared = InfluencerDetailViewModel()
     @Published var influencerModel: InfluencerDetailModel?
     private let influencerDetailService: InfluencerDetailService = InfluencerDetailService()
     
