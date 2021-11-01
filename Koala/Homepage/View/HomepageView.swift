@@ -10,19 +10,21 @@ import SwiftUI
 struct HomepageView: View {
     @AppStorage("JWT", store: .standard) var token = ""
     @StateObject var recomenndationList = RecommendationViewModel()
+    var userProfile = UserProfileViewModel()
     @State var toRecommendedInfluencerList: Bool = false
-    
     var categories : [String]
     
     init(categories: [String]) {
         self.categories = categories
         categoriesDefault.set(categories, forKey: "myKey")
+        userProfile.callData()
+        //print("Hi \(userProfile.user.name)")
     }
     
     var body: some View {
         VStack {
             HStack(spacing: 5){
-                ProfileButton(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: "Kenneth J")
+                ProfileButton(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: token != "" ? userProfile.user.name : "Guest")
                 Spacer()
                 Button(action:{}){
                     Image(systemName: "bell")
@@ -56,6 +58,8 @@ struct HomepageView: View {
         }
         .onAppear(perform: {
             recomenndationList.callGetInfluencerList(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? [""])
+            
+            
         })
         .navigationBarTitle("")
         .navigationBarHidden(true)

@@ -35,6 +35,8 @@ struct OrderView: View {
             }
             .background(ThemeColor.background.ignoresSafeArea(edges: .bottom))
             .navigationBarTitle(Text("My Orders"))
+            .background(
+                ThemeColor.background.ignoresSafeArea())
         }
         
     }
