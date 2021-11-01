@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HomepageView: View {
-    
-    @ObservedObject var recomenndationList = RecommendationViewModel()
+    @AppStorage("JWT", store: .standard) var token = ""
+    @StateObject var recomenndationList = RecommendationViewModel()
     @State var toRecommendedInfluencerList: Bool = false
     
     var categories : [String]
@@ -17,8 +17,6 @@ struct HomepageView: View {
     init(categories: [String]) {
         self.categories = categories
         categoriesDefault.set(categories, forKey: "myKey")
-        let categoriesList = categoriesDefault.object(forKey: "myKey") as? [String]
-        recomenndationList.callGetInfluencerList(categories: categoriesList ?? ["Coffee"])
     }
     
     var body: some View {
@@ -43,27 +41,22 @@ struct HomepageView: View {
                 Text("Recommendation").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                     .foregroundColor(.black)
                 Spacer()
-                NavigationLink(
-                    destination: RecommendedInfluencerList(categories: categories),
-                    isActive: $toRecommendedInfluencerList,
-                    label: {
-                        Button {
-                            toRecommendedInfluencerList.toggle()
-                        } label: {
-                            Text("See more ").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                                .foregroundColor(.black)
-                        }
-                    })
+                
                 
             }.padding(.leading,16).padding([.trailing], 16.0).padding(.top, 28)
             ScrollView(.vertical){
                 VStack(spacing: 12){
                     ForEach (recomenndationList.recommendationModel){ i in
-                        RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
+                        NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: i.id)) : AnyView(LoginView())) {
+                            RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
+                        }
                     }
                 }
             }
         }
+        .onAppear(perform: {
+            recomenndationList.callGetInfluencerList(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? [""])
+        })
         .navigationBarTitle("")
         .navigationBarHidden(true)
         .padding(.top, 25)
