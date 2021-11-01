@@ -35,7 +35,13 @@ class OrderViewModel: ObservableObject{
                         var erArr : [Double] = []
                         
                         for index in 0..<order.product_data.count{
-                            productType.append(order.product_data[index].product_type)
+                            if (order.product_data[index].product_type == "Instagram Story"){
+                                productType.append("Story")
+                            } else if (order.product_data[index].product_type == "Instagram Post"){
+                                productType.append("Post")
+                            } else if (order.product_data[index].product_type == "Instagram Reels"){
+                                productType.append("Reels")
+                            }
                             if let reach = order.product_data[index].reach{
                                 reachArr.append(reach)
                             }
@@ -46,19 +52,19 @@ class OrderViewModel: ObservableObject{
                                 erArr.append(er)
                             }
                         }
-                        
+                        //let dt = order.order_date.dateFormatter(dateBefore: order.order_date)
                         avgReach = reachArr.reduce(0, +)/reachArr.count
                         avgImpression = impressionArr.reduce(0, +)/impressionArr.count
                         avgER = erArr.average
                     }
-                    let myorder = MyOrders(orderID: order.order_id, name: order.influencer_name, photo: order.influencer_photo, dueDate: order.order_date, eR: String(avgER),orderStatus: order.status,  productType: productType, avgReach: String(Double(avgReach).thousandsFormatter()), avgImpression: String(Double(avgImpression).thousandsFormatter()), avgER: avgER)
+                    let myorder = MyOrders(orderID: order.order_id, name: order.influencer_name, photo: order.influencer_photo, dueDate: order.order_date.dateFormatter(dateBefore: order.order_date), eR: String(avgER),orderStatus: order.status,  productType: productType, avgReach: String(Double(avgReach).thousandsFormatter()), avgImpression: String(Double(avgImpression).thousandsFormatter()), avgER: avgER)
                     orderData.append(myorder)
                 }
             }
             DispatchQueue.main.async {
                 self.orders = orderData
                 self.pendingOrders = orderData.filter({$0.orderStatus == "Pending"})
-                self.ongoingOrders = orderData.filter({$0.orderStatus == "Ongoing"})
+                self.ongoingOrders = orderData.filter({$0.orderStatus == "On Going"})
                 self.completedOrders = orderData.filter({$0.orderStatus == "Completed"})
                 //print("INI YG BARU \(orderData)")
             }
@@ -66,3 +72,9 @@ class OrderViewModel: ObservableObject{
     }
 }
 
+//private func dateFormatter(dateBefore: String) -> Date {
+//        let dateFormatterGet = DateFormatter()
+//        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+//
+//        return dateFormatterGet.date(from: dateBefore) ?? Date()
+//    }

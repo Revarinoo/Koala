@@ -27,3 +27,9 @@ struct OrderProductData: Codable{
     var impression: Int?
     var er: Double?
 }
+
+enum productType: String{
+    case story = "Instagram Story"
+    case post = "Instagram Post"
+    case reels = "Instagram Reels"
+}

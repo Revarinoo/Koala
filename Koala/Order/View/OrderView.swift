@@ -15,8 +15,10 @@ struct OrderView: View {
     init(){
         
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ThemeColor.primary)
+        UISegmentedControl.appearance().backgroundColor = UIColor(ThemeColor.background)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
+        UINavigationBar.appearance().backgroundColor = UIColor(ThemeColor.background)
     }
     var body: some View {
         NavigationView {

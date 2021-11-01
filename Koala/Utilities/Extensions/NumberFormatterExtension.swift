@@ -66,3 +66,16 @@ extension Array where Element: FloatingPoint {
     }
 
 }
+
+extension String{
+    func dateFormatter(dateBefore: String) -> String {
+        let dateFormatterGet = DateFormatter()
+        let dateFormatter = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        
+        let date = dateFormatterGet.date(from: dateBefore) ?? Date()
+        dateFormatter.dateFormat = "d MMMM yyyy"
+        return dateFormatter.string(from: date)
+    }
+    
+}
