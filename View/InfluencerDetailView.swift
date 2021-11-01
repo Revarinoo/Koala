@@ -136,7 +136,7 @@ struct InfluencerDetailView: View {
                 
                 VStack{
                     
-                    WebImage(url: URL(string: photoURL))
+                    WebImage(url: URL(string: influencerDetailViewModel.influencerModel?.influencer_profile.photo ?? ""))
                         .resizable()
                         .scaledToFill()
                         .frame(width: 127, height: 127)
