@@ -31,7 +31,7 @@ struct CampaignOrderCard: View {
                     .cornerRadius(10)
                 VStack (alignment: .leading, spacing: 6) {
                     HStack(spacing: 6) {
-                        ForEach(productTypes.prefix(3), id: \.self) { category in
+                        ForEach(productTypes, id: \.self) { category in
                             Text(category.components(separatedBy: " ").last!)
                                 .font(Font.custom(ThemeFont.poppinsMedium, size: 10))
                                 .frame(width: 71, height: 20)

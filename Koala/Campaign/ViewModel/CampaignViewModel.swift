@@ -22,7 +22,6 @@ class CampaignViewModel: ObservableObject{
     
     func callGetCampaigns() {
         var campaigns: [CampaignModel] = []
-        var campaignTypes: [String] = []
         campaignService.getCampaign() { response in
             if let responseData = response?.data {
                 for campaign in responseData {
@@ -31,6 +30,7 @@ class CampaignViewModel: ObservableObject{
                     let schedule = campaign.schedule
                     let status = campaign.status
                     let photo = campaign.photo
+                    var campaignTypes: [String] = []
                     
                     for type in campaign.type! {
                         campaignTypes.append(type)
