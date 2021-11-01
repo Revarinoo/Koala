@@ -12,13 +12,14 @@ struct KoalaApp: App {
     var body: some Scene {
         WindowGroup {
 //            SplashScreen()
+//            RegisterView()
+            OrderView()
 //            InfluencerDetailView()
 //            RegisterView()
 //            LoginView()
 
 //            RegisterView()
-            TabBar()
-
+//            TabBar()
         }
     }
 }
