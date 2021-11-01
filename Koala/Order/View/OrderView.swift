@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct OrderView: View {
-    @State private var orderTypeSelected : OrderStatus = .pending
     
+    @State private var orderTypeSelected : OrderStatus = .pending
     var pendingOrder : [MyOrders] = []
     
     init(){
@@ -18,24 +18,35 @@ struct OrderView: View {
         UISegmentedControl.appearance().backgroundColor = UIColor(ThemeColor.background)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
-        UINavigationBar.appearance().backgroundColor = UIColor(ThemeColor.background)
     }
     var body: some View {
-        NavigationView {
-            VStack{
+        ZStack(alignment: .topLeading) {
+            
+            Color.bgColorView.edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                VStack(alignment: .trailing) {
+                    HStack {
+                        Text("My Order")
+                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 27))
+                            .foregroundColor(.black)
+                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+                        Spacer()
+                    }
+                }
                 Picker("What is your favorite color?", selection: $orderTypeSelected) {
                     ForEach (OrderStatus.allCases, id: \.self){
                         Text($0.rawValue)                    }
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding([.leading, .trailing], 16)
+                
                 ChosenStatus(selectedStatus: orderTypeSelected )
-                
-                
             }
-            .background(ThemeColor.background.ignoresSafeArea(edges: .bottom))
-            .navigationBarTitle(Text("My Orders"))
         }
+        .navigationBarTitle("", displayMode: .inline)
+        .accentColor(.white)
+        .navigationBarHidden(true)
         
     }
     
