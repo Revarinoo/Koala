@@ -45,14 +45,15 @@ struct CompletedCard: View {
             }.padding(.top, 16).padding(.leading, 16)
             HStack{
                 Spacer()
-                Button(action: {}){
-                    Text("Review").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                        .foregroundColor(.white)
-                        .padding()
-                        .padding([.leading, .trailing])
-                }.frame(height: 38)
-                    .background(ThemeColor.primary)
-                    .cornerRadius(10)
+                NavigationLink(destination: CampaignView()) {
+                        Text("Review").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                            .foregroundColor(.white)
+                            .padding()
+                            .padding([.leading, .trailing])
+                   .frame(height: 38)
+                        .background(ThemeColor.primary)
+                        .cornerRadius(10)
+                }
             }.padding(.bottom, 9).padding(.trailing, 16)
             
             

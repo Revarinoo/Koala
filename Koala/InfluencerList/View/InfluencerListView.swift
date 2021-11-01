@@ -77,7 +77,7 @@ struct InfluencerListView: View {
                 
                 ScrollView {
                     VStack(spacing: 16) {
-                        ForEach(influencerListVM.influencersModel.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) })) { influencer in
+                        ForEach(influencerListVM.influencersModel.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) }), id:\.id) { influencer in
                             NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: influencer.id)) : AnyView(LoginView())) {
                                 InfluencerCardList(photoURL: influencer.photo, categories: influencer.category, name: influencer.name, location: influencer.location, price: influencer.ratePrice, ER: influencer.rateEngagement, rating: influencer.rating)
                                     .padding(.horizontal, 10)
