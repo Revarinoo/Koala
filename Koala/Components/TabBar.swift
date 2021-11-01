@@ -30,7 +30,7 @@ struct TabBar: View {
                     selectedTab == 2 ? Image("orderactive") : Image("ordergrey")
                     Text("Orders")
                 }.tag(2)
-            NavigationView{Text("Homepage")}
+            NavigationView{CampaignView()}
                 .tabItem{
                     selectedTab == 3 ? Image("campaignactive") : Image("campaigngrey")
                     Text("Campaign")
