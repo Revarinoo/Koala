@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 struct CampaignOrderCard: View {
     
     let photoURL: String
+    let productTypes: [String]
     let name: String
     let date: Date
     
@@ -29,6 +30,16 @@ struct CampaignOrderCard: View {
                     .frame(width: 83, height: 88.68)
                     .cornerRadius(10)
                 VStack (alignment: .leading, spacing: 6) {
+                    HStack(spacing: 6) {
+                        ForEach(productTypes.prefix(3), id: \.self) { category in
+                            Text(category)
+                                .font(Font.custom(ThemeFont.poppinsMedium, size: 10))
+                                .frame(width: 71, height: 20)
+                                .foregroundColor(ThemeColor.primary)
+                                .background(ThemeColor.primaryLight)
+                                .cornerRadius(5)
+                        }
+                    }
                     Text("\(name)")
                         .font(Font.custom(ThemeFont.poppinsMedium, size: 18))
                         .foregroundColor(.black)
@@ -71,6 +82,6 @@ struct CampaignOrderCard: View {
 
 struct CampaignOrderCard_Previews: PreviewProvider {
     static var previews: some View {
-        CampaignOrderCard(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: "11 Nov Campaign", date: Date().addingTimeInterval(-86400*31))
+        CampaignOrderCard(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", productTypes: ["Story", "Post"], name: "11 Nov Campaign", date: Date().addingTimeInterval(-86400*31)).previewLayout(.sizeThatFits)
     }
 }
