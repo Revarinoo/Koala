@@ -20,9 +20,7 @@ struct CampaignView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.bgColorView.edgesIgnoringSafeArea(.all)
-            
+        NavigationView {
             VStack {
                 VStack(alignment: .trailing) {
                     Button(action: {
@@ -52,29 +50,35 @@ struct CampaignView: View {
                 ScrollView(.vertical){
                     VStack(spacing: 12){
                         ForEach(campaignList.campaignModel) { i in
-                            if campaignType.contains("Upcoming") {
-                                if i.schedule >= Date().addingTimeInterval(-86400) {
-                                    CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
-                                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-                                }
-                            } else {
-                                if i.schedule < Date().addingTimeInterval(-86400) {
-                                    CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
-                                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                            NavigationLink(destination: Text("Hi")) {
+                                if campaignType.contains("Upcoming") {
+                                    if i.schedule >= Date().addingTimeInterval(-86400) {
+                                        CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
+                                            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                                    }
+                                } else {
+                                    if i.schedule < Date().addingTimeInterval(-86400) {
+                                        CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
+                                            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
 
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-            
-        }
-        .navigationBarTitle("", displayMode: .inline)
-        .accentColor(.white)
-        .navigationBarHidden(true)
-        .onAppear() {
-            campaignList.callGetCampaigns()
+            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarHidden(true)
+            .onAppear(perform: {
+                campaignList.callGetCampaigns()
+                print("Print init")
+                print(campaignList.campaignModel)
+                print("print ini beres")
+            })
+            .ignoresSafeArea()
+            .padding(.top, 10)
+            .background(ThemeColor.background.ignoresSafeArea())
         }
     }
 }

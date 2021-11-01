@@ -20,19 +20,14 @@ struct OrderView: View {
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
     }
     var body: some View {
-        ZStack(alignment: .topLeading) {
-            
-            Color.bgColorView.edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                VStack(alignment: .trailing) {
-                    HStack {
-                        Text("My Order")
-                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 27))
-                            .foregroundColor(.black)
-                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
-                        Spacer()
-                    }
+        NavigationView {
+            VStack{
+                HStack {
+                    Text("My Orders")
+                        .font(Font.custom(ThemeFont.poppinsSemiBold, size: 27))
+                        .foregroundColor(.black)
+                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+                    Spacer()
                 }
                 Picker("What is your favorite color?", selection: $orderTypeSelected) {
                     ForEach (OrderStatus.allCases, id: \.self){
@@ -43,6 +38,11 @@ struct OrderView: View {
                 
                 ChosenStatus(selectedStatus: orderTypeSelected )
             }
+            .padding(.top, 40)
+            .background(ThemeColor.background.ignoresSafeArea())
+            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarHidden(true)
+            
         }
         .navigationBarTitle("", displayMode: .inline)
         .accentColor(.white)
