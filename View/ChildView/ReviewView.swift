@@ -37,7 +37,7 @@ struct ReviewView: View {
             
                 VStack(spacing:12){
                     ForEach(projects){ project in
-                        ReviewCard(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: project.businessOwner_name, message: project.comment, rating: Int(project.rating))
+                        ReviewCard(photoURL: project.businessOwner_photo, name: project.businessOwner_name, message: project.comment, rating: Int(project.rating))
                     }
                 }
             
