@@ -18,7 +18,7 @@ struct CategoriesCard: View {
         
         VStack(spacing: 6) {
             NavigationLink(
-                destination: InfluencerListView(filters: [category]),
+                destination: InfluencerListView(),
                 isActive: $gotoInfluencerList,
                 label: {
                     Button(action: {
@@ -28,7 +28,7 @@ struct CategoriesCard: View {
                             .frame( maxWidth: 34, maxHeight: 34, alignment: .center)
                     }
                         .frame(width: 64.0, height: 64.0)
-                        .background(Color(UIColor(named: "primary")!))
+                            .background(Color(UIColor(named: "primary")!))
                         .cornerRadius(10)
                         .shadow(color: .gray, radius: 3, x: 1, y: 2)
                 })

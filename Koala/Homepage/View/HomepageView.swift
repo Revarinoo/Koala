@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomepageView: View {
-    
+    @AppStorage("JWT", store: .standard) var token = ""
     @ObservedObject var recomenndationList = RecommendationViewModel()
     @State var toRecommendedInfluencerList: Bool = false
     
@@ -43,23 +43,15 @@ struct HomepageView: View {
                 Text("Recommendation").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                     .foregroundColor(.black)
                 Spacer()
-                NavigationLink(
-                    destination: RecommendedInfluencerList(categories: categories),
-                    isActive: $toRecommendedInfluencerList,
-                    label: {
-                        Button {
-                            toRecommendedInfluencerList.toggle()
-                        } label: {
-                            Text("See more ").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                                .foregroundColor(.black)
-                        }
-                    })
+                
                 
             }.padding(.leading,16).padding([.trailing], 16.0).padding(.top, 28)
             ScrollView(.vertical){
                 VStack(spacing: 12){
                     ForEach (recomenndationList.recommendationModel){ i in
-                        RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
+                        NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: .constant(i.id))) : AnyView(LoginView())) {
+                            RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
+                        }
                     }
                 }
             }

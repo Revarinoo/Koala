@@ -8,12 +8,20 @@
 import SwiftUI
 
 struct InfluencerListView: View {
-    
+    @AppStorage("JWT", store: .standard) var token = ""
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var influencerListVM = InfluencerListViewModel()
     @State var isFilterModalShown: Bool = false
     @State var filters: [String] = [""]
     @State private var searchText = ""
+    
+    init() {
+        if filters[0] != "" {
+            influencerListVM.callGetInfluencerByCategory(filters[0].components(separatedBy: " ").first!)
+        } else {
+            influencerListVM.callGetInfluencerList()
+        }
+    }
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -74,7 +82,7 @@ struct InfluencerListView: View {
                 ScrollView {
                     VStack(spacing: 16) {
                         ForEach(influencerListVM.influencersModel.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) })) { influencer in
-                            NavigationLink(destination: LoginView()) {
+                            NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: .constant(influencer.id))) : AnyView(LoginView())) {
                                 InfluencerCardList(photoURL: influencer.photo, categories: influencer.category, name: influencer.name, location: influencer.location, price: influencer.ratePrice, ER: influencer.rateEngagement, rating: influencer.rating)
                                     .padding(.horizontal, 10)
                             }
@@ -86,13 +94,13 @@ struct InfluencerListView: View {
         .navigationBarTitle("", displayMode: .inline)
         .accentColor(.white)
         .navigationBarHidden(true)
-        .onAppear() {
-            if filters[0] != "" {
-                influencerListVM.callGetInfluencerByCategory(filters[0].components(separatedBy: " ").first!)
-            } else {
-                influencerListVM.callGetInfluencerList()
-            }
-        }
+//        .onAppear() {
+//            if filters[0] != "" {
+//                influencerListVM.callGetInfluencerByCategory(filters[0].components(separatedBy: " ").first!)
+//            } else {
+//                influencerListVM.callGetInfluencerList()
+//            }
+//        }
         .sheet(isPresented: $isFilterModalShown) {
             FilterModal(isPresented: $isFilterModalShown)
         }
@@ -101,6 +109,6 @@ struct InfluencerListView: View {
 
 struct InfluencerListView_Previews: PreviewProvider {
     static var previews: some View {
-        InfluencerListView(filters: ["Street Food"])
+        InfluencerListView()
     }
 }

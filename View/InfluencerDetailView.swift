@@ -10,16 +10,19 @@ import SDWebImageSwiftUI
 import MessageUI
 
 struct InfluencerDetailView: View {
-    @ObservedObject var influencerDetailViewModel = InfluencerDetailViewModel()
+    @ObservedObject var influencerDetailViewModel = InfluencerDetailViewModel.shared
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var isFavorite: Bool = false
     @State var categories: [String] = []
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
     @State var photoURL = "https://assets.teenvogue.com/photos/5fd4d29fe6ff71e902f97c1a/4:3/w_2443,h_1832,c_limit/taylor-evermore-resized.jpg"
+    @Binding var influencerID: Int
     
-    init() {
-          UIScrollView.appearance().bounces = false
-       }
+    init(influencerID: Binding<Int>) {
+        UIScrollView.appearance().bounces = false
+        _influencerID = influencerID
+    }
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
@@ -27,7 +30,9 @@ struct InfluencerDetailView: View {
                 VStack{
                     HStack{
                         
-                        Button(action:{}){
+                        Button(action:{
+                            self.presentationMode.wrappedValue.dismiss()
+                        }){
                             Image(systemName: "chevron.left")
                                 .resizable()
                                 .foregroundColor(.white)
@@ -53,7 +58,7 @@ struct InfluencerDetailView: View {
                         
                         HStack{
                             
-                            Text(influencerDetailViewModel.influencerModel?.influencer_profile.name ?? "Taylor Swift").font(Font.custom(ThemeFont.poppinsSemiBold, size: 30))
+                            Text(influencerDetailViewModel.influencerModel?.influencer_profile.name ?? "").font(Font.custom(ThemeFont.poppinsSemiBold, size: 30))
                             Image(systemName: "checkmark.seal.fill")
                                 .resizable()
                                 .scaledToFill()
@@ -119,7 +124,7 @@ struct InfluencerDetailView: View {
                         PreviousProjectView(projects: influencerDetailViewModel.influencerModel?.projects)
                         
                         ReviewView(projects: influencerDetailViewModel.influencerModel?.projects ?? []).padding()
-                            .padding(.bottom, 32)
+                            .padding(.bottom, 86)
                             
                     }.frame(width: UIScreen.main.bounds.width, alignment: .top)
                         .ignoresSafeArea()
@@ -147,11 +152,9 @@ struct InfluencerDetailView: View {
         }
            
     }.navigationBarHidden(true)
-            .onAppear{
-
-                influencerDetailViewModel.callGetInfluencerDetail(influencer_id: 2)
-                
-            }
+            .onAppear(perform: {
+                influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
+            })
             .background(ThemeColor.primary.ignoresSafeArea())
             .ignoresSafeArea()
 }
@@ -162,7 +165,7 @@ struct InfluencerDetailView: View {
 
 struct InfluencerDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        InfluencerDetailView()
+        InfluencerDetailView(influencerID: .constant(1))
     }
 }
 
