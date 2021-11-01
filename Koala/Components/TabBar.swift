@@ -24,13 +24,13 @@ struct TabBar: View {
                     selectedTab == 1 ? Image("influenceractive") : Image("influencergrey")
                     Text("influencer")
                 }.tag(1)
-            NavigationView{
-                Image(systemName: "person")}
+            //NavigationView{
+                OrderView()//}
                 .tabItem{
                     selectedTab == 2 ? Image("orderactive") : Image("ordergrey")
                     Text("Orders")
                 }.tag(2)
-            NavigationView{Text("Homepage")}
+            NavigationView{CampaignView()}
                 .tabItem{
                     selectedTab == 3 ? Image("campaignactive") : Image("campaigngrey")
                     Text("Campaign")
