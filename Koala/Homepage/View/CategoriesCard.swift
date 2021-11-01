@@ -18,7 +18,7 @@ struct CategoriesCard: View {
         
         VStack(spacing: 6) {
             NavigationLink(
-                destination: InfluencerListView(filters: [category]),
+                destination: InfluencerListView(),
                 isActive: $gotoInfluencerList,
                 label: {
                     Button(action: {

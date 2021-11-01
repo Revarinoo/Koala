@@ -15,7 +15,13 @@ struct InfluencerListView: View {
     @State var filters: [String] = [""]
     @State private var searchText = ""
     
-
+    init() {
+        if filters[0] != "" {
+            influencerListVM.callGetInfluencerByCategory(filters[0].components(separatedBy: " ").first!)
+        } else {
+            influencerListVM.callGetInfluencerList()
+        }
+    }
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -88,13 +94,13 @@ struct InfluencerListView: View {
         .navigationBarTitle("", displayMode: .inline)
         .accentColor(.white)
         .navigationBarHidden(true)
-        .onAppear() {
-            if filters[0] != "" {
-                influencerListVM.callGetInfluencerByCategory(filters[0].components(separatedBy: " ").first!)
-            } else {
-                influencerListVM.callGetInfluencerList()
-            }
-        }
+//        .onAppear() {
+//            if filters[0] != "" {
+//                influencerListVM.callGetInfluencerByCategory(filters[0].components(separatedBy: " ").first!)
+//            } else {
+//                influencerListVM.callGetInfluencerList()
+//            }
+//        }
         .sheet(isPresented: $isFilterModalShown) {
             FilterModal(isPresented: $isFilterModalShown)
         }
