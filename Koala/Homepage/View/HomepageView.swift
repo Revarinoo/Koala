@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomepageView: View {
     @AppStorage("JWT", store: .standard) var token = ""
-    @ObservedObject var recomenndationList = RecommendationViewModel()
+    @StateObject var recomenndationList = RecommendationViewModel()
     @State var toRecommendedInfluencerList: Bool = false
     
     var categories : [String]
@@ -17,8 +17,6 @@ struct HomepageView: View {
     init(categories: [String]) {
         self.categories = categories
         categoriesDefault.set(categories, forKey: "myKey")
-        let categoriesList = categoriesDefault.object(forKey: "myKey") as? [String]
-        recomenndationList.callGetInfluencerList(categories: categoriesList ?? ["Coffee"])
     }
     
     var body: some View {
@@ -26,7 +24,10 @@ struct HomepageView: View {
             HStack(spacing: 5){
                 ProfileButton(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: "Kenneth J")
                 Spacer()
-                Button(action:{}){
+                Button(action:{
+                    token = ""
+                    
+                }){
                     Image(systemName: "bell")
                         .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
                 }
@@ -49,13 +50,16 @@ struct HomepageView: View {
             ScrollView(.vertical){
                 VStack(spacing: 12){
                     ForEach (recomenndationList.recommendationModel){ i in
-                        NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: .constant(i.id))) : AnyView(LoginView())) {
+                        NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: i.id)) : AnyView(LoginView())) {
                             RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
                         }
                     }
                 }
             }
         }
+        .onAppear(perform: {
+            recomenndationList.callGetInfluencerList(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? [""])
+        })
         .navigationBarTitle("")
         .navigationBarHidden(true)
         .padding(.top, 25)

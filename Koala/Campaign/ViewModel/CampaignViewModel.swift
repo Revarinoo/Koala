@@ -22,21 +22,24 @@ class CampaignViewModel: ObservableObject{
     
     func callGetCampaigns() {
         var campaigns: [CampaignModel] = []
-        var campaignPhotos: [String] = []
+        var campaignTypes: [String] = []
         campaignService.getCampaign() { response in
             if let responseData = response?.data {
                 for campaign in responseData {
+                    let content_id = campaign.content_id
                     let name = campaign.name
                     let schedule = campaign.schedule
                     let status = campaign.status
+                    let photo = campaign.photo
                     
-                    for picture in campaign.photo! {
-                        campaignPhotos.append(picture)
+                    for type in campaign.type! {
+                        campaignTypes.append(type)
                     }
                     
-                    let campaign = CampaignModel(name: name!, photo: campaignPhotos, schedule: self.dateFormatter(dateBefore: schedule!), status: status!)
+                    let campaign = CampaignModel(content_id: content_id!, name: name!, photo: photo!, schedule: self.dateFormatter(dateBefore: schedule!), status: status!, type: campaignTypes)
                     
                     campaigns.append(campaign)
+                    print(campaign)
                 }
             }
             

@@ -3,7 +3,7 @@
 //  Koala
 //
 //  Created by Sholihatul Richas on 25/10/21.
-//
+//  Edjted by Syahrul F
 
 import SwiftUI
 
@@ -12,7 +12,7 @@ struct TabBar: View {
     
     var body: some View {
         NavigationView {
-            TabView(selection: $selectedTab) {
+            TabView(selection: $selectedTab){
                 HomepageView(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? ["Coffee"])
                     .tabItem{
                         selectedTab == 0 ? Image("discoveractive") : Image("discovergrey")
@@ -38,7 +38,8 @@ struct TabBar: View {
                         selectedTab == 4 ? Image("reportactive") : Image("reportgrey")
                         Text("Report")
                     }.tag(4)
-            }.accentColor(Color(UIColor(named: "primary")!))
+            }
+            .accentColor(Color(UIColor(named: "primary")!))
         }
     }
 }

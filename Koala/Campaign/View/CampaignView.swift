@@ -4,12 +4,11 @@
 //
 //  Created by Jonathan Clive on 27/10/21.
 //
-
 import SwiftUI
 
 struct CampaignView: View {
 //    let campaigns = CampaignViewModel().campaigns
-    @ObservedObject var campaignList = CampaignViewModel()
+    @StateObject var campaignList = CampaignViewModel()
     @State private var campaignType = "Upcoming"
     var campaignTypes = ["Upcoming", "Completed"]
     
@@ -18,11 +17,10 @@ struct CampaignView: View {
         UISegmentedControl.appearance().backgroundColor = .white
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.gray], for: .normal)
-        campaignList.callGetCampaigns()
     }
     
     var body: some View {
-        ZStack(alignment: .topLeading) {
+        ZStack {
             Color.bgColorView.edgesIgnoringSafeArea(.all)
             
             VStack {
@@ -56,12 +54,12 @@ struct CampaignView: View {
                         ForEach(campaignList.campaignModel) { i in
                             if campaignType.contains("Upcoming") {
                                 if i.schedule >= Date().addingTimeInterval(-86400) {
-                                    CampaignCard(photoURL: i.photo[0], name: i.name, date: i.schedule)
+                                    CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
                                         .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                                 }
                             } else {
                                 if i.schedule < Date().addingTimeInterval(-86400) {
-                                    CampaignCard(photoURL: i.photo[0], name: i.name, date: i.schedule)
+                                    CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
                                         .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
 
                                 }
@@ -70,11 +68,14 @@ struct CampaignView: View {
                     }
                 }
             }
-            .padding(.top, 10)
+            
         }
         .navigationBarTitle("", displayMode: .inline)
         .accentColor(.white)
         .navigationBarHidden(true)
+        .onAppear() {
+            campaignList.callGetCampaigns()
+        }
     }
 }
 

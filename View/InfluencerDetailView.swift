@@ -10,18 +10,18 @@ import SDWebImageSwiftUI
 import MessageUI
 
 struct InfluencerDetailView: View {
-    @ObservedObject var influencerDetailViewModel = InfluencerDetailViewModel.shared
+    @StateObject var influencerDetailViewModel = InfluencerDetailViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var isFavorite: Bool = false
     @State var categories: [String] = []
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
     @State var photoURL = "https://assets.teenvogue.com/photos/5fd4d29fe6ff71e902f97c1a/4:3/w_2443,h_1832,c_limit/taylor-evermore-resized.jpg"
-    @Binding var influencerID: Int
+    var influencerID: Int
     
-    init(influencerID: Binding<Int>) {
+    init(influencerID: Int) {
         UIScrollView.appearance().bounces = false
-        _influencerID = influencerID
+        self.influencerID = influencerID
     }
 
     var body: some View {
@@ -136,7 +136,7 @@ struct InfluencerDetailView: View {
                 
                 VStack{
                     
-                    WebImage(url: URL(string: photoURL))
+                    WebImage(url: URL(string: influencerDetailViewModel.influencerModel?.influencer_profile.photo ?? ""))
                         .resizable()
                         .scaledToFill()
                         .frame(width: 127, height: 127)
@@ -165,7 +165,7 @@ struct InfluencerDetailView: View {
 
 struct InfluencerDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        InfluencerDetailView(influencerID: .constant(1))
+        InfluencerDetailView(influencerID: 1)
     }
 }
 
