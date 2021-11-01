@@ -32,7 +32,7 @@ struct CampaignOrderCard: View {
                 VStack (alignment: .leading, spacing: 6) {
                     HStack(spacing: 6) {
                         ForEach(productTypes.prefix(3), id: \.self) { category in
-                            Text(category)
+                            Text(category.components(separatedBy: " ").last!)
                                 .font(Font.custom(ThemeFont.poppinsMedium, size: 10))
                                 .frame(width: 71, height: 20)
                                 .foregroundColor(ThemeColor.primary)

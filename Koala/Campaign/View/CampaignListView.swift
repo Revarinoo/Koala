@@ -10,7 +10,7 @@ import SwiftUI
 struct CampaignListView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var campaignListVM = CampaignListViewModel()
+    @StateObject var campaignListVM = CampaignViewModel()
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -36,12 +36,10 @@ struct CampaignListView: View {
                 
                 ScrollView {
                     VStack(spacing: 16) {
-//                        ForEach(campaignListVM.campaignLists) { campaign in
-//                            NavigationLink(destination: LoginView()) {
-//                                CampaignOrderCard(photoURL: campaign.campaignPhoto, name: campaign.campaignName, date: campaign.campaignDate)
-//                                    .padding(.horizontal)
-//                            }
-//                        }
+                        ForEach(campaignListVM.campaignModel) { campaign in
+                            CampaignOrderCard(photoURL: campaign.photo, productTypes: campaign.type, name: campaign.name, date: campaign.schedule)
+                                .padding(.horizontal)
+                        }
                     }
                 }
             }
@@ -49,6 +47,9 @@ struct CampaignListView: View {
         .navigationBarTitle("", displayMode: .inline)
         .accentColor(.white)
         .navigationBarHidden(true)
+        .onAppear() {
+            campaignListVM.callGetCampaigns()
+        }
     }
 }
 
