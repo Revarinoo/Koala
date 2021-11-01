@@ -45,6 +45,7 @@ class InfluencerDetailViewModel: ObservableObject {
                 for project in unwrappedProjects {
                     projects.append(ProjectModel(id: project.order_id, business_photo: project.business_photo ?? "", sum_impressions: project.sum_impressions ?? 0, sum_reach: project.sum_reach ?? 0, businessOwner_photo: project.businessOwner_photo ?? "", businessOwner_name: project.businessOwner_name, comment: project.comment ?? "", rating: project.rating ?? 0.0))
                 }
+                
             }
 
             guard let unwrapped = influencer_profile else {return}

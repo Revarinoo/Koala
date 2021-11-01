@@ -9,17 +9,21 @@ import SwiftUI
 
 @main
 struct KoalaApp: App {
+    @AppStorage("JWT", store: .standard) var token = ""
+    
     var body: some Scene {
         WindowGroup {
-//            SplashScreen()
+            if token != "" {
+                TabBar()
+            }
+            else {
+                SplashScreen()
+            }
 //            RegisterView()
-            OrderView()
+//            OrderView()
 //            InfluencerDetailView()
-//            RegisterView()
 //            LoginView()
 
-//            RegisterView()
-//            TabBar()
         }
     }
 }
