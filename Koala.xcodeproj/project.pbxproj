@@ -84,6 +84,7 @@
 		84972DA22726711D0097D2D2 /* ReviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84972DA12726711D0097D2D2 /* ReviewCard.swift */; };
 		84972DA4272677300097D2D2 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84972DA3272677300097D2D2 /* ReviewViewModel.swift */; };
 		84972DA62726773B0097D2D2 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84972DA52726773B0097D2D2 /* Review.swift */; };
+		84CDC3D22730EDAB0012304A /* ResultInfuencerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3D12730EDAA0012304A /* ResultInfuencerCard.swift */; };
 		D2131CAD2729172D006ACDC2 /* PendingOrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CAC2729172D006ACDC2 /* PendingOrdersViewModel.swift */; };
 		D2131CAF272917DA006ACDC2 /* MyOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CAE272917DA006ACDC2 /* MyOrders.swift */; };
 		D2131CB12729AC7D006ACDC2 /* MyOrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CB02729AC7D006ACDC2 /* MyOrderService.swift */; };
@@ -209,6 +210,7 @@
 		84972DA12726711D0097D2D2 /* ReviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReviewCard.swift; path = View/ChildView/ReviewCard.swift; sourceTree = SOURCE_ROOT; };
 		84972DA3272677300097D2D2 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReviewViewModel.swift; path = View/ChildView/ReviewViewModel.swift; sourceTree = SOURCE_ROOT; };
 		84972DA52726773B0097D2D2 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Review.swift; path = Model/Review.swift; sourceTree = SOURCE_ROOT; };
+		84CDC3D12730EDAA0012304A /* ResultInfuencerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultInfuencerCard.swift; sourceTree = "<group>"; };
 		D2131CAC2729172D006ACDC2 /* PendingOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOrdersViewModel.swift; sourceTree = "<group>"; };
 		D2131CAE272917DA006ACDC2 /* MyOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrders.swift; sourceTree = "<group>"; };
 		D2131CB02729AC7D006ACDC2 /* MyOrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderService.swift; sourceTree = "<group>"; };
@@ -630,6 +632,7 @@
 				8451B848272B923F0061D389 /* CampaignDetailReportView.swift */,
 				8451B84A272B92DB0061D389 /* ResultExpenseCard.swift */,
 				8451B84C272B95510061D389 /* ResultTypeCard.swift */,
+				84CDC3D12730EDAA0012304A /* ResultInfuencerCard.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1152,6 +1155,7 @@
 				D2C3C5A02728674400C338B4 /* OrderView.swift in Sources */,
 				2FCB0B1A272462690017C9D6 /* SecureInputView.swift in Sources */,
 				8451B842272A55600061D389 /* CampaignViewModel.swift in Sources */,
+				84CDC3D22730EDAB0012304A /* ResultInfuencerCard.swift in Sources */,
 				D2995592271F0D120025D0CB /* CategoriesCard.swift in Sources */,
 				D2131CAD2729172D006ACDC2 /* PendingOrdersViewModel.swift in Sources */,
 			);

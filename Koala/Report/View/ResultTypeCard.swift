@@ -36,6 +36,7 @@ struct ResultTypeCard: View {
         .background(Color.init(hex: "FFF1ED"))
         .cornerRadius(10)
         .shadow(color: .gray, radius: 3, x: 1, y: 2)
+        .padding(5)
     }
 }
 
