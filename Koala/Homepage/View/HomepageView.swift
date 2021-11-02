@@ -24,7 +24,7 @@ struct HomepageView: View {
     var body: some View {
         VStack {
             HStack(spacing: 5){
-                ProfileButton(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: token != "" ? userProfile.user.name : "Guest")
+                ProfileButton(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: userProfile.user.name != "" ? userProfile.user.name : "Guest")
                 Spacer()
                 Button(action:{}){
                     Image(systemName: "bell")
