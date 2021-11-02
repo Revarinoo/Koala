@@ -14,9 +14,11 @@ struct CampaignDetailReportView: View {
                 .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                 .foregroundColor(.black)
             ResultExpenseCard(price: 1500000)
-            ResultTypeCard(type: "Post")
-            ResultTypeCard(type: "Story")
-            ResultTypeCard(type: "Reels")
+            HStack (alignment: .center) {
+                ResultTypeCard(type: "Story", reachNum: "10.1K", impressionNum: "2.1K")
+                ResultTypeCard(type: "Post", reachNum: "10.1K", impressionNum: "2.1K")
+                ResultTypeCard(type: "Reels", reachNum: "10.1K", impressionNum: "2.1K")
+            }
         }
     }
 }
