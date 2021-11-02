@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F0D9DA7273118FB0012DAAF /* CampaignDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D9DA6273118FB0012DAAF /* CampaignDetailView.swift */; };
 		2F1D57802726539800E4354C /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D577F2726539800E4354C /* SearchBar.swift */; };
 		2F1D578227266F5A00E4354C /* RecommendedInfluencerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D578127266F5A00E4354C /* RecommendedInfluencerList.swift */; };
 		2F2DDD76272F6637007FA0FC /* CampaignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2DDD75272F6637007FA0FC /* CampaignService.swift */; };
@@ -125,6 +126,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F0D9DA6273118FB0012DAAF /* CampaignDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignDetailView.swift; sourceTree = "<group>"; };
 		2F1D577F2726539800E4354C /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		2F1D578127266F5A00E4354C /* RecommendedInfluencerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedInfluencerList.swift; sourceTree = "<group>"; };
 		2F2DDD75272F6637007FA0FC /* CampaignService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignService.swift; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 				8451B835272A55570061D389 /* CampaignOrderCard.swift */,
 				8451B839272A55570061D389 /* CampaignReportCard.swift */,
 				8451B836272A55570061D389 /* CampaignView.swift */,
+				2F0D9DA6273118FB0012DAAF /* CampaignDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1015,6 +1018,7 @@
 				D2C3C59E272863F200C338B4 /* CompletedCard.swift in Sources */,
 				F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */,
 				F7A52B922727073B0067D3E6 /* FollowerProfile.swift in Sources */,
+				2F0D9DA7273118FB0012DAAF /* CampaignDetailView.swift in Sources */,
 				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
 				2F6C2C2927215DE70026EF3E /* RatingStar.swift in Sources */,
 				78B9333C2726A0380040882D /* InfluencerDetailView.swift in Sources */,
