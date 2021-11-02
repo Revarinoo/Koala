@@ -9,8 +9,11 @@ import SwiftUI
 
 struct TabBar: View {
     @State var selectedTab = 0
-    
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor(ThemeColor.background)
+    }
     var body: some View {
+        
         NavigationView {
             TabView(selection: $selectedTab){
                 HomepageView(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? ["Coffee"])
