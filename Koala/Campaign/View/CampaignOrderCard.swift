@@ -27,6 +27,7 @@ struct CampaignOrderCard: View {
             HStack (alignment: .center) {
                 WebImage(url: URL(string: photoURL))
                     .resizable()
+                    .aspectRatio(contentMode: .fill)
                     .frame(width: 83, height: 88.68)
                     .cornerRadius(10)
                 VStack (alignment: .leading, spacing: 6) {
