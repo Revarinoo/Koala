@@ -67,7 +67,7 @@ struct InfluencerDetailView: View {
                             
                         }
                         
-                        Text(influencerDetailViewModel.influencerModel?.influencer_profile.location ?? "Jakarta Utara").font(Font.custom(ThemeFont.poppinsMedium, size: 14)).padding(.bottom, 22)
+                        Text(influencerDetailViewModel.influencerModel?.influencer_profile.location ?? "Jakarta Utara").font(Font.custom(ThemeFont.poppinsMedium, size: 14)).padding(.bottom, 15)
                        
                         Text("Specialty").font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                         
@@ -136,7 +136,7 @@ struct InfluencerDetailView: View {
                 
                 VStack{
                     
-                    WebImage(url: URL(string: photoURL))
+                    WebImage(url: URL(string: influencerDetailViewModel.influencerModel?.influencer_profile.photo ?? ""))
                         .resizable()
                         .scaledToFill()
                         .frame(width: 127, height: 127)

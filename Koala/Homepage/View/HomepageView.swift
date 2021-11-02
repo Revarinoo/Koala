@@ -26,7 +26,10 @@ struct HomepageView: View {
             HStack(spacing: 5){
                 ProfileButton(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: token != "" ? userProfile.user.name : "Guest")
                 Spacer()
-                Button(action:{}){
+                Button(action:{
+                    token = ""
+                    
+                }){
                     Image(systemName: "bell")
                         .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
                 }

@@ -23,6 +23,13 @@ struct OrderView: View {
     var body: some View {
         NavigationView {
             VStack{
+                HStack {
+                    Text("My Orders")
+                        .font(Font.custom(ThemeFont.poppinsSemiBold, size: 27))
+                        .foregroundColor(.black)
+                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+                    Spacer()
+                }
                 Picker("What is your favorite color?", selection: $orderTypeSelected) {
                     ForEach (OrderStatus.allCases, id: \.self){
                         Text($0.rawValue)                    }
@@ -33,10 +40,11 @@ struct OrderView: View {
                 
                 
             }
-            .background(ThemeColor.background.ignoresSafeArea(edges: .bottom))
-            .navigationBarTitle(Text("My Orders"))
-            .background(
-                ThemeColor.background.ignoresSafeArea())
+            .padding(.top, 40)
+            .background(ThemeColor.background.ignoresSafeArea())
+            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarHidden(true)
+            
         }
         
     }
