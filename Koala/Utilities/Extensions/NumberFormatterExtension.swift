@@ -11,6 +11,25 @@ extension Double {
     var oneDecimalFormatter: String {
         return String(format: "%.1f", self).replacingOccurrences(of: ".", with: ",")
     }
+//    var oneDecimalFormatter: String {
+//        return String(format: "%.f", self).replacingOccurrences(of: ".", with: ",")
+//    }
+    func thousandsFormatter() ->String{
+        if (self >= 1000000000) {
+            return "\((self / 1000000000).oneDecimalFormatter) B";
+        }
+        if (self >= 1000000) {
+            return "\((self / 1000000).oneDecimalFormatter)M";
+        }
+        if (self >= 1000) {
+            return "\(Int(self / 1000))K";
+        }
+        return String(Int(self))
+    }
+    func rounded(toPlaces places:Int) -> Double {
+            let divisor = pow(10.0, Double(places))
+            return (self * divisor).rounded() / divisor
+        }
 }
 
 extension Int {
@@ -30,4 +49,33 @@ extension NumberFormatter {
         formatter.numberStyle = .currency
         return formatter
     }
+}
+
+//to get average of float array (Double, Float)
+extension Array where Element: FloatingPoint {
+    
+    var sum: Element {
+        return reduce(0, +)
+    }
+
+    var average: Element {
+        guard !isEmpty else {
+            return 0
+        }
+        return sum / Element(count)
+    }
+
+}
+
+extension String{
+    func dateFormatter(dateBefore: String) -> String {
+        let dateFormatterGet = DateFormatter()
+        let dateFormatter = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        
+        let date = dateFormatterGet.date(from: dateBefore) ?? Date()
+        dateFormatter.dateFormat = "d MMMM yyyy"
+        return dateFormatter.string(from: date)
+    }
+    
 }
