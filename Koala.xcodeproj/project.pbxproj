@@ -53,6 +53,7 @@
 		2FCB0B242724FE5E0017C9D6 /* InstaAccModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B222724FE5E0017C9D6 /* InstaAccModel.swift */; };
 		2FCB0B282725186B0017C9D6 /* FeedIgFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B272725186B0017C9D6 /* FeedIgFetcher.swift */; };
 		2FCB0B2A2725202A0017C9D6 /* AccountInfoFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B292725202A0017C9D6 /* AccountInfoFetcher.swift */; };
+		782E328E2730EC0100FA9795 /* RescheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E328D2730EC0100FA9795 /* RescheduleView.swift */; };
 		78B933362726704B0040882D /* InfluencerDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B933352726704B0040882D /* InfluencerDetailResponse.swift */; };
 		78B9333827267ACA0040882D /* InfluencerDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B9333727267ACA0040882D /* InfluencerDetailService.swift */; };
 		78B9333A27267C480040882D /* InfluencerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B9333927267C480040882D /* InfluencerDetailViewModel.swift */; };
@@ -175,6 +176,7 @@
 		2FCB0B222724FE5E0017C9D6 /* InstaAccModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaAccModel.swift; sourceTree = "<group>"; };
 		2FCB0B272725186B0017C9D6 /* FeedIgFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedIgFetcher.swift; sourceTree = "<group>"; };
 		2FCB0B292725202A0017C9D6 /* AccountInfoFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoFetcher.swift; sourceTree = "<group>"; };
+		782E328D2730EC0100FA9795 /* RescheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleView.swift; sourceTree = "<group>"; };
 		78B933352726704B0040882D /* InfluencerDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfluencerDetailResponse.swift; path = Model/InfluencerDetailResponse.swift; sourceTree = SOURCE_ROOT; };
 		78B9333727267ACA0040882D /* InfluencerDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfluencerDetailService.swift; path = Model/InfluencerDetailService.swift; sourceTree = SOURCE_ROOT; };
 		78B9333927267C480040882D /* InfluencerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfluencerDetailViewModel.swift; path = Model/InfluencerDetailViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -765,6 +767,7 @@
 				D283B9F4272A3DB900CA87EC /* PendingCard.swift */,
 				D283B9FA272A8C0100CA87EC /* PendingCardScrollView.swift */,
 				D2C3C59F2728674400C338B4 /* OrderView.swift */,
+				782E328D2730EC0100FA9795 /* RescheduleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1069,6 +1072,7 @@
 				D283B9F7272A5A2E00CA87EC /* OngoingCardScrollView.swift in Sources */,
 				84972DA22726711D0097D2D2 /* ReviewCard.swift in Sources */,
 				2FACD8472721173800E9F578 /* LocationFilter.swift in Sources */,
+				782E328E2730EC0100FA9795 /* RescheduleView.swift in Sources */,
 				F75CEE6E2713E80D00E36A1F /* KoalaApp.swift in Sources */,
 				78B9333E27270F1A0040882D /* InfluencerDetailModel.swift in Sources */,
 				2F6C2C3D27228D780026EF3E /* SplashScreen.swift in Sources */,

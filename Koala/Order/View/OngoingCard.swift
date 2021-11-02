@@ -13,6 +13,8 @@ struct OngoingCard: View {
     let name: String
     let productType : [String]
     let dueDate : String
+    @State var showDatePicker: Bool = false
+    @State var savedDate: Date? = nil
     
     var body: some View {
         VStack{
@@ -45,7 +47,10 @@ struct OngoingCard: View {
             }.padding([.top, .leading, .trailing], 16)
             HStack{
                 Spacer()
-                Button(action: {}){
+                Button(action: {
+                    showDatePicker.toggle()
+                    
+                }){
                     Text("Reschedule").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                         .foregroundColor(.white)
                         .padding()
@@ -55,7 +60,11 @@ struct OngoingCard: View {
                     .cornerRadius(10)
             }.padding(.bottom, 9).padding(.trailing, 15)
             
-            
+            if showDatePicker {
+                            RescheduleView(showDatePicker: $showDatePicker, savedDate: $savedDate, selectedDate: savedDate ?? Date())
+                                .animation(.linear)
+                                .transition(.opacity)
+                        }
         }
         .background(Color.white)
         .cornerRadius(10)
