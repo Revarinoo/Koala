@@ -10,10 +10,10 @@ import SwiftUI
 struct CampaignDetailView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @StateObject var campaignListVM = CampaignViewModel()
+    @StateObject var campaignDetailVM = CampaignDetailViewModel()
     
     var campaignTitle: String
-    
+    var contentID: Int
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -30,17 +30,21 @@ struct CampaignDetailView: View {
                             .cornerRadius(10)
                     })
                     Spacer()
-                    Text("Campaign List")
+                    Text(campaignTitle)
                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 17))
                         .padding(.trailing)
                     Spacer()
                 }
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 14, trailing: 0))
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 14, trailing: 0))
+                
+                Text("Tasks")
+                    .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
+                    .padding(.leading, 16)
                 
                 ScrollView {
-                    VStack(spacing: 16) {
-                        ForEach(campaignListVM.campaignModel) { campaign in
-                            CampaignOrderCard(photoURL: campaign.photo, productTypes: campaign.type, name: campaign.name, date: campaign.schedule)
+                    VStack(alignment: .leading, spacing: 16) {
+                        ForEach(campaignDetailVM.campaignTasks) { task in
+                            CampaignTaskCard(productName: task.contentType, instructions: task.instruction)
                                 .padding(.horizontal)
                         }
                     }
@@ -51,13 +55,13 @@ struct CampaignDetailView: View {
         .accentColor(.white)
         .navigationBarHidden(true)
         .onAppear() {
-            campaignListVM.callGetCampaigns()
+            campaignDetailVM.callGetCampaignDetail(contentID)
         }
     }
 }
 
-struct CampaignDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        CampaignDetailView(campaignTitle: "10.10 Campaign")
-    }
-}
+//struct CampaignDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CampaignDetailView(campaignTitle: "10.10 Campaign", contentID: 1)
+//    }
+//}

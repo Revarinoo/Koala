@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 
 struct CampaignOrderCard: View {
     
+    let contentID: Int
     let photoURL: String
     let productTypes: [String]
     let name: String
@@ -53,14 +54,15 @@ struct CampaignOrderCard: View {
             }
             HStack {
                 Spacer()
-                Button(
-                    action: {},
+                NavigationLink(
+                    destination: CampaignDetailView(campaignTitle: name, contentID: contentID),
                     label: {
                         Text("Detail")
                             .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
                             .foregroundColor(ThemeColor.primary)
                             .frame(width: 90, height: 38)
-                    })
+                    }
+                )
                 Button(
                     action: {},
                     label: {
@@ -83,6 +85,6 @@ struct CampaignOrderCard: View {
 
 struct CampaignOrderCard_Previews: PreviewProvider {
     static var previews: some View {
-        CampaignOrderCard(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", productTypes: ["Story", "Post"], name: "11 Nov Campaign", date: Date().addingTimeInterval(-86400*31)).previewLayout(.sizeThatFits)
+        CampaignOrderCard(contentID: 1, photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", productTypes: ["Story", "Post"], name: "11 Nov Campaign", date: Date().addingTimeInterval(-86400*31)).previewLayout(.sizeThatFits)
     }
 }

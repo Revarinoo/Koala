@@ -32,12 +32,12 @@ struct CampaignListView: View {
                         .padding(.trailing)
                     Spacer()
                 }
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 14, trailing: 0))
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 14, trailing: 0))
                 
                 ScrollView {
                     VStack(spacing: 16) {
                         ForEach(campaignListVM.campaignModel) { campaign in
-                            CampaignOrderCard(photoURL: campaign.photo, productTypes: campaign.type, name: campaign.name, date: campaign.schedule)
+                            CampaignOrderCard(contentID: campaign.content_id, photoURL: campaign.photo, productTypes: campaign.type, name: campaign.name, date: campaign.schedule)
                                 .padding(.horizontal)
                         }
                     }

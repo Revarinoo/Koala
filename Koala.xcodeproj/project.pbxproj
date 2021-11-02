@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2F0D9DA7273118FB0012DAAF /* CampaignDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D9DA6273118FB0012DAAF /* CampaignDetailView.swift */; };
+		2F0D9DAE27311BAB0012DAAF /* CampaignDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D9DAD27311BAB0012DAAF /* CampaignDetailService.swift */; };
+		2F0D9DB027311C380012DAAF /* CampaignDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D9DAF27311C380012DAAF /* CampaignDetailModel.swift */; };
+		2F0D9DB227311C530012DAAF /* CampaignDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D9DB127311C530012DAAF /* CampaignDetailResponse.swift */; };
+		2F0D9DB627311E3C0012DAAF /* CampaignTaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D9DB527311E3C0012DAAF /* CampaignTaskCard.swift */; };
+		2F0D9DB8273122220012DAAF /* CampaignDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D9DB7273122220012DAAF /* CampaignDetailViewModel.swift */; };
 		2F1D57802726539800E4354C /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D577F2726539800E4354C /* SearchBar.swift */; };
 		2F1D578227266F5A00E4354C /* RecommendedInfluencerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D578127266F5A00E4354C /* RecommendedInfluencerList.swift */; };
 		2F2DDD76272F6637007FA0FC /* CampaignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2DDD75272F6637007FA0FC /* CampaignService.swift */; };
@@ -127,6 +132,11 @@
 
 /* Begin PBXFileReference section */
 		2F0D9DA6273118FB0012DAAF /* CampaignDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignDetailView.swift; sourceTree = "<group>"; };
+		2F0D9DAD27311BAB0012DAAF /* CampaignDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignDetailService.swift; sourceTree = "<group>"; };
+		2F0D9DAF27311C380012DAAF /* CampaignDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignDetailModel.swift; sourceTree = "<group>"; };
+		2F0D9DB127311C530012DAAF /* CampaignDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignDetailResponse.swift; sourceTree = "<group>"; };
+		2F0D9DB527311E3C0012DAAF /* CampaignTaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignTaskCard.swift; sourceTree = "<group>"; };
+		2F0D9DB7273122220012DAAF /* CampaignDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignDetailViewModel.swift; sourceTree = "<group>"; };
 		2F1D577F2726539800E4354C /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		2F1D578127266F5A00E4354C /* RecommendedInfluencerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedInfluencerList.swift; sourceTree = "<group>"; };
 		2F2DDD75272F6637007FA0FC /* CampaignService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignService.swift; sourceTree = "<group>"; };
@@ -273,6 +283,51 @@
 				78B9333727267ACA0040882D /* InfluencerDetailService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		2F0D9DA827311B800012DAAF /* CampaignDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2F0D9DAC27311B9A0012DAAF /* Model */,
+				2F0D9DAB27311B960012DAAF /* View */,
+				2F0D9DAA27311B900012DAAF /* ViewModel */,
+				2F0D9DA927311B880012DAAF /* Service */,
+			);
+			path = CampaignDetail;
+			sourceTree = "<group>";
+		};
+		2F0D9DA927311B880012DAAF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2F0D9DAD27311BAB0012DAAF /* CampaignDetailService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		2F0D9DAA27311B900012DAAF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2F0D9DB7273122220012DAAF /* CampaignDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2F0D9DAB27311B960012DAAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F0D9DA6273118FB0012DAAF /* CampaignDetailView.swift */,
+				2F0D9DB527311E3C0012DAAF /* CampaignTaskCard.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F0D9DAC27311B9A0012DAAF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2F0D9DAF27311C380012DAAF /* CampaignDetailModel.swift */,
+				2F0D9DB127311C530012DAAF /* CampaignDetailResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2F1D578327266FB300E4354C /* Component */ = {
@@ -586,7 +641,6 @@
 				8451B835272A55570061D389 /* CampaignOrderCard.swift */,
 				8451B839272A55570061D389 /* CampaignReportCard.swift */,
 				8451B836272A55570061D389 /* CampaignView.swift */,
-				2F0D9DA6273118FB0012DAAF /* CampaignDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -737,6 +791,7 @@
 		F75CEE6C2713E80D00E36A1F /* Koala */ = {
 			isa = PBXGroup;
 			children = (
+				2F0D9DA827311B800012DAAF /* CampaignDetail */,
 				8451B829272A54E60061D389 /* Campaign */,
 				78B933302726576D0040882D /* InfluencerDetail */,
 				2F6C2C35272273040026EF3E /* Onboarding */,
@@ -1003,6 +1058,7 @@
 				2F6C2C2727214F560026EF3E /* EngagementRateSlider.swift in Sources */,
 				F75CEE8C27143BE900E36A1F /* LoginService.swift in Sources */,
 				F75CEE702713E80D00E36A1F /* ContentView.swift in Sources */,
+				2F0D9DB627311E3C0012DAAF /* CampaignTaskCard.swift in Sources */,
 				78B9333827267ACA0040882D /* InfluencerDetailService.swift in Sources */,
 				D283B9F9272A8BCB00CA87EC /* CompletedCardScrollView.swift in Sources */,
 				D2577BC4271F11BD00E7AC5D /* HomepageView.swift in Sources */,
@@ -1023,12 +1079,14 @@
 				2F6C2C2927215DE70026EF3E /* RatingStar.swift in Sources */,
 				78B9333C2726A0380040882D /* InfluencerDetailView.swift in Sources */,
 				F76CE87B272275D20055D58C /* RegisterService.swift in Sources */,
+				2F0D9DB027311C380012DAAF /* CampaignDetailModel.swift in Sources */,
 				F76CE879272275B90055D58C /* RegisterViewModel.swift in Sources */,
 				D2131CB32729BE1D006ACDC2 /* OrderModel.swift in Sources */,
 				F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */,
 				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
 				F76CE8752721C4B40055D58C /* AuthResponse.swift in Sources */,
 				D2577BC6271F239B00E7AC5D /* Categories.swift in Sources */,
+				2F0D9DAE27311BAB0012DAAF /* CampaignDetailService.swift in Sources */,
 				D28EC2A92722536400FCEA2B /* RecommendationViewModel.swift in Sources */,
 				D28D625627201E8300BE7345 /* RecommendationInfluencerService.swift in Sources */,
 				D2C3C59C2727A2B700C338B4 /* OngoingCard.swift in Sources */,
@@ -1039,6 +1097,7 @@
 				2FCB0B282725186B0017C9D6 /* FeedIgFetcher.swift in Sources */,
 				2FA40E3F271DE3180095A812 /* ThemeColor.swift in Sources */,
 				D299558C271E65EB0025D0CB /* HomepageCategoriesCard.swift in Sources */,
+				2F0D9DB8273122220012DAAF /* CampaignDetailViewModel.swift in Sources */,
 				D283B9F5272A3DB900CA87EC /* PendingCard.swift in Sources */,
 				D21476242723F4B2009985BD /* RecommendationInfluencerModel.swift in Sources */,
 				D2C3C5A02728674400C338B4 /* OrderView.swift in Sources */,
@@ -1046,6 +1105,7 @@
 				8451B842272A55600061D389 /* CampaignViewModel.swift in Sources */,
 				D2995592271F0D120025D0CB /* CategoriesCard.swift in Sources */,
 				D2131CAD2729172D006ACDC2 /* PendingOrdersViewModel.swift in Sources */,
+				2F0D9DB227311C530012DAAF /* CampaignDetailResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
