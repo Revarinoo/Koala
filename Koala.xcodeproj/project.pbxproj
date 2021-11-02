@@ -90,6 +90,7 @@
 		D2577BC6271F239B00E7AC5D /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2577BC5271F239B00E7AC5D /* Categories.swift */; };
 		D2577BC8271F23BE00E7AC5D /* RecommendationInfluencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2577BC7271F23BE00E7AC5D /* RecommendationInfluencer.swift */; };
 		D2577BCA271F244100E7AC5D /* RecommendationInfluencerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2577BC9271F244100E7AC5D /* RecommendationInfluencerCard.swift */; };
+		D265F18B2730DE03008E08C8 /* CreateCampaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = D265F18A2730DE03008E08C8 /* CreateCampaign.swift */; };
 		D283B9F5272A3DB900CA87EC /* PendingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283B9F4272A3DB900CA87EC /* PendingCard.swift */; };
 		D283B9F7272A5A2E00CA87EC /* OngoingCardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283B9F6272A5A2E00CA87EC /* OngoingCardScrollView.swift */; };
 		D283B9F9272A8BCB00CA87EC /* CompletedCardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283B9F8272A8BCB00CA87EC /* CompletedCardScrollView.swift */; };
@@ -211,6 +212,7 @@
 		D2577BC5271F239B00E7AC5D /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		D2577BC7271F23BE00E7AC5D /* RecommendationInfluencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationInfluencer.swift; sourceTree = "<group>"; };
 		D2577BC9271F244100E7AC5D /* RecommendationInfluencerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationInfluencerCard.swift; sourceTree = "<group>"; };
+		D265F18A2730DE03008E08C8 /* CreateCampaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCampaign.swift; sourceTree = "<group>"; };
 		D283B9F4272A3DB900CA87EC /* PendingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingCard.swift; sourceTree = "<group>"; };
 		D283B9F6272A5A2E00CA87EC /* OngoingCardScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingCardScrollView.swift; sourceTree = "<group>"; };
 		D283B9F8272A8BCB00CA87EC /* CompletedCardScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedCardScrollView.swift; sourceTree = "<group>"; };
@@ -620,6 +622,46 @@
 			path = ChildView;
 			sourceTree = "<group>";
 		};
+		D265F1852730DCB6008E08C8 /* Create Campaign */ = {
+			isa = PBXGroup;
+			children = (
+				D265F1892730DDEB008E08C8 /* Model */,
+				D265F1882730DDDE008E08C8 /* Service */,
+				D265F1872730DDCE008E08C8 /* View */,
+				D265F1862730DDAF008E08C8 /* ViewModel */,
+			);
+			path = "Create Campaign";
+			sourceTree = "<group>";
+		};
+		D265F1862730DDAF008E08C8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D265F1872730DDCE008E08C8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D265F18A2730DE03008E08C8 /* CreateCampaign.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D265F1882730DDDE008E08C8 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D265F1892730DDEB008E08C8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D2995586271E64E80025D0CB /* Homepage */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,6 +788,7 @@
 		F75CEE6C2713E80D00E36A1F /* Koala */ = {
 			isa = PBXGroup;
 			children = (
+				D265F1852730DCB6008E08C8 /* Create Campaign */,
 				8451B829272A54E60061D389 /* Campaign */,
 				78B933302726576D0040882D /* InfluencerDetail */,
 				2F6C2C35272273040026EF3E /* Onboarding */,
@@ -961,6 +1004,7 @@
 				2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */,
 				8451B830272A55360061D389 /* CampaignResponse.swift in Sources */,
 				8467200127266302008FD954 /* PreviousProjectView.swift in Sources */,
+				D265F18B2730DE03008E08C8 /* CreateCampaign.swift in Sources */,
 				F76CE87F2723B9E80055D58C /* RegisterBusinessView.swift in Sources */,
 				2FCB0B242724FE5E0017C9D6 /* InstaAccModel.swift in Sources */,
 				8451B83A272A55570061D389 /* CampaignOrderCard.swift in Sources */,
