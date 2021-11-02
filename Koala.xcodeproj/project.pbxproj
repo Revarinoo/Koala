@@ -60,6 +60,13 @@
 		2FCB0B242724FE5E0017C9D6 /* InstaAccModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B222724FE5E0017C9D6 /* InstaAccModel.swift */; };
 		2FCB0B282725186B0017C9D6 /* FeedIgFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B272725186B0017C9D6 /* FeedIgFetcher.swift */; };
 		2FCB0B2A2725202A0017C9D6 /* AccountInfoFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B292725202A0017C9D6 /* AccountInfoFetcher.swift */; };
+		2FD875A52731460B0052DA4D /* ReviewValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD8759B2731460A0052DA4D /* ReviewValidation.swift */; };
+		2FD875A62731460B0052DA4D /* ReviewPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD8759C2731460A0052DA4D /* ReviewPageViewModel.swift */; };
+		2FD875A72731460B0052DA4D /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD8759E2731460A0052DA4D /* ReviewModel.swift */; };
+		2FD875A82731460B0052DA4D /* ReviewServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD8759F2731460A0052DA4D /* ReviewServiceModel.swift */; };
+		2FD875A92731460B0052DA4D /* ReviewInfluencerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD875A12731460A0052DA4D /* ReviewInfluencerView.swift */; };
+		2FD875AA2731460B0052DA4D /* StarReviewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD875A22731460A0052DA4D /* StarReviewComponent.swift */; };
+		2FD875AB2731460B0052DA4D /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD875A42731460A0052DA4D /* ReviewService.swift */; };
 		78B933362726704B0040882D /* InfluencerDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B933352726704B0040882D /* InfluencerDetailResponse.swift */; };
 		78B9333827267ACA0040882D /* InfluencerDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B9333727267ACA0040882D /* InfluencerDetailService.swift */; };
 		78B9333A27267C480040882D /* InfluencerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B9333927267C480040882D /* InfluencerDetailViewModel.swift */; };
@@ -183,6 +190,13 @@
 		2FCB0B222724FE5E0017C9D6 /* InstaAccModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaAccModel.swift; sourceTree = "<group>"; };
 		2FCB0B272725186B0017C9D6 /* FeedIgFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedIgFetcher.swift; sourceTree = "<group>"; };
 		2FCB0B292725202A0017C9D6 /* AccountInfoFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoFetcher.swift; sourceTree = "<group>"; };
+		2FD8759B2731460A0052DA4D /* ReviewValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewValidation.swift; sourceTree = "<group>"; };
+		2FD8759C2731460A0052DA4D /* ReviewPageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewPageViewModel.swift; sourceTree = "<group>"; };
+		2FD8759E2731460A0052DA4D /* ReviewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
+		2FD8759F2731460A0052DA4D /* ReviewServiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewServiceModel.swift; sourceTree = "<group>"; };
+		2FD875A12731460A0052DA4D /* ReviewInfluencerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewInfluencerView.swift; sourceTree = "<group>"; };
+		2FD875A22731460A0052DA4D /* StarReviewComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarReviewComponent.swift; sourceTree = "<group>"; };
+		2FD875A42731460A0052DA4D /* ReviewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
 		78B933352726704B0040882D /* InfluencerDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfluencerDetailResponse.swift; path = Model/InfluencerDetailResponse.swift; sourceTree = SOURCE_ROOT; };
 		78B9333727267ACA0040882D /* InfluencerDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfluencerDetailService.swift; path = Koala/InfluencerDetail/Service/InfluencerDetailService.swift; sourceTree = SOURCE_ROOT; };
 		78B9333927267C480040882D /* InfluencerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfluencerDetailViewModel.swift; path = Koala/InfluencerDetail/ViewModel/InfluencerDetailViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -551,6 +565,52 @@
 			path = ServiceModel;
 			sourceTree = "<group>";
 		};
+		2FD875992731460A0052DA4D /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				2FD8759A2731460A0052DA4D /* ViewModel */,
+				2FD8759D2731460A0052DA4D /* Model */,
+				2FD875A02731460A0052DA4D /* View */,
+				2FD875A32731460A0052DA4D /* Service */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		2FD8759A2731460A0052DA4D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FD8759B2731460A0052DA4D /* ReviewValidation.swift */,
+				2FD8759C2731460A0052DA4D /* ReviewPageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FD8759D2731460A0052DA4D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FD8759E2731460A0052DA4D /* ReviewModel.swift */,
+				2FD8759F2731460A0052DA4D /* ReviewServiceModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2FD875A02731460A0052DA4D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FD875A12731460A0052DA4D /* ReviewInfluencerView.swift */,
+				2FD875A22731460A0052DA4D /* StarReviewComponent.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FD875A32731460A0052DA4D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2FD875A42731460A0052DA4D /* ReviewService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		78B933302726576D0040882D /* InfluencerDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -791,6 +851,7 @@
 		F75CEE6C2713E80D00E36A1F /* Koala */ = {
 			isa = PBXGroup;
 			children = (
+				2FD875992731460A0052DA4D /* Review */,
 				2F0D9DA827311B800012DAAF /* CampaignDetail */,
 				8451B829272A54E60061D389 /* Campaign */,
 				78B933302726576D0040882D /* InfluencerDetail */,
@@ -1005,6 +1066,7 @@
 				78B93340272725D40040882D /* RoundedCorner.swift in Sources */,
 				8451B83E272A55570061D389 /* CampaignReportCard.swift in Sources */,
 				2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */,
+				2FD875AA2731460B0052DA4D /* StarReviewComponent.swift in Sources */,
 				8451B830272A55360061D389 /* CampaignResponse.swift in Sources */,
 				8467200127266302008FD954 /* PreviousProjectView.swift in Sources */,
 				F76CE87F2723B9E80055D58C /* RegisterBusinessView.swift in Sources */,
@@ -1013,6 +1075,7 @@
 				D28D625A27205B6000BE7345 /* ProfileButton.swift in Sources */,
 				D2577BCA271F244100E7AC5D /* RecommendationInfluencerCard.swift in Sources */,
 				D28D625C2720957500BE7345 /* PromotionCard.swift in Sources */,
+				2FD875A92731460B0052DA4D /* ReviewInfluencerView.swift in Sources */,
 				2F2DDD76272F6637007FA0FC /* CampaignService.swift in Sources */,
 				2FBC8B97271C2E09007E7B76 /* HttpUtility.swift in Sources */,
 				2FA40E41271DE3980095A812 /* ThemeFont.swift in Sources */,
@@ -1036,6 +1099,7 @@
 				2F1D57802726539800E4354C /* SearchBar.swift in Sources */,
 				D283B9FB272A8C0100CA87EC /* PendingCardScrollView.swift in Sources */,
 				2FACD8422721108F00E9F578 /* ConstantVariable.swift in Sources */,
+				2FD875A52731460B0052DA4D /* ReviewValidation.swift in Sources */,
 				2FACD84927211A7600E9F578 /* SpecialtySelector.swift in Sources */,
 				2F6C2C30272259250026EF3E /* SpecialtyModel.swift in Sources */,
 				2FACD83827207EFF00E9F578 /* LoginValidation.swift in Sources */,
@@ -1044,6 +1108,7 @@
 				2FA40E57271DF44E0095A812 /* ColorExtension.swift in Sources */,
 				2FACD83427206CCE00E9F578 /* LoginRequest.swift in Sources */,
 				D2131CB12729AC7D006ACDC2 /* MyOrderService.swift in Sources */,
+				2FD875A82731460B0052DA4D /* ReviewServiceModel.swift in Sources */,
 				D28D625827201ECB00BE7345 /* CategoriesServices.swift in Sources */,
 				2FBC8BB3271C37CC007E7B76 /* InfluencerListResponse.swift in Sources */,
 				78B9333A27267C480040882D /* InfluencerDetailViewModel.swift in Sources */,
@@ -1052,6 +1117,7 @@
 				84671FFB27265A62008FD954 /* ReviewView.swift in Sources */,
 				2F6C2C3F272290FF0026EF3E /* OnboardingView.swift in Sources */,
 				2F6C2C34272268F60026EF3E /* SpecialtyViewModel.swift in Sources */,
+				2FD875A62731460B0052DA4D /* ReviewPageViewModel.swift in Sources */,
 				2FCB0B232724FE5E0017C9D6 /* InstaFeedModel.swift in Sources */,
 				F75CEE8E27143BF100E36A1F /* LoginView.swift in Sources */,
 				846C55D1271F304C006C94DD /* CheckBoxView.swift in Sources */,
@@ -1062,6 +1128,7 @@
 				78B9333827267ACA0040882D /* InfluencerDetailService.swift in Sources */,
 				D283B9F9272A8BCB00CA87EC /* CompletedCardScrollView.swift in Sources */,
 				D2577BC4271F11BD00E7AC5D /* HomepageView.swift in Sources */,
+				2FD875A72731460B0052DA4D /* ReviewModel.swift in Sources */,
 				2FCB0B1D2724E8160017C9D6 /* RegisterRequest.swift in Sources */,
 				84972DA4272677300097D2D2 /* ReviewViewModel.swift in Sources */,
 				2FBC8BB1271C3725007E7B76 /* InfluencerListService.swift in Sources */,
@@ -1073,6 +1140,7 @@
 				2F6C2C3D27228D780026EF3E /* SplashScreen.swift in Sources */,
 				D2C3C59E272863F200C338B4 /* CompletedCard.swift in Sources */,
 				F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */,
+				2FD875AB2731460B0052DA4D /* ReviewService.swift in Sources */,
 				F7A52B922727073B0067D3E6 /* FollowerProfile.swift in Sources */,
 				2F0D9DA7273118FB0012DAAF /* CampaignDetailView.swift in Sources */,
 				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
