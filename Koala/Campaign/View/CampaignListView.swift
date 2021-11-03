@@ -12,6 +12,8 @@ struct CampaignListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var campaignListVM = CampaignViewModel()
     
+    let influencerID: Int
+    
     var body: some View {
         ZStack(alignment: .topLeading) {
             Color.bgColorView.edgesIgnoringSafeArea(.all)
@@ -37,7 +39,7 @@ struct CampaignListView: View {
                 ScrollView {
                     VStack(spacing: 16) {
                         ForEach(campaignListVM.campaignModel) { campaign in
-                            CampaignOrderCard(contentID: campaign.content_id, photoURL: campaign.photo, productTypes: campaign.type, name: campaign.name, date: campaign.schedule)
+                            CampaignOrderCard(influencerID: influencerID, contentID: campaign.content_id, photoURL: campaign.photo, productTypes: campaign.type, name: campaign.name, date: campaign.schedule)
                                 .padding(.horizontal)
                         }
                     }
@@ -55,6 +57,6 @@ struct CampaignListView: View {
 
 struct CampaignListView_Previews: PreviewProvider {
     static var previews: some View {
-        CampaignListView()
+        CampaignListView(influencerID: 1)
     }
 }

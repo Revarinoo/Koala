@@ -88,7 +88,7 @@ struct InfluencerDetailView: View {
                         
                         HStack{
                             
-                            NavigationLink(destination: CampaignListView()) {
+                            NavigationLink(destination: CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0)) {
                                 Text("Order").font(Font.custom(ThemeFont.poppinsBold, size: 18))
                                     .foregroundColor(Color.white)
                                     .frame(width: 300, height: 50, alignment: .center)

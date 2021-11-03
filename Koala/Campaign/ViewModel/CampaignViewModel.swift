@@ -11,6 +11,7 @@ import SwiftUI
 class CampaignViewModel: ObservableObject{
     
     @Published var campaignModel: [CampaignModel] = []
+    @Published var orderCampaignModel: OrderCampaignModel = OrderCampaignModel()
     private let campaignService: CampaignService = CampaignService()
     
     private func dateFormatter(dateBefore: String) -> Date {
@@ -49,6 +50,24 @@ class CampaignViewModel: ObservableObject{
                 }
             }
             
+        }
+    }
+    
+    func order(date: String, contentID: Int, influencerID: Int) {
+        
+        let orderRequest = CampaignOrderRequest(order_date: date, content_id: contentID, influencer_id: influencerID)
+        print(orderRequest)
+        campaignService.postOrder(orderRequest) { response in
+            DispatchQueue.main.async {
+                if let code = response?.code, let message = response?.message {
+                    if code == 201 {
+                        self.orderCampaignModel.navigate = true
+                    }
+                    else {
+                        self.orderCampaignModel.isPresentingErrorAlert = true
+                    }
+                }
+            }
         }
     }
     
