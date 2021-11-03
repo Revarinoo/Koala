@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 //final class HttpUtility {
 //
 //    static let shared = HttpUtility()
@@ -28,10 +29,13 @@ import Foundation
 //    }
 //}
 struct MyOrderService{
+    
+    @AppStorage("JWT", store: .standard) var token = ""
+    
     func getMyOrder(completionHandler:@escaping(_ result: OrderResponse?)->Void) {
         
         let request = NSMutableURLRequest(url: NSURL(string:  "http://127.0.0.1:8000/api/business/order")! as URL)
-        request.allHTTPHeaderFields = HttpUtility.shared.headers
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
         HttpUtility.shared.request(request as URLRequest, resultType: OrderResponse.self) { response in
             _ = completionHandler(response)
