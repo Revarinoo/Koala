@@ -34,7 +34,7 @@ struct MyOrderService{
     
     func getMyOrder(completionHandler:@escaping(_ result: OrderResponse?)->Void) {
         
-        let request = NSMutableURLRequest(url: NSURL(string:  "http://127.0.0.1:8000/api/business/order")! as URL)
+        let request = NSMutableURLRequest(url: NSURL(string:  HttpUtility.endpoint + "business/order")! as URL)
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
         HttpUtility.shared.request(request as URLRequest, resultType: OrderResponse.self) { response in
