@@ -22,30 +22,33 @@ class CampaignViewModel: ObservableObject{
     
     func callGetCampaigns() {
         var campaigns: [CampaignModel] = []
-        var campaignTypes: [String] = []
         campaignService.getCampaign() { response in
-            if let responseData = response?.data {
-                for campaign in responseData {
-                    let content_id = campaign.content_id
-                    let name = campaign.name
-                    let schedule = campaign.schedule
-                    let status = campaign.status
-                    let photo = campaign.photo
-                    
-                    for type in campaign.type! {
-                        campaignTypes.append(type)
+            if let code = response?.code {
+                if code == 201, let responseData = response?.data {
+                    for campaign in responseData {
+                        let content_id = campaign.content_id
+                        let name = campaign.name
+                        let schedule = campaign.schedule
+                        let status = campaign.status
+                        let photo = campaign.photo
+                        var campaignTypes: [String] = []
+                        
+                        for type in campaign.type! {
+                            campaignTypes.append(type)
+                        }
+                        
+                        let campaign = CampaignModel(content_id: content_id!, name: name!, photo: photo!, schedule: self.dateFormatter(dateBefore: schedule!), status: status!, type: campaignTypes)
+                        
+                        campaigns.append(campaign)
+                        print(campaign)
                     }
-                    
-                    let campaign = CampaignModel(content_id: content_id!, name: name!, photo: photo!, schedule: self.dateFormatter(dateBefore: schedule!), status: status!, type: campaignTypes)
-                    
-                    campaigns.append(campaign)
-                    print(campaign)
+                }
+                
+                DispatchQueue.main.async {
+                    self.campaignModel = campaigns
                 }
             }
             
-            DispatchQueue.main.async {
-                self.campaignModel = campaigns
-            }
         }
     }
     

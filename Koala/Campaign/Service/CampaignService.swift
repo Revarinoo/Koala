@@ -1,5 +1,5 @@
 //
-//  CampaignService.swift
+//  CampaignListService.swift
 //  Koala
 //
 //  Created by Jonathan Clive on 27/10/21.
