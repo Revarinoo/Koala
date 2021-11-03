@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct RescheduleView: View {
-//    let orderID: Int
+    let order_id: Int
     @Binding var showDatePicker: Bool
     @Binding var savedDate: Date?
     @State var selectedDate: Date = Date()
@@ -22,7 +22,7 @@ struct RescheduleView: View {
                    VStack {
                        Text("Reschedule").font(Font.custom(ThemeFont.poppinsSemiBold, size: 14))
                        Divider()
-                       DatePicker("Test", selection: $selectedDate, displayedComponents: [.date])
+                       DatePicker("Order Reschedule", selection: $selectedDate, displayedComponents: [.date])
                            .datePickerStyle(.graphical)
                        
                        Divider()
@@ -57,7 +57,11 @@ struct RescheduleView: View {
                            secondaryButton: .default(Text("Yes").font(Font.custom(ThemeFont.poppinsBold, size: 14)).bold(), action: {
                                savedDate = selectedDate
                                showDatePicker = false
-//                               rescheduleViewModel.rescheduleCampaign(orderID: orderID, schedule: savedDate ?? Date())
+                               DispatchQueue.main.async{
+                                   var request = RescheduleRequest(order_id: order_id, dueDate: savedDate?.formatDate())
+                                   rescheduleViewModel.rescheduleCampaign(rescheduleRequest: request)
+                               }
+                               
                            })
                        )
                    }
@@ -73,6 +77,7 @@ struct RescheduleView: View {
 
 //struct Reschedule_Previews: PreviewProvider {
 //    static var previews: some View {
-//        RescheduleView(showDatePicker: self.$showDatePicker, savedDate: self.$savedDate).previewLayout(.sizeThatFits)
+//
+//        RescheduleView().previewLayout(.sizeThatFits)
 //    }
 //}

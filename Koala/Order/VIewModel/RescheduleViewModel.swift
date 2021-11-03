@@ -12,19 +12,18 @@ class RescheduleViewModel: ObservableObject{
     
     private let orderService: MyOrderService = MyOrderService()
     
-    func rescheduleCampaign(orderID: Int, schedule: Date){
-        var orderData : [MyOrders] = []
+    func rescheduleCampaign(rescheduleRequest: RescheduleRequest){
         
-        orderService.rescheduleCampaign(orderID: orderID, schedule){ response in
+        orderService.rescheduleCampaign(rescheduleRequest){ response in
             if let code = response?.code, let message = response?.message {
                 if code == 201{
                     DispatchQueue.main.async {
-                        print(response?.message)
+                        print(response)
                     }
                 }
                 else {
                     DispatchQueue.main.async {
-                        print(response?.message)
+                        print(response)
                     }
                 }
             }

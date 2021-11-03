@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct OngoingCard: View {
-//    let order_id: Int
+    let order_id: Int
     let name: String
     let productType : [String]
     let dueDate : String
@@ -62,16 +62,12 @@ struct OngoingCard: View {
                     .cornerRadius(10)
             }.padding(.bottom, 9).padding(.trailing, 15)
                 .fullScreenCover(isPresented: $showDatePicker) {
-                    RescheduleView(showDatePicker: $showDatePicker, savedDate: $savedDate, selectedDate: savedDate ?? Date())
+                    RescheduleView(order_id: order_id,showDatePicker: $showDatePicker, savedDate: $savedDate, selectedDate: savedDate ?? Date())
                         .animation(.linear)
                         .transition(.opacity)
                         .background(BackgroundCleanerView())
                         
                 }
-                    
-                
-            
-                            
         }
         .background(Color.white)
         .cornerRadius(10)
@@ -83,7 +79,7 @@ struct OngoingCard: View {
 
 struct OngoingCard_Previews: PreviewProvider {
     static var previews: some View {
-        OngoingCard(name: "Bella Anastasia", productType: ["Post"], dueDate: "28 November 2021").previewLayout(.sizeThatFits)
+        OngoingCard(order_id: 1,name: "Bella Anastasia", productType: ["Post"], dueDate: "28 November 2021").previewLayout(.sizeThatFits)
     }
 }
 
