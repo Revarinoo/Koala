@@ -19,4 +19,16 @@ struct CampaignService {
             _ = completionHandler(response)
         }
     }
+    
+    func postOrder(_ postRequest: CampaignOrderRequest, completionHandler:@escaping(_ result: CampaignDetailResponse?)->Void) {
+        
+        let request = NSMutableURLRequest(url: NSURL(string: "http://127.0.0.1:8000/api/order/create")! as URL)
+        request.httpMethod = "post"
+        request.addValue("application/json", forHTTPHeaderField: "content-type")
+        request.httpBody = try? JSONEncoder().encode(postRequest)
+
+        HttpUtility.shared.request(request as URLRequest, resultType: CampaignDetailResponse.self) { response in
+            completionHandler(response)
+        }
+    }
 }
