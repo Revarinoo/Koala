@@ -10,13 +10,10 @@ import SwiftUI
 struct HomepageView: View {
     @AppStorage("JWT", store: .standard) var token = ""
     @StateObject var recomenndationList = RecommendationViewModel()
-    var userProfile = UserProfileViewModel()
+    @ObservedObject var userProfile = UserProfileViewModel()
     @State var toRecommendedInfluencerList: Bool = false
-    var categories : [String]
     
-    init(categories: [String]) {
-        self.categories = categories
-        categoriesDefault.set(categories, forKey: "myKey")
+    init() {
         userProfile.callData()
         //print("Hi \(userProfile.user.name)")
     }
@@ -64,7 +61,7 @@ struct HomepageView: View {
         }
         .onAppear(perform: {
             recomenndationList.callGetInfluencerList(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? [""])
-            
+//            userProfile.callData()
             
         })
         .navigationBarTitle("")
@@ -76,7 +73,7 @@ struct HomepageView: View {
 
 struct HomepageView_Previews: PreviewProvider {
     static var previews: some View {
-        HomepageView(categories: ["Coffee"])
+        HomepageView()
     }
 }
 

@@ -16,7 +16,7 @@ struct TabBar: View {
         
         NavigationView {
             TabView(selection: $selectedTab){
-                HomepageView(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? ["Coffee"])
+                HomepageView()
                     .tabItem{
                         selectedTab == 0 ? Image("discoveractive") : Image("discovergrey")
                         Text("Discover")
