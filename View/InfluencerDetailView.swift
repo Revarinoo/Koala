@@ -88,14 +88,15 @@ struct InfluencerDetailView: View {
                         
                         HStack{
                             
-                            Button(action:{}){
-                                
+                            NavigationLink(destination: CampaignListView()) {
                                 Text("Order").font(Font.custom(ThemeFont.poppinsBold, size: 18))
                                     .foregroundColor(Color.white)
-                            }.frame(width: 300, height: 50, alignment: .center)
-                                .background(ThemeColor.primary)
-                                .cornerRadius(15)
-                                .shadow(radius: 4)
+                                    .frame(width: 300, height: 50, alignment: .center)
+                                        .background(ThemeColor.primary)
+                                        .cornerRadius(15)
+                                        .shadow(radius: 4)
+
+                            }
                             
                             Button(action:{
                                 self.isShowingMailView.toggle()

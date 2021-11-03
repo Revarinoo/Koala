@@ -73,9 +73,6 @@ struct CampaignView: View {
             .navigationBarHidden(true)
             .onAppear(perform: {
                 campaignList.callGetCampaigns()
-                print("Print init")
-                print(campaignList.campaignModel)
-                print("print ini beres")
             })
             .ignoresSafeArea()
             .padding(.top, 10)

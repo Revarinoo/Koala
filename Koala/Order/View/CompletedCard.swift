@@ -9,6 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct CompletedCard: View {
+    
     let name: String
     let reach: String
     let impression: String
@@ -45,7 +46,7 @@ struct CompletedCard: View {
             }.padding(.top, 16).padding(.leading, 16)
             HStack{
                 Spacer()
-                NavigationLink(destination: CampaignView()) {
+                NavigationLink(destination: ReviewInfluencerView(name: name)) {
                         Text("Review").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                             .foregroundColor(.white)
                             .padding()
