@@ -14,7 +14,6 @@ struct CampaignDetailReportView: View {
             ZStack(alignment: .top){
                 VStack{
                     HStack{
-                        
                         Button(action:{
                             
                         }){
@@ -25,7 +24,6 @@ struct CampaignDetailReportView: View {
                         }.frame(width: 24, height: 24, alignment: .center)
                         
                         Spacer()
-                        
                         
                     }.padding(.horizontal, 16)
                         .padding(.top, 48)
@@ -58,7 +56,7 @@ struct CampaignDetailReportView: View {
                             Text("Influencer List")
                                 .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                                 .foregroundColor(.black)
-                            
+                            ResultInfluencerCard(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: "Asoka Remadjas", price: 1000000, likeNum: "11.6K", commentNum: "5.6K", erNum: "3.1%")
                         }
                             
                     }.frame(width: UIScreen.main.bounds.width, alignment: .top)
@@ -71,7 +69,7 @@ struct CampaignDetailReportView: View {
                 
                 VStack{
                     
-                    WebImage(url: URL(string: ""))
+                    WebImage(url: URL(string: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg"))
                         .resizable()
                         .scaledToFill()
                         .frame(width: 127, height: 127)
