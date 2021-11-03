@@ -8,9 +8,8 @@
 import Foundation
 
 struct CampaignReportBusinessResponse: Codable {
-    let campaign_detail: CampaignDetailReportBusiness?
     let code: Int
-    let message: String
+    let campaign_detail: CampaignDetailReportBusiness?
 }
 
 struct CampaignDetailReportBusiness: Codable {
