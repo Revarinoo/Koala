@@ -54,6 +54,7 @@
 		2FCB0B282725186B0017C9D6 /* FeedIgFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B272725186B0017C9D6 /* FeedIgFetcher.swift */; };
 		2FCB0B2A2725202A0017C9D6 /* AccountInfoFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B292725202A0017C9D6 /* AccountInfoFetcher.swift */; };
 		782E328E2730EC0100FA9795 /* RescheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E328D2730EC0100FA9795 /* RescheduleView.swift */; };
+		782E3290273248E600FA9795 /* RescheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E328F273248E600FA9795 /* RescheduleViewModel.swift */; };
 		78B933362726704B0040882D /* InfluencerDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B933352726704B0040882D /* InfluencerDetailResponse.swift */; };
 		78B9333827267ACA0040882D /* InfluencerDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B9333727267ACA0040882D /* InfluencerDetailService.swift */; };
 		78B9333A27267C480040882D /* InfluencerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B9333927267C480040882D /* InfluencerDetailViewModel.swift */; };
@@ -177,6 +178,7 @@
 		2FCB0B272725186B0017C9D6 /* FeedIgFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedIgFetcher.swift; sourceTree = "<group>"; };
 		2FCB0B292725202A0017C9D6 /* AccountInfoFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoFetcher.swift; sourceTree = "<group>"; };
 		782E328D2730EC0100FA9795 /* RescheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleView.swift; sourceTree = "<group>"; };
+		782E328F273248E600FA9795 /* RescheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleViewModel.swift; sourceTree = "<group>"; };
 		78B933352726704B0040882D /* InfluencerDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfluencerDetailResponse.swift; path = Model/InfluencerDetailResponse.swift; sourceTree = SOURCE_ROOT; };
 		78B9333727267ACA0040882D /* InfluencerDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfluencerDetailService.swift; path = Model/InfluencerDetailService.swift; sourceTree = SOURCE_ROOT; };
 		78B9333927267C480040882D /* InfluencerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfluencerDetailViewModel.swift; path = Model/InfluencerDetailViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -753,6 +755,7 @@
 			isa = PBXGroup;
 			children = (
 				D2131CAC2729172D006ACDC2 /* PendingOrdersViewModel.swift */,
+				782E328F273248E600FA9795 /* RescheduleViewModel.swift */,
 			);
 			path = VIewModel;
 			sourceTree = "<group>";
@@ -1059,6 +1062,7 @@
 				2F6C2C34272268F60026EF3E /* SpecialtyViewModel.swift in Sources */,
 				2FCB0B232724FE5E0017C9D6 /* InstaFeedModel.swift in Sources */,
 				F75CEE8E27143BF100E36A1F /* LoginView.swift in Sources */,
+				782E3290273248E600FA9795 /* RescheduleViewModel.swift in Sources */,
 				846C55D1271F304C006C94DD /* CheckBoxView.swift in Sources */,
 				2F6C2C2727214F560026EF3E /* EngagementRateSlider.swift in Sources */,
 				F75CEE8C27143BE900E36A1F /* LoginService.swift in Sources */,

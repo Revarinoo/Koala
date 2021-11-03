@@ -78,4 +78,20 @@ extension String{
         return dateFormatter.string(from: date)
     }
     
+    func formatToDate()->Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.locale = Locale.current
+ 
+        return dateFormatter.date(from: self) ?? Date()
+    }
+}
+
+extension Date{
+    func formatToString()->String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMM y"
+        return formatter.string(from: self)
+    }
 }

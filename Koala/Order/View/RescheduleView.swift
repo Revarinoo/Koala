@@ -9,16 +9,15 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct RescheduleView: View {
-    
+//    let orderID: Int
     @Binding var showDatePicker: Bool
     @Binding var savedDate: Date?
     @State var selectedDate: Date = Date()
-    
+    @State private var showingAlert = false
+    @StateObject private var rescheduleViewModel = RescheduleViewModel()
     var body: some View {
         ZStack {
-                   Color.black.opacity(0.3)
-                       .edgesIgnoringSafeArea(.all)
-                   
+        Color.black.opacity(0.3).ignoresSafeArea()
                    
                    VStack {
                        Text("Reschedule").font(Font.custom(ThemeFont.poppinsSemiBold, size: 14))
@@ -38,8 +37,9 @@ struct RescheduleView: View {
                            Spacer()
                            
                            Button(action: {
-                               savedDate = selectedDate
-                               showDatePicker = false
+                               showingAlert.toggle()
+                               
+                               
                            }, label: {
                                Text("Save").font(Font.custom(ThemeFont.poppinsMedium, size: 14))
                            })
@@ -47,15 +47,27 @@ struct RescheduleView: View {
                        }
                        .padding(.horizontal)
 
+                   }.alert(isPresented: $showingAlert) {
+                       Alert(
+                           title: Text("Reschedule Order"),
+                           message: Text("Are you sure you want to reschedule posting date?"),
+                           primaryButton: .default(Text("No"), action: {
+                               
+                           }),
+                           secondaryButton: .default(Text("Yes").font(Font.custom(ThemeFont.poppinsBold, size: 14)).bold(), action: {
+                               savedDate = selectedDate
+                               showDatePicker = false
+//                               rescheduleViewModel.rescheduleCampaign(orderID: orderID, schedule: savedDate ?? Date())
+                           })
+                       )
                    }
                    .padding()
                    .background(
                        Color.white
                            .cornerRadius(30)
                    )
-
                    
-               }
+        }
     }
 }
 

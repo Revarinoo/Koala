@@ -35,8 +35,31 @@ struct MyOrderService{
 
         HttpUtility.shared.request(request as URLRequest, resultType: OrderResponse.self) { response in
             _ = completionHandler(response)
-            //print(response)
+            print(response)
         }
         
     }
+
+    func rescheduleCampaign(orderID: Int, _ postRequest: Date, completionHandler:@escaping(_ result: RescheduleResponse?)->Void) {
+        guard let url = URL(string: "http://127.0.0.1:8000/api/order/reschedule/\(orderID)") else {
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(postRequest)
+
+        HttpUtility.shared.request(request, resultType: RescheduleResponse.self) { response in
+            completionHandler(response)
+        }
+    }
+    
+
+}
+struct RescheduleResponse: Codable {
+    let code: Int?
+    let message: String?
+    let contentID: Int?
+    let dueDate: Date?
+    
 }
