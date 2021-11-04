@@ -10,6 +10,9 @@ import SDWebImageSwiftUI
 
 struct CampaignOrderCard: View {
     
+    @ObservedObject var orderCampaignVM = CampaignViewModel()
+    
+    let influencerID: Int
     let contentID: Int
     let photoURL: String
     let productTypes: [String]
@@ -18,7 +21,7 @@ struct CampaignOrderCard: View {
     
     private func dateFormat(date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMMM yyyy"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         return dateFormatter.string(from: date)
     }
@@ -63,16 +66,24 @@ struct CampaignOrderCard: View {
                             .frame(width: 90, height: 38)
                     }
                 )
-                Button(
-                    action: {},
+                NavigationLink(
+                    destination: OrderView(),
+                    isActive: $orderCampaignVM.orderCampaignModel.navigate,
                     label: {
-                        Text("Choose")
-                            .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
-                            .foregroundColor(.white)
-                            .frame(width: 113, height: 38)
-                            .background(ThemeColor.primary)
-                            .cornerRadius(12)
-                    })
+                        Button(
+                            action: {
+                                orderCampaignVM.order(date: dateFormat(date: date), contentID: contentID, influencerID: influencerID)
+                            },
+                            label: {
+                                Text("Choose")
+                                    .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
+                                    .foregroundColor(.white)
+                                    .frame(width: 113, height: 38)
+                                    .background(ThemeColor.primary)
+                                    .cornerRadius(12)
+                            })
+                    }
+                )
             }
         }
         .padding()
@@ -80,11 +91,14 @@ struct CampaignOrderCard: View {
         .background(Color.white)
         .cornerRadius(10)
         .shadow(color: ThemeColor.gray, radius: 5, x: 1, y: 2)
+        .alert(isPresented: $orderCampaignVM.orderCampaignModel.isPresentingErrorAlert, content: {
+            Alert(title: Text("Alert"), message: Text(orderCampaignVM.orderCampaignModel.errorMessage), dismissButton: .cancel(Text("Ok")))
+        })
     }
 }
 
 struct CampaignOrderCard_Previews: PreviewProvider {
     static var previews: some View {
-        CampaignOrderCard(contentID: 1, photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", productTypes: ["Story", "Post"], name: "11 Nov Campaign", date: Date().addingTimeInterval(-86400*31)).previewLayout(.sizeThatFits)
+        CampaignOrderCard(influencerID: 0, contentID: 1, photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", productTypes: ["Story", "Post"], name: "11 Nov Campaign", date: Date().addingTimeInterval(-86400*31)).previewLayout(.sizeThatFits)
     }
 }

@@ -13,8 +13,9 @@ struct OngoingCardScrollView: View {
     var body: some View {
         ScrollView(.vertical){
             VStack{
+            
                 ForEach (onGoingOrders){ongoingOrders in
-                    OngoingCard(name: ongoingOrders.name, productType: ongoingOrders.productType, dueDate: ongoingOrders.dueDate).padding([.leading,.trailing], 16)
+                    OngoingCard(order_id: ongoingOrders.orderID,name: ongoingOrders.name, productType: ongoingOrders.productType, dueDate: ongoingOrders.dueDate).padding([.leading,.trailing], 16)
                 }
             }
         }

@@ -11,7 +11,7 @@ struct LoginService {
     
     func login(_ postRequest: LoginRequest, completionHandler:@escaping(_ result: AuthResponse?)->Void) {
         
-        let request = NSMutableURLRequest(url: NSURL(string: "http://127.0.0.1:8000/api/login")! as URL)
+        let request = NSMutableURLRequest(url: NSURL(string: HttpUtility.endpoint + "login")! as URL)
         request.httpMethod = "post"
         request.addValue("application/json", forHTTPHeaderField: "content-type")
         request.httpBody = try? JSONEncoder().encode(postRequest)
