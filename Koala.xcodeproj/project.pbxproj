@@ -60,6 +60,8 @@
 		2FCB0B242724FE5E0017C9D6 /* InstaAccModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B222724FE5E0017C9D6 /* InstaAccModel.swift */; };
 		2FCB0B282725186B0017C9D6 /* FeedIgFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B272725186B0017C9D6 /* FeedIgFetcher.swift */; };
 		2FCB0B2A2725202A0017C9D6 /* AccountInfoFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB0B292725202A0017C9D6 /* AccountInfoFetcher.swift */; };
+		782E328E2730EC0100FA9795 /* RescheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E328D2730EC0100FA9795 /* RescheduleView.swift */; };
+		782E3290273248E600FA9795 /* RescheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E328F273248E600FA9795 /* RescheduleViewModel.swift */; };
 		2FD875A52731460B0052DA4D /* ReviewValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD8759B2731460A0052DA4D /* ReviewValidation.swift */; };
 		2FD875A62731460B0052DA4D /* ReviewPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD8759C2731460A0052DA4D /* ReviewPageViewModel.swift */; };
 		2FD875A72731460B0052DA4D /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD8759E2731460A0052DA4D /* ReviewModel.swift */; };
@@ -204,6 +206,8 @@
 		2FCB0B222724FE5E0017C9D6 /* InstaAccModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaAccModel.swift; sourceTree = "<group>"; };
 		2FCB0B272725186B0017C9D6 /* FeedIgFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedIgFetcher.swift; sourceTree = "<group>"; };
 		2FCB0B292725202A0017C9D6 /* AccountInfoFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoFetcher.swift; sourceTree = "<group>"; };
+		782E328D2730EC0100FA9795 /* RescheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleView.swift; sourceTree = "<group>"; };
+		782E328F273248E600FA9795 /* RescheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleViewModel.swift; sourceTree = "<group>"; };
 		2FD8759B2731460A0052DA4D /* ReviewValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewValidation.swift; sourceTree = "<group>"; };
 		2FD8759C2731460A0052DA4D /* ReviewPageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewPageViewModel.swift; sourceTree = "<group>"; };
 		2FD8759E2731460A0052DA4D /* ReviewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
@@ -934,6 +938,7 @@
 			isa = PBXGroup;
 			children = (
 				D2131CAC2729172D006ACDC2 /* PendingOrdersViewModel.swift */,
+				782E328F273248E600FA9795 /* RescheduleViewModel.swift */,
 			);
 			path = VIewModel;
 			sourceTree = "<group>";
@@ -948,6 +953,7 @@
 				D283B9F4272A3DB900CA87EC /* PendingCard.swift */,
 				D283B9FA272A8C0100CA87EC /* PendingCardScrollView.swift */,
 				D2C3C59F2728674400C338B4 /* OrderView.swift */,
+				782E328D2730EC0100FA9795 /* RescheduleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1250,6 +1256,7 @@
 				2FD875A62731460B0052DA4D /* ReviewPageViewModel.swift in Sources */,
 				2FCB0B232724FE5E0017C9D6 /* InstaFeedModel.swift in Sources */,
 				F75CEE8E27143BF100E36A1F /* LoginView.swift in Sources */,
+				782E3290273248E600FA9795 /* RescheduleViewModel.swift in Sources */,
 				846C55D1271F304C006C94DD /* CheckBoxView.swift in Sources */,
 				2F6C2C2727214F560026EF3E /* EngagementRateSlider.swift in Sources */,
 				F75CEE8C27143BE900E36A1F /* LoginService.swift in Sources */,
@@ -1266,6 +1273,7 @@
 				D283B9F7272A5A2E00CA87EC /* OngoingCardScrollView.swift in Sources */,
 				84972DA22726711D0097D2D2 /* ReviewCard.swift in Sources */,
 				2FACD8472721173800E9F578 /* LocationFilter.swift in Sources */,
+				782E328E2730EC0100FA9795 /* RescheduleView.swift in Sources */,
 				F75CEE6E2713E80D00E36A1F /* KoalaApp.swift in Sources */,
 				78B9333E27270F1A0040882D /* InfluencerDetailModel.swift in Sources */,
 				2F6C2C3D27228D780026EF3E /* SplashScreen.swift in Sources */,

@@ -9,10 +9,12 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct OngoingCard: View {
-    
+    let order_id: Int
     let name: String
     let productType : [String]
     let dueDate : String
+    @State var showDatePicker: Bool = false
+    @State var savedDate: Date? = nil
     
     var body: some View {
         VStack{
@@ -37,7 +39,9 @@ struct OngoingCard: View {
                     Text(name).font(Font.custom(ThemeFont.poppinsMedium, size: 18))
                     HStack{
                         Image(systemName: "calendar")
-                        Text(dueDate)
+                        
+                        Text(savedDate?.formatToString() ?? "")
+                        
                     }.font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                         .foregroundColor(Color.gray)
                 }
@@ -45,7 +49,10 @@ struct OngoingCard: View {
             }.padding([.top, .leading, .trailing], 16)
             HStack{
                 Spacer()
-                Button(action: {}){
+                Button(action: {
+                    showDatePicker.toggle()
+                    
+                }){
                     Text("Reschedule").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                         .foregroundColor(.white)
                         .padding()
@@ -54,16 +61,39 @@ struct OngoingCard: View {
                     .background(ThemeColor.primary)
                     .cornerRadius(10)
             }.padding(.bottom, 9).padding(.trailing, 15)
-            
-            
+                .fullScreenCover(isPresented: $showDatePicker) {
+                    RescheduleView(order_id: order_id,showDatePicker: $showDatePicker, savedDate: $savedDate, selectedDate: savedDate ?? Date())
+                        .animation(.linear)
+                        .transition(.opacity)
+                        .background(BackgroundCleanerView())
+                        
+                }
         }
         .background(Color.white)
         .cornerRadius(10)
+        .onAppear{
+            savedDate = dueDate.formatToDate()
+        }
     }
 }
 
 struct OngoingCard_Previews: PreviewProvider {
     static var previews: some View {
-        OngoingCard(name: "Bella Anastasia", productType: ["Post"], dueDate: "28 November 2021").previewLayout(.sizeThatFits)
+        OngoingCard(order_id: 1,name: "Bella Anastasia", productType: ["Post"], dueDate: "28 November 2021").previewLayout(.sizeThatFits)
     }
+}
+
+struct BackgroundCleanerView: UIViewRepresentable {
+    
+    func makeUIView(context: Context) -> UIView {
+    let view = UIView()
+    
+        DispatchQueue.main.async {
+        view.superview?.superview?.backgroundColor = .clear
+        
+    }
+        return view
+        
+    }
+    func updateUIView(_ uiView: UIView, context: Context) {}
 }

@@ -66,7 +66,7 @@ class OrderViewModel: ObservableObject{
                 self.pendingOrders = orderData.filter({$0.orderStatus == "Pending"})
                 self.ongoingOrders = orderData.filter({$0.orderStatus == "On Going"})
                 self.completedOrders = orderData.filter({$0.orderStatus == "Completed"})
-                //print("INI YG BARU \(orderData)")
+//                print("INI YG BARU \(orderData)")
             }
         }
     }
