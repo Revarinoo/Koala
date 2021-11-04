@@ -14,7 +14,6 @@ class CampaignUpcomingService {
         let request = NSMutableURLRequest(url: NSURL(string: HttpUtility.endpoint + "campaign/detail/upcoming/\(id)")! as URL)
         
         HttpUtility.shared.request(request as URLRequest, resultType: CampaignUpcomingResponse.self) { response in
-            print(response)
             _ = completionHandler(response)
         }
     }

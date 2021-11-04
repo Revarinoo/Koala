@@ -8,18 +8,18 @@
 import Foundation
 
 struct CampaignUpcomingModel: Identifiable {
-    let id = UUID()
-    let campaign_logo: String
-    let campaign_title: String
-    let due_date: String
-    let product: String
-    let description: String
-    let rules: String
-    let references: [String]
+    var id = UUID()
+    var campaign_logo: String = ""
+    var campaign_title: String = ""
+    var due_date: String = ""
+    var product: String = ""
+    var description: String = ""
+    var rules: String = ""
+    var references: [String] = [""]
 }
 
 struct CampaignDetailUpcomingModel: Identifiable {
-    let id = UUID()
-    let content_type: String
-    let content_detail: String
+    var id = UUID()
+    var content_type: String = ""
+    var content_detail: String = ""
 }
