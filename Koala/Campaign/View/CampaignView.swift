@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CampaignView: View {
-//    let campaigns = CampaignViewModel().campaigns
+    @AppStorage("JWT", store: .standard) var token = ""
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var campaignList = CampaignViewModel()
     @State private var campaignType = "Upcoming"
     var campaignTypes = ["Upcoming", "Completed"]
@@ -59,10 +60,12 @@ struct CampaignView: View {
                                     }
                                 }
                             } else {
-                                if i.schedule < Date().addingTimeInterval(-86400) {
-                                    CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
-                                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                                NavigationLink(destination: CampaignDetailReportView(campaignID: i.content_id)) {
+                                    if i.schedule < Date().addingTimeInterval(-86400) {
+                                        CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
+                                            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
 
+                                    }
                                 }
                             }
                         }

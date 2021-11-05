@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 
 struct CampaignDetailReportView: View {
     @StateObject var campaignReportVM = CampaignReportBusinessViewModel()
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     private func dateFormatter(dateBefore: Date) -> String {
         let dateFormatter = DateFormatter()
@@ -18,16 +19,19 @@ struct CampaignDetailReportView: View {
         return dateFormatter.string(from: dateBefore)
     }
     
-//    init() {
-//        UIScrollView.appearance().bounces = false
-//    }
+    var campaignID: Int
+    
+    init(campaignID: Int) {
+        UIScrollView.appearance().bounces = false
+        self.campaignID = campaignID
+    }
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
             ZStack(alignment: .top){
                 VStack{
                     HStack{
                         Button(action:{
-                            
+                            self.presentationMode.wrappedValue.dismiss()
                         }){
                             Image(systemName: "chevron.left")
                                 .resizable()
@@ -100,7 +104,7 @@ struct CampaignDetailReportView: View {
                
         }.navigationBarHidden(true)
             .onAppear(perform: {
-                campaignReportVM.callGetCampaignReports(campaign_id: 1)
+                campaignReportVM.callGetCampaignReports(campaign_id: campaignID)
             })
                 .background(ThemeColor.primary.ignoresSafeArea())
                 .ignoresSafeArea()
@@ -109,7 +113,7 @@ struct CampaignDetailReportView: View {
 
 struct CampaignDetailReportView_Previews: PreviewProvider {
     static var previews: some View {
-        CampaignDetailReportView()
+        CampaignDetailReportView(campaignID: 1)
     }
 }
 
