@@ -51,18 +51,18 @@ struct CampaignView: View {
                 ScrollView(.vertical){
                     VStack(spacing: 12){
                         ForEach(campaignList.campaignModel) { i in
-                            NavigationLink(destination: Text("Hi")) {
-                                if campaignType.contains("Upcoming") {
+                            if campaignType.contains("Upcoming") {
+                                NavigationLink(destination: CampaignUpcomingView(id: i.content_id)) {
                                     if i.schedule >= Date().addingTimeInterval(-86400) {
                                         CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
                                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                                     }
-                                } else {
-                                    if i.schedule < Date().addingTimeInterval(-86400) {
-                                        CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
-                                            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                                }
+                            } else {
+                                if i.schedule < Date().addingTimeInterval(-86400) {
+                                    CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
+                                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
 
-                                    }
                                 }
                             }
                         }

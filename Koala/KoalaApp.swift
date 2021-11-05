@@ -13,17 +13,12 @@ struct KoalaApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            if token != "" {
-//                TabBar()
-//            }
-//            else {
-//                SplashScreen()
-//            }
-            CampaignUpcomingView()
-//            RegisterView()
-//            OrderView()
-//            InfluencerDetailView()
-//            LoginView()
+            if token != "" {
+                TabBar()
+            }
+            else {
+                SplashScreen()
+            }
 
         }
     }

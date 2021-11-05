@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 struct CampaignUpcomingView: View {
     @StateObject var campaignVM = CampaignUpcomingViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var id: Int = 1
     
     var body: some View {
         ScrollView (.vertical, showsIndicators: false) {
@@ -40,9 +41,9 @@ struct CampaignUpcomingView: View {
                 }.padding(.top, 157)
             }
         }
-        
+        .navigationBarHidden(true)
         .onAppear {
-            campaignVM.getUpcomingDetail(id: 1)
+            campaignVM.getUpcomingDetail(id: self.id)
         }
         .background(ThemeColor.primary.ignoresSafeArea())
         .frame(height: UIScreen.main.bounds.height)
