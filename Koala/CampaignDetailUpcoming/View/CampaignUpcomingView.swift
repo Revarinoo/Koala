@@ -32,7 +32,7 @@ struct CampaignUpcomingView: View {
                     
                     WebImage(url: URL(string: campaignVM.campaignModel.campaign_logo))
                         .resizable()
-                        .scaleEffect()
+                        .scaledToFill()
                         .frame(width: 127, height: 127)
                         .cornerRadius(20.0)
                         .overlay(RoundedRectangle(cornerRadius: 20.0)

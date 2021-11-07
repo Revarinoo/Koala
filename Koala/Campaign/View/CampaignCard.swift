@@ -24,10 +24,12 @@ struct CampaignCard: View {
         HStack (alignment: .center) {
             WebImage(url: URL(string: photoURL))
                 .resizable()
+                .scaledToFill()
                 .frame(width: 83, height: 88.68)
                 .cornerRadius(10)
             VStack (alignment: .leading, spacing: 4) {
                 Text("\(name)")
+                    .multilineTextAlignment(.leading)
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 18))
                     .foregroundColor(.black)
                 Text("\(dateFormat(date: date))")
@@ -47,7 +49,7 @@ struct CampaignCard: View {
             .padding(.leading, 10)
         }
         .padding()
-        .frame(height: 129)
+        .frame(maxHeight: 180)
         .background(Color.white)
         .cornerRadius(10)
         .shadow(color: .gray, radius: 3, x: 1, y: 2)
@@ -56,6 +58,6 @@ struct CampaignCard: View {
 
 struct CampaignCard_Previews: PreviewProvider {
     static var previews: some View {
-        CampaignCard(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: "11 Nov Campaign", date: Date().addingTimeInterval(-86400*31)).previewLayout(.sizeThatFits)
+        CampaignCard(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: "11 Nov Campaign Apa Lah Iki Sing Penting Panjang Kurang Panjang Aing MAu tambahin lagi ah sampe udah ga muat sumpa ini reva bkin gw ngetik panjang banget ga kelar kelar woe kok titiknya ga muncul", date: Date().addingTimeInterval(-86400*31)).previewLayout(.sizeThatFits)
     }
 }

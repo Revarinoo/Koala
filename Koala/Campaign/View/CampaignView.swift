@@ -54,17 +54,16 @@ struct CampaignView: View {
                         ForEach(campaignList.campaignModel) { i in
                             if campaignType.contains("Upcoming") {
                                 NavigationLink(destination: CampaignUpcomingView(id: i.content_id)) {
-                                    if i.schedule >= Date().addingTimeInterval(-86400) {
+                                    if i.status != "Completed" {
                                         CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
                                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                                     }
                                 }
                             } else {
                                 NavigationLink(destination: CampaignDetailReportView(campaignID: i.content_id)) {
-                                    if i.schedule < Date().addingTimeInterval(-86400) {
+                                    if i.status.contains("Completed") {
                                         CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
                                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-
                                     }
                                 }
                             }

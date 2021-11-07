@@ -19,6 +19,27 @@ struct CampaignDetailReportView: View {
         return dateFormatter.string(from: dateBefore)
     }
     
+    private func numberPrint(number: Int) -> String {
+        var numberString = ""
+        if number == 0 {
+            numberString = "N/A"
+        } else if number < 1000 {
+            numberString = "\(number)"
+        } else {
+            let numberDivided = Double(number)/1000
+            numberString = "\(String(format: "%.1f", numberDivided))K"
+        }
+        return numberString
+    }
+    
+    private func engagePrint(number: Double) -> String {
+        if number == 0 {
+            return "N/A"
+        } else {
+            return "\(number)%"
+        }
+    }
+    
     var campaignID: Int
     
     init(campaignID: Int) {
@@ -47,14 +68,9 @@ struct CampaignDetailReportView: View {
                     
                     VStack{
                         Text(campaignReportVM.campaignReportBusinessModel?.content_name ?? "not found").font(Font.custom(ThemeFont.poppinsSemiBold, size: 30))
+                            .multilineTextAlignment(.center)
                         
                         Text(dateFormatter(dateBefore:campaignReportVM.campaignReportBusinessModel?.dueDate ?? Date())).font(Font.custom(ThemeFont.poppinsMedium, size: 14)).padding(.bottom, 15)
-                        Path() { path in
-                            path.move(to: CGPoint(x: 0, y: 0))
-                            path.addLine(to: CGPoint(x: UIScreen.main.bounds.width, y: 0))
-                        }
-                        .stroke(Color.gray, lineWidth: 0.2)
-                        .frame(height: 0.4)
                         
                         VStack (alignment: .leading) {
                             Text("Result")
@@ -65,25 +81,23 @@ struct CampaignDetailReportView: View {
                                 ForEach((campaignReportVM.campaignReportBusinessModel?.analytics) ?? [])
                                 { analytic in
                                     let words = analytic.content_type.byWords
-                                    ResultTypeCard(type: "\(words.last ?? "")", reachNum: "10.1K", impressionNum: "2.1K")
+                                    ResultTypeCard(type: "\(words.last ?? "")", reachNum: "\(numberPrint(number: analytic.total_reach))", impressionNum: "\(numberPrint(number: analytic.total_imp))")
                                 }
                             }
-                        }
-                        VStack (alignment: .leading){
-                            Text("Influencer List")
-                                .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
-                                .foregroundColor(.black)
-                            ForEach ((campaignReportVM.campaignReportBusinessModel?.influencers) ?? []) { influencer in
-                                let likes = Double(influencer.total_likes)/1000
-                                let comments = Double(influencer.total_comments)/1000
-                                ResultInfluencerCard(photoURL: influencer.photo, name: influencer.name, price: influencer.total_price, likeNum: "\(String(format: "%.1f", likes))K", commentNum: "\(String(format: "%.1f", comments))K", erNum: "\(influencer.engagement_rate)%")
+                            if ((campaignReportVM.campaignReportBusinessModel?.influencers?.isEmpty) != nil) {
+                                Text("Influencer List")
+                                    .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
+                                    .foregroundColor(.black)
+                                ForEach ((campaignReportVM.campaignReportBusinessModel?.influencers) ?? []) { influencer in
+                                    ResultInfluencerCard(photoURL: influencer.photo, name: influencer.name, price: influencer.total_price, likeNum: "\(numberPrint(number: influencer.total_likes))", commentNum: "\(numberPrint(number: influencer.total_comments))", erNum: "\(engagePrint(number: influencer.engagement_rate))")
+                                }
                             }
                         }
                             
                     }.frame(width: UIScreen.main.bounds.width, alignment: .top)
                         .ignoresSafeArea()
                         .padding(.top, 60)
-                        .padding(.bottom, 60)
+                        .padding(.bottom, 100)
                     .background(Color.white)
                     .cornerRadius(20, corners: [.topLeft, .topRight])
                     
