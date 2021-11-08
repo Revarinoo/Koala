@@ -23,7 +23,7 @@ struct CampaignUpcomingView: View {
                         CampaingUpcomingFieldView(campaign: campaignVM.campaignModel, campaignDetail: campaignVM.campaignDetailModel)
                     }
                     .frame(width: UIScreen.main.bounds.width - 28, alignment: .leading)
-                        .padding(EdgeInsets(top: 60, leading: 28, bottom: 60, trailing: 0))
+                        .padding(EdgeInsets(top: 60, leading: 28, bottom: 100, trailing: 0))
                     .background(Color.white)
                     .cornerRadius(20, corners: [.topLeft, .topRight])
                 }
@@ -41,13 +41,12 @@ struct CampaignUpcomingView: View {
                 }.padding(.top, 157)
             }
         }
-        .navigationBarHidden(true)
         .onAppear {
             campaignVM.getUpcomingDetail(id: self.id)
         }
         .background(ThemeColor.primary.ignoresSafeArea())
         .frame(height: UIScreen.main.bounds.height)
-        
+        .navigationBarHidden(true)
     }
     
     var btnBack: some View {
@@ -64,7 +63,7 @@ struct CampaignUpcomingView: View {
             Spacer()
 
         }
-        .padding(EdgeInsets(top: 60, leading: 24, bottom: 153, trailing: 0))
+        .padding(EdgeInsets(top: 80, leading: 24, bottom: 153, trailing: 0))
     }
 }
 

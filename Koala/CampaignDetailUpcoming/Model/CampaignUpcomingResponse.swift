@@ -18,7 +18,7 @@ struct CampaignUpcomingResponse: Codable {
 struct ContentModel: Codable {
     let name: String?
     let description: String?
-    let schedule: String?
+    let end_date: String?
     let product_name: String?
     let rules: String?
     let campaign_logo: String?

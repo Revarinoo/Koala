@@ -66,6 +66,7 @@ struct SplashScreen: View {
                 }
                 .padding(.horizontal, 16)
             }
+            .navigationBarHidden(true)
         }
     }
 }
