@@ -38,10 +38,11 @@ struct OrderView: View {
                 
                 ChosenStatus(selectedStatus: orderTypeSelected )
             }
-            .padding(.top, 40)
-            .background(ThemeColor.background.ignoresSafeArea())
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarHidden(true)
+            .padding(.top, 40)
+            .background(ThemeColor.background.ignoresSafeArea())
+            
             
         }
         .navigationBarTitle("", displayMode: .inline)

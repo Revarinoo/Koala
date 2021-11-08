@@ -19,6 +19,7 @@ struct ProfileButton: View {
                         .resizable()
                         .clipShape(Circle())
                         .frame(width: 36, height: 36)
+                    Spacer()
                     Text(name).font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                         .foregroundColor(.black)
                     Spacer()

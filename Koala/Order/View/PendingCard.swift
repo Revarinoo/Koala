@@ -32,15 +32,6 @@ struct PendingCard: View {
                                 .background(ThemeColor.primaryLight)
                                 .cornerRadius(5)
                         }
-                        //ini tes aja
-                        Text("Post").scaledToFill()
-                            .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 2)
-                            .foregroundColor(ThemeColor.primary)
-                            .frame(minWidth: 71, minHeight: 20, alignment: .center)
-                            .background(ThemeColor.primaryLight)
-                            .cornerRadius(5)
 
                     }
                     Text(name).font(Font.custom(ThemeFont.poppinsMedium, size: 18))

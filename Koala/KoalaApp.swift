@@ -19,10 +19,6 @@ struct KoalaApp: App {
             else {
                 SplashScreen()
             }
-//            RegisterView()
-//            OrderView()
-//            InfluencerDetailView()
-//            LoginView()
 
         }
     }

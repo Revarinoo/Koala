@@ -10,7 +10,9 @@ import SwiftUI
 struct CampaignListView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var campaignListVM = CampaignListViewModel()
+    @StateObject var campaignListVM = CampaignViewModel()
+    
+    let influencerID: Int
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -32,16 +34,14 @@ struct CampaignListView: View {
                         .padding(.trailing)
                     Spacer()
                 }
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 14, trailing: 0))
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 14, trailing: 0))
                 
                 ScrollView {
                     VStack(spacing: 16) {
-//                        ForEach(campaignListVM.campaignLists) { campaign in
-//                            NavigationLink(destination: LoginView()) {
-//                                CampaignOrderCard(photoURL: campaign.campaignPhoto, name: campaign.campaignName, date: campaign.campaignDate)
-//                                    .padding(.horizontal)
-//                            }
-//                        }
+                        ForEach(campaignListVM.campaignModel) { campaign in
+                            CampaignOrderCard(influencerID: influencerID, contentID: campaign.content_id, photoURL: campaign.photo, productTypes: campaign.type, name: campaign.name, date: campaign.schedule)
+                                .padding(.horizontal)
+                        }
                     }
                 }
             }
@@ -49,11 +49,14 @@ struct CampaignListView: View {
         .navigationBarTitle("", displayMode: .inline)
         .accentColor(.white)
         .navigationBarHidden(true)
+        .onAppear() {
+            campaignListVM.callGetCampaigns()
+        }
     }
 }
 
 struct CampaignListView_Previews: PreviewProvider {
     static var previews: some View {
-        CampaignListView()
+        CampaignListView(influencerID: 1)
     }
 }

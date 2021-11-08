@@ -88,14 +88,15 @@ struct InfluencerDetailView: View {
                         
                         HStack{
                             
-                            Button(action:{}){
-                                
+                            NavigationLink(destination: CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0)) {
                                 Text("Order").font(Font.custom(ThemeFont.poppinsBold, size: 18))
                                     .foregroundColor(Color.white)
-                            }.frame(width: 300, height: 50, alignment: .center)
-                                .background(ThemeColor.primary)
-                                .cornerRadius(15)
-                                .shadow(radius: 4)
+                                    .frame(width: 300, height: 50, alignment: .center)
+                                        .background(ThemeColor.primary)
+                                        .cornerRadius(15)
+                                        .shadow(radius: 4)
+
+                            }
                             
                             Button(action:{
                                 self.isShowingMailView.toggle()
@@ -118,14 +119,18 @@ struct InfluencerDetailView: View {
                         .stroke(Color.gray, lineWidth: 0.2)
                         .frame(height: 0.4)
                         
-                        SocialMedia(influencer: influencerDetailViewModel.influencerModel).padding()
-                        FollowerProfile().padding([.top, .bottom], 16)
-                        
-                        PreviousProjectView(projects: influencerDetailViewModel.influencerModel?.projects)
-                        
-                        ReviewView(projects: influencerDetailViewModel.influencerModel?.projects ?? []).padding()
-                            .padding(.bottom, 86)
+                        Group {
+                            SocialMedia(influencer: influencerDetailViewModel.influencerModel).padding()
+                            FollowerProfile().padding([.top, .bottom], 16)
                             
+                            EstimatedPrice(products: influencerDetailViewModel.influencerModel?.products ?? []).padding([.top, .bottom], 16)
+                            
+                            PreviousProjectView(projects: influencerDetailViewModel.influencerModel?.projects)
+                                .padding(.top, 16)
+                            
+                            ReviewView(projects: influencerDetailViewModel.influencerModel?.projects ?? []).padding()
+                                .padding(.bottom, 86)
+                        }
                     }.frame(width: UIScreen.main.bounds.width, alignment: .top)
                         .ignoresSafeArea()
                         .padding(.top, 60)

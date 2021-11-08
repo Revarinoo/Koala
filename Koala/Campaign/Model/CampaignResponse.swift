@@ -9,6 +9,8 @@ import Foundation
 
 struct CampaignResponse: Codable {
     let data: [Campaign]?
+    let code: Int
+    let message: String
 }
 
 struct Campaign: Codable {

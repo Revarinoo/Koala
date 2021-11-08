@@ -17,6 +17,7 @@ struct PreviousProjectCard: View {
         VStack (alignment: .center) {
             WebImage(url: URL(string: photoURL))
                 .resizable()
+                .scaledToFill()
                 .clipShape(Circle())
                 .frame(width: 82, height: 82)
                 .overlay(Circle().stroke(Color.init(hex: "FE724C"), lineWidth: 2))
@@ -36,7 +37,7 @@ struct PreviousProjectCard: View {
         .frame(width: 106, height: 182)
         .background(Color.init(hex: "FFF1ED"))
         .cornerRadius(10)
-        .shadow(color: .gray, radius: 3, x: 1, y: 2)
+        .shadow(color: Color.init(hex: "C4C4C4"), radius: 3, x: 0, y: 3)
     }
 }
 
