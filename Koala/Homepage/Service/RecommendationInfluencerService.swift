@@ -11,16 +11,6 @@ let categoriesDefault = UserDefaults.standard
 
 struct RecommendationInfluencerService {
     
-    func getInfluencerList(completionHandler:@escaping(_ result: RecommendationInfluencers?)->Void) {
-        
-        let request = NSMutableURLRequest(url: NSURL(string: HttpUtility.endpoint + "recommended/influencers?categories[]=Coffee")! as URL)
-        request.allHTTPHeaderFields = HttpUtility.shared.headers
-
-        HttpUtility.shared.request(request as URLRequest, resultType: RecommendationInfluencers.self) { response in
-            _ = completionHandler(response)
-        }
-    }
-    
     func getRecomended(categories: [String], completionHandler:@escaping(_ result: RecommendationInfluencers?)->Void) {
             var urlRequest = URLRequest(url: URL(string: HttpUtility.endpoint + "recommended/influencers")!)
                     urlRequest.httpMethod = "post"
