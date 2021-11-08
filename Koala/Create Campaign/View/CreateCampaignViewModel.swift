@@ -24,6 +24,7 @@ class CreateCampaignViewModel : ObservableObject {
             }
         }
         let createCampaignReq = CreateCampaignRequest(campaign_logo: campaign_logo, name: submittedCampaign.title, description: submittedCampaign.description, schedule: submittedCampaign.dueDate.serverFormattedDate(), product_name: submittedCampaign.product, rules: submittedCampaign.rules, references: references)
+        print("create campaign: \(createCampaignReq)")
         createCampaignService.postCreateCampaign(createCampaignReq){
             response in DispatchQueue.main.async {
                 if let code = response?.code, let message = response?.message {
@@ -50,33 +51,32 @@ class CreateCampaignViewModel : ObservableObject {
         let headers: HTTPHeaders = [
             "Content-type": "multipart/form-data"
         ]
-        AF.upload(multipartFormData: {
-            multipartFormData in
+        Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append(imgData, withName: "image",fileName: "file.jpeg", mimeType: "image/jpeg")
             for (key, value) in parameters {
                 multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+            } //Optional for extra parameters
+        }, to:"http://127.0.0.1:8000/api/create-campaign", method: .post , headers: headers)
+        { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                
+                upload.uploadProgress(closure: { (progress) in
+                    print("Upload Progress: \(progress.fractionCompleted)")
+                })
+                
+                upload.responseJSON { response in
+                    print("response.statusCode")
+                    print(response.response?.statusCode)
+                    print("response.value")
+                    print(response.value)
+                }
+                
+            case .failure(let encodingError):
+                print("failure")
+                print(encodingError)
             }
-        }, to: "http:127.0.0.1:8000/api/create-campaign", method: .post , headers: headers)
-        //        { (result) in
-        //            switch result {
-        //            case .success (let value):
-        //
-        //                upload.uploadProgress(closure: { (progress) in
-        //                    print("Upload Progress: \(progress.fractionCompleted)")
-        //                })
-        //
-        //                upload.responseJSON { response in
-        //                    print("response.statusCode")
-        //                    print(response.response?.statusCode)
-        //                    print("response.value")
-        //                    print(response.value)
-        //                }
-        //
-        //            //case .failure(let encodingError):
-        //            //    print("failure")
-        //            //    print(encodingError)
-        //            }
-        //        }
+        }
     }
 }
 
