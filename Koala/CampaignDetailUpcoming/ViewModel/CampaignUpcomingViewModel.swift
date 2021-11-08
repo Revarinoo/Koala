@@ -15,7 +15,7 @@ class CampaignUpcomingViewModel: ObservableObject {
     
     func getUpcomingDetail(id: Int) {
         campaignUpcomingService.getUpcomingDetail(id: id) { result in
-            if let campaign_logo = result?.campaign.campaign_logo, let campaign_title = result?.campaign.name, let due_date = result?.campaign.schedule, let product = result?.campaign.product_name, let description = result?.campaign.description, let rules = result?.campaign.rules, let references = result?.references, let details = result?.campaign_details {
+            if let campaign_logo = result?.campaign.campaign_logo, let campaign_title = result?.campaign.name, let due_date = result?.campaign.end_date, let product = result?.campaign.product_name, let description = result?.campaign.description, let rules = result?.campaign.rules, let references = result?.references, let details = result?.campaign_details {
                 
                 var campaignDetails: [CampaignDetailUpcomingModel] = []
                 
