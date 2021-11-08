@@ -12,6 +12,7 @@ struct InfluencerDetailModel: Identifiable {
     let influencer_profile: InfluencerProfileModel
     let categories: [String]
     let platforms: [PlatformModel]
+    let products: [ProductModel]
     let analytic_photos: [AnalyticPhotoModel]
     let projects: [ProjectModel]
 }
@@ -33,6 +34,13 @@ struct PlatformModel: Identifiable{
     let followers: Int
     let average_likes: Double
     let average_comments: Double
+}
+
+struct ProductModel: Identifiable {
+    let id: UUID = UUID()
+    let content_type: String
+    let minPrice: Int
+    let maxPrice: Int
 }
 
 struct ProjectModel: Identifiable{
