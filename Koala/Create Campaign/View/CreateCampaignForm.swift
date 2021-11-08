@@ -20,10 +20,21 @@ struct CreateCampaignForm: View {
             }
             
             VStack(alignment: .leading, spacing: 6){
-                Text("Due Date")
+                Text("Start Date")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
-                DatePicker("", selection: $campaignModel.dueDate, in: Date()..., displayedComponents: [.date]).padding(15)
+                DatePicker("", selection: $campaignModel.dueDate, in: Date()..., displayedComponents: [.date]).padding(5)
+                    .background(Color("lightGray"))
+                    .cornerRadius(10)
+                    .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                    .padding(.bottom, 5)
+                    .padding(.top, -5)
+            }
+            VStack(alignment: .leading, spacing: 6){
+                Text("End Date")
+                    .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
+                    .foregroundColor(ThemeColor.grayDark)
+                DatePicker("", selection: $campaignModel.dueDate, in: Date()..., displayedComponents: [.date]).padding(5)
                     .background(Color("lightGray"))
                     .cornerRadius(10)
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
@@ -50,8 +61,23 @@ struct CreateCampaignForm: View {
                             .cornerRadius(10.0).onTapGesture {
                                 showSheet = true
                             }
+                        Image(systemName: "plus").font(.system(size: 24)).foregroundColor(.gray)
+                            .scaledToFill()
+                            .frame(width: 82, height: 88)
+                            .background(ThemeColor.background)
+                            .cornerRadius(10.0)
                     } else {
-                        Image(uiImage : campaignModel.references[0]).font(.system(size: 24)).foregroundColor(.gray)
+                        ForEach (campaignModel.references, id: \.self) { images in
+                            Image(uiImage : images).resizable()//.foregroundColor(.gray)
+                                .scaledToFill()
+                                .frame(width: 82, height: 88)
+                                .background(ThemeColor.background)
+                                .cornerRadius(10.0).onTapGesture {
+                                    //showSheet = true
+                                }
+                        }
+                        
+                        Image(systemName: "plus").font(.system(size: 24)).foregroundColor(.gray)
                             .scaledToFill()
                             .frame(width: 82, height: 88)
                             .background(ThemeColor.background)
@@ -59,19 +85,12 @@ struct CreateCampaignForm: View {
                                 showSheet = true
                             }
                     }
-                    
-                    Image(systemName: "plus").font(.system(size: 24)).foregroundColor(.gray)
-                        .scaledToFill()
-                        .frame(width: 82, height: 88)
-                        .background(ThemeColor.background)
-                        .cornerRadius(10.0)
                 }
             }
         }.padding([.leading, .trailing], 16).ignoresSafeArea()
             .background(Color.white.ignoresSafeArea())
             .sheet(isPresented: $showSheet) {
-                // Pick an image from the photo library:
-                ImagePicker(sourceType: .photoLibrary, selectedImage: $campaignModel.logo)
+                ImagePickerReferences(referenceImages: $campaignModel.references)
             }
     }
 }

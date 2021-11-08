@@ -41,9 +41,9 @@ struct ContentForm: View, Identifiable {
                                 }
                             }//.pickerStyle(WheelPickerStyle())
                                 .font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray).accentColor(ThemeColor.primary)
-                        }
+                        }.padding(8)
                         Spacer()
-                    }
+                    }.background(.white).cornerRadius(12)
                         
                     
                     
@@ -66,8 +66,6 @@ struct ContentForm: View, Identifiable {
             }.padding(.horizontal, 16).padding(.bottom, 25)
         }
         .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(red: 1.0, green: 0.945, blue: 0.929)/*@END_MENU_TOKEN@*/).cornerRadius(10)
-        
-        
     }
 }
 

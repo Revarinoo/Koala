@@ -56,7 +56,7 @@ struct CreateCampaign: View {
                             Image(systemName: "plus").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                                 .foregroundColor(ThemeColor.primary)
                         }.frame(maxWidth: .infinity)
-                            .frame (height: 38)
+                            .frame (height: 50)
                             .cornerRadius(12)
                             .overlay(
                                     RoundedRectangle(cornerRadius: 10)
@@ -65,15 +65,21 @@ struct CreateCampaign: View {
                             .padding([.leading, .trailing], 16)
                         Button(action: {}){
                             Text("Create").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                                .foregroundColor(ThemeColor.primary)
+                                .foregroundColor(.white)
                         }.frame(maxWidth: .infinity)
-                            .frame (height: 38)
+                            .frame (height: 50)
+                            .background(ThemeColor.primary)
                             .cornerRadius(12)
                             .overlay(
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(ThemeColor.primary, lineWidth: 1)
                                 )
-                            .padding([.leading, .trailing], 16)
+                            
+                            .onTapGesture(){
+                                createCampaignVM.submitData(submittedCampaign: campaignModel)
+                            }
+                            .padding([.leading, .trailing], 16).padding(.bottom, 80)
+                        
                         
                         
                     }.frame(width: UIScreen.main.bounds.width, alignment: .top)
@@ -83,7 +89,6 @@ struct CreateCampaign: View {
                         .cornerRadius(20, corners: [.topLeft, .topRight])
                     
                 }
-                
                 VStack{
                     
                     //WebImage(url: URL(string: "https://assets.teenvogue.com/photos/5fd4d29fe6ff71e902f97c1a/4:3/w_2443,h_1832,c_limit/taylor-evermore-resized.jpg"))
@@ -117,7 +122,9 @@ struct CreateCampaign: View {
         //.onAppear(perform: {
         //    influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
         //})
+            
             .background(ThemeColor.primary.ignoresSafeArea())
+            
             .ignoresSafeArea()
             .sheet(isPresented: $showSheet) {
                 // Pick an image from the photo library:
