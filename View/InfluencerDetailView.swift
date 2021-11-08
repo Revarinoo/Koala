@@ -119,14 +119,18 @@ struct InfluencerDetailView: View {
                         .stroke(Color.gray, lineWidth: 0.2)
                         .frame(height: 0.4)
                         
-                        SocialMedia(influencer: influencerDetailViewModel.influencerModel).padding()
-                        FollowerProfile().padding([.top, .bottom], 16)
-                        
-                        PreviousProjectView(projects: influencerDetailViewModel.influencerModel?.projects)
-                        
-                        ReviewView(projects: influencerDetailViewModel.influencerModel?.projects ?? []).padding()
-                            .padding(.bottom, 86)
+                        Group {
+                            SocialMedia(influencer: influencerDetailViewModel.influencerModel).padding()
+                            FollowerProfile().padding([.top, .bottom], 16)
                             
+                            EstimatedPrice(products: influencerDetailViewModel.influencerModel?.products ?? []).padding([.top, .bottom], 16)
+                            
+                            PreviousProjectView(projects: influencerDetailViewModel.influencerModel?.projects)
+                                .padding(.top, 16)
+                            
+                            ReviewView(projects: influencerDetailViewModel.influencerModel?.projects ?? []).padding()
+                                .padding(.bottom, 86)
+                        }
                     }.frame(width: UIScreen.main.bounds.width, alignment: .top)
                         .ignoresSafeArea()
                         .padding(.top, 60)

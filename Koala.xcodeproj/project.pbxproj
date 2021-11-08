@@ -78,6 +78,8 @@
 		78B9333E27270F1A0040882D /* InfluencerDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B9333D27270F1A0040882D /* InfluencerDetailModel.swift */; };
 		78B93340272725D40040882D /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B9333F272725D40040882D /* RoundedCorner.swift */; };
 		78B9334227284D6F0040882D /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B9334127284D6F0040882D /* MailView.swift */; };
+		84402B5C2738DF700037C045 /* EstimatedPriceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84402B5B2738DF700037C045 /* EstimatedPriceCard.swift */; };
+		84402B5E2738E71A0037C045 /* EstimatedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84402B5D2738E71A0037C045 /* EstimatedPrice.swift */; };
 		844DEF2D2722684A000C33C0 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DEF2C2722684A000C33C0 /* RegisterView.swift */; };
 		8451B830272A55360061D389 /* CampaignResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451B82F272A55360061D389 /* CampaignResponse.swift */; };
 		8451B832272A553C0061D389 /* CampaignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451B831272A553C0061D389 /* CampaignModel.swift */; };
@@ -230,6 +232,8 @@
 		78B9333D27270F1A0040882D /* InfluencerDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfluencerDetailModel.swift; path = Model/InfluencerDetailModel.swift; sourceTree = SOURCE_ROOT; };
 		78B9333F272725D40040882D /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoundedCorner.swift; path = View/RoundedCorner.swift; sourceTree = SOURCE_ROOT; };
 		78B9334127284D6F0040882D /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MailView.swift; path = View/MailView.swift; sourceTree = SOURCE_ROOT; };
+		84402B5B2738DF700037C045 /* EstimatedPriceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EstimatedPriceCard.swift; path = Koala/Components/EstimatedPriceCard.swift; sourceTree = SOURCE_ROOT; };
+		84402B5D2738E71A0037C045 /* EstimatedPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EstimatedPrice.swift; path = Koala/Components/EstimatedPrice.swift; sourceTree = SOURCE_ROOT; };
 		844DEF2C2722684A000C33C0 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		8451B82F272A55360061D389 /* CampaignResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignResponse.swift; sourceTree = "<group>"; };
 		8451B831272A553C0061D389 /* CampaignModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignModel.swift; sourceTree = "<group>"; };
@@ -811,12 +815,14 @@
 			children = (
 				8467200027266302008FD954 /* PreviousProjectView.swift */,
 				84671FFC2726614F008FD954 /* PreviousProjectCard.swift */,
+				84402B5D2738E71A0037C045 /* EstimatedPrice.swift */,
 				F7A52B8D27267B9C0067D3E6 /* SocialMedia.swift */,
 				F7A52B8F27267D700067D3E6 /* SocialMediaCard.swift */,
 				F7A52B912727073B0067D3E6 /* FollowerProfile.swift */,
 				F7A52B93272707C70067D3E6 /* ImageSlider.swift */,
 				84671FFA27265A62008FD954 /* ReviewView.swift */,
 				84972DA12726711D0097D2D2 /* ReviewCard.swift */,
+				84402B5B2738DF700037C045 /* EstimatedPriceCard.swift */,
 			);
 			path = ChildView;
 			sourceTree = "<group>";
@@ -1270,6 +1276,7 @@
 				2FBC8B97271C2E09007E7B76 /* HttpUtility.swift in Sources */,
 				2FA40E41271DE3980095A812 /* ThemeFont.swift in Sources */,
 				2FCB0B2A2725202A0017C9D6 /* AccountInfoFetcher.swift in Sources */,
+				84402B5E2738E71A0037C045 /* EstimatedPrice.swift in Sources */,
 				D2577BC8271F23BE00E7AC5D /* RecommendationInfluencer.swift in Sources */,
 				84671FFF2726626F008FD954 /* PreviousProjectViewModel.swift in Sources */,
 				8451B83C272A55570061D389 /* CampaignCard.swift in Sources */,
@@ -1362,6 +1369,7 @@
 				2F0D9DAE27311BAB0012DAAF /* CampaignDetailService.swift in Sources */,
 				D28EC2A92722536400FCEA2B /* RecommendationViewModel.swift in Sources */,
 				8451B849272B923F0061D389 /* CampaignDetailReportView.swift in Sources */,
+				84402B5C2738DF700037C045 /* EstimatedPriceCard.swift in Sources */,
 				D28D625627201E8300BE7345 /* RecommendationInfluencerService.swift in Sources */,
 				D2C3C59C2727A2B700C338B4 /* OngoingCard.swift in Sources */,
 				D291034E27212A550008B0DE /* CategoryViewModel.swift in Sources */,

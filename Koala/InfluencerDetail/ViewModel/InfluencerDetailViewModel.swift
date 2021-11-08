@@ -20,6 +20,7 @@ class InfluencerDetailViewModel: ObservableObject {
         var platforms: [PlatformModel] = []
         var categories: [String] = []
         var projects: [ProjectModel] = []
+        var products: [ProductModel] = []
         
         influencerDetailService.getInfluencerDetail(influencer_id , completionHandler: { response in
             if let response = response {
@@ -27,6 +28,7 @@ class InfluencerDetailViewModel: ObservableObject {
                 let unwrappedAnalytics = response.analytic_photos ?? []
                 let unwrappedProjects = response.projects ?? []
                 let unwrappedCategories = response.categories ?? []
+                let unwrappedProducts = response.products
                 
                 influencer_profile = InfluencerProfileModel(id: unwrappedProfile.id, contact_email: unwrappedProfile.contact_email, name: unwrappedProfile.name, location: unwrappedProfile.location ?? "", photo: unwrappedProfile.photo ?? "", user_id: unwrappedProfile.user_id, engagement_rate: unwrappedProfile.engagement_rate ?? 0.0)
                 
@@ -42,6 +44,10 @@ class InfluencerDetailViewModel: ObservableObject {
                     categories.append(category)
                 }
                 
+                for product in unwrappedProducts {
+                    products.append(ProductModel(content_type: product.content_type, minPrice: product.minPrice, maxPrice: product.maxPrice))
+                }
+                
                 for project in unwrappedProjects {
                     projects.append(ProjectModel(id: project.order_id, business_photo: project.business_photo ?? "", sum_impressions: project.sum_impressions ?? 0, sum_reach: project.sum_reach ?? 0, businessOwner_photo: project.businessOwner_photo ?? "", businessOwner_name: project.businessOwner_name, comment: project.comment ?? "", rating: project.rating ?? 0.0))
                 }
@@ -49,10 +55,9 @@ class InfluencerDetailViewModel: ObservableObject {
             }
 
             guard let unwrapped = influencer_profile else {return}
-            influencer = InfluencerDetailModel(id: unwrapped.id, influencer_profile: unwrapped, categories: categories, platforms: platforms, analytic_photos: analytic_photos, projects: projects)
+            influencer = InfluencerDetailModel(id: unwrapped.id, influencer_profile: unwrapped, categories: categories, platforms: platforms, products: products, analytic_photos: analytic_photos, projects: projects)
             DispatchQueue.main.async {
                 self.influencerModel = influencer
-                print(influencer)
             }
         }
     )}
