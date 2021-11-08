@@ -23,11 +23,17 @@ struct SplashScreen: View {
                     Text("Koala")
                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 36))
                         .foregroundColor(.white)
+                        .padding(.bottom, 4)
                     
-                    Text("App Slogan")
+                    Text("Collaboration.")
                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 27))
                         .foregroundColor(.white)
-                        .padding(.bottom, 64)
+                        .padding(.bottom, -20)
+                    
+                    Text("Engage. Awareness.")
+                        .font(Font.custom(ThemeFont.poppinsSemiBold, size: 27))
+                        .foregroundColor(.white)
+                        .padding(.bottom, 70)
                     
                     NavigationLink(
                         destination: OnboardingView(),
