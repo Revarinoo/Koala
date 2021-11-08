@@ -9,60 +9,48 @@ import SwiftUI
 
 import SwiftUI
 struct Demo: View {
-     @State private var text = ""
-    var body: some View {
-        NavigationView {
-                VStack(alignment: .leading){
-                    Text("How are you feeing today?")
-                        .font(.title)
-                    CustomTextEditor.init(placeholder: "Start typing..", text: $text)
-                        .font(.body)
-                        .background(Color(UIColor.systemGray6))
-                        .accentColor(.green)
-                        .frame(height: 400)
-                        .cornerRadius(8)
-                    Spacer()
-                }.padding()
+    var textTitle : String
+    var textFieldHeight : CGFloat
+    @Binding var product : String
     
-            .navigationTitle("Navigation")
+    init(textTitle : String, product: Binding<String>, textFieldHeight: CGFloat) {
+            self.textTitle = textTitle
+            self._product = product
+        self.textFieldHeight = textFieldHeight
         }
-    }
-}
-
-struct CustomTextEditor: View {
-    let placeholder: String
-    @Binding var text: String
-    let internalPadding: CGFloat = 5
     var body: some View {
-        
-        ZStack(alignment: .topLeading) {
-            if text.isEmpty  {
-                Text(placeholder)
-                    .background(Color("lightGray"))
-                    .cornerRadius(10)
+        VStack(alignment: .leading, spacing: 6){
+            Text(textTitle)
+                .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
+                .foregroundColor(ThemeColor.grayDark)
+            ZStack{
+                TextEditor(text: $product).padding(.leading, 15)
+                    .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
+                    .foregroundColor(.black)
+                    .background(Color.clear)
+                    .colorMultiply(Color("lightGray"))
+
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                    .foregroundColor(Color.primary.opacity(0.25))
-                    .padding(EdgeInsets(top: 7, leading: 4, bottom: 0, trailing: 0))
-            }
-            TextEditor(text: $text)
-                .background(Color("lightGray"))
+                    .padding(.bottom, 5)
+                    .padding(.top, 5)
+
+                    .frame(height: textFieldHeight)
+                TextEditor(text: self.$product)
+                          .foregroundColor(self.product == "placeholderString" ? .gray : .primary)
+                          .onTapGesture {
+                            if self.product == "placeholderString" {
+                              self.product = ""
+                            }
+                          }
+            }.background(Color("lightGray"))
                 .cornerRadius(10)
-                .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                .cornerRadius(10)
-        }.onAppear() {
-            UITextView.appearance().textContainerInset =
-                 UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
-            UITextView.appearance().backgroundColor = UIColor(ThemeColor.background)
-        }.onDisappear() {
-            UITextView.appearance().textContainerInset =
-                 UIEdgeInsets(top: 13, left: 12, bottom: 13, right: 14)
-            UITextView.appearance().backgroundColor = UIColor(ThemeColor.background)
         }
+        
     }
 }
 
 struct DemoView_Previews: PreviewProvider {
     static var previews: some View {
-        Demo()
+        Demo(textTitle: "placeholderString", product:.constant(""), textFieldHeight: 172)
     }
 }

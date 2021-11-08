@@ -8,57 +8,58 @@
 import SwiftUI
 
 struct CreateCampaignForm: View {
-    @State var campaignTitle : String = ""
-    @State var dueDate : String = ""
-    @State var product : String = ""
-    @State var description : String = ""
-    @State var rules : String = ""
-    
+    @Binding var campaignModel : CreateCampaignModel
+    @State var showSheet = false
     var body: some View {
         VStack(alignment: .leading, spacing: 18){
             VStack(alignment: .leading, spacing: 6){
-                Text("Email")
+                Text("Title")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
-                TextField("Enter your campaign title", text: $campaignTitle).textFieldStyle(OvalTextFieldStyle())
+                TextField("Enter your campaign title", text: $campaignModel.title).textFieldStyle(OvalTextFieldStyle())
             }
+            
             VStack(alignment: .leading, spacing: 6){
                 Text("Due Date")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
-                TextField("dd/mm/yy", text: $dueDate).textFieldStyle(OvalTextFieldStyle())
+                DatePicker("", selection: $campaignModel.dueDate, in: Date()..., displayedComponents: [.date]).padding(15)
+                    .background(Color("lightGray"))
+                    .cornerRadius(10)
+                    .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                    .padding(.bottom, 5)
+                    .padding(.top, -5)
             }
-            VStack(alignment: .leading, spacing: 6){
-                Text("Product")
-                    .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
-                    .foregroundColor(ThemeColor.grayDark)
-                TextEditor(text: $product)
-                    .colorMultiply(ThemeColor.background).frame(height: 63).cornerRadius(10)
-            }
-            VStack(alignment: .leading, spacing: 6){
-                Text("Product")
-                    .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
-                    .foregroundColor(ThemeColor.grayDark)
-                TextEditor(text: $description)
-                    .colorMultiply(ThemeColor.background).frame(height: 172).cornerRadius(10)
-            }
-            VStack(alignment: .leading, spacing: 6){
-                Text("Product")
-                    .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
-                    .foregroundColor(ThemeColor.grayDark)
-                TextEditor(text: $rules)
-                    .colorMultiply(ThemeColor.background).frame(height: 172).cornerRadius(10)
-            }
+            
+            TextArea(textTitle: "Product", product: $campaignModel.product, textFieldHeight: 63, placeHolderText: "Enter your product", fieldBackgroundColor: Color("lightGray"))
+            
+            TextArea(textTitle: "Description", product: $campaignModel.description, textFieldHeight: 172, placeHolderText: "Enter your descriptions", fieldBackgroundColor: Color("lightGray"))
+
+            TextArea(textTitle: "Rules", product: $campaignModel.rules, textFieldHeight: 172, placeHolderText: "Enter your rules", fieldBackgroundColor: Color("lightGray"))
+
             VStack(alignment: .leading, spacing: 6){
                 Text("References")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
                 HStack(spacing: 12){
-                    Image(systemName: "photo").font(.system(size: 24)).foregroundColor(.gray)
-                        .scaledToFill()
-                        .frame(width: 82, height: 88)
-                        .background(ThemeColor.background)
-                        .cornerRadius(10.0)
+                    if $campaignModel.references.count == 0{
+                        Image(systemName: "photo").font(.system(size: 24)).foregroundColor(.gray)
+                            .scaledToFill()
+                            .frame(width: 82, height: 88)
+                            .background(ThemeColor.background)
+                            .cornerRadius(10.0).onTapGesture {
+                                showSheet = true
+                            }
+                    } else {
+                        Image(uiImage : campaignModel.references[0]).font(.system(size: 24)).foregroundColor(.gray)
+                            .scaledToFill()
+                            .frame(width: 82, height: 88)
+                            .background(ThemeColor.background)
+                            .cornerRadius(10.0).onTapGesture {
+                                showSheet = true
+                            }
+                    }
+                    
                     Image(systemName: "plus").font(.system(size: 24)).foregroundColor(.gray)
                         .scaledToFill()
                         .frame(width: 82, height: 88)
@@ -68,11 +69,15 @@ struct CreateCampaignForm: View {
             }
         }.padding([.leading, .trailing], 16).ignoresSafeArea()
             .background(Color.white.ignoresSafeArea())
+            .sheet(isPresented: $showSheet) {
+                // Pick an image from the photo library:
+                ImagePicker(sourceType: .photoLibrary, selectedImage: $campaignModel.logo)
+            }
     }
 }
 
-struct CreateCampaignForm_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateCampaignForm()//.preferredColorScheme(.dark)
-    }
-}
+//struct CreateCampaignForm_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CreateCampaignForm()//.preferredColorScheme(.dark)
+//    }
+//}

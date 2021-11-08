@@ -7,18 +7,17 @@
 
 import SwiftUI
 
-struct ContentForm: View {
+struct ContentForm: View, Identifiable {
     
-    @State private var checkAmount = 0.0
-    @State private var numberOfPeople = 2
-    @State private var tipPercentage = 20
+    let id = UUID()
+    var firstContent : Bool = false
+    //@Binding var content : CreateContentModel
     @State private var productTypee : productType = .post
     @State var contentDetail = ""
     
-    let tipPecentages = [10, 15, 20, 25, 0]
-    
-    init(){
-        
+    init(firstContent: Bool){
+        self.firstContent = firstContent
+        //_content = content
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ThemeColor.primary)
         UISegmentedControl.appearance().backgroundColor = UIColor(ThemeColor.background)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
@@ -30,24 +29,40 @@ struct ContentForm: View {
     var body: some View {
         VStack{
             if #available(iOS 15.0, *) {
-                HStack{
-                    Picker("Number of people", selection: $productTypee) {
-                        ForEach(productType.allCases, id: \.self) { value in
-                            Text("\(value.rawValue)").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
+                VStack(alignment: .leading){
+                    Text("Content Type")
+                        .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
+                        .foregroundColor(ThemeColor.grayDark)
+                    HStack{
+                        Section{
+                            Picker("Number of people", selection: $productTypee) {
+                                ForEach(productType.allCases, id: \.self) { value in
+                                    Text("\(value.rawValue)").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
+                                }
+                            }//.pickerStyle(WheelPickerStyle())
+                                .font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray).accentColor(ThemeColor.primary)
                         }
-                    }.font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray).accentColor(ThemeColor.primary).border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+                        Spacer()
+                    }
+                        
                     
-                    Spacer()
-                }
+                    
+                }.padding(16)
             } else {
                 // Fallback on earlier versions
             }
-            VStack(alignment: .leading, spacing: 6){
-                Text("Product")
-                    .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
-                    .foregroundColor(ThemeColor.grayDark)
-                TextEditor(text: $contentDetail)
-                    .colorMultiply(.white).frame(height: 172).cornerRadius(10)
+            VStack(alignment: .leading, spacing: 22){
+                TextArea(textTitle: "Content", product: $contentDetail, textFieldHeight: 172, placeHolderText: "Enter your package detail", fieldBackgroundColor: .white)
+                if !firstContent{
+                    Button(action: {}){
+                        Text("Delete").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                            .foregroundColor(Color.red)
+                    }.frame(maxWidth: .infinity)
+                        .frame (height: 38)
+                        .background(Color.white)
+                        .cornerRadius(12)
+                }
+                
             }.padding(.horizontal, 16).padding(.bottom, 25)
         }
         .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(red: 1.0, green: 0.945, blue: 0.929)/*@END_MENU_TOKEN@*/).cornerRadius(10)
@@ -56,8 +71,8 @@ struct ContentForm: View {
     }
 }
 
-struct ContentForm_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentForm()
-    }
-}
+//struct ContentForm_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentForm(firstContent: true)
+//    }
+//}
