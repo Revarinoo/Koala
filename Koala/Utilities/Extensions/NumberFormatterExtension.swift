@@ -22,7 +22,7 @@ extension Double {
             return "\((self / 1000000).oneDecimalFormatter)M";
         }
         if (self >= 1000) {
-            return "\(Int(self / 1000))K";
+            return "\((self / 1000).oneDecimalFormatter)K";
         }
         return String(Int(self))
     }

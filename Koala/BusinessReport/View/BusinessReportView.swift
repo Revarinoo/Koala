@@ -36,7 +36,8 @@ struct BusinessReportView: View {
                         .foregroundColor(Color(hex: "FFB19D"))
                 }
                 Spacer()
-                Text("Chart data")
+                LineChartView(data: [812, 2332, 5431, 3221, 1249, 378], label: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], title: "Line chart", legend: "Basic")
+                    .padding(EdgeInsets(top: 48, leading: -16, bottom: 16, trailing: -16))
                 Spacer()
                 Text("Overview")
                     .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
