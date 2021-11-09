@@ -25,6 +25,7 @@
 		2F6C2C3D27228D780026EF3E /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C3C27228D780026EF3E /* SplashScreen.swift */; };
 		2F6C2C3F272290FF0026EF3E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C3E272290FF0026EF3E /* OnboardingView.swift */; };
 		2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C402722B6990026EF3E /* OnboardViewModel.swift */; };
+		2F95BCC52739F34D00F78F83 /* BusinessReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95BCC42739F34D00F78F83 /* BusinessReportView.swift */; };
 		2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */; };
 		2F99D364271D8309003DD86C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D363271D8309003DD86C /* SDWebImageSwiftUI */; };
 		2F99D391271DC6CE003DD86C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D390271DC6CE003DD86C /* Alamofire */; };
@@ -179,6 +180,7 @@
 		2F6C2C3C27228D780026EF3E /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		2F6C2C3E272290FF0026EF3E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		2F6C2C402722B6990026EF3E /* OnboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewModel.swift; sourceTree = "<group>"; };
+		2F95BCC42739F34D00F78F83 /* BusinessReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessReportView.swift; sourceTree = "<group>"; };
 		2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCardList.swift; sourceTree = "<group>"; };
 		2FA40E3E271DE3180095A812 /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		2FA40E40271DE3980095A812 /* ThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFont.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 		2F95BCC0273915BE00F78F83 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2F95BCC42739F34D00F78F83 /* BusinessReportView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1293,6 +1296,7 @@
 				F76CE87D2723B5010055D58C /* RegisterInfluencerView.swift in Sources */,
 				F7A52B8E27267B9C0067D3E6 /* SocialMedia.swift in Sources */,
 				846C55D32720255A006C94DD /* LoginModel.swift in Sources */,
+				2F95BCC52739F34D00F78F83 /* BusinessReportView.swift in Sources */,
 				78B9334227284D6F0040882D /* MailView.swift in Sources */,
 				2FBC8BB7271C3994007E7B76 /* InfluencerListViewModel.swift in Sources */,
 				78B93340272725D40040882D /* RoundedCorner.swift in Sources */,
