@@ -25,6 +25,7 @@
 		2F6C2C3D27228D780026EF3E /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C3C27228D780026EF3E /* SplashScreen.swift */; };
 		2F6C2C3F272290FF0026EF3E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C3E272290FF0026EF3E /* OnboardingView.swift */; };
 		2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C402722B6990026EF3E /* OnboardViewModel.swift */; };
+		2F95BCC32739F12700F78F83 /* UnderMaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95BCC22739F12700F78F83 /* UnderMaintenanceView.swift */; };
 		2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */; };
 		2F99D364271D8309003DD86C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D363271D8309003DD86C /* SDWebImageSwiftUI */; };
 		2F99D391271DC6CE003DD86C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D390271DC6CE003DD86C /* Alamofire */; };
@@ -179,6 +180,7 @@
 		2F6C2C3C27228D780026EF3E /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		2F6C2C3E272290FF0026EF3E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		2F6C2C402722B6990026EF3E /* OnboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewModel.swift; sourceTree = "<group>"; };
+		2F95BCC22739F12700F78F83 /* UnderMaintenanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderMaintenanceView.swift; sourceTree = "<group>"; };
 		2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCardList.swift; sourceTree = "<group>"; };
 		2FA40E3E271DE3180095A812 /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		2FA40E40271DE3980095A812 /* ThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFont.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 			children = (
 				2F6C2C3C27228D780026EF3E /* SplashScreen.swift */,
 				2F6C2C3E272290FF0026EF3E /* OnboardingView.swift */,
+				2F95BCC22739F12700F78F83 /* UnderMaintenanceView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1360,6 +1363,7 @@
 				F76CE87B272275D20055D58C /* RegisterService.swift in Sources */,
 				2F0D9DB027311C380012DAAF /* CampaignDetailModel.swift in Sources */,
 				F76CE879272275B90055D58C /* RegisterViewModel.swift in Sources */,
+				2F95BCC32739F12700F78F83 /* UnderMaintenanceView.swift in Sources */,
 				8451B84D272B95510061D389 /* ResultTypeCard.swift in Sources */,
 				D2131CB32729BE1D006ACDC2 /* OrderModel.swift in Sources */,
 				F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */,
