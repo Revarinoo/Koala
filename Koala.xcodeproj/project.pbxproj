@@ -26,6 +26,7 @@
 		2F6C2C3F272290FF0026EF3E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C3E272290FF0026EF3E /* OnboardingView.swift */; };
 		2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C402722B6990026EF3E /* OnboardViewModel.swift */; };
 		2F95BCC52739F34D00F78F83 /* BusinessReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95BCC42739F34D00F78F83 /* BusinessReportView.swift */; };
+		2F95BCC8273A176000F78F83 /* BusinessReportCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95BCC7273A176000F78F83 /* BusinessReportCard.swift */; };
 		2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */; };
 		2F99D364271D8309003DD86C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D363271D8309003DD86C /* SDWebImageSwiftUI */; };
 		2F99D391271DC6CE003DD86C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D390271DC6CE003DD86C /* Alamofire */; };
@@ -181,6 +182,7 @@
 		2F6C2C3E272290FF0026EF3E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		2F6C2C402722B6990026EF3E /* OnboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewModel.swift; sourceTree = "<group>"; };
 		2F95BCC42739F34D00F78F83 /* BusinessReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessReportView.swift; sourceTree = "<group>"; };
+		2F95BCC7273A176000F78F83 /* BusinessReportCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessReportCard.swift; sourceTree = "<group>"; };
 		2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCardList.swift; sourceTree = "<group>"; };
 		2FA40E3E271DE3180095A812 /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		2FA40E40271DE3980095A812 /* ThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFont.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 		2F95BCC0273915BE00F78F83 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2F95BCC6273A174E00F78F83 /* Component */,
 				2F95BCC42739F34D00F78F83 /* BusinessReportView.swift */,
 			);
 			path = View;
@@ -482,6 +485,14 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2F95BCC6273A174E00F78F83 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				2F95BCC7273A176000F78F83 /* BusinessReportCard.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		2FA40E3D271DE2F50095A812 /* Themes */ = {
@@ -1327,6 +1338,7 @@
 				2FBC8BB9271C3C66007E7B76 /* InfluencerListView.swift in Sources */,
 				D291A3D42730416400BAAA75 /* UserProfileViewModel.swift in Sources */,
 				F7A52B9027267D700067D3E6 /* SocialMediaCard.swift in Sources */,
+				2F95BCC8273A176000F78F83 /* BusinessReportCard.swift in Sources */,
 				84671FFD2726614F008FD954 /* PreviousProjectCard.swift in Sources */,
 				8451B832272A553C0061D389 /* CampaignModel.swift in Sources */,
 				2FACD84B272144D700E9F578 /* PriceRange.swift in Sources */,
