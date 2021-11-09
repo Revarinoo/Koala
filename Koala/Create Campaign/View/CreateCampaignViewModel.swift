@@ -19,10 +19,10 @@ class CreateCampaignViewModel : ObservableObject {
     private let createCampaignService: CreateCampaignService = CreateCampaignService()
     private var content_id : Int = 0
     @Published var isSuccess = false
-    @Published var createContentModel : [CreateContentModel] = []
+    @Published var createContentModel : [CreateContentModel] = [CreateContentModel(contentID: 0, contentType: productType.reels.rawValue, contentDetail: "", isDeleted: false)]
     
     func appendCreate(createData: CreateContentModel){
-        
+        createContentModel.append(createData)
     }
     
     func submitData(submittedCampaign : CreateCampaignModel){

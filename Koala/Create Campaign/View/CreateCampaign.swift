@@ -17,9 +17,10 @@ struct CreateCampaign: View {
     @State var campaignModel = CreateCampaignModel()
     @State var isCreated  = false
     @State var contentArray : [CreateContentModel] = [CreateContentModel(contentID: 0, contentType: productType.story.rawValue, contentDetail: "", isDeleted: false)]
-    @State var contentTypeArray = [ContentForm(firstContent: true)]
+    //@State var contentTypeArray = [ContentForm(firstContent: true)]
     @State var image = UIImage()
     @State private var showSheet = false
+    //var counter = 1
     
     init() {
         UIScrollView.appearance().bounces = false
@@ -49,11 +50,17 @@ struct CreateCampaign: View {
                     VStack(spacing: 18){
                         
                         CreateCampaignForm(campaignModel: $campaignModel)
-                        ForEach (contentTypeArray) {i in
-                            ContentForm(firstContent: i.firstContent).padding([.leading, .trailing], 16)
+//                        ForEach (contentTypeArray.indices) { i in
+//
+////                            ContentForm(firstContent: i.firstContent, contentData: createCampaignVM.createContentModel[i]).padding([.leading, .trailing], 16)
+//
+//                        }
+                        ForEach(createCampaignVM.createContentModel.indices){ index in
+                            ContentForm(firstContent: index == 0 ? true : false, contentData: $createCampaignVM.createContentModel[index])
                         }
                         Button(action: {
-                            contentTypeArray.append(ContentForm(firstContent: false))
+                            //self.counter += 1
+                            //contentTypeArray.append(ContentForm(firstContent: false))
                         }){
                             Image(systemName: "plus").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                                 .foregroundColor(ThemeColor.primary)
