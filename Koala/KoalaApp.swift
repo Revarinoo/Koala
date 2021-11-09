@@ -14,7 +14,7 @@ struct KoalaApp: App {
     var body: some Scene {
         WindowGroup {
             if token != "" {
-                TabBar()
+                TabBar(selectedTab: 0)
             }
             else {
                 SplashScreen()

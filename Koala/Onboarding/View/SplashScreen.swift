@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SplashScreen: View {
     
-    @State var nextNavigation: Bool = false
+    @State var toBusinessPage: Bool = false
+    @State var toInfluencerPage: Bool = false
     
     var body: some View {
         NavigationView {
@@ -23,18 +24,24 @@ struct SplashScreen: View {
                     Text("Koala")
                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 36))
                         .foregroundColor(.white)
+                        .padding(.bottom, 4)
                     
-                    Text("App Slogan")
+                    Text("Collaboration.")
                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 27))
                         .foregroundColor(.white)
-                        .padding(.bottom, 64)
+                        .padding(.bottom, -20)
+                    
+                    Text("Engage. Awareness.")
+                        .font(Font.custom(ThemeFont.poppinsSemiBold, size: 27))
+                        .foregroundColor(.white)
+                        .padding(.bottom, 70)
                     
                     NavigationLink(
                         destination: OnboardingView(),
-                        isActive: $nextNavigation,
+                        isActive: $toBusinessPage,
                         label: {
                             Button {
-                                nextNavigation.toggle()
+                                toBusinessPage.toggle()
                             } label: {
                                 Text("Find an Influencer")
                                     .padding(15)
@@ -47,22 +54,27 @@ struct SplashScreen: View {
                             .padding(.bottom, 8)
                         })
                     
-                    Button {
-                        print("I'm an Influencer Tapped")
-                    } label: {
-                        Text("I'm an Influencer")
-                            .padding(15)
-                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
-                            .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
-                    }
-                    .foregroundColor(.white)
-                    .cornerRadius(15)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 15)
-                            .stroke(.white, lineWidth: 1)
-                    )
-                    .padding(.bottom, 30)
                     
+                    NavigationLink(
+                        destination: UnderMaintenanceView(),
+                        isActive: $toInfluencerPage,
+                        label: {
+                            Button {
+                                toInfluencerPage.toggle()
+                            } label: {
+                                Text("I'm an Influencer")
+                                    .padding(15)
+                                    .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
+                                    .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
+                            }
+                            .foregroundColor(.white)
+                            .cornerRadius(15)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(.white, lineWidth: 1)
+                            )
+                            .padding(.bottom, 30)
+                        })
                 }
                 .padding(.horizontal, 16)
             }

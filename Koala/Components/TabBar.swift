@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct TabBar: View {
-    @State var selectedTab = 0
-    init() {
+    
+    @State var selectedTab: Int
+    
+    init(selectedTab: Int) {
+        self.selectedTab = selectedTab
         UITabBar.appearance().backgroundColor = UIColor(ThemeColor.background)
     }
     var body: some View {
@@ -51,6 +54,6 @@ struct TabBar: View {
 
 struct TabBar_Previews: PreviewProvider {
     static var previews: some View {
-        TabBar()
+        TabBar(selectedTab: 2)
     }
 }
