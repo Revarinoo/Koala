@@ -23,7 +23,13 @@ struct CreateCampaignForm: View {
                 Text("Start Date")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
-                DatePicker("", selection: $campaignModel.startDate, in: Date()..., displayedComponents: [.date]).padding(5)
+                HStack{
+                    DatePicker("", selection: $campaignModel.startDate, in: Date()..., displayedComponents: [.date]).padding([.top, .bottom], 5)
+                        .fixedSize()
+                    Spacer()
+                    Image(systemName: "calendar").font(.system(size: 24)).padding(.trailing, 10).foregroundColor(ThemeColor.grayDark)
+                }
+                
                     .background(Color("lightGray"))
                     .cornerRadius(10)
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
@@ -34,7 +40,13 @@ struct CreateCampaignForm: View {
                 Text("End Date")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
-                DatePicker("", selection: $campaignModel.endDate, in: Date()..., displayedComponents: [.date]).padding(5)
+                HStack{
+                    DatePicker("", selection: $campaignModel.endDate, in: Date()..., displayedComponents: [.date]).padding([.top, .bottom], 5)
+                        .fixedSize()
+                    Spacer()
+                    Image(systemName: "calendar").font(.system(size: 24)).padding(.trailing, 10).foregroundColor(ThemeColor.grayDark)
+                }
+                
                     .background(Color("lightGray"))
                     .cornerRadius(10)
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
@@ -78,7 +90,7 @@ struct CreateCampaignForm: View {
                                     }
                             }
                             
-                            Image(systemName: "plus").font(.system(size: 24)).foregroundColor(.gray)
+                            Image(systemName: "plus").font(.system(size: 24)).foregroundColor(ThemeColor.grayDark).font(.system(size: 24))
                                 .scaledToFill()
                                 .frame(width: 82, height: 88)
                                 .background(ThemeColor.background)

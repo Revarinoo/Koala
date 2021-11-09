@@ -53,7 +53,7 @@ struct CreateCampaignService{
         }
     func postCreateCampaign(_ postRequest: CreateCampaignDetail, completionHandler:@escaping(_ result: CreateCampaignDetailResponse?)->Void) {
         
-        let request = NSMutableURLRequest(url: NSURL(string: HttpUtility.endpoint + "campaign/detail/create")! as URL)
+        let request = NSMutableURLRequest(url: NSURL(string: "http://34.124.208.0/Koala-backend/public/api/" + "campaign/detail/create")! as URL)
         request.httpMethod = "post"
         request.addValue("application/json", forHTTPHeaderField: "content-type")
         request.httpBody = try? JSONEncoder().encode(postRequest)

@@ -52,7 +52,7 @@ struct CreateCampaignModel {
 
 struct CreateContentModel {
     var contentID = UUID().hashValue
-    var contentType : productType.RawValue
+    var contentType : productType
     var contentDetail : String
     var isDeleted : Bool
 }
