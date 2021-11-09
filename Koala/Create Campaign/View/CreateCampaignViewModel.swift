@@ -15,6 +15,7 @@ let localURLnya = "http://127.0.0.1:8000/api/campaign/detail/create"
 let serverURLnya = "http://34.124.208.0/Koala-backend/public/api/campaign/create"
 
 class CreateCampaignViewModel : ObservableObject {
+    @AppStorage("JWT", store: .standard) var token = ""
     @Published var createCampaignModel : CreateCampaignModel = CreateCampaignModel()
     private let createCampaignService: CreateCampaignService = CreateCampaignService()
     private var content_id : Int = 0
@@ -55,7 +56,7 @@ class CreateCampaignViewModel : ObservableObject {
 
         //      MARK: header buat yg server
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer 3|SZWRWydfBtOsl4I0s1vyvXWLKFtrMPCVmJcBqy3e",
+            "Authorization": "Bearer \(token)",
             "Content-type": "multipart/form-data"
         ]
 
@@ -103,12 +104,12 @@ class CreateCampaignViewModel : ObservableObject {
     }
     func submitContent(){
         var createContent : [CreateCampaignDetail] = []
-        print("ini koneten \(self.createContentModel)")
+        //print("ini koneten \(self.createContentModel)")
         for content in self.createContentModel{
             if !content.isDeleted {
                 createContent.append(CreateCampaignDetail(content_id: self.content_id, content_type: content.contentType.rawValue, instruction: content.contentDetail))
             }
-            print("ini koneten \(createContent)")
+            //print("ini koneten \(createContent)")
             for content in createContent{
                 createCampaignService.postCreateCampaign(content){ response in
                     DispatchQueue.main.async {
@@ -130,3 +131,5 @@ extension Date {
         return dateformat.string(from: self)
     }
 }
+
+//3|SZWRWydfBtOsl4I0s1vyvXWLKFtrMPCVmJcBqy3e

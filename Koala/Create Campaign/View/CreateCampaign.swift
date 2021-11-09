@@ -97,7 +97,7 @@ struct CreateCampaign: View {
                                 //createCampaignVM.submitContent()
                                 //createCampaignVM.submitContent(submittedContent: createCampaignVM.createContentModel)
                             }
-                            .padding([.leading, .trailing], 16).padding(.bottom, 80)
+                            .padding([.leading, .trailing], 16).padding(.bottom, 100)
                         
                     }.frame(width: UIScreen.main.bounds.width, alignment: .top)
                         .ignoresSafeArea()
