@@ -39,7 +39,7 @@ struct TabBar: View {
                         selectedTab == 3 ? Image("campaignactive") : Image("campaigngrey")
                         Text("Campaign")
                     }.tag(3)
-                Text("Homepage")
+                BusinessReportView()
                     .tabItem{
                         selectedTab == 4 ? Image("reportactive") : Image("reportgrey")
                         Text("Report")

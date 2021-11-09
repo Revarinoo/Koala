@@ -25,6 +25,13 @@
 		2F6C2C3D27228D780026EF3E /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C3C27228D780026EF3E /* SplashScreen.swift */; };
 		2F6C2C3F272290FF0026EF3E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C3E272290FF0026EF3E /* OnboardingView.swift */; };
 		2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C402722B6990026EF3E /* OnboardViewModel.swift */; };
+		2F95BCC52739F34D00F78F83 /* BusinessReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95BCC42739F34D00F78F83 /* BusinessReportView.swift */; };
+		2F95BCC8273A176000F78F83 /* BusinessReportCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95BCC7273A176000F78F83 /* BusinessReportCard.swift */; };
+		2F95BCCF273A2EDD00F78F83 /* IndicatorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95BCCA273A2EDD00F78F83 /* IndicatorPoint.swift */; };
+		2F95BCD0273A2EDD00F78F83 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95BCCB273A2EDD00F78F83 /* LineChartView.swift */; };
+		2F95BCD1273A2EDD00F78F83 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95BCCC273A2EDD00F78F83 /* Line.swift */; };
+		2F95BCD2273A2EDD00F78F83 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95BCCD273A2EDD00F78F83 /* Helpers.swift */; };
+		2F95BCD3273A2EDD00F78F83 /* Path+QuadCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95BCCE273A2EDD00F78F83 /* Path+QuadCurve.swift */; };
 		2F95BCC32739F12700F78F83 /* UnderMaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95BCC22739F12700F78F83 /* UnderMaintenanceView.swift */; };
 		2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */; };
 		2F99D364271D8309003DD86C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D363271D8309003DD86C /* SDWebImageSwiftUI */; };
@@ -180,6 +187,13 @@
 		2F6C2C3C27228D780026EF3E /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		2F6C2C3E272290FF0026EF3E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		2F6C2C402722B6990026EF3E /* OnboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewModel.swift; sourceTree = "<group>"; };
+		2F95BCC42739F34D00F78F83 /* BusinessReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessReportView.swift; sourceTree = "<group>"; };
+		2F95BCC7273A176000F78F83 /* BusinessReportCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessReportCard.swift; sourceTree = "<group>"; };
+		2F95BCCA273A2EDD00F78F83 /* IndicatorPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorPoint.swift; sourceTree = "<group>"; };
+		2F95BCCB273A2EDD00F78F83 /* LineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
+		2F95BCCC273A2EDD00F78F83 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		2F95BCCD273A2EDD00F78F83 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		2F95BCCE273A2EDD00F78F83 /* Path+QuadCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+QuadCurve.swift"; sourceTree = "<group>"; };
 		2F95BCC22739F12700F78F83 /* UnderMaintenanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderMaintenanceView.swift; sourceTree = "<group>"; };
 		2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCardList.swift; sourceTree = "<group>"; };
 		2FA40E3E271DE3180095A812 /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
@@ -443,6 +457,68 @@
 			children = (
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		2F95BCBD2739159A00F78F83 /* BusinessReport */ = {
+			isa = PBXGroup;
+			children = (
+				2F95BCC1273915C400F78F83 /* Model */,
+				2F95BCC0273915BE00F78F83 /* View */,
+				2F95BCBF273915B700F78F83 /* ViewModel */,
+				2F95BCBE273915AA00F78F83 /* Service */,
+			);
+			path = BusinessReport;
+			sourceTree = "<group>";
+		};
+		2F95BCBE273915AA00F78F83 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		2F95BCBF273915B700F78F83 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2F95BCC0273915BE00F78F83 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F95BCC6273A174E00F78F83 /* Component */,
+				2F95BCC42739F34D00F78F83 /* BusinessReportView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F95BCC1273915C400F78F83 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2F95BCC6273A174E00F78F83 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				2F95BCC9273A2ECF00F78F83 /* ChartHelper */,
+				2F95BCC7273A176000F78F83 /* BusinessReportCard.swift */,
+				2F95BCCB273A2EDD00F78F83 /* LineChartView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		2F95BCC9273A2ECF00F78F83 /* ChartHelper */ = {
+			isa = PBXGroup;
+			children = (
+				2F95BCCD273A2EDD00F78F83 /* Helpers.swift */,
+				2F95BCCA273A2EDD00F78F83 /* IndicatorPoint.swift */,
+				2F95BCCC273A2EDD00F78F83 /* Line.swift */,
+				2F95BCCE273A2EDD00F78F83 /* Path+QuadCurve.swift */,
+			);
+			path = ChartHelper;
 			sourceTree = "<group>";
 		};
 		2FA40E3D271DE2F50095A812 /* Themes */ = {
@@ -998,6 +1074,7 @@
 		F75CEE6C2713E80D00E36A1F /* Koala */ = {
 			isa = PBXGroup;
 			children = (
+				2F95BCBD2739159A00F78F83 /* BusinessReport */,
 				F76174002732467700019B79 /* CampaignDetailUpcoming */,
 				8451B843272B92050061D389 /* Report */,
 				2FD875992731460A0052DA4D /* Review */,
@@ -1256,6 +1333,7 @@
 				F76CE87D2723B5010055D58C /* RegisterInfluencerView.swift in Sources */,
 				F7A52B8E27267B9C0067D3E6 /* SocialMedia.swift in Sources */,
 				846C55D32720255A006C94DD /* LoginModel.swift in Sources */,
+				2F95BCC52739F34D00F78F83 /* BusinessReportView.swift in Sources */,
 				78B9334227284D6F0040882D /* MailView.swift in Sources */,
 				2FBC8BB7271C3994007E7B76 /* InfluencerListViewModel.swift in Sources */,
 				78B93340272725D40040882D /* RoundedCorner.swift in Sources */,
@@ -1286,6 +1364,7 @@
 				2FBC8BB9271C3C66007E7B76 /* InfluencerListView.swift in Sources */,
 				D291A3D42730416400BAAA75 /* UserProfileViewModel.swift in Sources */,
 				F7A52B9027267D700067D3E6 /* SocialMediaCard.swift in Sources */,
+				2F95BCC8273A176000F78F83 /* BusinessReportCard.swift in Sources */,
 				84671FFD2726614F008FD954 /* PreviousProjectCard.swift in Sources */,
 				8451B832272A553C0061D389 /* CampaignModel.swift in Sources */,
 				2FACD84B272144D700E9F578 /* PriceRange.swift in Sources */,
@@ -1293,8 +1372,10 @@
 				8451B83D272A55570061D389 /* CampaignListView.swift in Sources */,
 				2FACD8442721137F00E9F578 /* FilterModal.swift in Sources */,
 				84972DA62726773B0097D2D2 /* Review.swift in Sources */,
+				2F95BCD3273A2EDD00F78F83 /* Path+QuadCurve.swift in Sources */,
 				8451B84B272B92DB0061D389 /* ResultExpenseCard.swift in Sources */,
 				2F6C2C32272259E00026EF3E /* FilterModel.swift in Sources */,
+				2F95BCD2273A2EDD00F78F83 /* Helpers.swift in Sources */,
 				2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */,
 				F7A52B94272707C70067D3E6 /* ImageSlider.swift in Sources */,
 				F76174062732475900019B79 /* CampaignUpcomingService.swift in Sources */,
@@ -1316,6 +1397,7 @@
 				8475D65327323EF10021E87A /* CampaignReportBusinessModel.swift in Sources */,
 				2FD875A82731460B0052DA4D /* ReviewServiceModel.swift in Sources */,
 				D28D625827201ECB00BE7345 /* CategoriesServices.swift in Sources */,
+				2F95BCCF273A2EDD00F78F83 /* IndicatorPoint.swift in Sources */,
 				2FBC8BB3271C37CC007E7B76 /* InfluencerListResponse.swift in Sources */,
 				78B9333A27267C480040882D /* InfluencerDetailViewModel.swift in Sources */,
 				78B933362726704B0040882D /* InfluencerDetailResponse.swift in Sources */,
@@ -1370,6 +1452,7 @@
 				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
 				F76CE8752721C4B40055D58C /* AuthResponse.swift in Sources */,
 				D2577BC6271F239B00E7AC5D /* Categories.swift in Sources */,
+				2F95BCD0273A2EDD00F78F83 /* LineChartView.swift in Sources */,
 				2F0D9DAE27311BAB0012DAAF /* CampaignDetailService.swift in Sources */,
 				D28EC2A92722536400FCEA2B /* RecommendationViewModel.swift in Sources */,
 				8451B849272B923F0061D389 /* CampaignDetailReportView.swift in Sources */,
@@ -1388,6 +1471,7 @@
 				D283B9F5272A3DB900CA87EC /* PendingCard.swift in Sources */,
 				D21476242723F4B2009985BD /* RecommendationInfluencerModel.swift in Sources */,
 				D2C3C5A02728674400C338B4 /* OrderView.swift in Sources */,
+				2F95BCD1273A2EDD00F78F83 /* Line.swift in Sources */,
 				2FCB0B1A272462690017C9D6 /* SecureInputView.swift in Sources */,
 				8451B842272A55600061D389 /* CampaignViewModel.swift in Sources */,
 				84CDC3D22730EDAB0012304A /* ResultInfluencerCard.swift in Sources */,
