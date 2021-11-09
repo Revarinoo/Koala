@@ -17,9 +17,11 @@ struct CreateCampaign: View {
     @State var campaignModel = CreateCampaignModel()
     @State var isCreated  = false
     @State var contentArray : [CreateContentModel] = [CreateContentModel(contentID: 0, contentType: productType.story.rawValue, contentDetail: "", isDeleted: false)]
-    //@State var contentTypeArray = [ContentForm(firstContent: true)]
+    @State var contentTypeArray = [ContentForm(firstContent: .constant(true), contentData: .constant(CreateContentModel(contentType: productType.post.rawValue, contentDetail: "", isDeleted: false)))]
     @State var image = UIImage()
     @State private var showSheet = false
+    @State private var contentCount = 0
+    @State var contentArrayTemp: [CreateContentModel] = [CreateContentModel(contentType: productType.post.rawValue, contentDetail: "", isDeleted: false)]
     //var counter = 1
     
     init() {
@@ -50,17 +52,14 @@ struct CreateCampaign: View {
                     VStack(spacing: 18){
                         
                         CreateCampaignForm(campaignModel: $campaignModel)
-//                        ForEach (contentTypeArray.indices) { i in
-//
-////                            ContentForm(firstContent: i.firstContent, contentData: createCampaignVM.createContentModel[i]).padding([.leading, .trailing], 16)
-//
-//                        }
-                        ForEach(createCampaignVM.createContentModel.indices){ index in
-                            ContentForm(firstContent: index == 0 ? true : false, contentData: $createCampaignVM.createContentModel[index])
+                        ForEach (contentTypeArray.indices, id: \.self) { i in
+                            ContentForm(firstContent: .constant(i == 0 ? true : false), contentData: $contentArrayTemp[i])
                         }
+                        
                         Button(action: {
-                            //self.counter += 1
+                            contentArrayTemp.append(CreateContentModel(contentType: productType.post.rawValue, contentDetail: "", isDeleted: false))
                             //contentTypeArray.append(ContentForm(firstContent: false))
+                            contentTypeArray.append(ContentForm(firstContent: .constant(true), contentData: .constant(CreateContentModel(contentType: productType.post.rawValue, contentDetail: "", isDeleted: false))))
                         }){
                             Image(systemName: "plus").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                                 .foregroundColor(ThemeColor.primary)
@@ -72,7 +71,10 @@ struct CreateCampaign: View {
                                     .stroke(ThemeColor.primary, lineWidth: 1)
                             )
                             .padding([.leading, .trailing], 16)
-                        Button(action: {createCampaignVM.submitData(submittedCampaign: campaignModel)}){
+                        Button(action: {
+                            createCampaignVM.createContentModel = contentArrayTemp
+                            createCampaignVM.submitData(submittedCampaign: campaignModel)
+                        }){
                             Text("Create").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                                 .foregroundColor(.white)
                         }.frame(maxWidth: .infinity)

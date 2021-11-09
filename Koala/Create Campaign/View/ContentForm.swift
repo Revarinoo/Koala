@@ -11,11 +11,11 @@ struct ContentForm: View, Identifiable {
     
     let id = UUID()
     @Binding var firstContent : Bool
-    @State var content = CreateContentModel(contentType: "", contentDetail: "", isDeleted: false)
+//    @State var content = CreateContentModel(contentType: "", contentDetail: "", isDeleted: false)
     //@Binding var isCreated : Bool
     @Binding var contentData : CreateContentModel
-    @Binding var contentArray : [CreateContentModel]
-    @State private var productTypee : productType = .post
+//    @Binding var contentArray : [CreateContentModel]
+//    @State private var productTypee : productType = .post
     @State var contentDetail = ""
     
 //    init(){
@@ -32,7 +32,7 @@ struct ContentForm: View, Identifiable {
 //    }
     
     var body: some View {
-        if content.isDeleted == false{
+        if contentData.isDeleted == false{
             VStack{
                 if #available(iOS 15.0, *) {
                     VStack(alignment: .leading){
@@ -41,7 +41,7 @@ struct ContentForm: View, Identifiable {
                             .foregroundColor(ThemeColor.grayDark)
                         HStack{
                             Section{
-                                Picker("Number of people", selection: $content.contentType) {
+                                Picker("Number of people", selection: $contentData.contentType) {
                                     ForEach(productType.allCases, id: \.self) { value in
                                         Text("\(value.rawValue)").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
                                     }
@@ -59,15 +59,15 @@ struct ContentForm: View, Identifiable {
                 }
                 VStack(alignment: .leading, spacing: 22){
 
-                    TextArea(textTitle: "Content", product: $content.contentDetail, textFieldHeight: 172, placeHolderText: "Enter your package detail", fieldBackgroundColor: .white)
+                    TextArea(textTitle: "Content", product: $contentData.contentDetail, textFieldHeight: 172, placeHolderText: "Enter your package detail", fieldBackgroundColor: .white)
                     if !firstContent{
                         Button(action: {
-                            content.isDeleted = true
+                            contentData.isDeleted = true
                             self.hidden()
                         }){
                             Text("Delete").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                                 .foregroundColor(Color.red).onTapGesture {
-                                    content.isDeleted = true
+                                    contentData.isDeleted = true
                                     self.hidden()
                                 }
                         }.frame(maxWidth: .infinity)
@@ -78,9 +78,16 @@ struct ContentForm: View, Identifiable {
                     
                 }.padding(.horizontal, 16).padding(.bottom, 25)
             }
+            .onAppear(perform: {
+                        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ThemeColor.primary)
+                        UISegmentedControl.appearance().backgroundColor = UIColor(ThemeColor.background)
+                        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+                        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
+                        UINavigationBar.appearance().backgroundColor = UIColor(ThemeColor.background)
+                        UIPickerView.appearance().backgroundColor = UIColor(ThemeColor.primary)
+            })
             .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(red: 1.0, green: 0.945, blue: 0.929)/*@END_MENU_TOKEN@*/).cornerRadius(10)
         }
-        
     }
 }
 
