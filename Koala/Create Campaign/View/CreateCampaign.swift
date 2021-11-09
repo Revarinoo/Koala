@@ -8,20 +8,22 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
+
 struct CreateCampaign: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @ObservedObject var createCampaignVM = CreateCampaignViewModel()
     @State var campaignModel = CreateCampaignModel()
-    
-    @State var contentTypeArray : [ContentForm] = [ContentForm(firstContent: true)]
-    
+    @State var isCreated  = false
+    @State var contentArray : [CreateContentModel] = [CreateContentModel(contentID: 0, contentType: productType.story.rawValue, contentDetail: "", isDeleted: false)]
+    @State var contentTypeArray = [ContentForm(firstContent: true)]
     @State var image = UIImage()
     @State private var showSheet = false
     
     init() {
         UIScrollView.appearance().bounces = false
+        //contentTypeArray =  [ContentForm(firstContent: true)]
     }
     
     var body: some View {
@@ -59,11 +61,11 @@ struct CreateCampaign: View {
                             .frame (height: 50)
                             .cornerRadius(12)
                             .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(ThemeColor.primary, lineWidth: 1)
-                                )
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(ThemeColor.primary, lineWidth: 1)
+                            )
                             .padding([.leading, .trailing], 16)
-                        Button(action: {}){
+                        Button(action: {createCampaignVM.submitData(submittedCampaign: campaignModel)}){
                             Text("Create").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                                 .foregroundColor(.white)
                         }.frame(maxWidth: .infinity)
@@ -71,16 +73,13 @@ struct CreateCampaign: View {
                             .background(ThemeColor.primary)
                             .cornerRadius(12)
                             .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(ThemeColor.primary, lineWidth: 1)
-                                )
-                            
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(ThemeColor.primary, lineWidth: 1)
+                            )
                             .onTapGesture(){
-                                createCampaignVM.submitData(submittedCampaign: campaignModel)
+                                
                             }
                             .padding([.leading, .trailing], 16).padding(.bottom, 80)
-                        
-                        
                         
                     }.frame(width: UIScreen.main.bounds.width, alignment: .top)
                         .ignoresSafeArea()
@@ -91,7 +90,7 @@ struct CreateCampaign: View {
                 }
                 VStack{
                     
-                    //WebImage(url: URL(string: "https://assets.teenvogue.com/photos/5fd4d29fe6ff71e902f97c1a/4:3/w_2443,h_1832,c_limit/taylor-evermore-resized.jpg"))
+                    //WebImage(url: URL(string:  "https://assets.teenvogue.com/photos/5fd4d29fe6ff71e902f97c1a/4:3/w_2443,h_1832,c_limit/taylor-evermore-resized.jpg"))
                     if campaignModel.logo.size.width == 0 {
                         Image(systemName: "photo").font(.system(size: 36)).foregroundColor(.gray).scaledToFill().frame(width: 127, height: 127)
                             .background(ThemeColor.background)
@@ -112,26 +111,22 @@ struct CreateCampaign: View {
                                 showSheet = true
                             }
                     }
-                        
-                        
+                    
+                    
                     Text("Add Photo").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
                 }.padding(.top, 150)
             }
             
         }.navigationBarHidden(true)
-        //.onAppear(perform: {
-        //    influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
-        //})
-            
+        
             .background(ThemeColor.primary.ignoresSafeArea())
-            
+        
             .ignoresSafeArea()
             .sheet(isPresented: $showSheet) {
                 // Pick an image from the photo library:
                 ImagePicker(sourceType: .photoLibrary, selectedImage: $campaignModel.logo)
             }
     }
-    
 }
 
 struct CreateCampaign_Previews: PreviewProvider {

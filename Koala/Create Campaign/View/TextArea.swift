@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TextArea: View {
-    @State var text = ""
+    //@State var text = ""
     var placeHolderText : String
     var textTitle : String
     var textFieldHeight : CGFloat
@@ -33,14 +33,14 @@ struct TextArea: View {
                 RoundedRectangle(cornerRadius: 8, style: .continuous)
                     .fill(fieldBackgroundColor)
                 
-                if text.isEmpty {
+                if product.isEmpty {
                     Text(placeHolderText)
                         .foregroundColor(Color(UIColor.placeholderText))
                         .padding(.horizontal, 8)
                         .padding(.vertical, 12)
                 }
                 
-                TextEditor(text: $text)
+                TextEditor(text: $product)
                     .padding(4)
                 
             }

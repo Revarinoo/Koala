@@ -23,7 +23,7 @@ struct CreateCampaignForm: View {
                 Text("Start Date")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
-                DatePicker("", selection: $campaignModel.dueDate, in: Date()..., displayedComponents: [.date]).padding(5)
+                DatePicker("", selection: $campaignModel.startDate, in: Date()..., displayedComponents: [.date]).padding(5)
                     .background(Color("lightGray"))
                     .cornerRadius(10)
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
@@ -34,7 +34,7 @@ struct CreateCampaignForm: View {
                 Text("End Date")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
-                DatePicker("", selection: $campaignModel.dueDate, in: Date()..., displayedComponents: [.date]).padding(5)
+                DatePicker("", selection: $campaignModel.endDate, in: Date()..., displayedComponents: [.date]).padding(5)
                     .background(Color("lightGray"))
                     .cornerRadius(10)
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
@@ -52,39 +52,41 @@ struct CreateCampaignForm: View {
                 Text("References")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
-                HStack(spacing: 12){
-                    if $campaignModel.references.count == 0{
-                        Image(systemName: "photo").font(.system(size: 24)).foregroundColor(.gray)
-                            .scaledToFill()
-                            .frame(width: 82, height: 88)
-                            .background(ThemeColor.background)
-                            .cornerRadius(10.0).onTapGesture {
-                                showSheet = true
-                            }
-                        Image(systemName: "plus").font(.system(size: 24)).foregroundColor(.gray)
-                            .scaledToFill()
-                            .frame(width: 82, height: 88)
-                            .background(ThemeColor.background)
-                            .cornerRadius(10.0)
-                    } else {
-                        ForEach (campaignModel.references, id: \.self) { images in
-                            Image(uiImage : images).resizable()//.foregroundColor(.gray)
+                ScrollView(.horizontal){
+                    HStack(spacing: 12){
+                        if $campaignModel.references.count == 0{
+                            Image(systemName: "photo").font(.system(size: 24)).foregroundColor(.gray)
                                 .scaledToFill()
                                 .frame(width: 82, height: 88)
                                 .background(ThemeColor.background)
                                 .cornerRadius(10.0).onTapGesture {
-                                    //showSheet = true
+                                    showSheet = true
+                                }
+                            Image(systemName: "plus").font(.system(size: 24)).foregroundColor(.gray)
+                                .scaledToFill()
+                                .frame(width: 82, height: 88)
+                                .background(ThemeColor.background)
+                                .cornerRadius(10.0)
+                        } else {
+                            ForEach (campaignModel.references, id: \.self) { images in
+                                Image(uiImage : images).resizable()//.foregroundColor(.gray)
+                                    .scaledToFill()
+                                    .frame(width: 82, height: 88)
+                                    .background(ThemeColor.background)
+                                    .cornerRadius(10.0).onTapGesture {
+                                        //showSheet = true
+                                    }
+                            }
+                            
+                            Image(systemName: "plus").font(.system(size: 24)).foregroundColor(.gray)
+                                .scaledToFill()
+                                .frame(width: 82, height: 88)
+                                .background(ThemeColor.background)
+                                .cornerRadius(10.0).onTapGesture {
+                                    showSheet = true
                                 }
                         }
-                        
-                        Image(systemName: "plus").font(.system(size: 24)).foregroundColor(.gray)
-                            .scaledToFill()
-                            .frame(width: 82, height: 88)
-                            .background(ThemeColor.background)
-                            .cornerRadius(10.0).onTapGesture {
-                                showSheet = true
-                            }
-                    }
+                    }.padding(.bottom, 10)
                 }
             }
         }.padding([.leading, .trailing], 16).ignoresSafeArea()

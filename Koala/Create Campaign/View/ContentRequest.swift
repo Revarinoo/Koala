@@ -13,13 +13,14 @@ struct CreateCampaignRequest: Encodable {
     let campaign_logo : Data?
     let name : String
     let description : String
-    let schedule: String
+    let start_date: String
+    let end_date: String
     let product_name : String
     let rules : String
     let references : [Data]
 }
 
-struct CreateCampaignResponse: Codable {
+struct CreateCampaignResponse: Decodable {
     let content_id: Int?
     let code: Int?
     let message : String?
@@ -39,7 +40,8 @@ struct CreateCampaignDetailResponse : Codable{
 struct CreateCampaignModel {
     var logo : UIImage = UIImage()
     var title : String = String()
-    var dueDate : Date = Date()
+    var startDate : Date = Date()
+    var endDate : Date = Date()
     var product : String = String()
     var description : String = String()
     var rules : String = String()
