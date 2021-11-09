@@ -20,6 +20,7 @@ struct CreateCampaign: View {
     @State var contentTypeArray = [ContentForm(firstContent: .constant(true), contentData: .constant(CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)))]
     @State var image = UIImage()
     @State private var showSheet = false
+    @State var willMoveToTheNextScreen = false
     @State private var contentCount = 0
     @State var contentArrayTemp: [CreateContentModel] = [CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)]
     //var counter = 1
@@ -72,14 +73,13 @@ struct CreateCampaign: View {
                                                             lineWidth: 1,
                                                             dash: [25]
                                                         )
-                                    ).foregroundColor(ThemeColor.grayDark)
-                                    
+                                    ).foregroundColor(ThemeColor.grayDark) 
                             )
                             .padding([.leading, .trailing], 16)
                         Button(action: {
                             createCampaignVM.createContentModel = contentArrayTemp
                             createCampaignVM.submitData(submittedCampaign: campaignModel, submittedContent: contentArrayTemp)
-                            //createCampaignVM.submitContent()
+                            willMoveToTheNextScreen = true
                         }){
                             Text("Create").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                                 .foregroundColor(.white)
@@ -144,11 +144,36 @@ struct CreateCampaign: View {
                 // Pick an image from the photo library:
                 ImagePicker(sourceType: .photoLibrary, selectedImage: $campaignModel.logo)
             }
+            .navigate(to: CampaignView(), when: $willMoveToTheNextScreen)
     }
 }
 
 struct CreateCampaign_Previews: PreviewProvider {
     static var previews: some View {
         CreateCampaign()
+    }
+}
+extension View {
+    /// Navigate to a new view.
+    /// - Parameters:
+    ///   - view: View to navigate to.
+    ///   - binding: Only navigates when this condition is `true`.
+    func navigate<NewView: View>(to view: NewView, when binding: Binding<Bool>) -> some View {
+        NavigationView {
+            ZStack {
+                self
+                    .navigationBarTitle("")
+                    .navigationBarHidden(true)
+
+                NavigationLink(
+                    destination: view
+                        .navigationBarTitle("")
+                        .navigationBarHidden(true),
+                    isActive: binding
+                ) {
+                    EmptyView()
+                }
+            }
+        }
     }
 }

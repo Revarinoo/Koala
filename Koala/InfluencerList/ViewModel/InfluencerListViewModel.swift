@@ -20,7 +20,7 @@ class InfluencerListViewModel: ObservableObject {
                 for influencer in responseData {
                     let id = influencer.influencer_id
                     let name = influencer.influencer_name
-                    let photo = "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg"
+                    let photo = influencer.influencer_photo ?? HttpUtility.defaultImages
                     let category = influencer.categories
                     let price = influencer.price
                     let location = influencer.location ?? "Jakarta"
@@ -46,7 +46,7 @@ class InfluencerListViewModel: ObservableObject {
                 for influencer in responseData {
                     let id = influencer.influencer_id
                     let name = influencer.influencer_name
-                    let photo = "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg"
+                    let photo = influencer.influencer_photo ?? HttpUtility.defaultImages
                     let category = influencer.categories
                     let price = influencer.price
                     let location = influencer.location ?? "Jakarta"

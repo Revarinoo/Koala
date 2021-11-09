@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct CampaignView: View {
-//    let campaigns = CampaignViewModel().campaigns
+    @AppStorage("JWT", store: .standard) var token = ""
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var campaignList = CampaignViewModel()
     @State private var campaignType = "Upcoming"
     var campaignTypes = ["Upcoming", "Completed"]
+    @State var willMoveToTheNextScreen = false
     
     init(){
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "primary")
@@ -25,7 +27,8 @@ struct CampaignView: View {
             VStack {
                 VStack(alignment: .trailing) {
                     Button(action: {
-                        print("add new")
+                        willMoveToTheNextScreen = true
+                        //print("add new")
                     }, label: {
                         Image(systemName: "plus")
                             .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
@@ -51,17 +54,18 @@ struct CampaignView: View {
                 ScrollView(.vertical){
                     VStack(spacing: 12){
                         ForEach(campaignList.campaignModel) { i in
-                            NavigationLink(destination: Text("Hi")) {
-                                if campaignType.contains("Upcoming") {
-                                    if i.schedule >= Date().addingTimeInterval(-86400) {
+                            if campaignType.contains("Upcoming") {
+                                NavigationLink(destination: CampaignUpcomingView(id: i.content_id)) {
+                                    if i.status != "Completed" {
                                         CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
                                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                                     }
-                                } else {
-                                    if i.schedule < Date().addingTimeInterval(-86400) {
+                                }
+                            } else {
+                                NavigationLink(destination: CampaignDetailReportView(campaignID: i.content_id)) {
+                                    if i.status.contains("Completed") {
                                         CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
                                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-
                                     }
                                 }
                             }
@@ -78,6 +82,7 @@ struct CampaignView: View {
             .padding(.top, 10)
             .background(ThemeColor.background.ignoresSafeArea())
         }
+        .navigate(to: CreateCampaign(), when: $willMoveToTheNextScreen)
     }
 }
 
