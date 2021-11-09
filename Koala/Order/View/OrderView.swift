@@ -40,7 +40,7 @@ struct OrderView: View {
                 
                 
             }
-            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarTitle("")
             .navigationBarHidden(true)
             .padding(.top, 40)
             .background(ThemeColor.background.ignoresSafeArea())

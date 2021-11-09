@@ -17,26 +17,37 @@ struct BusinessReportView: View {
                     Spacer()
                     Text("Business Report")
                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 17))
+                        .padding(.trailing)
                     Spacer()
                 }
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 8, trailing: 0))
+                .padding(.bottom, 8)
                 
                 Text("This Month")
                     .font(Font.custom(ThemeFont.poppinsSemiBold, size: 14))
-                    .padding(EdgeInsets(top: 10, leading: 16, bottom: 0, trailing: 0))
+                    .padding(.top, 10)
                 
                 HStack {
                     Text("10.500.000")
                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 24))
                         .foregroundColor(ThemeColor.primary)
-                        .padding(.leading)
                     
                     Text("IDR")
                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                         .foregroundColor(Color(hex: "FFB19D"))
                 }
+                Spacer()
+                Text("Chart data")
+                Spacer()
+                Text("Overview")
+                    .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
+                BusinessReportCard(iconName: "avgReach", reportType: "Reach", value: 1349, percentage: 32.2)
+                BusinessReportCard(iconName: "avgImpression", reportType: "Impression", value: 1516, percentage: 20.13)
+                BusinessReportCard(iconName: "avgER", reportType: "Engagement Rate", value: 32.23, percentage: -5.23)
+                    .padding(.bottom)
             }
+            .padding(.horizontal)
         }
+        .navigationBarTitle("")
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
     }

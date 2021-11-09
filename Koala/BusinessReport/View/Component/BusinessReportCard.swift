@@ -9,9 +9,9 @@ import SwiftUI
 
 struct BusinessReportCard: View {
     
-    // TODO: Formatting value & percentage
     let iconName: String
-    let value: Int
+    let reportType: String
+    let value: Double
     let percentage: Double
     
     var body: some View {
@@ -22,12 +22,12 @@ struct BusinessReportCard: View {
             
             VStack(alignment: .leading) {
                 Text("Average")
-                Text("Reach")
+                Text(reportType)
             }
             .font(Font.custom(ThemeFont.poppinsSemiBold, size: 14))
             Spacer()
             VStack(alignment: .trailing) {
-                Text("\(value)")
+                Text(reportType == "Engagement Rate" ? "\(value.oneDecimalFormatter)%" : Int(value).thousandsFormatter())
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
                 HStack(spacing: 4) {
                     Image(systemName: percentage > 0 ? "arrow.up" : "arrow.down")
@@ -48,7 +48,7 @@ struct BusinessReportCard: View {
 
 struct BusinessReportCard_Previews: PreviewProvider {
     static var previews: some View {
-        BusinessReportCard(iconName: "avgER", value: 3000, percentage: -32.2)
+        BusinessReportCard(iconName: "avgER", reportType: "Engagement Rate", value: 2.31, percentage: -32.2)
             .previewLayout(.sizeThatFits)
     }
 }
