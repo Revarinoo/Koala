@@ -15,8 +15,9 @@ struct RecommendationInfluencerCard: View {
     let price: Int
     var body: some View {
         HStack (){
-            WebImage(url: URL(string: photoURL ?? "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg"))
+            WebImage(url: URL(string: photoURL ?? HttpUtility.defaultImages))
                 .resizable()
+                .aspectRatio(contentMode: .fill)
                 .frame(width: 75, height: 75)
                 .cornerRadius(10)
                 .padding(.leading, 16)
