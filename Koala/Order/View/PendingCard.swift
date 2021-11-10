@@ -12,12 +12,14 @@ struct PendingCard: View {
     let name: String
     let productType : [String]
     let dueDate : String
+    let photo: String
     
     var body: some View {
         VStack{
             HStack(spacing: 18){
-                WebImage(url: URL(string: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg"))
+                WebImage(url: URL(string: photo))
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 82, height: 88)
                     .cornerRadius(10)
                 VStack (alignment: .leading, spacing: 6){
@@ -68,6 +70,6 @@ struct PendingCard: View {
 
 struct PendingCard_Previews: PreviewProvider {
     static var previews: some View {
-        PendingCard(name: "James Oliver", productType: ["Post"], dueDate: "22 December 2021").previewLayout(.sizeThatFits)
+        PendingCard(name: "James Oliver", productType: ["Post"], dueDate: "22 December 2021", photo: "").previewLayout(.sizeThatFits)
     }
 }
