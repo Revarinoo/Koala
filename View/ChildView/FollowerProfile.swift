@@ -10,7 +10,7 @@ import SwiftUI
 struct FollowerProfile: View {
     
     @State var currentIndex: Int = 0
-    let images = ["offer","offer","ig"]
+    var images: [AnalyticPhotoModel]
     
     var body: some View {
         VStack (alignment: .leading) {
@@ -25,7 +25,7 @@ struct FollowerProfile: View {
                         Circle()
                             .fill(currentIndex == index ? ThemeColor.primary: Color.init(hex: "C4C4C4"))
                             .frame(width: 10, height: 10)
-                            .scaleEffect(currentIndex == index ? 1.4 : 1)
+                            .scaleEffect(currentIndex == index ? 1.2 : 1)
                             .animation(.spring(), value: currentIndex == index)
                     }
                 }
@@ -37,6 +37,6 @@ struct FollowerProfile: View {
 
 struct FollowerProfile_Previews: PreviewProvider {
     static var previews: some View {
-        FollowerProfile()
+        FollowerProfile(images: [AnalyticPhotoModel(id: 1, photo: "")])
     }
 }

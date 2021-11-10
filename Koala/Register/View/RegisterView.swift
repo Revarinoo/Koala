@@ -12,7 +12,7 @@ struct RegisterView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var registerVM = RegisterViewModel()
     @State private var agree: Bool = false
-    @AppStorage("role", store: .standard) var role = "Influencer"
+    @AppStorage("role", store: .standard) var role = "Business"
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -64,6 +64,7 @@ struct RegisterView: View {
                 NavigationLink(destination: Text("Home"), isActive: $registerVM.isAuthenticate) {
                     Button {
                         registerVM.register()
+                        print(registerVM.role)
                     } label: {
                         Text("Sign Up")
                         .padding(15)
@@ -102,6 +103,9 @@ struct RegisterView: View {
             .background(Color.white.ignoresSafeArea(edges: .bottom))
             .cornerRadius(15)
             .padding(.top, 88)
+            .onTapGesture{
+                                self.dismiss()
+                            }
         }
     }
 }
@@ -111,3 +115,11 @@ struct RegisterView_Previews: PreviewProvider {
         RegisterView()
     }
 }
+
+
+extension View {
+    func dismiss(){
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+

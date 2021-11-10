@@ -51,7 +51,7 @@ class CreateCampaignViewModel : ObservableObject {
 
         //      MARK: header buat yg server
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer 3|SZWRWydfBtOsl4I0s1vyvXWLKFtrMPCVmJcBqy3e",
+            "Authorization": "Bearer \(token)",
             "Content-type": "multipart/form-data"
         ]
 
@@ -84,7 +84,7 @@ class CreateCampaignViewModel : ObservableObject {
                     print("response.value")
                     print(response.value)
                     if let code = response.response?.statusCode{
-                        if code == 201{
+                        if code == 201 {
                             let campaignResponse = try? JSONDecoder().decode(CreateCampaignResponse.self, from: response.value as! Data)
                             self.content_id = campaignResponse?.content_id ?? 0
                             self.submitContent()

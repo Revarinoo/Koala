@@ -9,11 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 
-extension View {
-    func dismissKeyboard(){
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
+
 struct CreateCampaign: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -85,7 +81,6 @@ struct CreateCampaign: View {
                                 willMoveToTheNextScreen = true
                                 createCampaignVM.createContentModel = contentArrayTemp
                                 createCampaignVM.submitData(submittedCampaign: campaignModel, submittedContent: contentArrayTemp)
-                                
                             }){
                                 Text("Create").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                                     .foregroundColor(.white)
@@ -134,6 +129,9 @@ struct CreateCampaign: View {
                 }
                 
             }.navigationBarHidden(true)
+                .onTapGesture{
+                    self.dismissKeyboard()
+                }
             
                 .background(ThemeColor.primary.ignoresSafeArea())
             
@@ -143,7 +141,8 @@ struct CreateCampaign: View {
                     ImagePicker(sourceType: .photoLibrary, selectedImage: $campaignModel.logo)
                 }
                 
-            if willMoveToTheNextScreen && !createCampaignVM.isFinishedUploading{
+            if willMoveToTheNextScreen
+            {
             ThemeColor.primary.ignoresSafeArea()
                 VStack(spacing: 25){
                     Spacer()
@@ -152,10 +151,21 @@ struct CreateCampaign: View {
                         .scaleEffect(3)
                     Text("Uploading Your Data").foregroundColor(.white).font(Font.custom(ThemeFont.poppinsMedium, size: 14))
                     Spacer()
+                    
+                    if createCampaignVM.isFinishedUploading{
+                        Button(action:{
+                            self.presentationMode.wrappedValue.dismiss()
+                        }){
+                            Text("Done")
+                                .scaledToFit()
+                        }.frame(width: 24, height: 24, alignment: .center)
+                    }
                 }
             }
         }
-        .navigate(to: CampaignView(), when: $createCampaignVM.isFinishedUploading)
+        .onChange(of: createCampaignVM.isFinishedUploading, perform:
+                    self.presentationMode.wrappedValue.dismiss())
+       // .navigate(to: CampaignView(), when: $createCampaignVM.isFinishedUploading)
         
     }
 }
