@@ -67,7 +67,7 @@ struct CampaignOrderCard: View {
                     }
                 )
                 NavigationLink(
-                    destination: TabBar(selectedTab: 2).navigationBarHidden(true).navigationBarBackButtonHidden(true),
+                    destination: OrderView().navigationBarHidden(true).navigationBarBackButtonHidden(true),
                     isActive: $orderCampaignVM.orderCampaignModel.navigate,
                     label: {
                         Button(
