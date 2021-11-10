@@ -13,14 +13,16 @@ struct OngoingCard: View {
     let name: String
     let productType : [String]
     let dueDate : String
+    let photo: String
     @State var showDatePicker: Bool = false
     @State var savedDate: Date? = nil
     
     var body: some View {
         VStack{
             HStack(spacing: 18){
-                WebImage(url: URL(string: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg"))
+                WebImage(url: URL(string: photo))
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 82, height: 88)
                     .cornerRadius(10)
                 VStack (alignment: .leading, spacing: 6){
@@ -79,7 +81,7 @@ struct OngoingCard: View {
 
 struct OngoingCard_Previews: PreviewProvider {
     static var previews: some View {
-        OngoingCard(order_id: 1,name: "Bella Anastasia", productType: ["Post"], dueDate: "28 November 2021").previewLayout(.sizeThatFits)
+        OngoingCard(order_id: 1,name: "Bella Anastasia", productType: ["Post"], dueDate: "28 November 2021", photo: "").previewLayout(.sizeThatFits)
     }
 }
 

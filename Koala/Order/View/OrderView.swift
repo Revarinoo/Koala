@@ -37,15 +37,14 @@ struct OrderView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding([.leading, .trailing], 16)
                 ChosenStatus(selectedStatus: orderTypeSelected )
+                Spacer()
                 
                 
             }
-            .navigationBarTitle("")
+            .navigationBarTitle("", displayMode: .inline)
             .navigationBarHidden(true)
             .padding(.top, 40)
             .background(ThemeColor.background.ignoresSafeArea())
-            
-            
         }
         
     }

@@ -14,12 +14,14 @@ struct CompletedCard: View {
     let reach: String
     let impression: String
     let engagement: String
+    let photo: String
     
     var body: some View {
         VStack{
             HStack(spacing: 18){
-                WebImage(url: URL(string: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg"))
+                WebImage(url: URL(string: photo))
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 82, height: 88)
                     .cornerRadius(10)
                 VStack (alignment: .leading, spacing: 6){
@@ -66,6 +68,6 @@ struct CompletedCard: View {
 
 struct CompletedCard_Previews: PreviewProvider {
     static var previews: some View {
-        CompletedCard(name: "Felix Lee", reach: "21.5K", impression: "10.8K", engagement: "10.1%").previewLayout(.sizeThatFits)
+        CompletedCard(name: "Felix Lee", reach: "21.5K", impression: "10.8K", engagement: "10.1%", photo: "").previewLayout(.sizeThatFits)
     }
 }

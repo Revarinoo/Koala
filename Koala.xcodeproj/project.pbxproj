@@ -116,11 +116,16 @@
 		84972DA4272677300097D2D2 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84972DA3272677300097D2D2 /* ReviewViewModel.swift */; };
 		84972DA62726773B0097D2D2 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84972DA52726773B0097D2D2 /* Review.swift */; };
 		84CDC3D22730EDAB0012304A /* ResultInfluencerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3D12730EDAA0012304A /* ResultInfluencerCard.swift */; };
+		D20B099E2737AF62007B1636 /* CreateCampaignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B099D2737AF62007B1636 /* CreateCampaignService.swift */; };
+		D20B09A027381C42007B1636 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B099F27381C42007B1636 /* ImagePicker.swift */; };
+		D20B09A2273826C7007B1636 /* CreateCampaignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B09A1273826C7007B1636 /* CreateCampaignViewModel.swift */; };
 		D2131CAD2729172D006ACDC2 /* PendingOrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CAC2729172D006ACDC2 /* PendingOrdersViewModel.swift */; };
 		D2131CAF272917DA006ACDC2 /* MyOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CAE272917DA006ACDC2 /* MyOrders.swift */; };
 		D2131CB12729AC7D006ACDC2 /* MyOrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CB02729AC7D006ACDC2 /* MyOrderService.swift */; };
 		D2131CB32729BE1D006ACDC2 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CB22729BE1D006ACDC2 /* OrderModel.swift */; };
 		D21476242723F4B2009985BD /* RecommendationInfluencerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21476232723F4B2009985BD /* RecommendationInfluencerModel.swift */; };
+		D246DBF62734BA8A00DE680A /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D246DBF52734BA8A00DE680A /* TextArea.swift */; };
+		D246DBF82734E3D100DE680A /* ContentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D246DBF72734E3D100DE680A /* ContentRequest.swift */; };
 		D2577BC4271F11BD00E7AC5D /* HomepageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2577BC3271F11BD00E7AC5D /* HomepageView.swift */; };
 		D2577BC6271F239B00E7AC5D /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2577BC5271F239B00E7AC5D /* Categories.swift */; };
 		D2577BC8271F23BE00E7AC5D /* RecommendationInfluencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2577BC7271F23BE00E7AC5D /* RecommendationInfluencer.swift */; };
@@ -143,6 +148,9 @@
 		D291A3D42730416400BAAA75 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291A3D32730416400BAAA75 /* UserProfileViewModel.swift */; };
 		D299558C271E65EB0025D0CB /* HomepageCategoriesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299558B271E65EB0025D0CB /* HomepageCategoriesCard.swift */; };
 		D2995592271F0D120025D0CB /* CategoriesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2995591271F0D120025D0CB /* CategoriesCard.swift */; };
+		D2B6F6BE2732427500B00020 /* CreateCampaignForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B6F6BD2732427500B00020 /* CreateCampaignForm.swift */; };
+		D2B6F6C02732A1F900B00020 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B6F6BF2732A1F900B00020 /* CustomTextEditor.swift */; };
+		D2B6F6C42732FF8F00B00020 /* ContentForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B6F6C32732FF8F00B00020 /* ContentForm.swift */; };
 		D2C3C59C2727A2B700C338B4 /* OngoingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3C59B2727A2B700C338B4 /* OngoingCard.swift */; };
 		D2C3C59E272863F200C338B4 /* CompletedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3C59D272863F200C338B4 /* CompletedCard.swift */; };
 		D2C3C5A02728674400C338B4 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3C59F2728674400C338B4 /* OrderView.swift */; };
@@ -277,11 +285,16 @@
 		84972DA3272677300097D2D2 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReviewViewModel.swift; path = Koala/InfluencerDetail/ViewModel/ReviewViewModel.swift; sourceTree = SOURCE_ROOT; };
 		84972DA52726773B0097D2D2 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Review.swift; path = Model/Review.swift; sourceTree = SOURCE_ROOT; };
 		84CDC3D12730EDAA0012304A /* ResultInfluencerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultInfluencerCard.swift; sourceTree = "<group>"; };
+		D20B099D2737AF62007B1636 /* CreateCampaignService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateCampaignService.swift; path = "Koala/Create Campaign/View/CreateCampaignService.swift"; sourceTree = SOURCE_ROOT; };
+		D20B099F27381C42007B1636 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D20B09A1273826C7007B1636 /* CreateCampaignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateCampaignViewModel.swift; path = "Koala/Create Campaign/View/CreateCampaignViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		D2131CAC2729172D006ACDC2 /* PendingOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOrdersViewModel.swift; sourceTree = "<group>"; };
 		D2131CAE272917DA006ACDC2 /* MyOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrders.swift; sourceTree = "<group>"; };
 		D2131CB02729AC7D006ACDC2 /* MyOrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderService.swift; sourceTree = "<group>"; };
 		D2131CB22729BE1D006ACDC2 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		D21476232723F4B2009985BD /* RecommendationInfluencerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationInfluencerModel.swift; sourceTree = "<group>"; };
+		D246DBF52734BA8A00DE680A /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
+		D246DBF72734E3D100DE680A /* ContentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentRequest.swift; path = "Koala/Create Campaign/View/ContentRequest.swift"; sourceTree = SOURCE_ROOT; };
 		D2577BC3271F11BD00E7AC5D /* HomepageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageView.swift; sourceTree = "<group>"; };
 		D2577BC5271F239B00E7AC5D /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		D2577BC7271F23BE00E7AC5D /* RecommendationInfluencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationInfluencer.swift; sourceTree = "<group>"; };
@@ -304,6 +317,9 @@
 		D291A3D32730416400BAAA75 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		D299558B271E65EB0025D0CB /* HomepageCategoriesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageCategoriesCard.swift; sourceTree = "<group>"; };
 		D2995591271F0D120025D0CB /* CategoriesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCard.swift; sourceTree = "<group>"; };
+		D2B6F6BD2732427500B00020 /* CreateCampaignForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCampaignForm.swift; sourceTree = "<group>"; };
+		D2B6F6BF2732A1F900B00020 /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
+		D2B6F6C32732FF8F00B00020 /* ContentForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentForm.swift; sourceTree = "<group>"; };
 		D2C3C59B2727A2B700C338B4 /* OngoingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingCard.swift; sourceTree = "<group>"; };
 		D2C3C59D272863F200C338B4 /* CompletedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedCard.swift; sourceTree = "<group>"; };
 		D2C3C59F2728674400C338B4 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
@@ -920,6 +936,7 @@
 		D265F1862730DDAF008E08C8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D20B09A1273826C7007B1636 /* CreateCampaignViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -928,6 +945,11 @@
 			isa = PBXGroup;
 			children = (
 				D265F18A2730DE03008E08C8 /* CreateCampaign.swift */,
+				D2B6F6BD2732427500B00020 /* CreateCampaignForm.swift */,
+				D2B6F6BF2732A1F900B00020 /* CustomTextEditor.swift */,
+				D2B6F6C32732FF8F00B00020 /* ContentForm.swift */,
+				D246DBF52734BA8A00DE680A /* TextArea.swift */,
+				D20B099F27381C42007B1636 /* ImagePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -935,6 +957,7 @@
 		D265F1882730DDDE008E08C8 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				D20B099D2737AF62007B1636 /* CreateCampaignService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -942,6 +965,7 @@
 		D265F1892730DDEB008E08C8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D246DBF72734E3D100DE680A /* ContentRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1330,6 +1354,7 @@
 				2FACD83B2720811300E9F578 /* OvalTextFieldStyle.swift in Sources */,
 				2FBC8BB5271C38E8007E7B76 /* InfluencerListModel.swift in Sources */,
 				2F1D578227266F5A00E4354C /* RecommendedInfluencerList.swift in Sources */,
+				D246DBF82734E3D100DE680A /* ContentRequest.swift in Sources */,
 				F76CE87D2723B5010055D58C /* RegisterInfluencerView.swift in Sources */,
 				F7A52B8E27267B9C0067D3E6 /* SocialMedia.swift in Sources */,
 				846C55D32720255A006C94DD /* LoginModel.swift in Sources */,
@@ -1414,10 +1439,12 @@
 				846C55D1271F304C006C94DD /* CheckBoxView.swift in Sources */,
 				2F6C2C2727214F560026EF3E /* EngagementRateSlider.swift in Sources */,
 				F75CEE8C27143BE900E36A1F /* LoginService.swift in Sources */,
+				D20B09A2273826C7007B1636 /* CreateCampaignViewModel.swift in Sources */,
 				F75CEE702713E80D00E36A1F /* ContentView.swift in Sources */,
 				2FD875B02732438D0052DA4D /* OrderCampaignModel.swift in Sources */,
 				2F0D9DB627311E3C0012DAAF /* CampaignTaskCard.swift in Sources */,
 				78B9333827267ACA0040882D /* InfluencerDetailService.swift in Sources */,
+				D2B6F6C42732FF8F00B00020 /* ContentForm.swift in Sources */,
 				D283B9F9272A8BCB00CA87EC /* CompletedCardScrollView.swift in Sources */,
 				D2577BC4271F11BD00E7AC5D /* HomepageView.swift in Sources */,
 				F7C683B027338A72005BFE6D /* CampaingUpcomingFieldView.swift in Sources */,
@@ -1428,6 +1455,7 @@
 				D283B9F7272A5A2E00CA87EC /* OngoingCardScrollView.swift in Sources */,
 				84972DA22726711D0097D2D2 /* ReviewCard.swift in Sources */,
 				2FACD8472721173800E9F578 /* LocationFilter.swift in Sources */,
+				D2B6F6C02732A1F900B00020 /* CustomTextEditor.swift in Sources */,
 				782E328E2730EC0100FA9795 /* RescheduleView.swift in Sources */,
 				F75CEE6E2713E80D00E36A1F /* KoalaApp.swift in Sources */,
 				78B9333E27270F1A0040882D /* InfluencerDetailModel.swift in Sources */,
@@ -1437,6 +1465,7 @@
 				F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */,
 				2FD875AE27323E030052DA4D /* OrderRequestResponse.swift in Sources */,
 				2FD875AB2731460B0052DA4D /* ReviewService.swift in Sources */,
+				D20B09A027381C42007B1636 /* ImagePicker.swift in Sources */,
 				F7A52B922727073B0067D3E6 /* FollowerProfile.swift in Sources */,
 				2F0D9DA7273118FB0012DAAF /* CampaignDetailView.swift in Sources */,
 				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
@@ -1466,13 +1495,16 @@
 				2FCB0B282725186B0017C9D6 /* FeedIgFetcher.swift in Sources */,
 				2FA40E3F271DE3180095A812 /* ThemeColor.swift in Sources */,
 				8475D64D273239BF0021E87A /* CampaignReportBusinessViewModel.swift in Sources */,
+				D246DBF62734BA8A00DE680A /* TextArea.swift in Sources */,
 				D299558C271E65EB0025D0CB /* HomepageCategoriesCard.swift in Sources */,
 				2F0D9DB8273122220012DAAF /* CampaignDetailViewModel.swift in Sources */,
+				D20B099E2737AF62007B1636 /* CreateCampaignService.swift in Sources */,
 				D283B9F5272A3DB900CA87EC /* PendingCard.swift in Sources */,
 				D21476242723F4B2009985BD /* RecommendationInfluencerModel.swift in Sources */,
 				D2C3C5A02728674400C338B4 /* OrderView.swift in Sources */,
 				2F95BCD1273A2EDD00F78F83 /* Line.swift in Sources */,
 				2FCB0B1A272462690017C9D6 /* SecureInputView.swift in Sources */,
+				D2B6F6BE2732427500B00020 /* CreateCampaignForm.swift in Sources */,
 				8451B842272A55600061D389 /* CampaignViewModel.swift in Sources */,
 				84CDC3D22730EDAB0012304A /* ResultInfluencerCard.swift in Sources */,
 				D2995592271F0D120025D0CB /* CategoriesCard.swift in Sources */,
@@ -1609,7 +1641,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Koala/Preview Content\"";
-				DEVELOPMENT_TEAM = 3BJK86B698;
+				DEVELOPMENT_TEAM = SB885LAGT7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Koala/Info.plist;
@@ -1642,7 +1674,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Koala/Preview Content\"";
-				DEVELOPMENT_TEAM = 3BJK86B698;
+				DEVELOPMENT_TEAM = SB885LAGT7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Koala/Info.plist;
@@ -1703,7 +1735,7 @@
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 4.9.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
