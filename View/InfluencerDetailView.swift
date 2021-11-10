@@ -121,7 +121,7 @@ struct InfluencerDetailView: View {
                         
                         Group {
                             SocialMedia(influencer: influencerDetailViewModel.influencerModel).padding()
-                            FollowerProfile().padding([.top, .bottom], 16)
+                            FollowerProfile(images: influencerDetailViewModel.influencerModel?.analytic_photos ?? []).padding([.top, .bottom], 16)
                             
                             EstimatedPrice(products: influencerDetailViewModel.influencerModel?.products ?? []).padding([.top, .bottom], 16)
                             
