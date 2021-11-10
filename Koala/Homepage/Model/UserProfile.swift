@@ -10,11 +10,9 @@ import Foundation
 struct UserProfile: Codable{
     var name: String
     var photo: String
-    var location: String
 }
 
 struct UserProfileData {
     var name: String
     var photo: String
-    var location: String
 }

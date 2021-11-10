@@ -12,6 +12,7 @@ struct LoginView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var loginVM = LoginViewModel()
     @State var toRegisterView: Bool = false
+    @StateObject var userProfile = UserProfileViewModel()
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -58,9 +59,9 @@ struct LoginView: View {
                     isActive: $loginVM.loginModel.navigate,
                     label: {
                         Button {
-                            print("tapped")
                             if(loginVM.validateUserInputs()) {
                                 loginVM.login()
+                                userProfile.callData()
                             }
                         } label: {
                             Text("Sign In")
