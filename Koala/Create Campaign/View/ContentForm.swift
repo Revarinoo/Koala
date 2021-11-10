@@ -16,7 +16,6 @@ struct ContentForm: View, Identifiable {
     var body: some View {
         if contentData.isDeleted == false{
             VStack{
-                if #available(iOS 15.0, *) {
                     VStack(alignment: .leading){
                         Text("Content Type")
                             .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
@@ -31,14 +30,11 @@ struct ContentForm: View, Identifiable {
                                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray).accentColor(ThemeColor.primary)
                             }.padding(8)
                             Spacer()
-                        }.background(.white).cornerRadius(12)
+                        }.cornerRadius(12)
                             
                         
                         
                     }.padding(16)
-                } else {
-                    // Fallback on earlier versions
-                }
                 VStack(alignment: .leading, spacing: 22){
 
                     TextArea(textTitle: "Content", product: $contentData.contentDetail, textFieldHeight: 172, placeHolderText: "Enter your package detail", fieldBackgroundColor: .white)
