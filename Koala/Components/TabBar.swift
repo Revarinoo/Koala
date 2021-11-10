@@ -24,10 +24,10 @@ struct TabBar: View {
                         selectedTab == 0 ? Image("discoveractive") : Image("discovergrey")
                         Text("Discover")
                     }.tag(0)
-                InfluencerListView()
+                InfluencerListView(showBackButton: false)
                     .tabItem{
                         selectedTab == 1 ? Image("influenceractive") : Image("influencergrey")
-                        Text("influencer")
+                        Text("Influencer")
                     }.tag(1)
                 OrderView()
                     .tabItem{

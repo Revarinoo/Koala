@@ -12,7 +12,6 @@ struct CategoriesCard: View {
     let image :String
     let category : String
     
-    @AppStorage("categorySelected", store: .standard) var categorySelected = ""
     @State var gotoInfluencerList: Bool = false
     
     var body: some View {
@@ -20,13 +19,12 @@ struct CategoriesCard: View {
         VStack(spacing: 6) {
             NavigationLink(
                 destination:
-                    TabBar(selectedTab: 1).navigationBarTitle("")
+                    InfluencerListView(categorySelected: category, showBackButton: true).navigationBarTitle("")
                     .navigationBarHidden(true)
                     .navigationBarBackButtonHidden(true),
                 isActive: $gotoInfluencerList,
                 label: {
                     Button(action: {
-                        categorySelected = category
                         gotoInfluencerList.toggle()
                     }) {
                         Image(image).resizable().aspectRatio(contentMode: .fit)

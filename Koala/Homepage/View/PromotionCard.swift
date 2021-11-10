@@ -22,7 +22,7 @@ struct PromotionCard: View {
                 Text("10% off your first order with influencer").font(Font.custom(ThemeFont.poppinsSemiBold, size: 14))
                 
                 NavigationLink(
-                    destination: TabBar(selectedTab: 1).navigationBarTitle("")
+                    destination: InfluencerListView(showBackButton: true).navigationBarTitle("")
                         .navigationBarHidden(true)
                         .navigationBarBackButtonHidden(true),
                     isActive: $nextNavigation,

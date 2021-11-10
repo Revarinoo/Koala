@@ -41,7 +41,7 @@ struct CompletedCard: View {
                             Text(engagement).font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                             Text("Engagement").font(Font.custom(ThemeFont.poppinsRegular, size: 12)).foregroundColor(ThemeColor.primary)
                         }
-                        Spacer()
+                        //Spacer()
                     }
                 }
                 Spacer()

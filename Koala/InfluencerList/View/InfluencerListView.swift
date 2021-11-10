@@ -9,15 +9,15 @@ import SwiftUI
 
 struct InfluencerListView: View {
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @AppStorage("JWT", store: .standard) var token = ""
-    @AppStorage("categorySelected", store: .standard) var categorySelected = ""
+    //@AppStorage("categorySelected", store: .standard) var categorySelected = ""
+    var categorySelected : String = ""
     @StateObject var influencerListVM = InfluencerListViewModel()
     @State var isFilterModalShown: Bool = false
     @State private var searchText = ""
+    var showBackButton : Bool
     
-    init() {
-        
-    }
     
     var body: some View {
         NavigationView {
@@ -25,7 +25,18 @@ struct InfluencerListView: View {
                 Color.bgColorView.edgesIgnoringSafeArea(.all)
                 
                 VStack(alignment: .leading) {
+                    
                     HStack {
+                        if showBackButton{
+                            Button(action: {
+                                self.presentationMode.wrappedValue.dismiss()
+                            }, label: {
+                                Image(systemName: "chevron.left")
+                                    .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
+                                    .foregroundColor(ThemeColor.primary)
+                                    .cornerRadius(10)
+                            })
+                        }
                         Spacer()
                         Text("Influencer List")
                             .font(Font.custom(ThemeFont.poppinsSemiBold, size: 17))
@@ -99,6 +110,6 @@ struct InfluencerListView: View {
 
 struct InfluencerListView_Previews: PreviewProvider {
     static var previews: some View {
-        InfluencerListView()
+        InfluencerListView(showBackButton: false)
     }
 }
