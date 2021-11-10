@@ -17,7 +17,7 @@ struct TabBar: View {
     }
     var body: some View {
         
-        NavigationView {
+//        NavigationView {
             TabView(selection: $selectedTab){
                 HomepageView()
                     .tabItem{
@@ -48,7 +48,7 @@ struct TabBar: View {
             .accentColor(Color(UIColor(named: "primary")!))
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
-        }
+//        }
     }
 }
 
