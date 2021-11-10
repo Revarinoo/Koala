@@ -21,10 +21,7 @@ class CreateCampaignViewModel : ObservableObject {
     private var content_id : Int = 0
     @Published var isSuccess = false
     @Published var createContentModel : [CreateContentModel] = [CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)]
-    
-    func appendCreate(createData: CreateContentModel){
-        print(createData)
-    }
+    @Published var isFinishedUploading = false
     
     func submitData(submittedCampaign : CreateCampaignModel, submittedContent: [CreateContentModel]){
         print("ini konten model \(createContentModel)")
@@ -49,14 +46,14 @@ class CreateCampaignViewModel : ObservableObject {
             "rules": createCampaignReq.rules
         ]
         //        MARK: header buat yg local
-        //        let headers: HTTPHeaders = [
-        //            "Authorization": "Bearer 1|m537lhpvOSjSVy8crTgJYZQOL6xCC5d0ouxnl3Nn",
-        //            "Content-type": "multipart/form-data"
-        //        ]
+//                let headers: HTTPHeaders = [
+//                    "Authorization": "Bearer 1|m537lhpvOSjSVy8crTgJYZQOL6xCC5d0ouxnl3Nn",
+//                    "Content-type": "multipart/form-data"
+//                ]
 
         //      MARK: header buat yg server
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(token)",
+            "Authorization": "Bearer 3|SZWRWydfBtOsl4I0s1vyvXWLKFtrMPCVmJcBqy3e",
             "Content-type": "multipart/form-data"
         ]
 
@@ -78,6 +75,9 @@ class CreateCampaignViewModel : ObservableObject {
 
                 upload.uploadProgress(closure: { (progress) in
                     print("Upload Progress: \(progress.fractionCompleted)")
+                    if progress.fractionCompleted == 1.0 {
+                        self.isFinishedUploading = true
+                    }
                 })
 
                 upload.responseData { response in
