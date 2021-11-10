@@ -12,6 +12,7 @@ struct CategoriesCard: View {
     let image :String
     let category : String
     
+    @AppStorage("categorySelected", store: .standard) var categorySelected = ""
     @State var gotoInfluencerList: Bool = false
     
     var body: some View {
@@ -25,6 +26,7 @@ struct CategoriesCard: View {
                 isActive: $gotoInfluencerList,
                 label: {
                     Button(action: {
+                        categorySelected = category
                         gotoInfluencerList.toggle()
                     }) {
                         Image(image).resizable().aspectRatio(contentMode: .fit)
