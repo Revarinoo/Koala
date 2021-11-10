@@ -9,6 +9,11 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 
+extension View {
+    func dismissKeyboard(){
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
 struct CreateCampaign: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -95,7 +100,9 @@ struct CreateCampaign: View {
                             .ignoresSafeArea()
                             .padding(.top, 110)
                             .background(Color.white)
-                            .cornerRadius(20, corners: [.topLeft, .topRight])
+                            .cornerRadius(20, corners: [.topLeft, .topRight]).onTapGesture {
+                                self.dismissKeyboard()
+                            }
                         
                     }
                     VStack{
