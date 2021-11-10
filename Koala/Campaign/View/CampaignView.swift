@@ -71,7 +71,7 @@ struct CampaignView: View {
                                 }
                             }
                         }
-                    }
+                    }.padding(.bottom, 90)
                 }
             }
             .onAppear(perform: {

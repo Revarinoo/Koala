@@ -22,8 +22,10 @@ class CreateCampaignViewModel : ObservableObject {
     @Published var isFinishedUploading = false
     
     func submitData(submittedCampaign : CreateCampaignModel, submittedContent: [CreateContentModel]){
-        print("ini konten model \(createContentModel)")
-        let campaign_logo = submittedCampaign.logo.jpegData(compressionQuality: 0.5) ?? Data()
+        
+        let defaultImage = UIImage(named: "defaultCampaign")!.jpegData(compressionQuality: 0.5)
+        //print("ini konten model \(createContentModel)")
+        let campaign_logo = submittedCampaign.logo.jpegData(compressionQuality: 0.5) ?? defaultImage
         var references : [Data] = []
         if submittedCampaign.references.count != 0 {
             for refImage in submittedCampaign.references {
@@ -32,9 +34,8 @@ class CreateCampaignViewModel : ObservableObject {
             }
         }
         let createCampaignReq = CreateCampaignRequest(campaign_logo: campaign_logo, name: submittedCampaign.title, description: submittedCampaign.description, start_date: submittedCampaign.startDate.serverFormattedDate(), end_date: submittedCampaign.endDate.serverFormattedDate(), product_name: submittedCampaign.product, rules: submittedCampaign.rules, references: references)
-        print("create campaign: \(createCampaignReq)")
+        //print("create campaign: \(createCampaignReq)")
 
-        //let imgData = campaign_logo.jpegData(compressionQuality: 0.5) ?? Data()
         let parameters = [
             "name": createCampaignReq.name,
             "description": createCampaignReq.description,
@@ -56,7 +57,7 @@ class CreateCampaignViewModel : ObservableObject {
         ]
 
         Alamofire.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append(campaign_logo, withName: "campaign_logo",fileName: "file.jpeg", mimeType: "image/jpeg")
+            multipartFormData.append((campaign_logo ?? defaultImage) ?? Data(), withName: "campaign_logo",fileName: "file.jpeg", mimeType: "image/jpeg")
             for (index, value) in references.enumerated() {
                 multipartFormData.append(value, withName: "references[\(index)]",fileName: "\(index).jpeg", mimeType: "image/jpeg")
             }

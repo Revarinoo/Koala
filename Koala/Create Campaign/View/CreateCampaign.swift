@@ -23,6 +23,7 @@ struct CreateCampaign: View {
     @State var willMoveToTheNextScreen = false
     @State private var contentCount = 0
     @State var contentArrayTemp: [CreateContentModel] = [CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)]
+    @State var isDoneButton = false
     
     //keyboard thingy
     @StateObject private var keyboardHandler = KeyboardHandler()
@@ -123,7 +124,6 @@ struct CreateCampaign: View {
                                 }
                         }
                         
-                        
                         Text("Add Photo").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
                     }.padding(.top, 150)
                 }
@@ -151,22 +151,12 @@ struct CreateCampaign: View {
                         .scaleEffect(3)
                     Text("Uploading Your Data").foregroundColor(.white).font(Font.custom(ThemeFont.poppinsMedium, size: 14))
                     Spacer()
-                    
-                    if createCampaignVM.isFinishedUploading{
-                        Button(action:{
-                            self.presentationMode.wrappedValue.dismiss()
-                        }){
-                            Text("Done")
-                                .scaledToFit()
-                        }.frame(width: 24, height: 24, alignment: .center)
-                    }
                 }
             }
         }
-        .onChange(of: createCampaignVM.isFinishedUploading, perform:
-                    self.presentationMode.wrappedValue.dismiss())
-       // .navigate(to: CampaignView(), when: $createCampaignVM.isFinishedUploading)
-        
+        .navigate(to: CampaignView().onAppear(perform: {
+            self.presentationMode.wrappedValue.dismiss()
+        }), when: $createCampaignVM.isFinishedUploading)
     }
 }
 
