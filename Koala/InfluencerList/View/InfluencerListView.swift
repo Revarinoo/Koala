@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct InfluencerListView: View {
+    
     @AppStorage("JWT", store: .standard) var token = ""
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @AppStorage("categorySelected", store: .standard) var categorySelected = ""
     @StateObject var influencerListVM = InfluencerListViewModel()
     @State var isFilterModalShown: Bool = false
-    @State var filters: [String] = [""]
     @State private var searchText = ""
     
     init() {
@@ -25,14 +25,6 @@ struct InfluencerListView: View {
             
             VStack(alignment: .leading) {
                 HStack {
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Image(systemName: "chevron.left")
-                            .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
-                            .foregroundColor(ThemeColor.primary)
-                            .cornerRadius(10)
-                    })
                     Spacer()
                     Text("Influencer List")
                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 17))
@@ -56,7 +48,7 @@ struct InfluencerListView: View {
                     })
                     ScrollView(.horizontal) {
                         HStack(spacing: 8) {
-                            ForEach(filters, id: \.self) { filter in
+                            ForEach([categorySelected], id: \.self) { filter in
                                 if filter != "" {
                                     Text(filter)
                                         .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
@@ -91,8 +83,8 @@ struct InfluencerListView: View {
         .accentColor(.white)
         .navigationBarHidden(true)
         .onAppear() {
-            if filters[0] != "" {
-                influencerListVM.callGetInfluencerByCategory(filters[0].components(separatedBy: " ").first!)
+            if categorySelected != "" {
+                influencerListVM.callGetInfluencerByCategory(categorySelected)
             } else {
                 influencerListVM.callGetInfluencerList()
             }
