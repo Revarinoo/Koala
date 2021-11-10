@@ -41,7 +41,7 @@ struct CreateCampaignForm: View {
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
                 HStack{
-                    DatePicker("", selection: $campaignModel.endDate, in: Date()..., displayedComponents: [.date]).padding([.top, .bottom], 5)
+                    DatePicker("", selection: $campaignModel.endDate, in: Date.tomorrow..., displayedComponents: [.date]).padding([.top, .bottom], 5)
                         .fixedSize()
                     Spacer()
                     Image(systemName: "calendar").font(.system(size: 24)).padding(.trailing, 10).foregroundColor(ThemeColor.grayDark)
@@ -114,3 +114,4 @@ struct CreateCampaignForm: View {
 //        CreateCampaignForm()//.preferredColorScheme(.dark)
 //    }
 //}
+

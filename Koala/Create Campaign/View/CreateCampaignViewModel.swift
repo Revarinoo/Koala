@@ -22,8 +22,10 @@ class CreateCampaignViewModel : ObservableObject {
     @Published var isFinishedUploading = false
     
     func submitData(submittedCampaign : CreateCampaignModel, submittedContent: [CreateContentModel]){
-        print("ini konten model \(createContentModel)")
-        let campaign_logo = submittedCampaign.logo.jpegData(compressionQuality: 0.5) ?? Data()
+        
+        let defaultImage = UIImage(named: "defaultCampaign")!.jpegData(compressionQuality: 0.5)
+        //print("ini konten model \(createContentModel)")
+        let campaign_logo = submittedCampaign.logo.jpegData(compressionQuality: 0.5) ?? defaultImage
         var references : [Data] = []
         if submittedCampaign.references.count != 0 {
             for refImage in submittedCampaign.references {
@@ -32,9 +34,8 @@ class CreateCampaignViewModel : ObservableObject {
             }
         }
         let createCampaignReq = CreateCampaignRequest(campaign_logo: campaign_logo, name: submittedCampaign.title, description: submittedCampaign.description, start_date: submittedCampaign.startDate.serverFormattedDate(), end_date: submittedCampaign.endDate.serverFormattedDate(), product_name: submittedCampaign.product, rules: submittedCampaign.rules, references: references)
-        print("create campaign: \(createCampaignReq)")
+        //print("create campaign: \(createCampaignReq)")
 
-        //let imgData = campaign_logo.jpegData(compressionQuality: 0.5) ?? Data()
         let parameters = [
             "name": createCampaignReq.name,
             "description": createCampaignReq.description,
@@ -51,12 +52,12 @@ class CreateCampaignViewModel : ObservableObject {
 
         //      MARK: header buat yg server
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer 3|SZWRWydfBtOsl4I0s1vyvXWLKFtrMPCVmJcBqy3e",
+            "Authorization": "Bearer \(token)",
             "Content-type": "multipart/form-data"
         ]
 
         Alamofire.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append(campaign_logo, withName: "campaign_logo",fileName: "file.jpeg", mimeType: "image/jpeg")
+            multipartFormData.append((campaign_logo ?? defaultImage) ?? Data(), withName: "campaign_logo",fileName: "file.jpeg", mimeType: "image/jpeg")
             for (index, value) in references.enumerated() {
                 multipartFormData.append(value, withName: "references[\(index)]",fileName: "\(index).jpeg", mimeType: "image/jpeg")
             }
@@ -84,7 +85,7 @@ class CreateCampaignViewModel : ObservableObject {
                     print("response.value")
                     print(response.value)
                     if let code = response.response?.statusCode{
-                        if code == 201{
+                        if code == 201 {
                             let campaignResponse = try? JSONDecoder().decode(CreateCampaignResponse.self, from: response.value as! Data)
                             self.content_id = campaignResponse?.content_id ?? 0
                             self.submitContent()

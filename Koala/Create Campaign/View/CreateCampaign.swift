@@ -9,11 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 
-extension View {
-    func dismissKeyboard(){
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
+
 struct CreateCampaign: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -27,6 +23,7 @@ struct CreateCampaign: View {
     @State var willMoveToTheNextScreen = false
     @State private var contentCount = 0
     @State var contentArrayTemp: [CreateContentModel] = [CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)]
+    @State var isDoneButton = false
     
     //keyboard thingy
     @StateObject private var keyboardHandler = KeyboardHandler()
@@ -85,7 +82,6 @@ struct CreateCampaign: View {
                                 willMoveToTheNextScreen = true
                                 createCampaignVM.createContentModel = contentArrayTemp
                                 createCampaignVM.submitData(submittedCampaign: campaignModel, submittedContent: contentArrayTemp)
-                                
                             }){
                                 Text("Create").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                                     .foregroundColor(.white)
@@ -128,12 +124,14 @@ struct CreateCampaign: View {
                                 }
                         }
                         
-                        
                         Text("Add Photo").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
                     }.padding(.top, 150)
                 }
                 
             }.navigationBarHidden(true)
+                .onTapGesture{
+                    self.dismissKeyboard()
+                }
             
                 .background(ThemeColor.primary.ignoresSafeArea())
             
@@ -143,7 +141,8 @@ struct CreateCampaign: View {
                     ImagePicker(sourceType: .photoLibrary, selectedImage: $campaignModel.logo)
                 }
                 
-            if willMoveToTheNextScreen && !createCampaignVM.isFinishedUploading{
+            if willMoveToTheNextScreen
+            {
             ThemeColor.primary.ignoresSafeArea()
                 VStack(spacing: 25){
                     Spacer()
@@ -155,8 +154,9 @@ struct CreateCampaign: View {
                 }
             }
         }
-        .navigate(to: CampaignView(), when: $createCampaignVM.isFinishedUploading)
-        
+        .navigate(to: CampaignView().onAppear(perform: {
+            self.presentationMode.wrappedValue.dismiss()
+        }), when: $createCampaignVM.isFinishedUploading)
     }
 }
 
