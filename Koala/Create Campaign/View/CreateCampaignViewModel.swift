@@ -79,10 +79,10 @@ class CreateCampaignViewModel : ObservableObject {
                 })
 
                 upload.responseData { response in
-//                    print("response.statusCode")
-//                    print(response.response?.statusCode)
-//                    print("response.value")
-//                    print(response.value)
+                    print("response.statusCode")
+                    print(response.response?.statusCode)
+                    print("response.value")
+                    print(response.value)
                     if let code = response.response?.statusCode{
                         if code == 201{
                             let campaignResponse = try? JSONDecoder().decode(CreateCampaignResponse.self, from: response.value as! Data)

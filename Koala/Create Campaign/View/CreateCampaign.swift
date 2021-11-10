@@ -28,6 +28,9 @@ struct CreateCampaign: View {
     @State private var contentCount = 0
     @State var contentArrayTemp: [CreateContentModel] = [CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)]
     
+    //keyboard thingy
+    @StateObject private var keyboardHandler = KeyboardHandler()
+    
     init() {
         UIScrollView.appearance().bounces = false
     }
@@ -94,15 +97,13 @@ struct CreateCampaign: View {
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(ThemeColor.primary, lineWidth: 1)
                                 )
-                                .padding([.leading, .trailing], 16).padding(.bottom, 100)
+                                .padding([.leading, .trailing], 16).padding(.bottom, 100).padding(.bottom, keyboardHandler.keyboardHeight)
                             
                         }.frame(width: UIScreen.main.bounds.width, alignment: .top)
                             .ignoresSafeArea()
                             .padding(.top, 110)
                             .background(Color.white)
-                            .cornerRadius(20, corners: [.topLeft, .topRight]).onTapGesture {
-                                self.dismissKeyboard()
-                            }
+                            .cornerRadius(20, corners: [.topLeft, .topRight])
                         
                     }
                     VStack{
@@ -142,7 +143,7 @@ struct CreateCampaign: View {
                     ImagePicker(sourceType: .photoLibrary, selectedImage: $campaignModel.logo)
                 }
                 
-            if willMoveToTheNextScreen{
+            if willMoveToTheNextScreen && !createCampaignVM.isFinishedUploading{
             ThemeColor.primary.ignoresSafeArea()
                 VStack(spacing: 25){
                     Spacer()
