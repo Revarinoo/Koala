@@ -41,12 +41,10 @@ struct OrderView: View {
                 
                 
             }
-            .navigationBarTitle("")
+            .navigationBarTitle("", displayMode: .inline)
             .navigationBarHidden(true)
             .padding(.top, 40)
             .background(ThemeColor.background.ignoresSafeArea())
-            
-            
         }
         
     }
