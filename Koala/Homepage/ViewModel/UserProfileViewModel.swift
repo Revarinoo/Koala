@@ -11,16 +11,17 @@ class UserProfileViewModel: ObservableObject{
     @Published var user : UserProfileData = UserProfileData(name: "", photo: "", location: "")
     private let userProfileService : UserProfileService = UserProfileService()
     
+    init() {
+        callData()
+    }
     
     func callData(){
-        var userData : UserProfileData = UserProfileData(name: "", photo: "", location: "")
         userProfileService.getUserProfile(){ response in
-            userData.name = response?.name ?? "Guest"
-            userData.photo = response?.photo ?? ""
-            userData.location = response?.location ?? "Kemanggisan"
-        }
-        DispatchQueue.main.async {
-            self.user = userData
+            if let name = response?.name, let photo = response?.photo, let location = response?.location {
+                DispatchQueue.main.async {
+                    self.user = UserProfileData(name: name, photo: "http://34.124.208.0/Koala-backend/public/storage/images/" + photo , location: location)
+                }
+            }
         }
     }
 }

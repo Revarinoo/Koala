@@ -11,6 +11,10 @@ import SwiftUI
 struct KoalaApp: App {
     @AppStorage("JWT", store: .standard) var token = ""
     
+    init() {
+        UIWindow.appearance().overrideUserInterfaceStyle = .light
+    }
+    
     var body: some Scene {
         WindowGroup {
             if token != "" {
