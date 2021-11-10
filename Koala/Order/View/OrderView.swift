@@ -37,6 +37,7 @@ struct OrderView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding([.leading, .trailing], 16)
                 ChosenStatus(selectedStatus: orderTypeSelected )
+                Spacer()
                 
                 
             }

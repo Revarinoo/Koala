@@ -23,6 +23,7 @@ final class HttpUtility {
     func request<T:Decodable>(_ urlRequest: URLRequest, resultType:T.Type, completionHandler:@escaping(_ result: T?)-> Void) {
 
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            print(response)
             if(error == nil && data != nil) {
                 let response = try? JSONDecoder().decode(resultType.self, from: data!)
                 _ = completionHandler(response)

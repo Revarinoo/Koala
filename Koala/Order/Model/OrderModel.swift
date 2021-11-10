@@ -28,7 +28,7 @@ struct OrderProductData: Codable{
     var er: Double?
 }
 
-enum productType: String{
+enum productType: String, CaseIterable, Equatable{
     case story = "Instagram Story"
     case post = "Instagram Post"
     case reels = "Instagram Reels"

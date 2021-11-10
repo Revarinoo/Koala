@@ -13,6 +13,7 @@ struct CampaignView: View {
     @StateObject var campaignList = CampaignViewModel()
     @State private var campaignType = "Upcoming"
     var campaignTypes = ["Upcoming", "Completed"]
+    @State var willMoveToTheNextScreen = false
     
     init(){
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "primary")
@@ -26,7 +27,8 @@ struct CampaignView: View {
             VStack {
                 VStack(alignment: .trailing) {
                     Button(action: {
-                        print("add new")
+                        willMoveToTheNextScreen = true
+                        //print("add new")
                     }, label: {
                         Image(systemName: "plus")
                             .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
@@ -80,6 +82,7 @@ struct CampaignView: View {
             .padding(.top, 10)
             .background(ThemeColor.background.ignoresSafeArea())
         }
+        .navigate(to: CreateCampaign(), when: $willMoveToTheNextScreen)
     }
 }
 
