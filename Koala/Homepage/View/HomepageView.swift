@@ -16,7 +16,7 @@ struct HomepageView: View {
         NavigationView {
             VStack {
                 HStack(spacing: 5){
-                    ProfileButton(photoURL: userProfile.user.photo, name: userProfile.user.name != "" && token != "" ? userProfile.user.name : "Guest")
+                    ProfileButton(photoURL: userProfile.user.photo, name: token != "" ? userProfile.user.name : "Sign in")
                     Spacer()
                     Button(action:{
                         token = ""
@@ -27,7 +27,7 @@ struct HomepageView: View {
                     }
                 }
                 .padding(.horizontal, 16.0)
-                ScrollView(.vertical){
+                ScrollView(.vertical, showsIndicators: false){
                     VStack{
                         HStack{
                             Text("Browse Category").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
@@ -55,6 +55,7 @@ struct HomepageView: View {
                 
             }
             .onAppear(perform: {
+                print("His name was \(userProfile.user.name)")
                 recomenndationList.callGetInfluencerList(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? [""])
             })
             .padding(.top, 25)

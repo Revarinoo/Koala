@@ -8,7 +8,7 @@
 import Foundation
 
 class UserProfileViewModel: ObservableObject{
-    @Published var user : UserProfileData = UserProfileData(name: "", photo: "", location: "")
+    @Published var user : UserProfileData = UserProfileData(name: "", photo: "")
     private let userProfileService : UserProfileService = UserProfileService()
     
     init() {
@@ -17,9 +17,9 @@ class UserProfileViewModel: ObservableObject{
     
     func callData(){
         userProfileService.getUserProfile(){ response in
-            if let name = response?.name, let photo = response?.photo, let location = response?.location {
+            if let name = response?.name, let photo = response?.photo {
                 DispatchQueue.main.async {
-                    self.user = UserProfileData(name: name, photo: "http://34.124.208.0/Koala-backend/public/storage/images/" + photo , location: location)
+                    self.user = UserProfileData(name: name, photo: "http://34.124.208.0/Koala-backend/public/storage/images/" + photo)
                 }
             }
         }

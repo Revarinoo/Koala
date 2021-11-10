@@ -9,20 +9,29 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ProfileButton: View {
-    let photoURL: String
-    let name: String
+    @AppStorage("JWT", store: .standard) var token = ""
+    var photoURL: String
+    var name: String
+    @State var notLoggedIn = false
     var body: some View {
         ZStack(alignment:.leading){
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                HStack{
-                    WebImage(url: URL(string: photoURL))
-                        .resizable()
-                        .clipShape(Circle())
-                        .frame(width: 36, height: 36)
-                    Spacer()
-                    Text(name).font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                        .foregroundColor(.black)
-                    Spacer()
+            NavigationLink(destination: LoginView(), isActive: $notLoggedIn) {
+                Button(action: {
+                    if token == "" {
+                        notLoggedIn = true
+                    }
+                }) {
+                    HStack{
+                        WebImage(url: URL(string: photoURL))
+                            .resizable()
+                            .scaledToFill()
+                            .clipShape(Circle())
+                            .frame(width: 36, height: 36)
+                        Spacer()
+                        Text(name).font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                            .foregroundColor(.black)
+                        Spacer()
+                    }
                 }
             }
                 .frame(width: 122.0, height: 36.0)

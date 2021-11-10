@@ -17,7 +17,7 @@ class RegisterViewModel: ObservableObject {
     @Published var errorMessage = ""
     @Published var username = ""
     
-    @AppStorage("role", store: .standard) var role = "Influencer"
+    @AppStorage("role", store: .standard) var role = "Business"
     @AppStorage("JWT", store: .standard) var token = ""
     
     private let accountInfoFetcher: AccountInfoFetcher = AccountInfoFetcher()
@@ -38,7 +38,7 @@ class RegisterViewModel: ObservableObject {
             errorMessage = "Email format is incorrect!"
             return false
         }
-        if username.isEmpty {
+        if role == "Influencer" && username.isEmpty {
             errorMessage = "Username Instagram cannot be empty!"
             return false
         }
@@ -139,6 +139,11 @@ class RegisterViewModel: ObservableObject {
     func register() {
         if !validate() { isPresentingErrorAlert.toggle() }
         
-        callGetAccInfo()
+        if role == "Influencer" {
+            callGetAccInfo()
+        }
+        else {
+            callRegisterService()
+        }
     }
 }
