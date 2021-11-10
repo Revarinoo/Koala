@@ -11,25 +11,7 @@ struct ContentForm: View, Identifiable {
     
     let id = UUID()
     @Binding var firstContent : Bool
-//    @State var content = CreateContentModel(contentType: "", contentDetail: "", isDeleted: false)
-    //@Binding var isCreated : Bool
     @Binding var contentData : CreateContentModel
-//    @Binding var contentArray : [CreateContentModel]
-//    @State private var productTypee : productType = .post
-    @State var contentDetail = ""
-    
-//    init(){
-//        //self.firstContent = firstContent
-//        //_contentData = contentData
-//        //_contentArray = contentArray
-//        //_isCreated = isCreated
-//        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ThemeColor.primary)
-//        UISegmentedControl.appearance().backgroundColor = UIColor(ThemeColor.background)
-//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
-//        UINavigationBar.appearance().backgroundColor = UIColor(ThemeColor.background)
-//        UIPickerView.appearance().backgroundColor = UIColor(ThemeColor.primary)
-//    }
     
     var body: some View {
         if contentData.isDeleted == false{
@@ -45,7 +27,7 @@ struct ContentForm: View, Identifiable {
                                     ForEach(productType.allCases, id: \.self) { value in
                                         Text("\(value.rawValue)").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
                                     }
-                                }//.pickerStyle(WheelPickerStyle())
+                                }
                                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray).accentColor(ThemeColor.primary)
                             }.padding(8)
                             Spacer()

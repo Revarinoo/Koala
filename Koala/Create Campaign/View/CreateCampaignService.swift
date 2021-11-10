@@ -12,7 +12,7 @@ import Alamofire
 struct CreateCampaignService{
     
     @AppStorage("JWT", store: .standard) var token = ""
-    //let tkn = "1|m537lhpvOSjSVy8crTgJYZQOL6xCC5d0ouxnl3Nn"
+    let tkn = "1|m537lhpvOSjSVy8crTgJYZQOL6xCC5d0ouxnl3Nn"
     func getCampaign(completionHandler:@escaping(_ result: CreateCampaignResponse?)->Void) {
         
         let request = NSMutableURLRequest(url: NSURL(string: HttpUtility.endpoint + "campaign")! as URL)
