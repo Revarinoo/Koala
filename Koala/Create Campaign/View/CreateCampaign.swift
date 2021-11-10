@@ -163,8 +163,9 @@ struct CreateCampaign: View {
                 }
             }
         }
-//        .onChange(of: $createCampaignVM.isFinishedUploading, perform: self.presentationMode.wrappedValue.dismiss())
-        .navigate(to: CampaignView(), when: $createCampaignVM.isFinishedUploading)
+        .onChange(of: createCampaignVM.isFinishedUploading, perform:
+                    self.presentationMode.wrappedValue.dismiss())
+       // .navigate(to: CampaignView(), when: $createCampaignVM.isFinishedUploading)
         
     }
 }

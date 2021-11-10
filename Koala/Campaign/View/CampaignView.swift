@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CampaignView: View {
+    
     @AppStorage("JWT", store: .standard) var token = ""
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var campaignList = CampaignViewModel()

@@ -41,7 +41,7 @@ struct CreateCampaignForm: View {
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
                 HStack{
-                    DatePicker("", selection: $campaignModel.endDate, in: Date()..., displayedComponents: [.date]).padding([.top, .bottom], 5)
+                    DatePicker("", selection: $campaignModel.endDate, in: Date.tomorrow..., displayedComponents: [.date]).padding([.top, .bottom], 5)
                         .fixedSize()
                     Spacer()
                     Image(systemName: "calendar").font(.system(size: 24)).padding(.trailing, 10).foregroundColor(ThemeColor.grayDark)
@@ -114,3 +114,22 @@ struct CreateCampaignForm: View {
 //        CreateCampaignForm()//.preferredColorScheme(.dark)
 //    }
 //}
+extension Date {
+    static var yesterday: Date { return Date().dayBefore }
+    static var tomorrow:  Date { return Date().dayAfter }
+    var dayBefore: Date {
+        return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
+    }
+    var dayAfter: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: noon)!
+    }
+    var noon: Date {
+        return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
+    }
+    var month: Int {
+        return Calendar.current.component(.month,  from: self)
+    }
+    var isLastDayOfMonth: Bool {
+        return dayAfter.month != month
+    }
+}
