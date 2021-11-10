@@ -71,14 +71,15 @@ struct CampaignView: View {
                     }
                 }
             }
-            .navigationBarTitle("", displayMode: .inline)
-            .navigationBarHidden(true)
             .onAppear(perform: {
                 campaignList.callGetCampaigns()
             })
             .ignoresSafeArea()
             .padding(.top, 10)
             .background(ThemeColor.background.ignoresSafeArea())
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
         }
     }
 }

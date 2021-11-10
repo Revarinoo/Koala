@@ -64,10 +64,11 @@ struct HomepageView: View {
 //            userProfile.callData()
             
         })
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
         .padding(.top, 25)
         .background(ThemeColor.background.ignoresSafeArea())
+        .navigationBarTitle("", displayMode: .inline)
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
