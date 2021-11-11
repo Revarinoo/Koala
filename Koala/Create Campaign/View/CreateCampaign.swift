@@ -24,7 +24,7 @@ struct CreateCampaign: View {
     @State private var contentCount = 0
     @State var contentArrayTemp: [CreateContentModel] = [CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)]
     @State var isDoneButton = false
-    
+    @State var uiTabarController: UITabBarController?
     //keyboard thingy
     @StateObject private var keyboardHandler = KeyboardHandler()
     
@@ -154,6 +154,12 @@ struct CreateCampaign: View {
                 }
             }
         }
+        .introspectTabBarController { (UITabBarController) in
+                    UITabBarController.tabBar.isHidden = true
+                    uiTabarController = UITabBarController
+                }.onDisappear{
+                    uiTabarController?.tabBar.isHidden = false
+                }
         .navigate(to: CampaignView().onAppear(perform: {
             self.presentationMode.wrappedValue.dismiss()
         }), when: $createCampaignVM.isFinishedUploading)
