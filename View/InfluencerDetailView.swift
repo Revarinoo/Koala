@@ -157,15 +157,16 @@ struct InfluencerDetailView: View {
                             MailView(isShowing: $isShowingMailView, result: self.$result, toRecipient: influencerDetailViewModel.influencerModel?.influencer_profile.contact_email ?? "")
                         }
         }
-           
-    }.navigationBarHidden(true)
-        
             .introspectTabBarController { (UITabBarController) in
                         UITabBarController.tabBar.isHidden = true
                         uiTabarController = UITabBarController
                     }.onDisappear{
                         uiTabarController?.tabBar.isHidden = false
                     }
+           
+    }.navigationBarHidden(true)
+        
+            
             .onAppear(perform: {
                 influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
             })

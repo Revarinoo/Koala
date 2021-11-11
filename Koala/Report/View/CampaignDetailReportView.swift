@@ -7,10 +7,13 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Introspect
 
 struct CampaignDetailReportView: View {
     @StateObject var campaignReportVM = CampaignReportBusinessViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var uiTabarController: UITabBarController?
+    
     
     private func dateFormatter(dateBefore: Date) -> String {
         let dateFormatter = DateFormatter()
@@ -115,7 +118,12 @@ struct CampaignDetailReportView: View {
                     
                 }.padding(.top, 150)
             }
-               
+            .introspectTabBarController { (UITabBarController) in
+                                    UITabBarController.tabBar.isHidden = true
+                                    uiTabarController = UITabBarController
+                                }.onDisappear{
+                                    uiTabarController?.tabBar.isHidden = false
+                                }
         }.navigationBarHidden(true)
             .onAppear(perform: {
                 campaignReportVM.callGetCampaignReports(campaign_id: campaignID)

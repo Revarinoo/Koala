@@ -8,8 +8,6 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-
-
 struct CreateCampaign: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -154,12 +152,6 @@ struct CreateCampaign: View {
                 }
             }
         }
-        .introspectTabBarController { (UITabBarController) in
-                    UITabBarController.tabBar.isHidden = true
-                    uiTabarController = UITabBarController
-                }.onDisappear{
-                    uiTabarController?.tabBar.isHidden = false
-                }
         .navigate(to: CampaignView().onAppear(perform: {
             self.presentationMode.wrappedValue.dismiss()
         }), when: $createCampaignVM.isFinishedUploading)
