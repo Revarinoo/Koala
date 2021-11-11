@@ -103,6 +103,9 @@ struct LoginView: View {
             .cornerRadius(15)
             .padding(.top, 88)
         }
+        .onTapGesture{
+            self.dismissKeyboard()
+        }
     }
 }
 

@@ -16,11 +16,11 @@ struct HomepageView: View {
         NavigationView {
             VStack {
                 HStack(spacing: 5){
-                    ProfileButton(photoURL: userProfile.user.photo, name: token != "" ? userProfile.user.name : "Sign in")
+                    ProfileButton(photoURL: .constant(userProfile.user.photo), name: token != "" ? .constant(userProfile.user.name) : .constant("Sign in"))
                     Spacer()
                     Button(action:{
                         token = ""
-                        
+                        userProfile.callData()
                     }){
                         Image(systemName: "bell")
                             .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
@@ -63,6 +63,9 @@ struct HomepageView: View {
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
+            .onTapGesture {
+                self.dismissKeyboard()
+            }
         }
     }
 }
