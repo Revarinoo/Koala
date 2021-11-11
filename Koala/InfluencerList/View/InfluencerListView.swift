@@ -92,11 +92,8 @@ struct InfluencerListView: View {
                     }
                 }
                 .introspectTabBarController { (UITabBarController) in
-                    if showBackButton{
                         UITabBarController.tabBar.isHidden = true
                         uiTabarController = UITabBarController
-                    }
-                                        
                                     }.onDisappear{
                                         uiTabarController?.tabBar.isHidden = false
                                     }
