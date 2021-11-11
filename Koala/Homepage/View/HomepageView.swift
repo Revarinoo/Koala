@@ -45,7 +45,7 @@ struct HomepageView: View {
                         }.padding(.leading,16).padding([.trailing], 16.0).padding(.top, 28)
                             VStack(spacing: 12){
                                 ForEach (recomenndationList.recommendationModel){ i in
-                                    NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: i.id)) : AnyView(LoginView())) {
+                                    NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: i.id, fromBackButton: false)) : AnyView(LoginView())) {
                                         RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
                                     }
                                 }
