@@ -7,12 +7,14 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Introspect
 
 struct CreateCampaign: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @ObservedObject var createCampaignVM = CreateCampaignViewModel()
+    @StateObject var campaignList = CampaignViewModel()
     @State var campaignModel = CreateCampaignModel()
     @State var isCreated  = false
     @State var contentArray : [CreateContentModel] = [CreateContentModel(contentID: 0, contentType: productType.story, contentDetail: "", isDeleted: false)]
@@ -77,7 +79,9 @@ struct CreateCampaign: View {
                                 )
                                 .padding([.leading, .trailing], 16)
                             Button(action: {
+                                
                                 willMoveToTheNextScreen = true
+                                self.dismissKeyboard()
                                 createCampaignVM.createContentModel = contentArrayTemp
                                 createCampaignVM.submitData(submittedCampaign: campaignModel, submittedContent: contentArrayTemp)
                             }){
@@ -125,7 +129,12 @@ struct CreateCampaign: View {
                         Text("Add Photo").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
                     }.padding(.top, 150)
                 }
-                
+                .introspectTabBarController { (UITabBarController) in
+                                        UITabBarController.tabBar.isHidden = true
+                                        uiTabarController = UITabBarController
+                                    }.onDisappear{
+                                        uiTabarController?.tabBar.isHidden = false
+                                    }
             }.navigationBarHidden(true)
                 .onTapGesture{
                     self.dismissKeyboard()
@@ -151,6 +160,10 @@ struct CreateCampaign: View {
                     Spacer()
                 }
             }
+                
+        }
+        .onDisappear{
+            campaignList.callGetCampaigns()
         }
         .navigate(to: CampaignView().onAppear(perform: {
             self.presentationMode.wrappedValue.dismiss()
