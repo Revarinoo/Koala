@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct InfluencerListView: View {
     
@@ -17,7 +18,7 @@ struct InfluencerListView: View {
     @State var isFilterModalShown: Bool = false
     @State private var searchText = ""
     var showBackButton : Bool
-    
+    @State var uiTabarController: UITabBarController?
     
     var body: some View {
         NavigationView {
@@ -90,6 +91,15 @@ struct InfluencerListView: View {
                         }
                     }
                 }
+                .introspectTabBarController { (UITabBarController) in
+                    if showBackButton{
+                        UITabBarController.tabBar.isHidden = true
+                        uiTabarController = UITabBarController
+                    }
+                                        
+                                    }.onDisappear{
+                                        uiTabarController?.tabBar.isHidden = false
+                                    }
             }
             .navigationBarTitle("", displayMode: .inline)
             .accentColor(.white)

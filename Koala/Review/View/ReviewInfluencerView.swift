@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Introspect
 
 struct ReviewInfluencerView: View {
     
@@ -15,6 +16,7 @@ struct ReviewInfluencerView: View {
     
 //    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var reviewVM = ReviewPageViewModel()
+    @State var uiTabarController: UITabBarController?
     
     var body: some View {
         ZStack {
@@ -100,6 +102,12 @@ struct ReviewInfluencerView: View {
                     })
                     .padding(EdgeInsets(top: 48, leading: 16, bottom: -24, trailing: 16))
             }
+            .introspectTabBarController { (UITabBarController) in
+                                    UITabBarController.tabBar.isHidden = true
+                                    uiTabarController = UITabBarController
+                                }.onDisappear{
+                                    uiTabarController?.tabBar.isHidden = false
+                                }
         }
     }
 }
