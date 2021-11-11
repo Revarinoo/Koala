@@ -14,6 +14,7 @@ struct CreateCampaign: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @ObservedObject var createCampaignVM = CreateCampaignViewModel()
+    @StateObject var campaignList = CampaignViewModel()
     @State var campaignModel = CreateCampaignModel()
     @State var isCreated  = false
     @State var contentArray : [CreateContentModel] = [CreateContentModel(contentID: 0, contentType: productType.story, contentDetail: "", isDeleted: false)]
@@ -78,7 +79,9 @@ struct CreateCampaign: View {
                                 )
                                 .padding([.leading, .trailing], 16)
                             Button(action: {
+                                
                                 willMoveToTheNextScreen = true
+                                self.dismissKeyboard()
                                 createCampaignVM.createContentModel = contentArrayTemp
                                 createCampaignVM.submitData(submittedCampaign: campaignModel, submittedContent: contentArrayTemp)
                             }){
@@ -157,6 +160,10 @@ struct CreateCampaign: View {
                     Spacer()
                 }
             }
+                
+        }
+        .onDisappear{
+            campaignList.callGetCampaigns()
         }
         .navigate(to: CampaignView().onAppear(perform: {
             self.presentationMode.wrappedValue.dismiss()
