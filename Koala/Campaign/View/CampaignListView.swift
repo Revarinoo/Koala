@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct CampaignListView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var campaignListVM = CampaignViewModel()
+    @State var uiTabarController: UITabBarController?
     
     let influencerID: Int
     
@@ -46,6 +48,12 @@ struct CampaignListView: View {
                 }
             }
         }
+        introspectTabBarController { (UITabBarController) in
+                                UITabBarController.tabBar.isHidden = true
+                                uiTabarController = UITabBarController
+                            }.onDisappear{
+                                uiTabarController?.tabBar.isHidden = false
+                            }
         .navigationBarTitle("", displayMode: .inline)
         .accentColor(.white)
         .navigationBarHidden(true)

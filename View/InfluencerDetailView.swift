@@ -8,6 +8,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 import MessageUI
+import Introspect
 
 struct InfluencerDetailView: View {
     @StateObject var influencerDetailViewModel = InfluencerDetailViewModel()
@@ -18,6 +19,7 @@ struct InfluencerDetailView: View {
     @State var isShowingMailView = false
     @State var photoURL = "https://assets.teenvogue.com/photos/5fd4d29fe6ff71e902f97c1a/4:3/w_2443,h_1832,c_limit/taylor-evermore-resized.jpg"
     var influencerID: Int
+    @State var uiTabarController: UITabBarController?
     
     init(influencerID: Int) {
         UIScrollView.appearance().bounces = false
@@ -157,6 +159,13 @@ struct InfluencerDetailView: View {
         }
            
     }.navigationBarHidden(true)
+        
+            .introspectTabBarController { (UITabBarController) in
+                        UITabBarController.tabBar.isHidden = true
+                        uiTabarController = UITabBarController
+                    }.onDisappear{
+                        uiTabarController?.tabBar.isHidden = false
+                    }
             .onAppear(perform: {
                 influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
             })

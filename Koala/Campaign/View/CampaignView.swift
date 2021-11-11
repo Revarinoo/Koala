@@ -77,6 +77,7 @@ struct CampaignView: View {
             .onAppear(perform: {
                 campaignList.callGetCampaigns()
             })
+            
             .ignoresSafeArea()
             .padding(.top, 10)
             .background(ThemeColor.background.ignoresSafeArea())
