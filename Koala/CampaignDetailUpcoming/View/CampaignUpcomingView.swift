@@ -58,7 +58,7 @@ struct CampaignUpcomingView: View {
                     .resizable()
                     .foregroundColor(.white)
                     .scaledToFit()
-            }.frame(width: 16, height: 16, alignment: .center)
+            }.frame(width: 24, height: 24, alignment: .center)
 
             Spacer()
 

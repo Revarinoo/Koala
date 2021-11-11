@@ -56,22 +56,22 @@ struct CampaignView: View {
                     VStack(spacing: 12){
                         ForEach(campaignList.campaignModel) { i in
                             if campaignType.contains("Upcoming") {
-                                NavigationLink(destination: CampaignUpcomingView(id: i.content_id)) {
-                                    if i.status != "Completed" {
-                                        CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
+                                if i.status != "Completed" {
+                                    NavigationLink(destination: CampaignUpcomingView(id: i.content_id)) {      CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
                                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                                     }
                                 }
                             } else {
-                                NavigationLink(destination: CampaignDetailReportView(campaignID: i.content_id)) {
-                                    if i.status.contains("Completed") {
+                                if i.status.contains("Completed") {
+                                    NavigationLink(destination: CampaignDetailReportView(campaignID: i.content_id)) {
                                         CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
                                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                                     }
                                 }
                             }
                         }
-                    }.padding(.bottom, 90)
+                    }
+//                    .padding(.bottom, 90)
                 }
             }
             .onAppear(perform: {

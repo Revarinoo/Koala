@@ -45,7 +45,6 @@ struct CampaignDetailReportView: View {
     init(campaignID: Int) {
         UIScrollView.appearance().bounces = false
         self.campaignID = campaignID
-        //campaignReportVM.callGetCampaignReports(campaign_id: campaignID)
     }
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){

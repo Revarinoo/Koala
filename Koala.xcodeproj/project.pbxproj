@@ -1305,7 +1305,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					F75CEE692713E80D00E36A1F = {
 						CreatedOnToolsVersion = 13.0;
@@ -1427,7 +1427,6 @@
 				2FACD83827207EFF00E9F578 /* LoginValidation.swift in Sources */,
 				844DEF2D2722684A000C33C0 /* RegisterView.swift in Sources */,
 				D2131CAF272917DA006ACDC2 /* MyOrders.swift in Sources */,
-				2FA40E57271DF44E0095A812 /* ColorExtension.swift in Sources */,
 				2FACD83427206CCE00E9F578 /* LoginRequest.swift in Sources */,
 				D2131CB12729AC7D006ACDC2 /* MyOrderService.swift in Sources */,
 				8475D65327323EF10021E87A /* CampaignReportBusinessModel.swift in Sources */,
@@ -1439,7 +1438,6 @@
 				78B9333A27267C480040882D /* InfluencerDetailViewModel.swift in Sources */,
 				78B933362726704B0040882D /* InfluencerDetailResponse.swift in Sources */,
 				D291A3D227303FAD00BAAA75 /* UserProfileService.swift in Sources */,
-				84671FFB27265A62008FD954 /* ReviewView.swift in Sources */,
 				84671FFB27265A62008FD954 /* ReviewView.swift in Sources */,
 				2F6C2C3F272290FF0026EF3E /* OnboardingView.swift in Sources */,
 				2F6C2C34272268F60026EF3E /* SpecialtyViewModel.swift in Sources */,
@@ -1489,8 +1487,6 @@
 				2F95BCC32739F12700F78F83 /* UnderMaintenanceView.swift in Sources */,
 				8451B84D272B95510061D389 /* ResultTypeCard.swift in Sources */,
 				D2131CB32729BE1D006ACDC2 /* OrderModel.swift in Sources */,
-				F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */,
-				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
 				F76CE8752721C4B40055D58C /* AuthResponse.swift in Sources */,
 				D2577BC6271F239B00E7AC5D /* Categories.swift in Sources */,
 				2F95BCD0273A2EDD00F78F83 /* LineChartView.swift in Sources */,
