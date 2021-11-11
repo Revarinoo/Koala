@@ -21,6 +21,12 @@ class CampaignViewModel: ObservableObject{
         return dateFormatterGet.date(from: dateBefore) ?? Date()
     }
     
+    func refresh() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.callGetCampaigns()
+        }
+    }
+    
     func callGetCampaigns() {
         var campaigns: [CampaignModel] = []
         campaignService.getCampaign() { response in

@@ -71,11 +71,12 @@ struct CampaignView: View {
                             }
                         }
                     }
-//                    .padding(.bottom, 90)
+                    .padding(.bottom, 90)
                 }
             }
             .onAppear(perform: {
                 campaignList.callGetCampaigns()
+                campaignList.refresh()
             })
             
             .ignoresSafeArea()
