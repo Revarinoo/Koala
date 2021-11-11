@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Introspect
 
 struct CreateCampaign: View {
     
@@ -125,7 +126,12 @@ struct CreateCampaign: View {
                         Text("Add Photo").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
                     }.padding(.top, 150)
                 }
-                
+                .introspectTabBarController { (UITabBarController) in
+                                        UITabBarController.tabBar.isHidden = true
+                                        uiTabarController = UITabBarController
+                                    }.onDisappear{
+                                        uiTabarController?.tabBar.isHidden = false
+                                    }
             }.navigationBarHidden(true)
                 .onTapGesture{
                     self.dismissKeyboard()
