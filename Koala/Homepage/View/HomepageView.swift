@@ -55,7 +55,6 @@ struct HomepageView: View {
                 
             }
             .onAppear(perform: {
-                print("His name was \(userProfile.user.name)")
                 recomenndationList.callGetInfluencerList(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? [""])
             })
             .padding(.top, 25)
