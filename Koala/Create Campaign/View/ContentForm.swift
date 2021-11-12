@@ -20,6 +20,18 @@ struct ContentForm: View, Identifiable {
                         Text("Content Type")
                             .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                             .foregroundColor(ThemeColor.grayDark)
+//                        HStack{
+//                            DatePicker("", selection: $campaignModel.startDate, in: Date()..., displayedComponents: [.date]).padding([.top, .bottom], 5)
+//                                .fixedSize()
+//                            Spacer()
+//                            Image(systemName: "calendar").font(.system(size: 24)).padding(.trailing, 10).foregroundColor(ThemeColor.grayDark)
+//                        }
+//
+//                            .background(Color("lightGray"))
+//                            .cornerRadius(10)
+//                            .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+//                            .padding(.bottom, 5)
+//                            .padding(.top, -5)
                         HStack{
                             Section{
                                 Picker("Number of people", selection: $contentData.contentType) {
@@ -30,7 +42,12 @@ struct ContentForm: View, Identifiable {
                                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray).accentColor(ThemeColor.primary)
                             }.padding(8)
                             Spacer()
-                        }.cornerRadius(12)
+                        }//.cornerRadius(12)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                        .padding(.bottom, 5)
+                        .padding(.top, -5)
                             
                         
                         

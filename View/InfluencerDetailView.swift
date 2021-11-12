@@ -13,6 +13,7 @@ import Introspect
 struct InfluencerDetailView: View {
     @StateObject var influencerDetailViewModel = InfluencerDetailViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @StateObject var campaignList = CampaignViewModel.shared
     @State var isFavorite: Bool = false
     @State var categories: [String] = []
     @State var result: Result<MFMailComposeResult, Error>? = nil
@@ -21,6 +22,7 @@ struct InfluencerDetailView: View {
     var influencerID: Int
     var fromBackButton : Bool
     @State var uiTabarController: UITabBarController?
+    @State var isOrderPressed = false
     
     init(influencerID: Int, fromBackButton: Bool) {
         UIScrollView.appearance().bounces = false
@@ -92,15 +94,19 @@ struct InfluencerDetailView: View {
                         
                         HStack{
                             
-                            NavigationLink(destination: CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0)) {
-                                Text("Order").font(Font.custom(ThemeFont.poppinsBold, size: 18))
-                                    .foregroundColor(Color.white)
+//                            NavigationLink(destination: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign().navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0))) {
+//
+                                    
+                                Button(action: {
+                                    isOrderPressed = true
+                                }){
+                                    Text("Order").font(Font.custom(ThemeFont.poppinsBold, size: 18))
+                                }.foregroundColor(Color.white)
                                     .frame(width: 300, height: 50, alignment: .center)
                                     .background(ThemeColor.primary)
                                     .cornerRadius(15)
                                     .shadow(radius: 4)
-                                
-                            }
+//                            }
                             
                             Button(action:{
                                 self.isShowingMailView.toggle()
@@ -171,12 +177,16 @@ struct InfluencerDetailView: View {
                 
             }
             
-        }.navigationBarHidden(true)
+        }
+            
+            .background(ThemeColor.primary.ignoresSafeArea())
+            .ignoresSafeArea()
+            .navigate(to: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign().navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0)), when: $isOrderPressed)
             .onAppear(perform: {
                 influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
             })
-            .background(ThemeColor.primary.ignoresSafeArea())
-            .ignoresSafeArea()
+            .navigationTitle("")
+            .navigationBarHidden(true)
     }
     
     

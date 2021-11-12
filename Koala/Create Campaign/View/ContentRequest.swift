@@ -41,7 +41,7 @@ struct CreateCampaignModel {
     var logo : UIImage = UIImage()
     var title : String = String()
     var startDate : Date = Date()
-    var endDate : Date = Date()
+    var endDate : Date = Date.tomorrow
     var product : String = String()
     var description : String = String()
     var rules : String = String()

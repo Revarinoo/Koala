@@ -11,7 +11,7 @@ struct CampaignView: View {
     
     @AppStorage("JWT", store: .standard) var token = ""
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @StateObject var campaignList = CampaignViewModel()
+    @StateObject var campaignList = CampaignViewModel.shared
     @State private var campaignType = "Upcoming"
     var campaignTypes = ["Upcoming", "Completed"]
     @State var willMoveToTheNextScreen = false
@@ -71,11 +71,12 @@ struct CampaignView: View {
                             }
                         }
                     }
-//                    .padding(.bottom, 90)
+                    .padding(.bottom, 90)
                 }
             }
             .onAppear(perform: {
                 campaignList.callGetCampaigns()
+                campaignList.refresh()
             })
             
             .ignoresSafeArea()

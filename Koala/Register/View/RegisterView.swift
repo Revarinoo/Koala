@@ -104,8 +104,8 @@ struct RegisterView: View {
             .cornerRadius(15)
             .padding(.top, 88)
             .onTapGesture{
-                                self.dismiss()
-                            }
+                self.dismissKeyboard()
+            }
         }
     }
 }
@@ -116,10 +116,4 @@ struct RegisterView_Previews: PreviewProvider {
     }
 }
 
-
-extension View {
-    func dismiss(){
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
 
