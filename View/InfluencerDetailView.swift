@@ -93,7 +93,7 @@ struct InfluencerDetailView: View {
                         
                         HStack{
                             
-                            NavigationLink(destination: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign()) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0))) {
+                            NavigationLink(destination: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign().navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0))) {
                                 Text("Order").font(Font.custom(ThemeFont.poppinsBold, size: 18))
                                     .foregroundColor(Color.white)
                                     .frame(width: 300, height: 50, alignment: .center)

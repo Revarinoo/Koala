@@ -23,7 +23,7 @@ class CampaignViewModel: ObservableObject{
     }
     
     func refresh() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             self.callGetCampaigns()
         }
     }
