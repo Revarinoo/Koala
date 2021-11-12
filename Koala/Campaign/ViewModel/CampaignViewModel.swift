@@ -10,6 +10,7 @@ import SwiftUI
 
 class CampaignViewModel: ObservableObject{
     
+    static let shared = CampaignViewModel()
     @Published var campaignModel: [CampaignModel] = []
     @Published var orderCampaignModel: OrderCampaignModel = OrderCampaignModel()
     private let campaignService: CampaignService = CampaignService()

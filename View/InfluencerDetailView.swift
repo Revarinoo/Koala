@@ -13,6 +13,7 @@ import Introspect
 struct InfluencerDetailView: View {
     @StateObject var influencerDetailViewModel = InfluencerDetailViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @StateObject var campaignList = CampaignViewModel.shared
     @State var isFavorite: Bool = false
     @State var categories: [String] = []
     @State var result: Result<MFMailComposeResult, Error>? = nil
@@ -90,7 +91,7 @@ struct InfluencerDetailView: View {
                         
                         HStack{
                             
-                            NavigationLink(destination: CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0)) {
+                            NavigationLink(destination: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign()) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0))) {
                                 Text("Order").font(Font.custom(ThemeFont.poppinsBold, size: 18))
                                     .foregroundColor(Color.white)
                                     .frame(width: 300, height: 50, alignment: .center)

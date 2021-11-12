@@ -22,11 +22,18 @@ struct ProfileButton: View {
                     }
                 }) {
                     HStack{
-                        WebImage(url: URL(string: photoURL))
-                            .resizable()
-                            .scaledToFill()
-                            .clipShape(Circle())
-                            .frame(width: 36, height: 36)
+                        if photoURL == "" {
+                            Image("profile").resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                                .frame(width: 36, height: 36)
+                        } else {
+                            WebImage(url: URL(string: photoURL))
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                                .frame(width: 36, height: 36)
+                        }
                         Spacer()
                         Text(name).font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                             .foregroundColor(.black)

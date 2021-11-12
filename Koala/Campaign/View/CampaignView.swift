@@ -11,7 +11,7 @@ struct CampaignView: View {
     
     @AppStorage("JWT", store: .standard) var token = ""
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @StateObject var campaignList = CampaignViewModel()
+    @StateObject var campaignList = CampaignViewModel.shared
     @State private var campaignType = "Upcoming"
     var campaignTypes = ["Upcoming", "Completed"]
     @State var willMoveToTheNextScreen = false
