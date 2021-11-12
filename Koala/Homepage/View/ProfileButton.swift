@@ -10,8 +10,8 @@ import SDWebImageSwiftUI
 
 struct ProfileButton: View {
     @AppStorage("JWT", store: .standard) var token = ""
-    var photoURL: String
-    var name: String
+    @Binding var photoURL: String
+    @Binding var name: String
     @State var notLoggedIn = false
     var body: some View {
         ZStack(alignment:.leading){
@@ -50,6 +50,6 @@ struct ProfileButton: View {
 
 struct ProfileButton_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileButton(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: "Kenneth J").previewLayout(.sizeThatFits)
+        ProfileButton(photoURL: .constant("https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg"), name: .constant("Kenneth J")).previewLayout(.sizeThatFits)
     }
 }

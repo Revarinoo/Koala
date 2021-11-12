@@ -16,11 +16,11 @@ struct HomepageView: View {
         NavigationView {
             VStack {
                 HStack(spacing: 5){
-                    ProfileButton(photoURL: userProfile.user.photo, name: token != "" ? userProfile.user.name : "Sign in")
+                    ProfileButton(photoURL: .constant(userProfile.user.photo), name: token != "" ? .constant(userProfile.user.name) : .constant("Sign in"))
                     Spacer()
                     Button(action:{
                         token = ""
-                        
+                        userProfile.callData()
                     }){
                         Image(systemName: "bell")
                             .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
@@ -45,7 +45,7 @@ struct HomepageView: View {
                         }.padding(.leading,16).padding([.trailing], 16.0).padding(.top, 28)
                             VStack(spacing: 12){
                                 ForEach (recomenndationList.recommendationModel){ i in
-                                    NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: i.id)) : AnyView(LoginView())) {
+                                    NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: i.id, fromBackButton: false)) : AnyView(LoginView())) {
                                         RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
                                     }
                                 }
@@ -62,6 +62,9 @@ struct HomepageView: View {
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
+            .onTapGesture {
+                self.dismissKeyboard()
+            }
         }
     }
 }

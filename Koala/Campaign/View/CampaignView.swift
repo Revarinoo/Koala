@@ -76,6 +76,7 @@ struct CampaignView: View {
             }
             .onAppear(perform: {
                 campaignList.callGetCampaigns()
+                campaignList.refresh()
             })
             
             .ignoresSafeArea()

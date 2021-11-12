@@ -20,13 +20,15 @@ struct InfluencerDetailView: View {
     @State var isShowingMailView = false
     @State var photoURL = "https://assets.teenvogue.com/photos/5fd4d29fe6ff71e902f97c1a/4:3/w_2443,h_1832,c_limit/taylor-evermore-resized.jpg"
     var influencerID: Int
+    var fromBackButton : Bool
     @State var uiTabarController: UITabBarController?
     
-    init(influencerID: Int) {
+    init(influencerID: Int, fromBackButton: Bool) {
         UIScrollView.appearance().bounces = false
         self.influencerID = influencerID
+        self.fromBackButton = fromBackButton
     }
-
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
             ZStack(alignment: .top){
@@ -71,7 +73,7 @@ struct InfluencerDetailView: View {
                         }
                         
                         Text(influencerDetailViewModel.influencerModel?.influencer_profile.location ?? "Jakarta Utara").font(Font.custom(ThemeFont.poppinsMedium, size: 14)).padding(.bottom, 15)
-                       
+                        
                         Text("Specialty").font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                         
                         HStack(spacing: 14) {
@@ -95,10 +97,10 @@ struct InfluencerDetailView: View {
                                 Text("Order").font(Font.custom(ThemeFont.poppinsBold, size: 18))
                                     .foregroundColor(Color.white)
                                     .frame(width: 300, height: 50, alignment: .center)
-                                        .background(ThemeColor.primary)
-                                        .cornerRadius(15)
-                                        .shadow(radius: 4)
-
+                                    .background(ThemeColor.primary)
+                                    .cornerRadius(15)
+                                    .shadow(radius: 4)
+                                
                             }
                             
                             Button(action:{
@@ -137,8 +139,8 @@ struct InfluencerDetailView: View {
                     }.frame(width: UIScreen.main.bounds.width, alignment: .top)
                         .ignoresSafeArea()
                         .padding(.top, 60)
-                    .background(Color.white)
-                    .cornerRadius(20, corners: [.topLeft, .topRight])
+                        .background(Color.white)
+                        .cornerRadius(20, corners: [.topLeft, .topRight])
                     
                 }
                 
@@ -150,37 +152,41 @@ struct InfluencerDetailView: View {
                         .frame(width: 127, height: 127)
                         .cornerRadius(20.0)
                         .overlay(RoundedRectangle(cornerRadius: 20.0)
-                            .stroke(Color.white, lineWidth: 5))
+                                    .stroke(Color.white, lineWidth: 5))
                     
                 }.padding(.top, 150)
                     .disabled(!MFMailComposeViewController.canSendMail())
-                        .sheet(isPresented: $isShowingMailView) {
-                            MailView(isShowing: $isShowingMailView, result: self.$result, toRecipient: influencerDetailViewModel.influencerModel?.influencer_profile.contact_email ?? "")
-                        }
-        }
-           
-    }.navigationBarHidden(true)
-        
-            .introspectTabBarController { (UITabBarController) in
-                        UITabBarController.tabBar.isHidden = true
-                        uiTabarController = UITabBarController
-                    }.onDisappear{
-                        uiTabarController?.tabBar.isHidden = false
+                    .sheet(isPresented: $isShowingMailView) {
+                        MailView(isShowing: $isShowingMailView, result: self.$result, toRecipient: influencerDetailViewModel.influencerModel?.influencer_profile.contact_email ?? "")
                     }
+            }
+            .introspectTabBarController { (UITabBarController) in
+                UITabBarController.tabBar.isHidden = true
+                uiTabarController = UITabBarController
+            }.onDisappear{
+                if fromBackButton{
+                    
+                } else {
+                    uiTabarController?.tabBar.isHidden = false
+                }
+                
+            }
+            
+        }.navigationBarHidden(true)
             .onAppear(perform: {
                 influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
             })
             .background(ThemeColor.primary.ignoresSafeArea())
             .ignoresSafeArea()
-}
-
-
-            
+    }
+    
+    
+    
 }
 
 struct InfluencerDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        InfluencerDetailView(influencerID: 1)
+        InfluencerDetailView(influencerID: 1, fromBackButton: true)
     }
 }
 
