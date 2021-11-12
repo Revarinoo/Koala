@@ -48,7 +48,7 @@ struct CompletedCard: View {
             }.padding(.top, 16).padding(.leading, 16)
             HStack{
                 Spacer()
-                NavigationLink(destination: ReviewInfluencerView(name: name)) {
+                NavigationLink(destination: ReviewInfluencerView(photoURL: photo, name: name)) {
                         Text("Review").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                             .foregroundColor(.white)
                             .padding()
