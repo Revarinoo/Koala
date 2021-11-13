@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct BusinessReportView: View {
+    
+    @ObservedObject var ReportingVM = BusinessReportViewModel()
+    
     var body: some View {
         ZStack(alignment: .topLeading) {
             Color.bgColorView.edgesIgnoringSafeArea(.all)
@@ -27,7 +30,7 @@ struct BusinessReportView: View {
                     .padding(.top, 10)
                 
                 HStack {
-                    Text("10.500.000")
+                    Text("\(ReportingVM.reportingData.thisMonthExpense)")
                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 24))
                         .foregroundColor(ThemeColor.primary)
                     
@@ -51,6 +54,9 @@ struct BusinessReportView: View {
         .navigationBarTitle("")
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .onAppear() {
+            ReportingVM.getBusinessReport()
+        }
     }
 }
 
