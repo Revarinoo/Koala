@@ -9,12 +9,18 @@ import Foundation
 
 struct ReportingModel {
     var thisMonthExpense: Int = 0
-    var chartData: [Int] = []
+    var chartData: [Double] = []
     var label: [String] = []
-    var avgReach: Double = 0.0
-    var diffReach: Double = 0.0
-    var avgImpression: Double = 0.0
-    var diffImpression: Double = 0.0
-    var avgER: Double = 0.0
-    var diffER: Double = 0.0
+    var overviewData: OverviewDataModel = OverviewDataModel()
+}
+
+struct OverviewDataModel {
+    var avgReach: AvgDataModel = AvgDataModel()
+    var avgImpression: AvgDataModel = AvgDataModel()
+    var avgER: AvgDataModel = AvgDataModel()
+}
+
+struct AvgDataModel {
+    var data = ""
+    var diff = ""
 }

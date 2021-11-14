@@ -19,22 +19,12 @@ struct Report: Codable {
 }
 
 struct OverviewData: Codable {
-    let avg_reach: AvgReach?
-    let avg_impression: AvgImpression?
-    let avg_er: AvgEr?
+    let avg_reach: AvgData?
+    let avg_impression: AvgData?
+    let avg_er: AvgData?
 }
 
-struct AvgReach: Codable {
-    let data: Double?
-    let diff: Double?
-}
-
-struct AvgImpression: Codable {
-    let data: Double?
-    let diff: Double?
-}
-
-struct AvgEr: Codable {
-    let data: Double?
-    let diff: Double?
+struct AvgData: Codable {
+    let data: String?
+    let diff: String?
 }

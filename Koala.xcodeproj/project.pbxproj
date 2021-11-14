@@ -29,6 +29,7 @@
 		2F6C2C3D27228D780026EF3E /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C3C27228D780026EF3E /* SplashScreen.swift */; };
 		2F6C2C3F272290FF0026EF3E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C3E272290FF0026EF3E /* OnboardingView.swift */; };
 		2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C2C402722B6990026EF3E /* OnboardViewModel.swift */; };
+		2F8DAD7D2741D0C100DE643F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8DAD7C2741D0C100DE643F /* StringExtension.swift */; };
 		2F95BCC32739F12700F78F83 /* UnderMaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95BCC22739F12700F78F83 /* UnderMaintenanceView.swift */; };
 		2F95BCC52739F34D00F78F83 /* BusinessReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95BCC42739F34D00F78F83 /* BusinessReportView.swift */; };
 		2F95BCC8273A176000F78F83 /* BusinessReportCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95BCC7273A176000F78F83 /* BusinessReportCard.swift */; };
@@ -207,6 +208,7 @@
 		2F6C2C3C27228D780026EF3E /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		2F6C2C3E272290FF0026EF3E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		2F6C2C402722B6990026EF3E /* OnboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewModel.swift; sourceTree = "<group>"; };
+		2F8DAD7C2741D0C100DE643F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		2F95BCC22739F12700F78F83 /* UnderMaintenanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderMaintenanceView.swift; sourceTree = "<group>"; };
 		2F95BCC42739F34D00F78F83 /* BusinessReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessReportView.swift; sourceTree = "<group>"; };
 		2F95BCC7273A176000F78F83 /* BusinessReportCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessReportCard.swift; sourceTree = "<group>"; };
@@ -591,6 +593,7 @@
 				D26955FD273B78B6005AD9E0 /* NavigationExtension.swift */,
 				D23FB7FF273C180A0099AC01 /* DismissKeyboard.swift */,
 				D23FB801273C37B60099AC01 /* DateCalendarExtension.swift */,
+				2F8DAD7C2741D0C100DE643F /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1415,6 +1418,7 @@
 				2FBC8BB9271C3C66007E7B76 /* InfluencerListView.swift in Sources */,
 				D291A3D42730416400BAAA75 /* UserProfileViewModel.swift in Sources */,
 				F7A52B9027267D700067D3E6 /* SocialMediaCard.swift in Sources */,
+				2F8DAD7D2741D0C100DE643F /* StringExtension.swift in Sources */,
 				2F95BCC8273A176000F78F83 /* BusinessReportCard.swift in Sources */,
 				84671FFD2726614F008FD954 /* PreviousProjectCard.swift in Sources */,
 				8451B832272A553C0061D389 /* CampaignModel.swift in Sources */,
