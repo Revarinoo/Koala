@@ -13,15 +13,15 @@ struct BusinessReportResponse: Codable {
 }
 
 struct Report: Codable {
-    let month: Int
-    let total_expense: Int
-    let overview_data: OverviewData
+    let month: Int?
+    let total_expense: Int?
+    let overview_data: OverviewData?
 }
 
 struct OverviewData: Codable {
-    let avg_reach: AvgReach
-    let avg_impression: AvgImpression
-    let avg_er: AvgEr
+    let avg_reach: AvgReach?
+    let avg_impression: AvgImpression?
+    let avg_er: AvgEr?
 }
 
 struct AvgReach: Codable {
