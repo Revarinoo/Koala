@@ -28,6 +28,17 @@ struct OrderProductData: Codable{
     var er: Double?
 }
 
+struct PendingOrder: Identifiable{
+    var id: UUID
+    var index: Int
+    var order_id: Int
+    var name: String
+    var productType : [String]
+    var dueDate : String
+    var photo: String
+    
+}
+
 enum productType: String, CaseIterable, Equatable{
     case story = "Instagram Story"
     case post = "Instagram Post"

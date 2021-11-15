@@ -41,6 +41,22 @@ struct MyOrderService{
         }
     }
     
+    func cancelOrder(_ order_id: Int, completionHandler:@escaping(_ result: RescheduleResponse?)->Void) {
+        guard let url = URL(string: HttpUtility.endpoint + "order/delete/\(order_id)") else {
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+//        request.httpBody = try? JSONEncoder().encode(order_id)
+        
+        print("Delete Request: \(order_id)")
+        HttpUtility.shared.request(request, resultType: RescheduleResponse.self) { response in
+            completionHandler(response)
+            
+        }
+    }
 
 }
 

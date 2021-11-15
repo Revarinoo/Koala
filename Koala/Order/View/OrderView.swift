@@ -11,6 +11,7 @@ import Introspect
 struct OrderView: View {
     @State private var orderTypeSelected : OrderStatus = .pending
     @State var uiTabarController: UITabBarController?
+    @StateObject var orderVM = OrderViewModel()
     
     var pendingOrder : [MyOrders] = []
     
@@ -51,6 +52,9 @@ struct OrderView: View {
             UITabBarController.tabBar.isHidden = false
             uiTabarController = UITabBarController
         }
+        .onAppear {
+            orderVM.callData()
+        }
         
     }
     
@@ -66,6 +70,7 @@ struct ChosenStatus: View {
     
     var selectedStatus: OrderStatus
     @ObservedObject var orderViewModel = OrderViewModel()
+
     init(selectedStatus: OrderStatus){
         self.selectedStatus = selectedStatus
         orderViewModel.callData()
@@ -73,7 +78,7 @@ struct ChosenStatus: View {
     var body: some View {
         switch selectedStatus {
         case .pending:
-            PendingCardScrollView(pendingOrders:orderViewModel.pendingOrders)
+            PendingCardScrollView(orderVM: orderViewModel)
         case .ongoing:
             OngoingCardScrollView(onGoingOrders: orderViewModel.ongoingOrders)
         case .completed:
