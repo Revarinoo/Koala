@@ -93,9 +93,6 @@ struct InfluencerDetailView: View {
                         }.padding(.bottom, 16)
                         
                         HStack{
-                            
-//                            NavigationLink(destination: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign().navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0))) {
-//
                                     
                                 Button(action: {
                                     isOrderPressed = true
@@ -106,7 +103,6 @@ struct InfluencerDetailView: View {
                                     .background(ThemeColor.primary)
                                     .cornerRadius(15)
                                     .shadow(radius: 4)
-//                            }
                             
                             Button(action:{
                                 self.isShowingMailView.toggle()
@@ -135,13 +131,13 @@ struct InfluencerDetailView: View {
                             
                             EstimatedPrice(products: influencerDetailViewModel.influencerModel?.products ?? []).padding([.top, .bottom], 16)
                             
-                            PreviousProjectView(projects: influencerDetailViewModel.influencerModel?.projects)
+                            PreviousProjectView(projects: influencerDetailViewModel.influencerModel?.projects ?? [])
                                 .padding(.top, 16)
                             
                             ReviewView(projects: influencerDetailViewModel.influencerModel?.projects ?? []).padding()
                                 .padding(.bottom, 86)
                         }
-                    }.frame(width: UIScreen.main.bounds.width, alignment: .top)
+                    }.frame(width: UIScreen.main.bounds.width, alignment: .topLeading)
                         .ignoresSafeArea()
                         .padding(.top, 60)
                         .background(Color.white)
