@@ -180,6 +180,7 @@ struct InfluencerDetailView: View {
             .navigate(to: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign().navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0)), when: $isOrderPressed)
             .onAppear(perform: {
                 influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
+                campaignList.callGetCampaigns()
             })
             .navigationTitle("")
             .navigationBarHidden(true)

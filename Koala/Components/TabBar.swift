@@ -3,22 +3,23 @@
 //  Koala
 //
 //  Created by Sholihatul Richas on 25/10/21.
-//  Edjted by Syahrul F
+//  Edited by Syahrul F & Reva
 
 import SwiftUI
 
 struct TabBar: View {
     
-    @State var selectedTab: Int
+    @Binding var selectedTab: Int
     
-    init(selectedTab: Int) {
-        self.selectedTab = selectedTab
+    init(selectedTab: Binding<Int>) {
+        _selectedTab = selectedTab
         UITabBar.appearance().backgroundColor = UIColor(ThemeColor.background)
     }
+    
+    
     var body: some View {
         
-//        NavigationView {
-            TabView(selection: $selectedTab){
+        TabView(selection: $selectedTab){
                 HomepageView()
                     .tabItem{
                         selectedTab == 0 ? Image("discoveractive") : Image("discovergrey")
@@ -48,12 +49,11 @@ struct TabBar: View {
             .accentColor(Color(UIColor(named: "primary")!))
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
-//        }
     }
 }
 
 struct TabBar_Previews: PreviewProvider {
     static var previews: some View {
-        TabBar(selectedTab: 2)
+        TabBar(selectedTab: .constant(1))
     }
 }
