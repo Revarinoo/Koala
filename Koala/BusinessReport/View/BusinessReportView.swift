@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct BusinessReportView: View {
+    
+    @StateObject var reportingVM = BusinessReportViewModel()
+    
     var body: some View {
         ZStack(alignment: .topLeading) {
             Color.bgColorView.edgesIgnoringSafeArea(.all)
@@ -27,7 +30,7 @@ struct BusinessReportView: View {
                     .padding(.top, 10)
                 
                 HStack {
-                    Text("10.500.000")
+                    Text("\(reportingVM.reportingData.thisMonthExpense)")
                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 24))
                         .foregroundColor(ThemeColor.primary)
                     
@@ -36,14 +39,14 @@ struct BusinessReportView: View {
                         .foregroundColor(Color(hex: "FFB19D"))
                 }
                 Spacer()
-                LineChartView(data: [812, 2332, 5431, 3221, 1249, 378], label: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], title: "Line chart", legend: "Basic")
+                LineChartView(data: reportingVM.reportingData.chartData, label: reportingVM.reportingData.label, title: "Line chart", legend: "Basic")
                     .padding(EdgeInsets(top: 48, leading: -16, bottom: 16, trailing: -16))
                 Spacer()
                 Text("Overview")
                     .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
-                BusinessReportCard(iconName: "avgReach", reportType: "Reach", value: 1349, percentage: 32.2)
-                BusinessReportCard(iconName: "avgImpression", reportType: "Impression", value: 1516, percentage: 20.13)
-                BusinessReportCard(iconName: "avgER", reportType: "Engagement Rate", value: 32.23, percentage: -5.23)
+                BusinessReportCard(iconName: "avgReach", reportType: "Reach", value: Double(reportingVM.reportingData.overviewData.avgReach.data) ?? 0, percentage: Double(reportingVM.reportingData.overviewData.avgReach.diff) ?? 0.0)
+                BusinessReportCard(iconName: "avgImpression", reportType: "Impression", value: Double(reportingVM.reportingData.overviewData.avgImpression.data) ?? 0.0, percentage: Double(reportingVM.reportingData.overviewData.avgImpression.diff) ?? 0.0)
+                BusinessReportCard(iconName: "avgER", reportType: "Engagement Rate", value: Double(reportingVM.reportingData.overviewData.avgER.data) ?? 0.0, percentage: Double(reportingVM.reportingData.overviewData.avgER.diff) ?? 0.0)
                     .padding(.bottom)
             }
             .padding(.horizontal)
@@ -51,6 +54,9 @@ struct BusinessReportView: View {
         .navigationBarTitle("")
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .onAppear() {
+            reportingVM.getBusinessReport()
+        }
     }
 }
 

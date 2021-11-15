@@ -32,9 +32,7 @@ class ReviewPageViewModel: ObservableObject {
         reviewService.sendReview(reviewRequest) { response in
             DispatchQueue.main.async {
                 if let code = response?.code, let message = response?.message {
-                    if code == 201 {
-                        self.reviewModel.navigate = true
-                    }
+                    if code == 201 {}
                     else {
                         self.reviewModel.errorMessage = message
                         self.reviewModel.isPresentingErrorAlert = true

@@ -15,6 +15,7 @@ struct CompletedCard: View {
     let impression: String
     let engagement: String
     let photo: String
+    let orderId: Int
     
     var body: some View {
         VStack{
@@ -48,7 +49,7 @@ struct CompletedCard: View {
             }.padding(.top, 16).padding(.leading, 16)
             HStack{
                 Spacer()
-                NavigationLink(destination: ReviewInfluencerView(photoURL: photo, name: name)) {
+                NavigationLink(destination: ReviewInfluencerView(photoURL: photo, name: name, orderId: orderId)) {
                         Text("Review").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
                             .foregroundColor(.white)
                             .padding()
@@ -68,6 +69,6 @@ struct CompletedCard: View {
 
 struct CompletedCard_Previews: PreviewProvider {
     static var previews: some View {
-        CompletedCard(name: "Felix Lee", reach: "21.5K", impression: "10.8K", engagement: "10.1%", photo: "").previewLayout(.sizeThatFits)
+        CompletedCard(name: "Felix Lee", reach: "21.5K", impression: "10.8K", engagement: "10.1%", photo: "", orderId: 1).previewLayout(.sizeThatFits)
     }
 }
