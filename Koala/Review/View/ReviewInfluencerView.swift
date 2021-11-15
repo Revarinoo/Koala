@@ -11,7 +11,7 @@ import Introspect
 
 struct ReviewInfluencerView: View {
     
-    var photoURL: String?
+    var photoURL: String
     var name: String
     
 //    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -39,8 +39,9 @@ struct ReviewInfluencerView: View {
 //            }
             
             VStack(alignment: .center) {
-                WebImage(url: URL(string: photoURL ?? "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg"))
+                WebImage(url: URL(string: photoURL))
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 140, height: 140)
                     .cornerRadius(10)
                     .padding(.all, 10)
@@ -108,6 +109,9 @@ struct ReviewInfluencerView: View {
                                 }.onDisappear{
                                     uiTabarController?.tabBar.isHidden = false
                                 }
+        }
+        .onTapGesture {
+            self.dismissKeyboard()
         }
     }
 }
