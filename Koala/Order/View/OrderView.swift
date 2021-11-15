@@ -61,6 +61,7 @@ struct ChosenStatus: View {
     
     var selectedStatus: OrderStatus
     @ObservedObject var orderViewModel = OrderViewModel()
+
     init(selectedStatus: OrderStatus){
         self.selectedStatus = selectedStatus
         orderViewModel.callData()
@@ -68,7 +69,7 @@ struct ChosenStatus: View {
     var body: some View {
         switch selectedStatus {
         case .pending:
-            PendingCardScrollView(pendingOrders:orderViewModel.pendingOrders)
+            PendingCardScrollView(orderVM: orderViewModel)
         case .ongoing:
             OngoingCardScrollView(onGoingOrders: orderViewModel.ongoingOrders)
         case .completed:

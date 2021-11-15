@@ -12,7 +12,7 @@ struct PendingCard: View {
     var pendingOrder: PendingOrder
     @State private var showingAlert = false
     @StateObject private var orderViewModel = OrderViewModel()
-    
+    @Binding var deletedAt: Int
     var body: some View {
         VStack{
             HStack(spacing: 18){
@@ -72,7 +72,7 @@ struct PendingCard: View {
                             
                             DispatchQueue.main.async{
                                 orderViewModel.cancelOrder(order_id: pendingOrder.order_id)
-                                
+                                deletedAt = pendingOrder.index
                             }
                             
                         })
@@ -86,9 +86,9 @@ struct PendingCard: View {
     }
 }
 
-struct PendingCard_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        PendingCard(pendingOrder: PendingOrder(id: UUID(),order_id: 1, name: "James Oliver", productType: ["Post"], dueDate: "22 December 2021", photo: "")).previewLayout(.sizeThatFits)
-    }
-}
+//struct PendingCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//
+//        PendingCard(pendingOrder: PendingOrder(id: UUID(),order_id: 1, name: "James Oliver", productType: ["Post"], dueDate: "22 December 2021", photo: "")).previewLayout(.sizeThatFits)
+//    }
+//}

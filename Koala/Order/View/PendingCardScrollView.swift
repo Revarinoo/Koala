@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct PendingCardScrollView: View {
-    var pendingOrders : [MyOrders]
+    @ObservedObject var orderVM: OrderViewModel
     @State var deletedAt: Int = -1
     var body: some View {
         ScrollView(.vertical){
             VStack{
-                ForEach (pendingOrders){pendings in
-                    PendingCard(pendingOrder: PendingOrder(id:pendings.id , order_id: pendings.orderID, name: pendings.name, productType: pendings.productType, dueDate: pendings.dueDate, photo: pendings.photo)).padding([.leading,.trailing], 16)
-
+                ForEach (orderVM.pendingOrders.indices, id: \.self){i in
+                    PendingCard(pendingOrder: PendingOrder(id: orderVM.pendingOrders[i].id, index: i , order_id: orderVM.pendingOrders[i].orderID, name: orderVM.pendingOrders[i].name, productType: orderVM.pendingOrders[i].productType, dueDate: orderVM.pendingOrders[i].dueDate, photo: orderVM.pendingOrders[i].photo), deletedAt: $deletedAt).padding([.leading,.trailing], 16)
                 }
             }
             Spacer()
-        }
+        }.onChange(of: deletedAt, perform: { _ in
+            orderVM.pendingOrders.remove(at: deletedAt)
+        })
     }
 }
 

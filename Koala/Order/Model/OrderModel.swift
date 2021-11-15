@@ -30,6 +30,7 @@ struct OrderProductData: Codable{
 
 struct PendingOrder: Identifiable{
     var id: UUID
+    var index: Int
     var order_id: Int
     var name: String
     var productType : [String]
