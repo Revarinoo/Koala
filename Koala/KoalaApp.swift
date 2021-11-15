@@ -18,10 +18,10 @@ struct KoalaApp: App {
     var body: some Scene {
         WindowGroup {
             if token != "" {
-                TabBar(selectedTab: 0)
+                TabBar(selectedTab: 0).environment(\.colorScheme, .light)
             }
             else {
-                SplashScreen()
+                SplashScreen().environment(\.colorScheme, .light)
             }
         }
     }
