@@ -44,8 +44,8 @@ class BusinessReportViewModel: ObservableObject {
             
             DispatchQueue.main.async {
                 self.reportingData.thisMonthExpense = thisMonthExpense
-                self.reportingData.label = labelsData.reversed()
-                self.reportingData.chartData = valueData.reversed()
+                self.reportingData.label = labelsData
+                self.reportingData.chartData = valueData
                 self.reportingData.overviewData = overviewData
             }
         }
