@@ -3,15 +3,13 @@
 //  Koala
 //
 //  Created by Syahrul Apple Developer BINUS on 21/10/21.
-//
+//  Edited by Reva
 
 import SwiftUI
 
 struct FilterModal: View {
     
     @Binding var isPresented: Bool
-//    @Binding var selectedSpecialty: [String]
-//    @Binding var filters: [String]
     @State var rating: Int = 0
     
     var body: some View {
@@ -41,5 +39,9 @@ struct FilterModal: View {
                 }
             }
         }
+        .onTapGesture {
+            self.dismissKeyboard()
+        }
+        .preferredColorScheme(.light)
     }
 }

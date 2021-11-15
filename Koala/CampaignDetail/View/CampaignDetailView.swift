@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct CampaignDetailView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var campaignDetailVM = CampaignDetailViewModel()
+    @State var uiTabarController: UITabBarController?
     
     var campaignTitle: String
     var contentID: Int
@@ -57,6 +59,12 @@ struct CampaignDetailView: View {
         .onAppear() {
             campaignDetailVM.callGetCampaignDetail(contentID)
         }
+        .introspectTabBarController { (UITabBarController) in
+                                UITabBarController.tabBar.isHidden = true
+                                uiTabarController = UITabBarController
+                            }.onDisappear{
+                                uiTabarController?.tabBar.isHidden = false
+                            }
     }
 }
 

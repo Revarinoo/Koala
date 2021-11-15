@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct KoalaApp: App {
     @AppStorage("JWT", store: .standard) var token = ""
-    
+    @StateObject var tabBarVM = TabBarViewModel.shared
     init() {
         UIWindow.appearance().overrideUserInterfaceStyle = .light
     }
@@ -18,10 +18,10 @@ struct KoalaApp: App {
     var body: some Scene {
         WindowGroup {
             if token != "" {
-                TabBar(selectedTab: 0)
+                TabBar(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
             }
             else {
-                SplashScreen()
+                SplashScreen().environment(\.colorScheme, .light)
             }
         }
     }
