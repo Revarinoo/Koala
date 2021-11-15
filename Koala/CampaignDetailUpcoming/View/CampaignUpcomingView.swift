@@ -7,11 +7,13 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Introspect
 
 struct CampaignUpcomingView: View {
     @StateObject var campaignVM = CampaignUpcomingViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var id: Int = 1
+    @State var uiTabarController: UITabBarController?
     
     var body: some View {
         ScrollView (.vertical, showsIndicators: false) {
@@ -40,6 +42,13 @@ struct CampaignUpcomingView: View {
                     
                 }.padding(.top, 157)
             }
+            
+            .introspectTabBarController { (UITabBarController) in
+                UITabBarController.tabBar.isHidden = true
+                uiTabarController = UITabBarController
+            }.onDisappear{
+                uiTabarController?.tabBar.isHidden = false
+            }
         }
         .onAppear {
             campaignVM.getUpcomingDetail(id: self.id)
@@ -58,7 +67,7 @@ struct CampaignUpcomingView: View {
                     .resizable()
                     .foregroundColor(.white)
                     .scaledToFit()
-            }.frame(width: 16, height: 16, alignment: .center)
+            }.frame(width: 24, height: 24, alignment: .center)
 
             Spacer()
 

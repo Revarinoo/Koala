@@ -7,14 +7,14 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-
-
+import Introspect
 
 struct CreateCampaign: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @ObservedObject var createCampaignVM = CreateCampaignViewModel()
+    @StateObject var createCampaignVM = CreateCampaignViewModel()
+    @StateObject var campaignList = CampaignViewModel()
     @State var campaignModel = CreateCampaignModel()
     @State var isCreated  = false
     @State var contentArray : [CreateContentModel] = [CreateContentModel(contentID: 0, contentType: productType.story, contentDetail: "", isDeleted: false)]
@@ -23,7 +23,8 @@ struct CreateCampaign: View {
     @State var willMoveToTheNextScreen = false
     @State private var contentCount = 0
     @State var contentArrayTemp: [CreateContentModel] = [CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)]
-    
+    @State var isDoneButton = false
+    @State var uiTabarController: UITabBarController?
     //keyboard thingy
     @StateObject private var keyboardHandler = KeyboardHandler()
     
@@ -78,9 +79,15 @@ struct CreateCampaign: View {
                                 )
                                 .padding([.leading, .trailing], 16)
                             Button(action: {
-                                willMoveToTheNextScreen = true
-                                createCampaignVM.createContentModel = contentArrayTemp
-                                createCampaignVM.submitData(submittedCampaign: campaignModel, submittedContent: contentArrayTemp)
+//                                if createCampaignVM.createCampaignModel.references.count < 1 {
+//                                    showingAlert = true
+//                                } else {
+                                    willMoveToTheNextScreen = true
+                                    self.dismissKeyboard()
+                                    createCampaignVM.createContentModel = contentArrayTemp
+                                    createCampaignVM.submitData(submittedCampaign: campaignModel, submittedContent: contentArrayTemp)
+//                                }
+                                
                             }){
                                 Text("Create").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                                     .foregroundColor(.white)
@@ -93,6 +100,7 @@ struct CreateCampaign: View {
                                         .stroke(ThemeColor.primary, lineWidth: 1)
                                 )
                                 .padding([.leading, .trailing], 16).padding(.bottom, 100).padding(.bottom, keyboardHandler.keyboardHeight)
+                                
                             
                         }.frame(width: UIScreen.main.bounds.width, alignment: .top)
                             .ignoresSafeArea()
@@ -123,18 +131,21 @@ struct CreateCampaign: View {
                                 }
                         }
                         
-                        
                         Text("Add Photo").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
                     }.padding(.top, 150)
                 }
-                
+                .introspectTabBarController { (UITabBarController) in
+                                        UITabBarController.tabBar.isHidden = true
+                                        uiTabarController = UITabBarController
+                                    }.onDisappear{
+                                        uiTabarController?.tabBar.isHidden = false
+                                    }
             }.navigationBarHidden(true)
                 .onTapGesture{
                     self.dismissKeyboard()
                 }
             
                 .background(ThemeColor.primary.ignoresSafeArea())
-            
                 .ignoresSafeArea()
                 .sheet(isPresented: $showSheet) {
                     // Pick an image from the photo library:
@@ -151,22 +162,22 @@ struct CreateCampaign: View {
                         .scaleEffect(3)
                     Text("Uploading Your Data").foregroundColor(.white).font(Font.custom(ThemeFont.poppinsMedium, size: 14))
                     Spacer()
-                    
-                    if createCampaignVM.isFinishedUploading{
-                        Button(action:{
-                            self.presentationMode.wrappedValue.dismiss()
-                        }){
-                            Text("Done")
-                                .scaledToFit()
-                        }.frame(width: 24, height: 24, alignment: .center)
-                    }
                 }
             }
         }
-        .onChange(of: createCampaignVM.isFinishedUploading, perform:
-                    self.presentationMode.wrappedValue.dismiss())
-       // .navigate(to: CampaignView(), when: $createCampaignVM.isFinishedUploading)
-        
+        .alert(isPresented: $createCampaignVM.dataisNotComplete) {
+            Alert(
+                title: Text("Data is Not Complete"),
+                message: Text("Make sure you fill out all the form"),
+                dismissButton: .default(Text("Got it!")){
+                    willMoveToTheNextScreen = false
+                }
+            )
+        }
+        .navigate(to: CampaignView().onAppear(perform: {
+            self.presentationMode.wrappedValue.dismiss()
+            willMoveToTheNextScreen = false
+        }), when: $createCampaignVM.isFinishedUploading)
     }
 }
 

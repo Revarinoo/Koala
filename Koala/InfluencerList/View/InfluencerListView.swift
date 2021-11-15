@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct InfluencerListView: View {
     
@@ -17,7 +18,7 @@ struct InfluencerListView: View {
     @State var isFilterModalShown: Bool = false
     @State private var searchText = ""
     var showBackButton : Bool
-    
+    @State var uiTabarController: UITabBarController?
     
     var body: some View {
         NavigationView {
@@ -82,13 +83,20 @@ struct InfluencerListView: View {
                     ScrollView {
                         VStack(spacing: 16) {
                             ForEach(influencerListVM.influencersModel.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) }), id:\.id) { influencer in
-                                NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: influencer.id).navigationBarHidden(true)) : AnyView(LoginView())) {
+                                NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: influencer.id, fromBackButton: showBackButton).navigationBarHidden(true)) : AnyView(LoginView())) {
                                     InfluencerCardList(photoURL: influencer.photo, categories: influencer.category, name: influencer.name, location: influencer.location, price: influencer.ratePrice, ER: influencer.rateEngagement, rating: influencer.rating)
                                         .padding(.horizontal, 10)
                                 }
                             }
                         }
                     }
+                }
+                .introspectTabBarController { (UITabBarController) in if showBackButton{
+                    UITabBarController.tabBar.isHidden = true
+                    uiTabarController = UITabBarController
+                }
+                }.onDisappear{
+                    uiTabarController?.tabBar.isHidden = false
                 }
             }
             .navigationBarTitle("", displayMode: .inline)

@@ -11,7 +11,7 @@ struct CampaignView: View {
     
     @AppStorage("JWT", store: .standard) var token = ""
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @StateObject var campaignList = CampaignViewModel()
+    @StateObject var campaignList = CampaignViewModel.shared
     @State private var campaignType = "Upcoming"
     var campaignTypes = ["Upcoming", "Completed"]
     @State var willMoveToTheNextScreen = false
@@ -56,15 +56,14 @@ struct CampaignView: View {
                     VStack(spacing: 12){
                         ForEach(campaignList.campaignModel) { i in
                             if campaignType.contains("Upcoming") {
-                                NavigationLink(destination: CampaignUpcomingView(id: i.content_id)) {
-                                    if i.status != "Completed" {
-                                        CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
+                                if i.status != "Completed" {
+                                    NavigationLink(destination: CampaignUpcomingView(id: i.content_id)) {      CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
                                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                                     }
                                 }
                             } else {
-                                NavigationLink(destination: CampaignDetailReportView(campaignID: i.content_id)) {
-                                    if i.status.contains("Completed") {
+                                if i.status.contains("Completed") {
+                                    NavigationLink(destination: CampaignDetailReportView(campaignID: i.content_id)) {
                                         CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
                                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                                     }
@@ -72,11 +71,14 @@ struct CampaignView: View {
                             }
                         }
                     }
+                    .padding(.bottom, 90)
                 }
             }
             .onAppear(perform: {
                 campaignList.callGetCampaigns()
+                campaignList.refresh()
             })
+            
             .ignoresSafeArea()
             .padding(.top, 10)
             .background(ThemeColor.background.ignoresSafeArea())

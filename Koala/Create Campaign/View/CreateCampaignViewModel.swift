@@ -20,10 +20,13 @@ class CreateCampaignViewModel : ObservableObject {
     @Published var isSuccess = false
     @Published var createContentModel : [CreateContentModel] = [CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)]
     @Published var isFinishedUploading = false
+    @Published var dataisNotComplete = false
     
     func submitData(submittedCampaign : CreateCampaignModel, submittedContent: [CreateContentModel]){
-        print("ini konten model \(createContentModel)")
-        let campaign_logo = submittedCampaign.logo.jpegData(compressionQuality: 0.5) ?? Data()
+        
+        let defaultImage = UIImage(named: "defaultCampaign")!.jpegData(compressionQuality: 0.5)
+        //print("ini konten model \(createContentModel)")
+        let campaign_logo = submittedCampaign.logo.jpegData(compressionQuality: 0.5) ?? defaultImage
         var references : [Data] = []
         if submittedCampaign.references.count != 0 {
             for refImage in submittedCampaign.references {
@@ -32,9 +35,8 @@ class CreateCampaignViewModel : ObservableObject {
             }
         }
         let createCampaignReq = CreateCampaignRequest(campaign_logo: campaign_logo, name: submittedCampaign.title, description: submittedCampaign.description, start_date: submittedCampaign.startDate.serverFormattedDate(), end_date: submittedCampaign.endDate.serverFormattedDate(), product_name: submittedCampaign.product, rules: submittedCampaign.rules, references: references)
-        print("create campaign: \(createCampaignReq)")
-
-        //let imgData = campaign_logo.jpegData(compressionQuality: 0.5) ?? Data()
+        //print("create campaign: \(createCampaignReq)")
+        
         let parameters = [
             "name": createCampaignReq.name,
             "description": createCampaignReq.description,
@@ -44,19 +46,19 @@ class CreateCampaignViewModel : ObservableObject {
             "rules": createCampaignReq.rules
         ]
         //        MARK: header buat yg local
-//                let headers: HTTPHeaders = [
-//                    "Authorization": "Bearer 1|m537lhpvOSjSVy8crTgJYZQOL6xCC5d0ouxnl3Nn",
-//                    "Content-type": "multipart/form-data"
-//                ]
-
+        //                let headers: HTTPHeaders = [
+        //                    "Authorization": "Bearer 1|m537lhpvOSjSVy8crTgJYZQOL6xCC5d0ouxnl3Nn",
+        //                    "Content-type": "multipart/form-data"
+        //                ]
+        
         //      MARK: header buat yg server
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token)",
             "Content-type": "multipart/form-data"
         ]
-
+        
         Alamofire.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append(campaign_logo, withName: "campaign_logo",fileName: "file.jpeg", mimeType: "image/jpeg")
+            multipartFormData.append((campaign_logo ?? defaultImage) ?? Data(), withName: "campaign_logo",fileName: "file.jpeg", mimeType: "image/jpeg")
             for (index, value) in references.enumerated() {
                 multipartFormData.append(value, withName: "references[\(index)]",fileName: "\(index).jpeg", mimeType: "image/jpeg")
             }
@@ -68,16 +70,16 @@ class CreateCampaignViewModel : ObservableObject {
             print(result)
             switch result {
             case .success(let upload, _, _):
-
+                
                 print("Sukses harusnya")
-
+                
                 upload.uploadProgress(closure: { (progress) in
                     print("Upload Progress: \(progress.fractionCompleted)")
                     if progress.fractionCompleted == 1.0 {
-                        self.isFinishedUploading = true
+                        
                     }
                 })
-
+                
                 upload.responseData { response in
                     print("response.statusCode")
                     print(response.response?.statusCode)
@@ -90,10 +92,15 @@ class CreateCampaignViewModel : ObservableObject {
                             self.submitContent()
                             self.isSuccess = true
                             print(self.content_id)
+                            self.isFinishedUploading = true
+                        } else {
+                            self.dataisNotComplete = true
+                            print("MUNCUL ALERT HARUSNYA")
+                            
                         }
                     }
                 }
-
+                
             case .failure(let encodingError):
                 print("failure")
                 print(encodingError)
@@ -104,21 +111,20 @@ class CreateCampaignViewModel : ObservableObject {
         var createContent : [CreateCampaignDetail] = []
         //print("ini koneten \(self.createContentModel)")
         for content in self.createContentModel{
-            if !content.isDeleted {
+            if content.isDeleted == false {
                 createContent.append(CreateCampaignDetail(content_id: self.content_id, content_type: content.contentType.rawValue, instruction: content.contentDetail))
             }
-            //print("ini koneten \(createContent)")
-            for content in createContent{
-                createCampaignService.postCreateCampaign(content){ response in
-                    DispatchQueue.main.async {
-                        if let code = response?.code{
-                                print(response)
-                        }
+        }
+        for content in createContent{
+            createCampaignService.postCreateCampaign(content){ response in
+                DispatchQueue.main.async {
+                    if let code = response?.code{
+                        //print("RESPONSENYA \(response)")
                     }
                 }
             }
-            
         }
+        
     }
 }
 

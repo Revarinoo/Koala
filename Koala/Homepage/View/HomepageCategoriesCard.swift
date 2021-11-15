@@ -11,7 +11,7 @@ struct HomepageCategoriesCard: View {
     let categories = CategoryViewModel().categories
     
     var body: some View {
-        ScrollView(.horizontal){
+        ScrollView(.horizontal, showsIndicators: false){
             HStack(spacing:24){
                 ForEach(categories){ i in
                     CategoriesCard(image: i.categoryImage, category: i.categoryName)

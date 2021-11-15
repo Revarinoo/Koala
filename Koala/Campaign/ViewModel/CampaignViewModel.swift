@@ -10,6 +10,7 @@ import SwiftUI
 
 class CampaignViewModel: ObservableObject{
     
+    static let shared = CampaignViewModel()
     @Published var campaignModel: [CampaignModel] = []
     @Published var orderCampaignModel: OrderCampaignModel = OrderCampaignModel()
     private let campaignService: CampaignService = CampaignService()
@@ -19,6 +20,12 @@ class CampaignViewModel: ObservableObject{
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
         
         return dateFormatterGet.date(from: dateBefore) ?? Date()
+    }
+    
+    func refresh() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.callGetCampaigns()
+        }
     }
     
     func callGetCampaigns() {
@@ -41,7 +48,7 @@ class CampaignViewModel: ObservableObject{
                         let campaign = CampaignModel(content_id: content_id!, name: name!, photo: photo!, schedule: self.dateFormatter(dateBefore: schedule!), status: status!, type: campaignTypes)
                         
                         campaigns.append(campaign)
-                        print(campaign)
+                        //print(campaign)
                     }
                 }
                 
