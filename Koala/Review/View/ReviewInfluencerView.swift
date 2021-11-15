@@ -13,6 +13,7 @@ struct ReviewInfluencerView: View {
     
     var photoURL: String
     var name: String
+    var orderId: Int
     
 //    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var reviewVM = ReviewPageViewModel()
@@ -85,7 +86,7 @@ struct ReviewInfluencerView: View {
                     label: {
                         Button {
                             if(reviewVM.validateUserReview()) {
-                                reviewVM.submitReview(orderId: 3)
+                                reviewVM.submitReview(orderId: orderId)
                             }
                         } label: {
                             Text("Submit")
