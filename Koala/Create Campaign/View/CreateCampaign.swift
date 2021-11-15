@@ -13,7 +13,7 @@ struct CreateCampaign: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @ObservedObject var createCampaignVM = CreateCampaignViewModel()
+    @StateObject var createCampaignVM = CreateCampaignViewModel()
     @StateObject var campaignList = CampaignViewModel()
     @State var campaignModel = CreateCampaignModel()
     @State var isCreated  = false
@@ -79,11 +79,15 @@ struct CreateCampaign: View {
                                 )
                                 .padding([.leading, .trailing], 16)
                             Button(action: {
+//                                if createCampaignVM.createCampaignModel.references.count < 1 {
+//                                    showingAlert = true
+//                                } else {
+                                    willMoveToTheNextScreen = true
+                                    self.dismissKeyboard()
+                                    createCampaignVM.createContentModel = contentArrayTemp
+                                    createCampaignVM.submitData(submittedCampaign: campaignModel, submittedContent: contentArrayTemp)
+//                                }
                                 
-                                willMoveToTheNextScreen = true
-                                self.dismissKeyboard()
-                                createCampaignVM.createContentModel = contentArrayTemp
-                                createCampaignVM.submitData(submittedCampaign: campaignModel, submittedContent: contentArrayTemp)
                             }){
                                 Text("Create").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                                     .foregroundColor(.white)
@@ -96,6 +100,7 @@ struct CreateCampaign: View {
                                         .stroke(ThemeColor.primary, lineWidth: 1)
                                 )
                                 .padding([.leading, .trailing], 16).padding(.bottom, 100).padding(.bottom, keyboardHandler.keyboardHeight)
+                                
                             
                         }.frame(width: UIScreen.main.bounds.width, alignment: .top)
                             .ignoresSafeArea()
@@ -141,7 +146,6 @@ struct CreateCampaign: View {
                 }
             
                 .background(ThemeColor.primary.ignoresSafeArea())
-            
                 .ignoresSafeArea()
                 .sheet(isPresented: $showSheet) {
                     // Pick an image from the photo library:
@@ -160,13 +164,19 @@ struct CreateCampaign: View {
                     Spacer()
                 }
             }
-                
         }
-        .onDisappear{
-            campaignList.callGetCampaigns()
+        .alert(isPresented: $createCampaignVM.dataisNotComplete) {
+            Alert(
+                title: Text("Data is Not Complete"),
+                message: Text("Make sure you fill out all the form"),
+                dismissButton: .default(Text("Got it!")){
+                    willMoveToTheNextScreen = false
+                }
+            )
         }
         .navigate(to: CampaignView().onAppear(perform: {
             self.presentationMode.wrappedValue.dismiss()
+            willMoveToTheNextScreen = false
         }), when: $createCampaignVM.isFinishedUploading)
     }
 }
