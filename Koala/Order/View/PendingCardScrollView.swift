@@ -9,12 +9,13 @@ import SwiftUI
 
 struct PendingCardScrollView: View {
     var pendingOrders : [MyOrders]
-    
+    @State var deletedAt: Int = -1
     var body: some View {
         ScrollView(.vertical){
             VStack{
                 ForEach (pendingOrders){pendings in
-                    PendingCard(name: pendings.name, productType: pendings.productType, dueDate: pendings.dueDate, photo: pendings.photo).padding([.leading,.trailing], 16)
+                    PendingCard(pendingOrder: PendingOrder(id:pendings.id , order_id: pendings.orderID, name: pendings.name, productType: pendings.productType, dueDate: pendings.dueDate, photo: pendings.photo)).padding([.leading,.trailing], 16)
+
                 }
             }
             Spacer()

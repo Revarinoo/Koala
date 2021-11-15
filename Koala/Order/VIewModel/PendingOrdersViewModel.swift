@@ -70,6 +70,24 @@ class OrderViewModel: ObservableObject{
             }
         }
     }
+    
+    func cancelOrder(order_id: Int){
+        
+        orderService.cancelOrder(order_id){ response in
+            if let code = response?.code, let message = response?.message {
+                if code == 201{
+                    DispatchQueue.main.async {
+                        print(response)
+                    }
+                }
+                else {
+                    DispatchQueue.main.async {
+                        print(response)
+                    }
+                }
+            }
+        }
+    }
 }
 
 //private func dateFormatter(dateBefore: String) -> Date {

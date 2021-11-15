@@ -11,8 +11,8 @@ import SwiftUI
 final class HttpUtility {
     
     static let shared = HttpUtility()
-    static let endpoint = "http://34.124.208.0/Koala-backend/public/api/"
-    static let defaultImages = "http://34.124.208.0/Koala-backend/public/storage/images/default.png"
+    static let endpoint = "http://127.0.0.1:8000/api/"
+    static let defaultImages = "http://127.0.0.1:8000/storage/images/default.png"
     
     private init(){}
     
