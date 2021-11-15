@@ -22,8 +22,9 @@ class CreateCampaignViewModel : ObservableObject {
     @Published var isFinishedUploading = false
     @Published var dataisNotComplete = false
     
+    @Published var contentTypeOption : [productType] = [.post, .story, .reels]
+    
     func submitData(submittedCampaign : CreateCampaignModel, submittedContent: [CreateContentModel]){
-        
         let defaultImage = UIImage(named: "defaultCampaign")!.jpegData(compressionQuality: 0.5)
         //print("ini konten model \(createContentModel)")
         let campaign_logo = submittedCampaign.logo.jpegData(compressionQuality: 0.5) ?? defaultImage
@@ -71,8 +72,6 @@ class CreateCampaignViewModel : ObservableObject {
             switch result {
             case .success(let upload, _, _):
                 
-                print("Sukses harusnya")
-                
                 upload.uploadProgress(closure: { (progress) in
                     print("Upload Progress: \(progress.fractionCompleted)")
                     if progress.fractionCompleted == 1.0 {
@@ -81,10 +80,6 @@ class CreateCampaignViewModel : ObservableObject {
                 })
                 
                 upload.responseData { response in
-                    print("response.statusCode")
-                    print(response.response?.statusCode)
-                    print("response.value")
-                    print(response.value)
                     if let code = response.response?.statusCode{
                         if code == 201 {
                             let campaignResponse = try? JSONDecoder().decode(CreateCampaignResponse.self, from: response.value as! Data)
@@ -95,8 +90,6 @@ class CreateCampaignViewModel : ObservableObject {
                             self.isFinishedUploading = true
                         } else {
                             self.dataisNotComplete = true
-                            print("MUNCUL ALERT HARUSNYA")
-                            
                         }
                     }
                 }
@@ -126,6 +119,16 @@ class CreateCampaignViewModel : ObservableObject {
         }
         
     }
+    
+//    func optionDynamic(contentArray: [CreateContentModel]){
+//        var currentContentTypeOption : [productType] = [.post, .story, .reels]
+//        for type in contentArray{
+//            if type.isDeleted == false {
+//                currentContentTypeOption.remove(type.contentType)
+//            }
+//        }
+//        
+//    }
 }
 
 extension Date {

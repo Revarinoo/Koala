@@ -54,7 +54,7 @@ struct CampaignUpcomingView: View {
             campaignVM.getUpcomingDetail(id: self.id)
         }
         .background(ThemeColor.primary.ignoresSafeArea())
-        .frame(height: UIScreen.main.bounds.height)
+        .frame(height: UIScreen.main.bounds.height + 40)
         .navigationBarHidden(true)
     }
     

@@ -16,17 +16,16 @@ struct CreateCampaign: View {
     @StateObject var createCampaignVM = CreateCampaignViewModel()
     @StateObject var campaignList = CampaignViewModel()
     @State var campaignModel = CreateCampaignModel()
-    @State var isCreated  = false
-    @State var contentArray : [CreateContentModel] = [CreateContentModel(contentID: 0, contentType: productType.story, contentDetail: "", isDeleted: false)]
     @State var contentTypeArray = [ContentForm(firstContent: .constant(true), contentData: .constant(CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)))]
     @State private var showSheet = false
     @State var willMoveToTheNextScreen = false
-    @State private var contentCount = 0
     @State var contentArrayTemp: [CreateContentModel] = [CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)]
-    @State var isDoneButton = false
     @State var uiTabarController: UITabBarController?
+    
     //keyboard thingy
     @StateObject private var keyboardHandler = KeyboardHandler()
+    
+    
     
     init() {
         UIScrollView.appearance().bounces = false
@@ -54,7 +53,6 @@ struct CreateCampaign: View {
                             .padding(.bottom, 140)
                         
                         VStack(spacing: 18){
-                            
                             CreateCampaignForm(campaignModel: $campaignModel)
                             ForEach (contentTypeArray.indices, id: \.self) { i in
                                 ContentForm(firstContent: .constant(i == 0 ? true : false), contentData: $contentArrayTemp[i])
@@ -79,14 +77,10 @@ struct CreateCampaign: View {
                                 )
                                 .padding([.leading, .trailing], 16)
                             Button(action: {
-//                                if createCampaignVM.createCampaignModel.references.count < 1 {
-//                                    showingAlert = true
-//                                } else {
                                     willMoveToTheNextScreen = true
                                     self.dismissKeyboard()
                                     createCampaignVM.createContentModel = contentArrayTemp
                                     createCampaignVM.submitData(submittedCampaign: campaignModel, submittedContent: contentArrayTemp)
-//                                }
                                 
                             }){
                                 Text("Create").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))

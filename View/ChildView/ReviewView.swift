@@ -35,11 +35,21 @@ struct ReviewView: View {
                     .padding(.leading, -5)
             }
             
-                VStack(spacing:12){
+            VStack(spacing:12){
+                if projects.isEmpty {
+                    HStack {
+                        Text("No reviews yet")
+                            .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
+                            .foregroundColor(.black)
+                            .frame(minWidth: 300, maxWidth: 356)
+                            .padding(.top, 10)
+                    }
+                } else {
                     ForEach(projects){ project in
                         ReviewCard(photoURL: project.businessOwner_photo, name: project.businessOwner_name, message: project.comment, rating: Int(project.rating))
                     }
                 }
+            }
             
         }
     }

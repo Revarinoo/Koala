@@ -30,12 +30,14 @@ struct BusinessReportCard: View {
                 Text(reportType == "Engagement Rate" ? "\(value.oneDecimalFormatter)%" : Int(value).thousandsFormatter())
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
                 HStack(spacing: 4) {
-                    Image(systemName: percentage > 0 ? "arrow.up" : "arrow.down")
-                        .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
+                    if percentage != 0 {
+                        Image(systemName: percentage > 0 ? "arrow.up" : "arrow.down")
+                            .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
+                    }
                     Text("\(percentage.oneDecimalFormatter)%")
                         .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                 }
-                .foregroundColor(Color(hex: percentage > 0 ? "27A346" : "D45942"))
+                .foregroundColor(Color(hex: percentage != 0 ? (percentage > 0 ? "27A346" : "D45942") : "000000"))
             }
         }
         .padding()

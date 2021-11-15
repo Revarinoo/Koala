@@ -74,12 +74,12 @@ struct ContentForm: View, Identifiable {
                 }.padding(.horizontal, 16).padding(.bottom, 25)
             }
             .onAppear(perform: {
-                        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ThemeColor.primary)
-                        UISegmentedControl.appearance().backgroundColor = UIColor(ThemeColor.background)
-                        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-                        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
-                        UINavigationBar.appearance().backgroundColor = UIColor(ThemeColor.background)
-                        UIPickerView.appearance().backgroundColor = UIColor(ThemeColor.primary)
+                UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ThemeColor.primary)
+                UISegmentedControl.appearance().backgroundColor = UIColor(ThemeColor.background)
+                UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+                UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
+                UINavigationBar.appearance().backgroundColor = UIColor(ThemeColor.background)
+                UIPickerView.appearance().backgroundColor = UIColor(ThemeColor.primary)
             })
             .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(red: 1.0, green: 0.945, blue: 0.929)/*@END_MENU_TOKEN@*/).cornerRadius(10)
         }
