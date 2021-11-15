@@ -69,11 +69,7 @@ struct PendingCard: View {
                             
                         }),
                         secondaryButton: .default(Text("Yes").font(Font.custom(ThemeFont.poppinsBold, size: 14)).bold(), action: {
-                            
-                            DispatchQueue.main.async{
-                                orderViewModel.cancelOrder(order_id: pendingOrder.order_id)
-                                
-                            }
+                            orderViewModel.cancelOrder(order_id: pendingOrder.order_id)
                             
                         })
                     )

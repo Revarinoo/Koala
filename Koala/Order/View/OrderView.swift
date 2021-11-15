@@ -11,6 +11,7 @@ import Introspect
 struct OrderView: View {
     @State private var orderTypeSelected : OrderStatus = .pending
     @State var uiTabarController: UITabBarController?
+    @StateObject var orderVM = OrderViewModel()
     
     var pendingOrder : [MyOrders] = []
     
@@ -50,6 +51,9 @@ struct OrderView: View {
         }.introspectTabBarController { (UITabBarController) in
             UITabBarController.tabBar.isHidden = false
             uiTabarController = UITabBarController
+        }
+        .onAppear {
+            orderVM.callData()
         }
         
     }
