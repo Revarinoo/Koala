@@ -65,7 +65,7 @@ struct ReviewCard: View {
         
         .background(Color.init(hex: "FFFFFF"))
         .cornerRadius(10)
-        .shadow(color: .gray, radius: 3, x: 1, y: 2)
+        .shadow(color: Color.init(hex: "C4C4C4"), radius: 3, x: 0, y: 3)
     }
 }
 

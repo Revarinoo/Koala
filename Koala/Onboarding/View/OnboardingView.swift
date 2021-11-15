@@ -64,11 +64,15 @@ struct OnboardingView: View {
                 .padding(.bottom, 64)
                 
                 NavigationLink(
-                    destination: HomepageView(categories: onboardVM.getSpecialtyClicked()),
+                    destination: HomepageView().navigationBarHidden(true),
                     isActive: $nextNavigation,
                     label: {
                         Button {
+<<<<<<< HEAD
                             isNewUser = false
+=======
+                            categoriesDefault.set(onboardVM.getSpecialtyClicked(), forKey: "myKey")
+>>>>>>> b28d938d90a1a6ed141eebde3c5a212283cf6859
                             nextNavigation.toggle()
                         } label: {
                             Text("Next")

@@ -8,9 +8,11 @@
 import Foundation
 
 struct CampaignModel: Identifiable {
-    var id: Int = 0
+    var id: UUID = UUID()
+    var content_id: Int = 0
     var name: String = ""
-    var photo: [String] = []
+    var photo: String = ""
     var schedule: Date = Date()
     var status: String = ""
+    var type: [String] = []
 }

@@ -22,6 +22,7 @@ struct InfluencerCardList: View {
         HStack {
             WebImage(url: URL(string: photoURL))
                 .resizable()
+                .aspectRatio(contentMode: .fill)
                 .frame(width: 80, height: 80)
                 .cornerRadius(10)
                 .padding(.all, 10)

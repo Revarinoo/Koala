@@ -10,7 +10,7 @@ import Foundation
 class RegisterService {
     
     func register(_ postRequest: RegisterRequest, completionHandler:@escaping(_ result: AuthResponse?)->Void) {
-        guard let url = URL(string: "http://127.0.0.1:8000/api/register") else {
+        guard let url = URL(string: HttpUtility.endpoint +  "register") else {
             return
         }
         var request = URLRequest(url: url)

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ImageSlider: View {
     
@@ -14,7 +15,7 @@ struct ImageSlider: View {
     @GestureState var offset: CGFloat = 0
     @State var currentIndex: Int = 0
     
-    var images: [String] = []
+    var images: [AnalyticPhotoModel]
     
     var body: some View {
         
@@ -23,9 +24,9 @@ struct ImageSlider: View {
             let width = proxy.size.width
             
             HStack (spacing: 0) {
-                ForEach(images, id: \.self) { item in
+                ForEach(images, id: \.id) { item in
                     VStack {
-                        Image(item)
+                        WebImage(url: URL(string: item.photo))
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .cornerRadius(10)
@@ -67,6 +68,6 @@ struct ImageSlider: View {
 
 struct ImageSlider_Previews: PreviewProvider {
     static var previews: some View {
-        FollowerProfile()
+        FollowerProfile(images: [AnalyticPhotoModel(id: 1, photo: "")])
     }
 }

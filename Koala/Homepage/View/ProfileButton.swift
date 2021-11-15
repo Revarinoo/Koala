@@ -9,19 +9,36 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ProfileButton: View {
-    let photoURL: String
-    let name: String
+    @AppStorage("JWT", store: .standard) var token = ""
+    @Binding var photoURL: String
+    @Binding var name: String
+    @State var notLoggedIn = false
     var body: some View {
         ZStack(alignment:.leading){
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                HStack{
-                    WebImage(url: URL(string: photoURL))
-                        .resizable()
-                        .clipShape(Circle())
-                        .frame(width: 36, height: 36)
-                    Text(name).font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                        .foregroundColor(.black)
-                    Spacer()
+            NavigationLink(destination: LoginView(), isActive: $notLoggedIn) {
+                Button(action: {
+                    if token == "" {
+                        notLoggedIn = true
+                    }
+                }) {
+                    HStack{
+                        if photoURL == "" {
+                            Image("profile").resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                                .frame(width: 36, height: 36)
+                        } else {
+                            WebImage(url: URL(string: photoURL))
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                                .frame(width: 36, height: 36)
+                        }
+                        Spacer()
+                        Text(name).font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                            .foregroundColor(.black)
+                        Spacer()
+                    }
                 }
             }
                 .frame(width: 122.0, height: 36.0)
@@ -33,6 +50,6 @@ struct ProfileButton: View {
 
 struct ProfileButton_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileButton(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: "Kenneth J").previewLayout(.sizeThatFits)
+        ProfileButton(photoURL: .constant("https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg"), name: .constant("Kenneth J")).previewLayout(.sizeThatFits)
     }
 }

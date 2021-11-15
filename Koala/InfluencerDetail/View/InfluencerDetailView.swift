@@ -8,22 +8,43 @@
 import SwiftUI
 import SDWebImageSwiftUI
 import MessageUI
+import Introspect
 
 struct InfluencerDetailView: View {
+<<<<<<< HEAD:Koala/InfluencerDetail/View/InfluencerDetailView.swift
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var influencerDetailViewModel = InfluencerDetailViewModel()
+=======
+    @StateObject var influencerDetailViewModel = InfluencerDetailViewModel()
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @StateObject var campaignList = CampaignViewModel.shared
+>>>>>>> b28d938d90a1a6ed141eebde3c5a212283cf6859:View/InfluencerDetailView.swift
     @State var isFavorite: Bool = false
     @State var categories: [String] = []
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
     @State var photoURL = "https://assets.teenvogue.com/photos/5fd4d29fe6ff71e902f97c1a/4:3/w_2443,h_1832,c_limit/taylor-evermore-resized.jpg"
+<<<<<<< HEAD:Koala/InfluencerDetail/View/InfluencerDetailView.swift
     @State var toCampaignList: Bool = false
     
     init() {
         UIScrollView.appearance().bounces = false
     }
     
+=======
+    var influencerID: Int
+    var fromBackButton : Bool
+    @State var uiTabarController: UITabBarController?
+    @State var isOrderPressed = false
+    
+    init(influencerID: Int, fromBackButton: Bool) {
+        UIScrollView.appearance().bounces = false
+        self.influencerID = influencerID
+        self.fromBackButton = fromBackButton
+    }
+    
+>>>>>>> b28d938d90a1a6ed141eebde3c5a212283cf6859:View/InfluencerDetailView.swift
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
             ZStack(alignment: .top){
@@ -58,7 +79,7 @@ struct InfluencerDetailView: View {
                         
                         HStack{
                             
-                            Text(influencerDetailViewModel.influencerModel?.influencer_profile.name ?? "Taylor Swift").font(Font.custom(ThemeFont.poppinsSemiBold, size: 30))
+                            Text(influencerDetailViewModel.influencerModel?.influencer_profile.name ?? "").font(Font.custom(ThemeFont.poppinsSemiBold, size: 30))
                             Image(systemName: "checkmark.seal.fill")
                                 .resizable()
                                 .scaledToFill()
@@ -67,7 +88,11 @@ struct InfluencerDetailView: View {
                             
                         }
                         
+<<<<<<< HEAD:Koala/InfluencerDetail/View/InfluencerDetailView.swift
                         Text(influencerDetailViewModel.influencerModel?.influencer_profile.location ?? "Jakarta Utara").font(Font.custom(ThemeFont.poppinsMedium, size: 14)).padding(.bottom, 22)
+=======
+                        Text(influencerDetailViewModel.influencerModel?.influencer_profile.location ?? "Jakarta Utara").font(Font.custom(ThemeFont.poppinsMedium, size: 14)).padding(.bottom, 15)
+>>>>>>> b28d938d90a1a6ed141eebde3c5a212283cf6859:View/InfluencerDetailView.swift
                         
                         Text("Specialty").font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                         
@@ -88,6 +113,7 @@ struct InfluencerDetailView: View {
                         
                         HStack{
                             
+<<<<<<< HEAD:Koala/InfluencerDetail/View/InfluencerDetailView.swift
                             NavigationLink(
                                 destination: CampaignListView(),
                                 isActive: $toCampaignList,
@@ -103,6 +129,21 @@ struct InfluencerDetailView: View {
                                             .shadow(radius: 4)
                                     }
                                 })
+=======
+//                            NavigationLink(destination: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign().navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0))) {
+//
+                                    
+                                Button(action: {
+                                    isOrderPressed = true
+                                }){
+                                    Text("Order").font(Font.custom(ThemeFont.poppinsBold, size: 18))
+                                }.foregroundColor(Color.white)
+                                    .frame(width: 300, height: 50, alignment: .center)
+                                    .background(ThemeColor.primary)
+                                    .cornerRadius(15)
+                                    .shadow(radius: 4)
+//                            }
+>>>>>>> b28d938d90a1a6ed141eebde3c5a212283cf6859:View/InfluencerDetailView.swift
                             
                             Button(action:{
                                 self.isShowingMailView.toggle()
@@ -125,6 +166,7 @@ struct InfluencerDetailView: View {
                         .stroke(Color.gray, lineWidth: 0.2)
                         .frame(height: 0.4)
                         
+<<<<<<< HEAD:Koala/InfluencerDetail/View/InfluencerDetailView.swift
                         SocialMedia(influencer: influencerDetailViewModel.influencerModel).padding()
                         FollowerProfile().padding([.top, .bottom], 16)
                         
@@ -133,6 +175,20 @@ struct InfluencerDetailView: View {
                         ReviewView(projects: influencerDetailViewModel.influencerModel?.projects ?? []).padding()
                             .padding(.bottom, 32)
                         
+=======
+                        Group {
+                            SocialMedia(influencer: influencerDetailViewModel.influencerModel).padding()
+                            FollowerProfile(images: influencerDetailViewModel.influencerModel?.analytic_photos ?? []).padding([.top, .bottom], 16)
+                            
+                            EstimatedPrice(products: influencerDetailViewModel.influencerModel?.products ?? []).padding([.top, .bottom], 16)
+                            
+                            PreviousProjectView(projects: influencerDetailViewModel.influencerModel?.projects)
+                                .padding(.top, 16)
+                            
+                            ReviewView(projects: influencerDetailViewModel.influencerModel?.projects ?? []).padding()
+                                .padding(.bottom, 86)
+                        }
+>>>>>>> b28d938d90a1a6ed141eebde3c5a212283cf6859:View/InfluencerDetailView.swift
                     }.frame(width: UIScreen.main.bounds.width, alignment: .top)
                         .ignoresSafeArea()
                         .padding(.top, 60)
@@ -143,7 +199,7 @@ struct InfluencerDetailView: View {
                 
                 VStack{
                     
-                    WebImage(url: URL(string: photoURL))
+                    WebImage(url: URL(string: influencerDetailViewModel.influencerModel?.influencer_profile.photo ?? ""))
                         .resizable()
                         .scaledToFill()
                         .frame(width: 127, height: 127)
@@ -157,15 +213,39 @@ struct InfluencerDetailView: View {
                         MailView(isShowing: $isShowingMailView, result: self.$result, toRecipient: influencerDetailViewModel.influencerModel?.influencer_profile.contact_email ?? "")
                     }
             }
+<<<<<<< HEAD:Koala/InfluencerDetail/View/InfluencerDetailView.swift
             
         }.navigationBarHidden(true)
             .onAppear{
                 
                 influencerDetailViewModel.callGetInfluencerDetail(influencer_id: 2)
+=======
+            .introspectTabBarController { (UITabBarController) in
+                UITabBarController.tabBar.isHidden = true
+                uiTabarController = UITabBarController
+            }.onDisappear{
+                if fromBackButton{
+                    
+                } else {
+                    uiTabarController?.tabBar.isHidden = false
+                }
+>>>>>>> b28d938d90a1a6ed141eebde3c5a212283cf6859:View/InfluencerDetailView.swift
                 
             }
+            
+        }
+            
             .background(ThemeColor.primary.ignoresSafeArea())
             .ignoresSafeArea()
+<<<<<<< HEAD:Koala/InfluencerDetail/View/InfluencerDetailView.swift
+=======
+            .navigate(to: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign().navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0)), when: $isOrderPressed)
+            .onAppear(perform: {
+                influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
+            })
+            .navigationTitle("")
+            .navigationBarHidden(true)
+>>>>>>> b28d938d90a1a6ed141eebde3c5a212283cf6859:View/InfluencerDetailView.swift
     }
     
     
@@ -174,7 +254,7 @@ struct InfluencerDetailView: View {
 
 struct InfluencerDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        InfluencerDetailView()
+        InfluencerDetailView(influencerID: 1, fromBackButton: true)
     }
 }
 

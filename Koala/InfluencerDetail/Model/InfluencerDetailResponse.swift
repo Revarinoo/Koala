@@ -11,6 +11,7 @@ struct InfluencerDetailResponse: Codable {
     let influencer_profile: InfluencerProfileResponse?
     let categories: [String]?
     let platforms: [PlatformResponse]
+    let products: [ProductResponse]
     let analytic_photos: [AnalyticPhotoResponse]?
     let projects: [ProjectResponse]?
 }
@@ -32,6 +33,12 @@ struct PlatformResponse: Codable{
     let followers: Int
     let average_likes: Double?
     let average_comments: Double?
+}
+
+struct ProductResponse: Codable{
+    let content_type: String
+    let minPrice: Int
+    let maxPrice: Int
 }
 
 struct ProjectResponse: Codable{

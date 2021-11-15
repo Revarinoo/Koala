@@ -9,15 +9,19 @@ import SwiftUI
 
 @main
 struct KoalaApp: App {
+    @AppStorage("JWT", store: .standard) var token = ""
     
-    @AppStorage("isNewUser") var isNewUser: Bool = true
+    init() {
+        UIWindow.appearance().overrideUserInterfaceStyle = .light
+    }
     
     var body: some Scene {
         WindowGroup {
-            if isNewUser {
+            if token != "" {
+                TabBar(selectedTab: 0)
+            }
+            else {
                 SplashScreen()
-            } else {
-                HomepageView(categories: ["Coffee"])
             }
         }
     }
