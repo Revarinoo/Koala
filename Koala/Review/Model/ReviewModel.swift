@@ -11,6 +11,5 @@ struct ReviewModel {
     var comment: String = ""
     var rating: Int = 0
     var errorMessage: String = String()
-    var navigate: Bool = false
     var isPresentingErrorAlert: Bool = false
 }

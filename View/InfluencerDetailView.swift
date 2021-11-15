@@ -22,6 +22,7 @@ struct InfluencerDetailView: View {
     var influencerID: Int
     var fromBackButton : Bool
     @State var uiTabarController: UITabBarController?
+    @State var isOrderPressed = false
     
     init(influencerID: Int, fromBackButton: Bool) {
         UIScrollView.appearance().bounces = false
@@ -92,16 +93,16 @@ struct InfluencerDetailView: View {
                         }.padding(.bottom, 16)
                         
                         HStack{
-                            
-                            NavigationLink(destination: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign().navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0))) {
-                                Text("Order").font(Font.custom(ThemeFont.poppinsBold, size: 18))
-                                    .foregroundColor(Color.white)
+                                    
+                                Button(action: {
+                                    isOrderPressed = true
+                                }){
+                                    Text("Order").font(Font.custom(ThemeFont.poppinsBold, size: 18))
+                                }.foregroundColor(Color.white)
                                     .frame(width: 300, height: 50, alignment: .center)
                                     .background(ThemeColor.primary)
                                     .cornerRadius(15)
                                     .shadow(radius: 4)
-                                
-                            }
                             
                             Button(action:{
                                 self.isShowingMailView.toggle()
@@ -130,13 +131,13 @@ struct InfluencerDetailView: View {
                             
                             EstimatedPrice(products: influencerDetailViewModel.influencerModel?.products ?? []).padding([.top, .bottom], 16)
                             
-                            PreviousProjectView(projects: influencerDetailViewModel.influencerModel?.projects)
+                            PreviousProjectView(projects: influencerDetailViewModel.influencerModel?.projects ?? [])
                                 .padding(.top, 16)
                             
                             ReviewView(projects: influencerDetailViewModel.influencerModel?.projects ?? []).padding()
                                 .padding(.bottom, 86)
                         }
-                    }.frame(width: UIScreen.main.bounds.width, alignment: .top)
+                    }.frame(width: UIScreen.main.bounds.width, alignment: .topLeading)
                         .ignoresSafeArea()
                         .padding(.top, 60)
                         .background(Color.white)
@@ -172,12 +173,16 @@ struct InfluencerDetailView: View {
                 
             }
             
-        }.navigationBarHidden(true)
+        }
+            
+            .background(ThemeColor.primary.ignoresSafeArea())
+            .ignoresSafeArea()
+            .navigate(to: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign().navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0)), when: $isOrderPressed)
             .onAppear(perform: {
                 influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
             })
-            .background(ThemeColor.primary.ignoresSafeArea())
-            .ignoresSafeArea()
+            .navigationTitle("")
+            .navigationBarHidden(true)
     }
     
     

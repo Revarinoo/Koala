@@ -73,10 +73,12 @@ struct InfluencerListView: View {
                                             .overlay(
                                                 RoundedRectangle(cornerRadius: 10)
                                                     .stroke(ThemeColor.primary, lineWidth: 1)
+                                                    .frame(maxHeight: 33)
                                             )
                                     }
                                 }
                             }
+                            .padding(EdgeInsets(top: 4, leading: 3, bottom: 5, trailing: 0))
                         }
                     }.padding(EdgeInsets(top: -2, leading: 10, bottom: 8, trailing: 0))
                     
