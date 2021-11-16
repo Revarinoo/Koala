@@ -20,7 +20,7 @@ struct HomepageView: View {
                     Spacer()
                     Button(action:{
                         token = ""
-                        userProfile.callData()
+                        userProfile.signOut()
                     }){
                         Image(systemName: "bell")
                             .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
@@ -55,6 +55,7 @@ struct HomepageView: View {
                 
             }
             .onAppear(perform: {
+                userProfile.callData()
                 recomenndationList.callGetInfluencerList(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? [""])
             })
             .padding(.top, 25)
