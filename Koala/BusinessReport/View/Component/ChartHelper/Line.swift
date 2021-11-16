@@ -17,7 +17,7 @@ public struct Line: View {
     @Binding var maxDataValue: Double?
     @State private var showFull: Bool = false
     @State var showBackground: Bool = true
-    var gradient: GradientColor = GradientColor(start: Color(hexString: "#FE724C"), end: Color(hexString: "#FE724C"))
+    var gradient: GradientColor = GradientColor(start: Color(hex: "#FE724C"), end: Color(hex: "#FE724C"))
     var tooltipText: String
     var index:Int = 0
     let padding:CGFloat = 30
@@ -63,7 +63,7 @@ public struct Line: View {
         ZStack {
             if(self.showFull && self.showBackground){
                 self.closedPath
-                    .fill(LinearGradient(gradient: Gradient(colors: [Color(hexString: "#FE724C"), Color(hexString: "#F2F2F2")]), startPoint: .bottom, endPoint: .top))
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color(hex: "#FE724C"), Color(hex: "#F2F2F2")]), startPoint: .bottom, endPoint: .top))
                     .rotationEffect(.degrees(180), anchor: .center)
                     .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                     .transition(.opacity)
@@ -117,7 +117,7 @@ struct TooltipText: View {
         Text(text)
             .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
             .padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
-            .background(Color(hexString: "#FE724C"))
+            .background(Color(hex: "#FE724C"))
             .foregroundColor(.white)
             .cornerRadius(5)
             .scaleEffect(CGSize(width: 1.0, height: -1.0))
@@ -126,10 +126,8 @@ struct TooltipText: View {
 
 struct Line_Previews: PreviewProvider {
     static var previews: some View {
-//        SomeText()
         GeometryReader{ geometry in
             Line(data: ChartsData(points: [12,-30,10,54]), frame: .constant(geometry.frame(in: .local)), touchLocation: .constant(CGPoint(x: 100, y: 12)), showIndicator: .constant(true), minDataValue: .constant(10.0 * -6), maxDataValue: .constant(nil), tooltipText: "Coba aja")
         }.frame(width: 320, height: 160)
-//        TooltipText(text: "Gatau nih")
     }
 }

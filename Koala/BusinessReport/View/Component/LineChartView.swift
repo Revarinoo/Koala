@@ -106,7 +106,7 @@ public struct LineChartView: View {
     }
 }
 
-struct WidgetView_Previews: PreviewProvider {
+struct LineChartView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             LineChartView(data: [812, 2332, 5431, 3221, 1249, 378], label: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], title: "Line chart", legend: "Basic")

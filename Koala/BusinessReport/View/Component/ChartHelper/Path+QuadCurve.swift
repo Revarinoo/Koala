@@ -9,7 +9,6 @@ import SwiftUI
 
 extension Path {
     func trimmedPath(for percent: CGFloat) -> Path {
-        // percent difference between points
         let boundsDistance: CGFloat = 0.001
         let completion: CGFloat = 1 - boundsDistance
         
@@ -121,7 +120,6 @@ extension Path {
             return path
         }
         let offset = globalOffset ?? points.min()!
-//        guard let offset = points.min() else { return path }
         var p1 = CGPoint(x: 0, y: CGFloat(points[0]-offset)*step.y)
         path.move(to: p1)
         for pointIndex in 1..<points.count {
@@ -141,7 +139,6 @@ extension Path {
         }
         let offset = globalOffset ?? points.min()!
 
-//        guard let offset = points.min() else { return path }
         path.move(to: .zero)
         var p1 = CGPoint(x: 0, y: CGFloat(points[0]-offset)*step.y)
         path.addLine(to: p1)
