@@ -66,24 +66,38 @@ struct CampaignOrderCard: View {
                             .frame(width: 90, height: 38)
                     }
                 )
-                NavigationLink(
-                    destination: OrderView().navigationBarHidden(true).navigationBarBackButtonHidden(true),
-                    isActive: $orderCampaignVM.orderCampaignModel.navigate,
+                Button(
+                    action: {
+                        orderCampaignVM.order(date: dateFormat(date: date), contentID: contentID, influencerID: influencerID)
+                        TabBarViewModel.shared.selectedTab = 2
+                    },
                     label: {
-                        Button(
-                            action: {
-                                orderCampaignVM.order(date: dateFormat(date: date), contentID: contentID, influencerID: influencerID)
-                            },
-                            label: {
-                                Text("Choose")
-                                    .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
-                                    .foregroundColor(.white)
-                                    .frame(width: 113, height: 38)
-                                    .background(ThemeColor.primary)
-                                    .cornerRadius(12)
-                            })
-                    }
-                )
+                        Text("Choose")
+                            .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
+                            .foregroundColor(.white)
+                            .frame(width: 113, height: 38)
+                            .background(ThemeColor.primary)
+                            .cornerRadius(12)
+                    })
+//                NavigationLink(
+//                    destination: OrderView().navigationBarHidden(true).navigationBarBackButtonHidden(true),
+//                    isActive: $orderCampaignVM.orderCampaignModel.navigate,
+//                    label: {
+//                        Button(
+//                            action: {
+//                                orderCampaignVM.order(date: dateFormat(date: date), contentID: contentID, influencerID: influencerID)
+//                                TabBar.selectedTab = 2
+//                            },
+//                            label: {
+//                                Text("Choose")
+//                                    .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
+//                                    .foregroundColor(.white)
+//                                    .frame(width: 113, height: 38)
+//                                    .background(ThemeColor.primary)
+//                                    .cornerRadius(12)
+//                            })
+//                    }
+//                )
             }
         }
         .padding()

@@ -12,6 +12,19 @@ struct ContentForm: View, Identifiable {
     let id = UUID()
     @Binding var firstContent : Bool
     @Binding var contentData : CreateContentModel
+    @Binding var contentArrayTemp : [CreateContentModel]
+    
+    func optionContentDynamic(contentArray: [CreateContentModel]) -> [productType]{
+        var currentContentTypeOption : [productType] = [.post, .story, .reels]
+        for type in contentArray{
+            if type.isDeleted == false {
+                currentContentTypeOption = currentContentTypeOption.filter{
+                    $0 != type.contentType
+                }
+            }
+        }
+        return currentContentTypeOption
+    }
     
     var body: some View {
         if contentData.isDeleted == false{

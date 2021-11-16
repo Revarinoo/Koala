@@ -16,10 +16,10 @@ struct CreateCampaign: View {
     @StateObject var createCampaignVM = CreateCampaignViewModel()
     @StateObject var campaignList = CampaignViewModel()
     @State var campaignModel = CreateCampaignModel()
-    @State var contentTypeArray = [ContentForm(firstContent: .constant(true), contentData: .constant(CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)))]
+    @State var contentTypeArray = [ContentForm(firstContent: .constant(true), contentData: .constant(CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)), contentArrayTemp: .constant([]))]
     @State private var showSheet = false
     @State var willMoveToTheNextScreen = false
-    @State var contentArrayTemp: [CreateContentModel] = [CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)]
+    @State var contentArrayTemp: [CreateContentModel] = [CreateContentModel(contentType: .post, contentDetail: "", isDeleted: false)]
     @State var uiTabarController: UITabBarController?
     
     //keyboard thingy
@@ -55,12 +55,12 @@ struct CreateCampaign: View {
                         VStack(spacing: 18){
                             CreateCampaignForm(campaignModel: $campaignModel)
                             ForEach (contentTypeArray.indices, id: \.self) { i in
-                                ContentForm(firstContent: .constant(i == 0 ? true : false), contentData: $contentArrayTemp[i])
+                                ContentForm(firstContent: .constant(i == 0 ? true : false), contentData: $contentArrayTemp[i], contentArrayTemp: $contentArrayTemp)
                             }.padding([.leading, .trailing], 16)
                             
                             Button(action: {
                                 contentArrayTemp.append(CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false))
-                                contentTypeArray.append(ContentForm(firstContent: .constant(true), contentData: .constant(CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false))))
+                                contentTypeArray.append(ContentForm(firstContent: .constant(true), contentData: .constant(CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)), contentArrayTemp: $contentArrayTemp))
                             }){
                                 Image(systemName: "plus").font(.system(size: 24)).foregroundColor(ThemeColor.grayDark)
                             }.frame(maxWidth: .infinity)
@@ -81,7 +81,6 @@ struct CreateCampaign: View {
                                     self.dismissKeyboard()
                                     createCampaignVM.createContentModel = contentArrayTemp
                                     createCampaignVM.submitData(submittedCampaign: campaignModel, submittedContent: contentArrayTemp)
-                                
                             }){
                                 Text("Create").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                                     .foregroundColor(.white)
@@ -102,6 +101,14 @@ struct CreateCampaign: View {
                             .background(Color.white)
                             .cornerRadius(20, corners: [.topLeft, .topRight])
                         
+                    }.alert(isPresented: $createCampaignVM.dataisNotComplete) {
+                        Alert(
+                            title: Text("Data is Not Complete"),
+                            message: Text("Make sure you fill out all the form"),
+                            dismissButton: .default(Text("Got it!")){
+                                willMoveToTheNextScreen = false
+                            }
+                        )
                     }
                     VStack{
                         if campaignModel.logo.size.width == 0 {
@@ -126,7 +133,15 @@ struct CreateCampaign: View {
                         }
                         
                         Text("Add Photo").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
-                    }.padding(.top, 150)
+                    }.padding(.top, 150).alert(isPresented: $createCampaignVM.dataHasSameType) {
+                        Alert(
+                            title: Text("Duplicated Content Type"),
+                            message: Text("Make sure submit only one per content type"),
+                            dismissButton: .default(Text("Got it!")){
+                                willMoveToTheNextScreen = false
+                            }
+                        )
+                    }
                 }
                 .introspectTabBarController { (UITabBarController) in
                                         UITabBarController.tabBar.isHidden = true
@@ -159,18 +174,10 @@ struct CreateCampaign: View {
                 }
             }
         }
-        .alert(isPresented: $createCampaignVM.dataisNotComplete) {
-            Alert(
-                title: Text("Data is Not Complete"),
-                message: Text("Make sure you fill out all the form"),
-                dismissButton: .default(Text("Got it!")){
-                    willMoveToTheNextScreen = false
-                }
-            )
-        }
+        
+        
         .navigate(to: CampaignView().onAppear(perform: {
             self.presentationMode.wrappedValue.dismiss()
-            willMoveToTheNextScreen = false
         }), when: $createCampaignVM.isFinishedUploading)
     }
 }

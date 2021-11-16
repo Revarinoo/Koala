@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct OrderView: View {
     @State private var orderTypeSelected : OrderStatus = .pending
+    @State var uiTabarController: UITabBarController?
     
     var pendingOrder : [MyOrders] = []
     
@@ -45,6 +47,9 @@ struct OrderView: View {
             .navigationBarHidden(true)
             .padding(.top, 40)
             .background(ThemeColor.background.ignoresSafeArea())
+        }.introspectTabBarController { (UITabBarController) in
+            UITabBarController.tabBar.isHidden = false
+            uiTabarController = UITabBarController
         }
         
     }
