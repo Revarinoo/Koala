@@ -15,7 +15,6 @@ struct ReviewInfluencerView: View {
     var name: String
     var orderId: Int
     
-    //    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var reviewVM = ReviewPageViewModel()
     @State var uiTabarController: UITabBarController?
     @State var submitButtonPressed: Bool = false
@@ -23,22 +22,6 @@ struct ReviewInfluencerView: View {
     var body: some View {
         ZStack {
             Color.bgColorView.edgesIgnoringSafeArea(.all)
-            
-            //            VStack {
-            //                HStack {
-            //                    Button(action: {
-            //
-            //                    }, label: {
-            //                        Image(systemName: "chevron.left")
-            //                            .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
-            //                            .foregroundColor(ThemeColor.primary)
-            //                            .cornerRadius(10)
-            //                    })
-            //                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 8, trailing: 0))
-            //                    Spacer()
-            //                }
-            //                Spacer()
-            //            }
             
             VStack(alignment: .center) {
                 WebImage(url: URL(string: photoURL))
