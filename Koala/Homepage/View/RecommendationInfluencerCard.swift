@@ -60,7 +60,6 @@ struct RecommendationInfluencerCard: View {
         .background(Color.white)
         .frame(height: 95)
         .cornerRadius(10)
-        //.shadow(color: .gray, radius: 3, x: 1, y: 2)
     }
 }
 

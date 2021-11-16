@@ -27,7 +27,6 @@ class CreateCampaignViewModel : ObservableObject {
     
     func submitData(submittedCampaign : CreateCampaignModel, submittedContent: [CreateContentModel]){
         let defaultImage = UIImage(named: "defaultCampaign")!.jpegData(compressionQuality: 0.5)
-        //print("ini konten model \(createContentModel)")
         let campaign_logo = submittedCampaign.logo.jpegData(compressionQuality: 0.5) ?? defaultImage
         var references : [Data] = []
         if submittedCampaign.references.count != 0 {
@@ -37,7 +36,6 @@ class CreateCampaignViewModel : ObservableObject {
             }
         }
         let createCampaignReq = CreateCampaignRequest(campaign_logo: campaign_logo, name: submittedCampaign.title, description: submittedCampaign.description, start_date: submittedCampaign.startDate.serverFormattedDate(), end_date: submittedCampaign.endDate.serverFormattedDate(), product_name: submittedCampaign.product, rules: submittedCampaign.rules, references: references)
-        //print("create campaign: \(createCampaignReq)")
         
         let parameters = [
             "name": createCampaignReq.name,
@@ -47,11 +45,6 @@ class CreateCampaignViewModel : ObservableObject {
             "product_name": createCampaignReq.product_name,
             "rules": createCampaignReq.rules
         ]
-        //        MARK: header buat yg local
-        //                let headers: HTTPHeaders = [
-        //                    "Authorization": "Bearer 1|m537lhpvOSjSVy8crTgJYZQOL6xCC5d0ouxnl3Nn",
-        //                    "Content-type": "multipart/form-data"
-        //                ]
         
         //      MARK: header buat yg server
         let headers: HTTPHeaders = [
@@ -127,7 +120,6 @@ class CreateCampaignViewModel : ObservableObject {
     }
     func checkDuplicateContent(){
         var createContent : [CreateCampaignDetail] = []
-        //print("ini koneten \(self.createContentModel)")
         for content in self.createContentModel{
             if content.isDeleted == false {
                 createContent.append(CreateCampaignDetail(content_id: self.content_id, content_type: content.contentType.rawValue, instruction: content.contentDetail))
@@ -150,5 +142,3 @@ extension Date {
         return dateformat.string(from: self)
     }
 }
-
-//3|SZWRWydfBtOsl4I0s1vyvXWLKFtrMPCVmJcBqy3e

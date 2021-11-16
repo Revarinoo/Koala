@@ -13,7 +13,6 @@ class CategoryViewModel: ObservableObject{
         [Categories(categoryName: "Coffee", categoryImage: "coffee"),
          Categories(categoryName: "Street", categoryImage: "street"),
          Categories(categoryName: "Bakery", categoryImage: "bakery"),
-         //Categories(categoryName: "Dessert", categoryImage: "dessert"),
          Categories(categoryName: "Healthy", categoryImage: "healthy"),
          Categories(categoryName: "Western", categoryImage: "western"),
          Categories(categoryName: "Traditional", categoryImage: "traditional"),
@@ -26,6 +25,3 @@ class CategoryViewModel: ObservableObject{
          Categories(categoryName: "Vegan", categoryImage: "vegan")
         ]
 }
-
-//subscribe nilai category
-//and the show the category

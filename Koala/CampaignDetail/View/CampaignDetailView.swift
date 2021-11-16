@@ -67,9 +67,3 @@ struct CampaignDetailView: View {
                             }
     }
 }
-
-//struct CampaignDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CampaignDetailView(campaignTitle: "10.10 Campaign", contentID: 1)
-//    }
-//}

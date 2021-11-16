@@ -11,7 +11,8 @@ class UserProfileViewModel: ObservableObject{
     @Published var user : UserProfileData = UserProfileData(name: "", photo: "")
     private let userProfileService : UserProfileService = UserProfileService()
     
-    init() {
+    func signOut() {
+        user = UserProfileData(name: "", photo: "")
         callData()
     }
     
