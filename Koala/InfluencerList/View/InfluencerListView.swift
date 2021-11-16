@@ -12,7 +12,6 @@ struct InfluencerListView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @AppStorage("JWT", store: .standard) var token = ""
-    //@AppStorage("categorySelected", store: .standard) var categorySelected = ""
     var categorySelected : String = ""
     @StateObject var influencerListVM = InfluencerListViewModel()
     @State var isFilterModalShown: Bool = false
