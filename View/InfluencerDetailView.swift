@@ -18,7 +18,6 @@ struct InfluencerDetailView: View {
     @State var categories: [String] = []
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
-    @State var photoURL = "https://assets.teenvogue.com/photos/5fd4d29fe6ff71e902f97c1a/4:3/w_2443,h_1832,c_limit/taylor-evermore-resized.jpg"
     var influencerID: Int
     var fromBackButton : Bool
     @State var uiTabarController: UITabBarController?
