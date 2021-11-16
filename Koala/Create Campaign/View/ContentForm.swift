@@ -12,6 +12,19 @@ struct ContentForm: View, Identifiable {
     let id = UUID()
     @Binding var firstContent : Bool
     @Binding var contentData : CreateContentModel
+    @Binding var contentArrayTemp : [CreateContentModel]
+    
+    func optionContentDynamic(contentArray: [CreateContentModel]) -> [productType]{
+        var currentContentTypeOption : [productType] = [.post, .story, .reels]
+        for type in contentArray{
+            if type.isDeleted == false {
+                currentContentTypeOption = currentContentTypeOption.filter{
+                    $0 != type.contentType
+                }
+            }
+        }
+        return currentContentTypeOption
+    }
     
     var body: some View {
         if contentData.isDeleted == false{
@@ -74,12 +87,12 @@ struct ContentForm: View, Identifiable {
                 }.padding(.horizontal, 16).padding(.bottom, 25)
             }
             .onAppear(perform: {
-                        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ThemeColor.primary)
-                        UISegmentedControl.appearance().backgroundColor = UIColor(ThemeColor.background)
-                        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-                        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
-                        UINavigationBar.appearance().backgroundColor = UIColor(ThemeColor.background)
-                        UIPickerView.appearance().backgroundColor = UIColor(ThemeColor.primary)
+                UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ThemeColor.primary)
+                UISegmentedControl.appearance().backgroundColor = UIColor(ThemeColor.background)
+                UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+                UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
+                UINavigationBar.appearance().backgroundColor = UIColor(ThemeColor.background)
+                UIPickerView.appearance().backgroundColor = UIColor(ThemeColor.primary)
             })
             .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(red: 1.0, green: 0.945, blue: 0.929)/*@END_MENU_TOKEN@*/).cornerRadius(10)
         }

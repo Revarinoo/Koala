@@ -21,9 +21,11 @@ class CreateCampaignViewModel : ObservableObject {
     @Published var createContentModel : [CreateContentModel] = [CreateContentModel(contentType: productType.post, contentDetail: "", isDeleted: false)]
     @Published var isFinishedUploading = false
     @Published var dataisNotComplete = false
+    @Published var dataHasSameType = false
+    
+    @Published var contentTypeOption : [productType] = [.post, .story, .reels]
     
     func submitData(submittedCampaign : CreateCampaignModel, submittedContent: [CreateContentModel]){
-        
         let defaultImage = UIImage(named: "defaultCampaign")!.jpegData(compressionQuality: 0.5)
         //print("ini konten model \(createContentModel)")
         let campaign_logo = submittedCampaign.logo.jpegData(compressionQuality: 0.5) ?? defaultImage
@@ -57,6 +59,11 @@ class CreateCampaignViewModel : ObservableObject {
             "Content-type": "multipart/form-data"
         ]
         
+        checkDuplicateContent()
+        if self.dataHasSameType{
+            return
+        }
+        
         Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append((campaign_logo ?? defaultImage) ?? Data(), withName: "campaign_logo",fileName: "file.jpeg", mimeType: "image/jpeg")
             for (index, value) in references.enumerated() {
@@ -71,8 +78,6 @@ class CreateCampaignViewModel : ObservableObject {
             switch result {
             case .success(let upload, _, _):
                 
-                print("Sukses harusnya")
-                
                 upload.uploadProgress(closure: { (progress) in
                     print("Upload Progress: \(progress.fractionCompleted)")
                     if progress.fractionCompleted == 1.0 {
@@ -82,6 +87,7 @@ class CreateCampaignViewModel : ObservableObject {
                 
                 upload.responseData { response in
                     if let code = response.response?.statusCode{
+                        print(code)
                         if code == 201 {
                             let campaignResponse = try? JSONDecoder().decode(CreateCampaignResponse.self, from: response.value as! Data)
                             self.content_id = campaignResponse?.content_id ?? 0
@@ -91,8 +97,6 @@ class CreateCampaignViewModel : ObservableObject {
                             self.isFinishedUploading = true
                         } else {
                             self.dataisNotComplete = true
-                            print("MUNCUL ALERT HARUSNYA")
-                            
                         }
                     }
                 }
@@ -120,7 +124,22 @@ class CreateCampaignViewModel : ObservableObject {
                 }
             }
         }
-        
+    }
+    func checkDuplicateContent(){
+        var createContent : [CreateCampaignDetail] = []
+        //print("ini koneten \(self.createContentModel)")
+        for content in self.createContentModel{
+            if content.isDeleted == false {
+                createContent.append(CreateCampaignDetail(content_id: self.content_id, content_type: content.contentType.rawValue, instruction: content.contentDetail))
+            }
+        }
+        var typeCreated = [productType]()
+        for typeData in createContent {
+            typeCreated.append(productType(rawValue: typeData.content_type)!)
+        }
+        if typeCreated.count != Set(typeCreated).count{
+            dataHasSameType = true
+        }
     }
 }
 
