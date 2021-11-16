@@ -26,7 +26,6 @@ class CampaignReportBusinessViewModel: ObservableObject{
         var influencers: [InfluencerReportModel] = []
         campaignReportBusinessService.getCampaignReportBusiness(campaign_id, completionHandler: { response in
             if let code = response?.code {
-                print("RESPONSEE \(response)")
                 if code == 201, let campaign = response?.campaign_detail {
                     let unwrappedAnalytics = campaign.analytics ?? []
                     let unwrappedInfluencers = campaign.influencers ?? []
