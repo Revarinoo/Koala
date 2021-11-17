@@ -21,7 +21,9 @@ struct InfluencerListService {
     
     func getInfluencerByCategory(_ category: String, completionHandler:@escaping(_ result: InfluencerListResponse?)->Void) {
         
-        let request = NSMutableURLRequest(url: NSURL(string: HttpUtility.endpoint + "influencers/\(category)")! as URL)
+        let escapedString = category.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let request = NSMutableURLRequest(url: NSURL(string: HttpUtility.endpoint + "influencers/" + escapedString)! as URL)
+        
         request.allHTTPHeaderFields = HttpUtility.shared.headers
 
         HttpUtility.shared.request(request as URLRequest, resultType: InfluencerListResponse.self) { response in

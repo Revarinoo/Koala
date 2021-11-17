@@ -105,7 +105,6 @@ struct InfluencerDetailView: View {
                             
                             Button(action:{
                                 self.isShowingMailView.toggle()
-                                print("Tap")
                             }){
                                 Image(uiImage: UIImage(named: "Message")!)
                                     .resizable()

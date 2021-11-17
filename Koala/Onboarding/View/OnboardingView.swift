@@ -45,7 +45,6 @@ struct OnboardingView: View {
                             if onboardVM.countSpecialtyClicked() < 3 || onboardVM.interest[index].isClicked == true {
                                 onboardVM.interest[index].isClicked.toggle()
                             }
-                            print(onboardVM.getSpecialtyClicked())
                         }, label: {
                             Text(onboardVM.interest[index].name)
                                 .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
