@@ -40,7 +40,7 @@ struct CampaignView: View {
                         Text("My Campaigns")
                             .font(Font.custom(ThemeFont.poppinsSemiBold, size: 27))
                             .foregroundColor(.black)
-                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+                            .padding(EdgeInsets(top: -5, leading: 20, bottom: 0, trailing: 0))
                         Spacer()
                     }
                 }
@@ -50,7 +50,7 @@ struct CampaignView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 10, trailing: 16))
                 
                 ScrollView(.vertical){
                     VStack(spacing: 12){
