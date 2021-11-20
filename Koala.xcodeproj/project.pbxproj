@@ -41,6 +41,8 @@
 		2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */; };
 		2F99D364271D8309003DD86C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D363271D8309003DD86C /* SDWebImageSwiftUI */; };
 		2F99D391271DC6CE003DD86C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D390271DC6CE003DD86C /* Alamofire */; };
+		2FA152AE274864C300231492 /* FilterModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA152AD274864C300231492 /* FilterModalViewModel.swift */; };
+		2FA152B02748A15000231492 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA152AF2748A15000231492 /* ArrayExtension.swift */; };
 		2FA40E3F271DE3180095A812 /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA40E3E271DE3180095A812 /* ThemeColor.swift */; };
 		2FA40E41271DE3980095A812 /* ThemeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA40E40271DE3980095A812 /* ThemeFont.swift */; };
 		2FA40E4C271DE9F70095A812 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA40E43271DE9F60095A812 /* Poppins-Thin.ttf */; };
@@ -215,6 +217,8 @@
 		2F95BCCD273A2EDD00F78F83 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		2F95BCCE273A2EDD00F78F83 /* Path+QuadCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+QuadCurve.swift"; sourceTree = "<group>"; };
 		2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCardList.swift; sourceTree = "<group>"; };
+		2FA152AD274864C300231492 /* FilterModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModalViewModel.swift; sourceTree = "<group>"; };
+		2FA152AF2748A15000231492 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		2FA40E3E271DE3180095A812 /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		2FA40E40271DE3980095A812 /* ThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFont.swift; sourceTree = "<group>"; };
 		2FA40E43271DE9F60095A812 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
@@ -586,6 +590,7 @@
 				D23FB7FF273C180A0099AC01 /* KeyboardExtension.swift */,
 				D23FB801273C37B60099AC01 /* DateCalendarExtension.swift */,
 				2F8DAD7C2741D0C100DE643F /* StringExtension.swift */,
+				2FA152AF2748A15000231492 /* ArrayExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -612,22 +617,15 @@
 				2FACD8402721078A00E9F578 /* Model */,
 				2FACD83F2721078500E9F578 /* View */,
 				2FACD83E2721077E00E9F578 /* ViewModel */,
-				2FACD83D2721077700E9F578 /* Service */,
 			);
 			path = InfluencerFilter;
-			sourceTree = "<group>";
-		};
-		2FACD83D2721077700E9F578 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		2FACD83E2721077E00E9F578 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				2F6C2C33272268F60026EF3E /* SpecialtyViewModel.swift */,
+				2FA152AD274864C300231492 /* FilterModalViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1429,6 +1427,7 @@
 				D283B9FB272A8C0100CA87EC /* PendingCardScrollView.swift in Sources */,
 				2FACD8422721108F00E9F578 /* ConstantVariable.swift in Sources */,
 				2FD875A52731460B0052DA4D /* ReviewValidation.swift in Sources */,
+				2FA152AE274864C300231492 /* FilterModalViewModel.swift in Sources */,
 				2F1E8F6F273EB3160056D9BC /* ReportingModel.swift in Sources */,
 				D23FB800273C180A0099AC01 /* KeyboardExtension.swift in Sources */,
 				2FACD84927211A7600E9F578 /* SpecialtySelector.swift in Sources */,
@@ -1498,6 +1497,7 @@
 				2F95BCC32739F12700F78F83 /* UnderMaintenanceView.swift in Sources */,
 				8451B84D272B95510061D389 /* ResultTypeCard.swift in Sources */,
 				2F1E8F71273EB6BD0056D9BC /* BusinessReportViewModel.swift in Sources */,
+				2FA152B02748A15000231492 /* ArrayExtension.swift in Sources */,
 				D2131CB32729BE1D006ACDC2 /* OrderModel.swift in Sources */,
 				F76CE8752721C4B40055D58C /* AuthResponse.swift in Sources */,
 				D2577BC6271F239B00E7AC5D /* Categories.swift in Sources */,

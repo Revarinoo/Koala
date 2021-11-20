@@ -9,8 +9,8 @@ import SwiftUI
 
 struct PriceRange: View {
     
-    @State var minPrice: Int = 0
-    @State var maxPrice: Int = 0
+    @Binding var minPrice: Int
+    @Binding var maxPrice: Int
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -31,12 +31,5 @@ struct PriceRange: View {
             }
         }
         .padding(.horizontal)
-    }
-}
-
-struct PriceRange_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        PriceRange().previewLayout(.sizeThatFits)
     }
 }
