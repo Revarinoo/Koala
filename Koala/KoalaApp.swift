@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct KoalaApp: App {
     @AppStorage("JWT", store: .standard) var token = ""
     @StateObject var tabBarVM = TabBarViewModel.shared
     init() {
+        FirebaseApp.configure()
         UIWindow.appearance().overrideUserInterfaceStyle = .light
     }
     
@@ -23,6 +25,8 @@ struct KoalaApp: App {
             else {
                 SplashScreen().environment(\.colorScheme, .light)
             }
+            
+//            ChatList()
         }
     }
 }

@@ -9,8 +9,9 @@ import SwiftUI
 struct HomepageView: View {
     @AppStorage("JWT", store: .standard) var token = ""
     @StateObject var recomenndationList = RecommendationViewModel()
-    @StateObject var userProfile = UserProfileViewModel()
+    @StateObject var userProfile = UserProfileViewModel.shared
     @State var toRecommendedInfluencerList: Bool = false
+    @State var chat = false
     
     var body: some View {
         NavigationView {
@@ -25,6 +26,18 @@ struct HomepageView: View {
                         Image(systemName: "bell")
                             .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
                     }
+                    
+                    NavigationLink(destination: ChatList(), isActive: $chat){
+                        Button {
+                            if token != "" {
+                                chat = true
+                            }
+                        } label: {
+                            Image(systemName: "message")
+                                .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
+                        }
+                    }
+
                 }
                 .padding(.horizontal, 16.0)
                 ScrollView(.vertical, showsIndicators: false){
