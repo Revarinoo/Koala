@@ -9,20 +9,20 @@ import Foundation
 
 class SpecialtyViewModel: ObservableObject {
     
-    @Published var specialties: [SpecialtyModel] = [
-        SpecialtyModel(name: "Asian", isClicked: false),
-        SpecialtyModel(name: "Coffee", isClicked: false),
-        SpecialtyModel(name: "Dessert", isClicked: false),
-        SpecialtyModel(name: "Drinks", isClicked: false),
-        SpecialtyModel(name: "Fast Food", isClicked: false),
-        SpecialtyModel(name: "Fine Dining", isClicked: false),
-        SpecialtyModel(name: "Healthy", isClicked: false),
-        SpecialtyModel(name: "Snack", isClicked: false),
-        SpecialtyModel(name: "Street", isClicked: false),
-        SpecialtyModel(name: "Traditional", isClicked: false),
-        SpecialtyModel(name: "Vegan", isClicked: false),
-        SpecialtyModel(name: "Vegetarian", isClicked: false),
-        SpecialtyModel(name: "Western", isClicked: false)
+    @Published var specialties: [ClickedFilterModel] = [
+        ClickedFilterModel(name: "Asian", isClicked: false),
+        ClickedFilterModel(name: "Coffee", isClicked: false),
+        ClickedFilterModel(name: "Dessert", isClicked: false),
+        ClickedFilterModel(name: "Drinks", isClicked: false),
+        ClickedFilterModel(name: "Fast Food", isClicked: false),
+        ClickedFilterModel(name: "Fine Dining", isClicked: false),
+        ClickedFilterModel(name: "Healthy", isClicked: false),
+        ClickedFilterModel(name: "Snack", isClicked: false),
+        ClickedFilterModel(name: "Street", isClicked: false),
+        ClickedFilterModel(name: "Traditional", isClicked: false),
+        ClickedFilterModel(name: "Vegan", isClicked: false),
+        ClickedFilterModel(name: "Vegetarian", isClicked: false),
+        ClickedFilterModel(name: "Western", isClicked: false)
     ]
     
     func countSpecialtyClicked() -> Int {

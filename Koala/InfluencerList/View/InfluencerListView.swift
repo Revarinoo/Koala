@@ -64,7 +64,7 @@ struct InfluencerListView: View {
                                 .background(ThemeColor.primary)
                                 .cornerRadius(10)
                         })
-                        ScrollView(.horizontal) {
+                        ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 8) {
                                 if categorySelected != "" {
                                     Text(categorySelected)
@@ -100,9 +100,9 @@ struct InfluencerListView: View {
                         }
                     }.padding(EdgeInsets(top: -2, leading: 10, bottom: 8, trailing: 0))
                     
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         VStack(spacing: 16) {
-                            ForEach(influencerListVM.influencersModel.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) }).filter({ filtersVM.specialties.isEmpty ? true : $0.category.contains(array: filtersVM.specialties) }).filter({ $0.ratePrice >= filtersVM.minPrice && $0.ratePrice <= filtersVM.maxPrice }).filter({ $0.rateEngagement >= filtersVM.engagementRate }).filter({ $0.rating >= Double(filtersVM.rating) }), id:\.id) { influencer in
+                            ForEach(influencerListVM.influencersModel.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) }).filter({ filtersVM.location.isEmpty ? true : $0.location == filtersVM.location[0] }).filter({ filtersVM.specialties.isEmpty ? true : $0.category.contains(array: filtersVM.specialties) }).filter({ $0.ratePrice >= filtersVM.minPrice && $0.ratePrice <= filtersVM.maxPrice }).filter({ $0.rateEngagement >= filtersVM.engagementRate }).filter({ $0.rating >= Double(filtersVM.rating) }), id:\.id) { influencer in
                                 NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: influencer.id, fromBackButton: showBackButton).navigationBarHidden(true)) : AnyView(LoginView())) {
                                     InfluencerCardList(photoURL: influencer.photo, categories: influencer.category, name: influencer.name, location: influencer.location, price: influencer.ratePrice, ER: influencer.rateEngagement, rating: influencer.rating)
                                         .padding(.horizontal, 10)
@@ -130,7 +130,7 @@ struct InfluencerListView: View {
                 }
             }
             .sheet(isPresented: $isFilterModalShown) {
-                FilterModal(isPresented: $isFilterModalShown, specialties: $filtersVM.specialties, minPrice: $filtersVM.minPrice, maxPrice: $filtersVM.maxPrice, engagementRate: $filtersVM.engagementRate, rating: $filtersVM.rating)
+                FilterModal(isPresented: $isFilterModalShown, location: $filtersVM.location, specialties: $filtersVM.specialties, minPrice: $filtersVM.minPrice, maxPrice: $filtersVM.maxPrice, engagementRate: $filtersVM.engagementRate, rating: $filtersVM.rating)
             }
         }
     }

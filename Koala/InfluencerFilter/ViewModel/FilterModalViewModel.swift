@@ -9,6 +9,7 @@ import Foundation
 
 class FilterModalViewModel: ObservableObject {
     
+    @Published var location: [String] = []
     @Published var specialties: [String] = []
     @Published var minPrice: Int = 0
     @Published var maxPrice: Int = 10000000
@@ -16,7 +17,7 @@ class FilterModalViewModel: ObservableObject {
     @Published var rating: Int = 0
     
     func getFormattedFilters() -> [String] {
-        var filters: [String] = specialties
+        var filters: [String] = location + specialties
         
         let priceFormat = minPrice != 0  ? "IDR \(minPrice.thousandsFormatter()) - IDR \(maxPrice.thousandsFormatter())" : ""
         filters.append(priceFormat)

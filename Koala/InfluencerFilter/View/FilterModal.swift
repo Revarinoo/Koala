@@ -10,6 +10,7 @@ import SwiftUI
 struct FilterModal: View {
     
     @Binding var isPresented: Bool
+    @Binding var location: [String]
     @Binding var specialties: [String]
     @Binding var minPrice: Int
     @Binding var maxPrice: Int
@@ -22,7 +23,7 @@ struct FilterModal: View {
                 Divider()
                     .padding(.bottom, 8)
                     .frame(maxWidth: .infinity)
-                LocationFilter()
+                LocationFilter(location: $location)
                 SpecialtySelector(specialties: $specialties)
                 PriceRange(minPrice: $minPrice, maxPrice: $maxPrice)
                 EngagementRateSlider(engagementRate: $engagementRate)

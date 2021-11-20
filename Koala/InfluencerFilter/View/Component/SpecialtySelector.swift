@@ -33,7 +33,6 @@ struct SpecialtySelector: View {
                             specialtyVM.specialties[index].isClicked.toggle()
                         }
                         self.specialties = specialtyVM.getSpecialtyClicked()
-                        print(self.specialties)
                     }, label: {
                         Text(specialtyVM.specialties[index].name)
                             .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
