@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Introspect
 
 struct InfluencerListView: View {
     
@@ -17,7 +16,6 @@ struct InfluencerListView: View {
     @State var isFilterModalShown: Bool = false
     @State private var searchText = ""
     var showBackButton : Bool
-    @State var uiTabarController: UITabBarController?
     
     var body: some View {
         NavigationView {
@@ -46,7 +44,7 @@ struct InfluencerListView: View {
 //                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 8, trailing: 0))
                     
                     SearchBar(text: $searchText)
-                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 8, trailing: 10))
+                        .padding(EdgeInsets(top: 10, leading: 10, bottom: 8, trailing: 10))
                     
                     HStack {
                         Button(action: {
@@ -91,28 +89,44 @@ struct InfluencerListView: View {
                             }
                         }
                     }
-                }
-                .introspectTabBarController { (UITabBarController) in if showBackButton{
-                    UITabBarController.tabBar.isHidden = true
-                    uiTabarController = UITabBarController
-                }
-                }.onDisappear{
-                    uiTabarController?.tabBar.isHidden = false
+                }.onAppear() {
+                    if categorySelected != "" {
+                        influencerListVM.callGetInfluencerByCategory(categorySelected)
+                    } else {
+                        influencerListVM.callGetInfluencerList()
+                    }
+//                    let coloredAppearance = UINavigationBarAppearance()
+//                    coloredAppearance.configureWithTransparentBackground()
+//                    coloredAppearance.backgroundColor = UIColor(ThemeColor.background)
+//                    coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor(.black)]
+//                    coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(.black)]
+//
+//                    UINavigationBar.appearance().standardAppearance = coloredAppearance
+//                    UINavigationBar.appearance().compactAppearance = coloredAppearance
+//                    UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+//                    UINavigationBar.appearance().tintColor = UIColor(ThemeColor.primary)
                 }
             }
             .navigationBarTitle("Influencer List", displayMode: .inline)
             .navigationBarHidden(false)
-            .onAppear() {
-                if categorySelected != "" {
-                    influencerListVM.callGetInfluencerByCategory(categorySelected)
-                } else {
-                    influencerListVM.callGetInfluencerList()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    if showBackButton{
+                        Button {
+                            self.presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Image(systemName: "chevron.left")
+                        }.foregroundColor(ThemeColor.primary)
+                    }
                 }
             }
+            
+            //.navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .black, tintColor: UIColor(ThemeColor.primary))
+            
             .sheet(isPresented: $isFilterModalShown) {
                 FilterModal(isPresented: $isFilterModalShown)
             }
-        }//.navigationAppearance(backgroundColor: UIColor(ThemeColor.primary), foregroundColor: .white, tintColor: .white, hideSeparator: true)
+        }
     }
 }
 

@@ -25,6 +25,7 @@ struct CampaignView: View {
         UISegmentedControl.appearance().backgroundColor = .white
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.gray], for: .normal)
+        UINavigationBarAppearance().shadowColor = .clear
     }
     
     var body: some View {
@@ -36,7 +37,7 @@ struct CampaignView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .padding(EdgeInsets(top: 0, leading: 16, bottom: 10, trailing: 16))
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 
                 ScrollView(.vertical){
                     VStack(spacing: 12){
@@ -67,8 +68,9 @@ struct CampaignView: View {
             
             .padding(.top, 10)
             .background(ThemeColor.background.ignoresSafeArea())
-            .navigationBarTitle("My Campaigns")
+            .navigationBarTitle("My Campaigns", displayMode: .large)
             .navigationBarHidden(false)
+            .navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .black, tintColor: UIColor(ThemeColor.primary))
             .toolbar {
                 Button(action: {
                     self.isCreateModalShown = true
@@ -79,12 +81,12 @@ struct CampaignView: View {
                         .foregroundColor(Color.orange1)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 16))
                 })
-            }
+            }  
             .sheet(isPresented: $isCreateModalShown) {
                 CreateCampaign(isPresent: $isCreateModalShown)
             }
+            
         }
-//        .navigate(to: CreateCampaign(), when: $willMoveToTheNextScreen)
     }
 }
 

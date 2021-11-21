@@ -7,12 +7,10 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import Introspect
 
 struct CampaignDetailReportView: View {
     @StateObject var campaignReportVM = CampaignReportBusinessViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var uiTabarController: UITabBarController?
     
     
     private func dateFormatter(dateBefore: Date) -> String {
@@ -54,19 +52,19 @@ struct CampaignDetailReportView: View {
             ZStack(alignment: .top){
                 VStack{
                     HStack{
-                        Button(action:{
-                            self.presentationMode.wrappedValue.dismiss()
-                        }){
-                            Image(systemName: "chevron.left")
-                                .resizable()
-                                .foregroundColor(.white)
-                                .scaledToFit()
-                        }.frame(width: 24, height: 24, alignment: .center)
-                        
-                        Spacer()
+//                        Button(action:{
+//                            self.presentationMode.wrappedValue.dismiss()
+//                        }){
+//                            Image(systemName: "chevron.left")
+//                                .resizable()
+//                                .foregroundColor(.white)
+//                                .scaledToFit()
+//                        }.frame(width: 24, height: 24, alignment: .center)
+//
+//                        Spacer()
                         
                     }.padding(.horizontal, 16)
-                        .padding(.top, 48)
+                        .padding(.top, 72)
                         .padding(.bottom, 140)
                     
                     VStack{
@@ -118,13 +116,7 @@ struct CampaignDetailReportView: View {
                     
                 }.padding(.top, 150)
             }
-            .introspectTabBarController { (UITabBarController) in
-                                    UITabBarController.tabBar.isHidden = true
-                                    uiTabarController = UITabBarController
-                                }.onDisappear{
-                                    uiTabarController?.tabBar.isHidden = false
-                                }
-        }.navigationBarHidden(true)
+        }.navigationBarHidden(false)
             .onAppear(perform: {
                 campaignReportVM.callGetCampaignReports(campaign_id: campaignID)
             })

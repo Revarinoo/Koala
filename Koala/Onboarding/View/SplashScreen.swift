@@ -13,7 +13,7 @@ struct SplashScreen: View {
     @State var toInfluencerPage: Bool = false
     
     var body: some View {
-        NavigationView {
+        //NavigationView {
             ZStack {
                 Image("splashScreen")
                     .resizable()
@@ -36,10 +36,10 @@ struct SplashScreen: View {
                         .foregroundColor(.white)
                         .padding(.bottom, 70)
                     
-                    NavigationLink(
-                        destination: OnboardingView(),
-                        isActive: $toBusinessPage,
-                        label: {
+//                    NavigationLink(
+//                        destination: OnboardingView(),
+//                        isActive: $toBusinessPage,
+//                        label: {
                             Button {
                                 toBusinessPage.toggle()
                             } label: {
@@ -52,13 +52,13 @@ struct SplashScreen: View {
                             .background(ThemeColor.primary)
                             .cornerRadius(15)
                             .padding(.bottom, 8)
-                        })
+//                        })
                     
                     
-                    NavigationLink(
-                        destination: UnderMaintenanceView(),
-                        isActive: $toInfluencerPage,
-                        label: {
+//                    NavigationLink(
+//                        destination: UnderMaintenanceView(),
+//                        isActive: $toInfluencerPage,
+//                        label: {
                             Button {
                                 toInfluencerPage.toggle()
                             } label: {
@@ -74,12 +74,14 @@ struct SplashScreen: View {
                                     .stroke(.white, lineWidth: 1)
                             )
                             .padding(.bottom, 30)
-                        })
+                     //   })
                 }
                 .padding(.horizontal, 16)
             }
             .navigationBarHidden(true)
-        }
+            .navigate(to: OnboardingView(), when: $toBusinessPage).navigationBarHidden(true)
+            .navigate(to: UnderMaintenanceView(), when: $toInfluencerPage).navigationBarHidden(true)
+        //}
     }
 }
 

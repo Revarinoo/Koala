@@ -177,7 +177,7 @@ struct CreateCampaign: View {
             self.dismissKeyboard()
         }
         .preferredColorScheme(.light)
-        .navigationAppearance(backgroundColor: .white, foregroundColor: .black)
+        .navigationAppearance(backgroundColor: .white, foregroundColor: .black, hideSeparator: true)
         .navigate(to: CampaignView().onAppear(perform: {
             self.presentationMode.wrappedValue.dismiss()
         }), when: $createCampaignVM.isFinishedUploading)

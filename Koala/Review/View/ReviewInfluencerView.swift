@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import Introspect
 
 struct ReviewInfluencerView: View {
     
@@ -16,7 +15,6 @@ struct ReviewInfluencerView: View {
     var orderId: Int
     
     @ObservedObject var reviewVM = ReviewPageViewModel()
-    @State var uiTabarController: UITabBarController?
     @State var submitButtonPressed: Bool = false
     
     var body: some View {
@@ -83,12 +81,6 @@ struct ReviewInfluencerView: View {
                     Alert(title: reviewVM.reviewModel.isPresentingErrorAlert ? Text("Alert") : Text("Success"), message: reviewVM.reviewModel.isPresentingErrorAlert ? Text(reviewVM.reviewModel.errorMessage) : Text("Review already recorded, Thank you"), dismissButton: .cancel(Text("Ok")))
                 })
                 .padding(EdgeInsets(top: 48, leading: 16, bottom: -24, trailing: 16))
-            }
-            .introspectTabBarController { (UITabBarController) in
-                UITabBarController.tabBar.isHidden = true
-                uiTabarController = UITabBarController
-            }.onDisappear{
-                uiTabarController?.tabBar.isHidden = false
             }
         }
         .onTapGesture {

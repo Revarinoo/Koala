@@ -155,9 +155,20 @@ struct InfluencerDetailView: View {
             .onAppear(perform: {
                 influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
                 campaignList.callGetCampaigns()
+                let coloredAppearance = UINavigationBarAppearance()
+                coloredAppearance.configureWithTransparentBackground()
+                coloredAppearance.backgroundColor = UIColor(ThemeColor.primary)
+                coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor(.black)]
+                coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(.black)]
+
+                UINavigationBar.appearance().standardAppearance = coloredAppearance
+                UINavigationBar.appearance().compactAppearance = coloredAppearance
+                UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+                UINavigationBar.appearance().tintColor = UIColor(.white)
             })
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarHidden(false)
+            .navigationBarHidden(false).accentColor(.white)
+            //.navigationBarColor(backgroundColor: UIColor(ThemeColor.primary), titleColor: .black, tintColor: .white)
 
         //}
     }
@@ -179,4 +190,5 @@ struct OrderButton: View {
             .shadow(radius: 4)
     }
 }
+
 

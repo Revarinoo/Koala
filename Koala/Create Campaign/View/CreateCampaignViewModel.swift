@@ -99,7 +99,7 @@ class CreateCampaignViewModel : ObservableObject {
                 }
                 
             case .failure(let encodingError):
-                print("failure")
+                print("failure!!!!")
                 print(encodingError)
             }
         }

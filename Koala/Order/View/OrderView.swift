@@ -15,12 +15,11 @@ struct OrderView: View {
     var pendingOrder : [MyOrders] = []
     
     init(){
-        
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ThemeColor.primary)
         UISegmentedControl.appearance().backgroundColor = UIColor(ThemeColor.background)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
-        UINavigationBar.appearance().backgroundColor = UIColor(ThemeColor.background)
+        UINavigationBarAppearance().shadowColor = .clear
     }
     var body: some View {
         NavigationView {
@@ -36,11 +35,12 @@ struct OrderView: View {
                 
                 
             }
+            .padding(.top, 10)
             .navigationBarTitle("My Order", displayMode: .large)
-            //.navigationBarHidden(true)
-            .padding(.top, 40)
+            .navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .black, tintColor: UIColor(ThemeColor.primary))
             .background(ThemeColor.background.ignoresSafeArea())
         }
+        
         .onAppear {
             orderVM.callData()
         }

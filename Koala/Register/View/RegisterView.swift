@@ -27,13 +27,13 @@ struct RegisterView: View {
                         .foregroundColor(.white)
                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 8, trailing: 0))
                 })
-                
+
                 Text("Create Account")
                     .font(Font.custom(ThemeFont.poppinsSemiBold, size: 27))
                     .foregroundColor(.white)
                     .padding(EdgeInsets(top: 0, leading: 28, bottom: 0, trailing: 0))
             }
-            
+//
             VStack {
                 VStack(alignment: .leading) {
                     RegisterBusinessView(registerVM: registerVM)
@@ -97,12 +97,14 @@ struct RegisterView: View {
                         })
                 }
             }
-            .navigationBarHidden(true)
+            .navigationTitle("Create Account")
+            .navigationBarTitleDisplayMode(.large)
+            .navigationBarHidden(false)
             .frame(maxHeight: .infinity, alignment: .center)
             .padding(31)
             .background(Color.white.ignoresSafeArea(edges: .bottom))
             .cornerRadius(15)
-            .padding(.top, 88)
+            //.padding(.top, 88)
             .onTapGesture{
                 self.dismissKeyboard()
             }

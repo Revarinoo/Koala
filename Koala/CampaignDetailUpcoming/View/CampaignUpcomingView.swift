@@ -7,13 +7,11 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import Introspect
 
 struct CampaignUpcomingView: View {
     @StateObject var campaignVM = CampaignUpcomingViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var id: Int = 1
-    @State var uiTabarController: UITabBarController?
     
     var body: some View {
         ScrollView (.vertical, showsIndicators: false) {
@@ -42,34 +40,28 @@ struct CampaignUpcomingView: View {
                     
                 }.padding(.top, 157)
             }
-            
-            .introspectTabBarController { (UITabBarController) in
-                UITabBarController.tabBar.isHidden = true
-                uiTabarController = UITabBarController
-            }.onDisappear{
-                uiTabarController?.tabBar.isHidden = false
-            }
         }
         .onAppear {
             campaignVM.getUpcomingDetail(id: self.id)
         }
         .background(ThemeColor.primary.ignoresSafeArea())
         .frame(height: UIScreen.main.bounds.height + 40)
-        .navigationBarHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(false)
     }
     
     var btnBack: some View {
         HStack{
-            Button(action:{
-                self.presentationMode.wrappedValue.dismiss()
-            }){
-                Image(systemName: "chevron.left")
-                    .resizable()
-                    .foregroundColor(.white)
-                    .scaledToFit()
-            }.frame(width: 24, height: 24, alignment: .center)
-
-            Spacer()
+//            Button(action:{
+//                self.presentationMode.wrappedValue.dismiss()
+//            }){
+//                Image(systemName: "chevron.left")
+//                    .resizable()
+//                    .foregroundColor(.white)
+//                    .scaledToFit()
+//            }.frame(width: 24, height: 24, alignment: .center)
+//
+//            Spacer()
 
         }
         .padding(EdgeInsets(top: 80, leading: 24, bottom: 153, trailing: 0))

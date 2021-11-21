@@ -16,6 +16,16 @@ struct CampaignListView: View {
     
     let influencerID: Int
     
+    init(influencerID : Int){
+        self.influencerID = influencerID
+        UINavigationBarAppearance().backgroundColor = UIColor(ThemeColor.background)
+        UINavigationBarAppearance().shadowColor = .clear
+        UINavigationBar.appearance().tintColor = UIColor(ThemeColor.primary)
+        UINavigationBarAppearance().titleTextAttributes = [.foregroundColor: UIColor(ThemeColor.primary)]
+        UINavigationBarAppearance().largeTitleTextAttributes = [.foregroundColor: UIColor(ThemeColor.primary)]
+        
+    }
+    
     var body: some View {
         //NavigationView{
             ZStack(alignment: .topLeading) {
@@ -34,6 +44,17 @@ struct CampaignListView: View {
             }
             .navigationBarTitle("Campaign List", displayMode: .inline)
             .navigationBarHidden(false)
+//            .toolbar {
+//                Button(action: {
+//                    self.presentationMode.wrappedValue.dismiss()
+//                    //print("add new")
+//                }, label: {
+//                    Image(systemName: "chevron.left")
+//                        .foregroundColor(ThemeColor.primary)
+//                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 16))
+//                })
+//            }
+            .navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .black, tintColor: UIColor(ThemeColor.primary))
             .onAppear() {
                 campaignListVM.callGetCampaigns()
             }

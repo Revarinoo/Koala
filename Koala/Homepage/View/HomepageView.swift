@@ -57,10 +57,11 @@ struct HomepageView: View {
             .onAppear(perform: {
                 userProfile.callData()
                 recomenndationList.callGetInfluencerList(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? [""])
+                
             })
             .padding(.top, 25)
             .background(ThemeColor.background.ignoresSafeArea())
-            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarTitle("Discover", displayMode: .inline)
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
             .onTapGesture {
