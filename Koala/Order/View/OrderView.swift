@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Introspect
 
 struct OrderView: View {
     @State private var orderTypeSelected : OrderStatus = .pending
@@ -26,13 +25,6 @@ struct OrderView: View {
     var body: some View {
         NavigationView {
             VStack{
-                HStack {
-                    Text("My Orders")
-                        .font(Font.custom(ThemeFont.poppinsSemiBold, size: 27))
-                        .foregroundColor(.black)
-                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
-                    Spacer()
-                }
                 Picker("What is your favorite color?", selection: $orderTypeSelected) {
                     ForEach (OrderStatus.allCases, id: \.self){
                         Text($0.rawValue)                    }
@@ -44,13 +36,10 @@ struct OrderView: View {
                 
                 
             }
-            .navigationBarTitle("", displayMode: .inline)
-            .navigationBarHidden(true)
+            .navigationBarTitle("My Order", displayMode: .large)
+            //.navigationBarHidden(true)
             .padding(.top, 40)
             .background(ThemeColor.background.ignoresSafeArea())
-        }.introspectTabBarController { (UITabBarController) in
-            UITabBarController.tabBar.isHidden = false
-            uiTabarController = UITabBarController
         }
         .onAppear {
             orderVM.callData()

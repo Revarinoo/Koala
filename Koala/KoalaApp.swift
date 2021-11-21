@@ -23,6 +23,7 @@ struct KoalaApp: App {
             else {
                 SplashScreen().environment(\.colorScheme, .light)
             }
+           // InfluencerListView()
         }
     }
 }

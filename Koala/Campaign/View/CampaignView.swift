@@ -16,6 +16,10 @@ struct CampaignView: View {
     var campaignTypes = ["Upcoming", "Completed"]
     @State var willMoveToTheNextScreen = false
     
+    @State var isCreateModalShown = false
+    
+    
+    
     init(){
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "primary")
         UISegmentedControl.appearance().backgroundColor = .white
@@ -26,31 +30,13 @@ struct CampaignView: View {
     var body: some View {
         NavigationView {
             VStack {
-                VStack(alignment: .trailing) {
-                    Button(action: {
-                        willMoveToTheNextScreen = true
-                        //print("add new")
-                    }, label: {
-                        Image(systemName: "plus")
-                            .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
-                            .foregroundColor(Color.orange1)
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 18))
-                    })
-                    HStack {
-                        Text("My Campaigns")
-                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 27))
-                            .foregroundColor(.black)
-                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
-                        Spacer()
-                    }
-                }
                 Picker("Campaign Type?", selection: $campaignType) {
                     ForEach(campaignTypes, id: \.self) {
                         Text($0)
                     }
                 }
                 .pickerStyle(.segmented)
-                .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 10, trailing: 16))
                 
                 ScrollView(.vertical){
                     VStack(spacing: 12){
@@ -79,14 +65,26 @@ struct CampaignView: View {
                 campaignList.refresh()
             })
             
-            .ignoresSafeArea()
             .padding(.top, 10)
             .background(ThemeColor.background.ignoresSafeArea())
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
+            .navigationBarTitle("My Campaigns")
+            .navigationBarHidden(false)
+            .toolbar {
+                Button(action: {
+                    self.isCreateModalShown = true
+                    //print("add new")
+                }, label: {
+                    Image(systemName: "plus")
+                        .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
+                        .foregroundColor(Color.orange1)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 16))
+                })
+            }
+            .sheet(isPresented: $isCreateModalShown) {
+                CreateCampaign(isPresent: $isCreateModalShown)
+            }
         }
-        .navigate(to: CreateCampaign(), when: $willMoveToTheNextScreen)
+//        .navigate(to: CreateCampaign(), when: $willMoveToTheNextScreen)
     }
 }
 

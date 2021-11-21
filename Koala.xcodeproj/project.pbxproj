@@ -126,6 +126,7 @@
 		D2131CB12729AC7D006ACDC2 /* MyOrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CB02729AC7D006ACDC2 /* MyOrderService.swift */; };
 		D2131CB32729BE1D006ACDC2 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CB22729BE1D006ACDC2 /* OrderModel.swift */; };
 		D21476242723F4B2009985BD /* RecommendationInfluencerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21476232723F4B2009985BD /* RecommendationInfluencerModel.swift */; };
+		D23703B627498725000D4B2C /* NavigationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23703B527498725000D4B2C /* NavigationModifier.swift */; };
 		D23FB800273C180A0099AC01 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23FB7FF273C180A0099AC01 /* DismissKeyboard.swift */; };
 		D23FB802273C37B60099AC01 /* DateCalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23FB801273C37B60099AC01 /* DateCalendarExtension.swift */; };
 		D246DBF62734BA8A00DE680A /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D246DBF52734BA8A00DE680A /* TextArea.swift */; };
@@ -301,6 +302,7 @@
 		D2131CB02729AC7D006ACDC2 /* MyOrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderService.swift; sourceTree = "<group>"; };
 		D2131CB22729BE1D006ACDC2 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		D21476232723F4B2009985BD /* RecommendationInfluencerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationInfluencerModel.swift; sourceTree = "<group>"; };
+		D23703B527498725000D4B2C /* NavigationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModifier.swift; sourceTree = "<group>"; };
 		D23FB7FF273C180A0099AC01 /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
 		D23FB801273C37B60099AC01 /* DateCalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalendarExtension.swift; sourceTree = "<group>"; };
 		D246DBF52734BA8A00DE680A /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
@@ -586,6 +588,7 @@
 				D23FB7FF273C180A0099AC01 /* DismissKeyboard.swift */,
 				D23FB801273C37B60099AC01 /* DateCalendarExtension.swift */,
 				2F8DAD7C2741D0C100DE643F /* StringExtension.swift */,
+				D23703B527498725000D4B2C /* NavigationModifier.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1414,6 +1417,7 @@
 				8451B832272A553C0061D389 /* CampaignModel.swift in Sources */,
 				2FACD84B272144D700E9F578 /* PriceRange.swift in Sources */,
 				2FA40E57271DF44E0095A812 /* ColorExtension.swift in Sources */,
+				D23703B627498725000D4B2C /* NavigationModifier.swift in Sources */,
 				8451B83D272A55570061D389 /* CampaignListView.swift in Sources */,
 				2FACD8442721137F00E9F578 /* FilterModal.swift in Sources */,
 				2F95BCD3273A2EDD00F78F83 /* Path+QuadCurve.swift in Sources */,

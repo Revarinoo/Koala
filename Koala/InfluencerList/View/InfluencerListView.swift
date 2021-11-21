@@ -26,24 +26,24 @@ struct InfluencerListView: View {
                 
                 VStack(alignment: .leading) {
                     
-                    HStack {
-                        if showBackButton{
-                            Button(action: {
-                                self.presentationMode.wrappedValue.dismiss()
-                            }, label: {
-                                Image(systemName: "chevron.left")
-                                    .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
-                                    .foregroundColor(ThemeColor.primary)
-                                    .cornerRadius(10)
-                            })
-                        }
-                        Spacer()
-                        Text("Influencer List")
-                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 17))
-                            .padding(.trailing)
-                        Spacer()
-                    }
-                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 8, trailing: 0))
+//                    HStack {
+//                        if showBackButton{
+//                            Button(action: {
+//                                self.presentationMode.wrappedValue.dismiss()
+//                            }, label: {
+//                                Image(systemName: "chevron.left")
+//                                    .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
+//                                    .foregroundColor(ThemeColor.primary)
+//                                    .cornerRadius(10)
+//                            })
+//                        }
+//                        Spacer()
+//                        Text("Influencer List")
+//                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 17))
+//                            .padding(.trailing)
+//                        Spacer()
+//                    }
+//                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 8, trailing: 0))
                     
                     SearchBar(text: $searchText)
                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 8, trailing: 10))
@@ -84,7 +84,7 @@ struct InfluencerListView: View {
                     ScrollView {
                         VStack(spacing: 16) {
                             ForEach(influencerListVM.influencersModel.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) }), id:\.id) { influencer in
-                                NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: influencer.id, fromBackButton: showBackButton).navigationBarHidden(true)) : AnyView(LoginView())) {
+                                NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: influencer.id, fromBackButton: showBackButton)) : AnyView(LoginView())) {
                                     InfluencerCardList(photoURL: influencer.photo, categories: influencer.category, name: influencer.name, location: influencer.location, price: influencer.ratePrice, ER: influencer.rateEngagement, rating: influencer.rating)
                                         .padding(.horizontal, 10)
                                 }
@@ -100,9 +100,8 @@ struct InfluencerListView: View {
                     uiTabarController?.tabBar.isHidden = false
                 }
             }
-            .navigationBarTitle("", displayMode: .inline)
-            .accentColor(.white)
-            .navigationBarHidden(true)
+            .navigationBarTitle("Influencer List", displayMode: .inline)
+            .navigationBarHidden(false)
             .onAppear() {
                 if categorySelected != "" {
                     influencerListVM.callGetInfluencerByCategory(categorySelected)
@@ -113,7 +112,7 @@ struct InfluencerListView: View {
             .sheet(isPresented: $isFilterModalShown) {
                 FilterModal(isPresented: $isFilterModalShown)
             }
-        }
+        }//.navigationAppearance(backgroundColor: UIColor(ThemeColor.primary), foregroundColor: .white, tintColor: .white, hideSeparator: true)
     }
 }
 
