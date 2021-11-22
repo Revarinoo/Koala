@@ -20,14 +20,18 @@ struct CampaignView: View {
     
     
     
-    init(){
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "primary")
-        UISegmentedControl.appearance().backgroundColor = .white
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.gray], for: .normal)
-        UINavigationBarAppearance().shadowColor = .clear
-    }
-    
+//    init(){
+//        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "primary")
+//        UISegmentedControl.appearance().backgroundColor = .white
+//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.gray], for: .normal)
+//        UINavigationBarAppearance().shadowColor = .clear
+//        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.red]
+//
+//                //Use this if NavigationBarTitle is with displayMode = .inline
+//                UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.red]
+//    }
+//    
     var body: some View {
         NavigationView {
             VStack {
@@ -70,11 +74,10 @@ struct CampaignView: View {
             .background(ThemeColor.background.ignoresSafeArea())
             .navigationBarTitle("My Campaigns", displayMode: .large)
             .navigationBarHidden(false)
-            .navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .black, tintColor: UIColor(ThemeColor.primary))
+            //.navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .white, tintColor: UIColor(ThemeColor.primary))
             .toolbar {
                 Button(action: {
                     self.isCreateModalShown = true
-                    //print("add new")
                 }, label: {
                     Image(systemName: "plus")
                         .font(Font.custom(ThemeFont.poppinsMedium, size: 20))

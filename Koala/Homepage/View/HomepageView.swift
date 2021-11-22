@@ -12,6 +12,10 @@ struct HomepageView: View {
     @StateObject var userProfile = UserProfileViewModel()
     @State var toRecommendedInfluencerList: Bool = false
     
+    init(){
+        UINavigationBarAppearance().backgroundColor = UIColor(ThemeColor.background)
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -64,6 +68,7 @@ struct HomepageView: View {
             .navigationBarTitle("Discover", displayMode: .inline)
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
+            .navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .black, tintColor: UIColor(ThemeColor.primary))
             .onTapGesture {
                 self.dismissKeyboard()
             }

@@ -33,26 +33,6 @@ struct InfluencerDetailView: View {
                 ZStack(alignment: .top){
                     VStack{
                         HStack{
-//                            Button(action:{
-//                                self.presentationMode.wrappedValue.dismiss()
-//                            }){
-//                                Image(systemName: "chevron.left")
-//                                    .resizable()
-//                                    .foregroundColor(.white)
-//                                    .scaledToFit()
-//                            }.frame(width: 24, height: 24, alignment: .center)
-//
-//                            Spacer()
-//
-//                            Button(action:{
-//                                self.isFavorite.toggle()
-//                            }){
-//                                Image(systemName: self.isFavorite == true ? "heart.fill" : "heart")
-//                                    .resizable()
-//                                    .foregroundColor(.white)
-//                                    .scaledToFit()
-//
-//                            }.frame(width: 24, height: 24, alignment: .center)
                         }.padding(.horizontal, 16)
                             .padding(.top, 72)
                             .padding(.bottom, 140)
@@ -155,20 +135,10 @@ struct InfluencerDetailView: View {
             .onAppear(perform: {
                 influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
                 campaignList.callGetCampaigns()
-                let coloredAppearance = UINavigationBarAppearance()
-                coloredAppearance.configureWithTransparentBackground()
-                coloredAppearance.backgroundColor = UIColor(ThemeColor.primary)
-                coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor(.black)]
-                coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(.black)]
-
-                UINavigationBar.appearance().standardAppearance = coloredAppearance
-                UINavigationBar.appearance().compactAppearance = coloredAppearance
-                UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
-                UINavigationBar.appearance().tintColor = UIColor(.white)
+                    //UINavigationBarAppearance().backgroundColor = UIColor(ThemeColor.primary)
             })
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(false).accentColor(.white)
-            //.navigationBarColor(backgroundColor: UIColor(ThemeColor.primary), titleColor: .black, tintColor: .white)
 
         //}
     }

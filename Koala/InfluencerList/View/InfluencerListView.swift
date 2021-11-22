@@ -121,7 +121,7 @@ struct InfluencerListView: View {
                 }
             }
             
-            //.navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .black, tintColor: UIColor(ThemeColor.primary))
+            .navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .black, tintColor: UIColor(ThemeColor.primary))
             
             .sheet(isPresented: $isFilterModalShown) {
                 FilterModal(isPresented: $isFilterModalShown)

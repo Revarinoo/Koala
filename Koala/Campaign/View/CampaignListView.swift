@@ -18,11 +18,14 @@ struct CampaignListView: View {
     
     init(influencerID : Int){
         self.influencerID = influencerID
-        UINavigationBarAppearance().backgroundColor = UIColor(ThemeColor.background)
-        UINavigationBarAppearance().shadowColor = .clear
-        UINavigationBar.appearance().tintColor = UIColor(ThemeColor.primary)
-        UINavigationBarAppearance().titleTextAttributes = [.foregroundColor: UIColor(ThemeColor.primary)]
-        UINavigationBarAppearance().largeTitleTextAttributes = [.foregroundColor: UIColor(ThemeColor.primary)]
+//        UINavigationBarAppearance().backgroundColor = UIColor(ThemeColor.background)
+//        UINavigationBarAppearance().shadowColor = .clear
+//        UINavigationBar.appearance().tintColor = UIColor(ThemeColor.primary)
+//        UINavigationBarAppearance().titleTextAttributes = [.foregroundColor: UIColor(ThemeColor.primary)]
+//        UINavigationBarAppearance().largeTitleTextAttributes = [.foregroundColor: UIColor(ThemeColor.primary)]
+        UINavigationBar.appearance().barTintColor = .clear
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+
         
     }
     
@@ -54,7 +57,7 @@ struct CampaignListView: View {
 //                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 16))
 //                })
 //            }
-            .navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .black, tintColor: UIColor(ThemeColor.primary))
+            //.navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .black, tintColor: UIColor(ThemeColor.primary))
             .onAppear() {
                 campaignListVM.callGetCampaigns()
             }
