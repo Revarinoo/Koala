@@ -117,6 +117,7 @@
 		8475D65327323EF10021E87A /* CampaignReportBusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475D65227323EF10021E87A /* CampaignReportBusinessModel.swift */; };
 		84972DA22726711D0097D2D2 /* ReviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84972DA12726711D0097D2D2 /* ReviewCard.swift */; };
 		84CDC3D22730EDAB0012304A /* ResultInfluencerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3D12730EDAA0012304A /* ResultInfluencerCard.swift */; };
+		84DA5AA1274AC68300A2A349 /* ChatListChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DA5AA0274AC68300A2A349 /* ChatListChildView.swift */; };
 		D201AF8A273C064700FB0DFA /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = D201AF89273C064700FB0DFA /* KeyboardGuardian.swift */; };
 		D20B099E2737AF62007B1636 /* CreateCampaignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B099D2737AF62007B1636 /* CreateCampaignService.swift */; };
 		D20B09A027381C42007B1636 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B099F27381C42007B1636 /* ImagePicker.swift */; };
@@ -300,6 +301,7 @@
 		8475D65227323EF10021E87A /* CampaignReportBusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignReportBusinessModel.swift; sourceTree = "<group>"; };
 		84972DA12726711D0097D2D2 /* ReviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReviewCard.swift; path = View/ChildView/ReviewCard.swift; sourceTree = SOURCE_ROOT; };
 		84CDC3D12730EDAA0012304A /* ResultInfluencerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultInfluencerCard.swift; sourceTree = "<group>"; };
+		84DA5AA0274AC68300A2A349 /* ChatListChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListChildView.swift; sourceTree = "<group>"; };
 		D201AF89273C064700FB0DFA /* KeyboardGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
 		D20B099D2737AF62007B1636 /* CreateCampaignService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateCampaignService.swift; path = "Koala/Create Campaign/View/CreateCampaignService.swift"; sourceTree = SOURCE_ROOT; };
 		D20B099F27381C42007B1636 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -1313,6 +1315,7 @@
 			isa = PBXGroup;
 			children = (
 				F7BD4CBD2747F9960035E12E /* ChatList.swift */,
+				84DA5AA0274AC68300A2A349 /* ChatListChildView.swift */,
 				F7BD4CC1274803AD0035E12E /* PersonalChat.swift */,
 			);
 			path = View;
@@ -1451,6 +1454,7 @@
 				2FCB0B242724FE5E0017C9D6 /* InstaAccModel.swift in Sources */,
 				8475D64F27323C130021E87A /* CampaignReportBusinessService.swift in Sources */,
 				8451B83A272A55570061D389 /* CampaignOrderCard.swift in Sources */,
+				84DA5AA1274AC68300A2A349 /* ChatListChildView.swift in Sources */,
 				F761740A273247A900019B79 /* CampaignUpcomingView.swift in Sources */,
 				D28D625A27205B6000BE7345 /* ProfileButton.swift in Sources */,
 				D2577BCA271F244100E7AC5D /* RecommendationInfluencerCard.swift in Sources */,
@@ -1724,7 +1728,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Koala/Preview Content\"";
-				DEVELOPMENT_TEAM = PKF8ACHM24;
+				DEVELOPMENT_TEAM = H9X3B7ZFUK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Koala/Info.plist;
@@ -1757,7 +1761,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Koala/Preview Content\"";
-				DEVELOPMENT_TEAM = PKF8ACHM24;
+				DEVELOPMENT_TEAM = H9X3B7ZFUK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Koala/Info.plist;

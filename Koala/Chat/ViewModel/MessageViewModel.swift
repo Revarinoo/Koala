@@ -10,9 +10,11 @@ import Firebase
 import SwiftUI
 
 class MessageViewModel: ObservableObject {
+    static let shared = MessageViewModel()
     @Published var messages: [Message] = []
     private let db = Firestore.firestore()
     @State var userVM = UserProfileViewModel.shared
+    
     
     func sendMessage(content: String, docId: String) {
         db.collection("chatrooms").document(docId).collection("messages").addDocument(data: [
@@ -28,13 +30,39 @@ class MessageViewModel: ObservableObject {
                 return
             }
             
-            self.messages = documents.map({ docSnapShot -> Message in
-                let data = docSnapShot.data()
-                let docId = docSnapShot.documentID
-                let content = data["content"] as? String ?? ""
-                let sender = data["sender"] as? Int ?? 0
-                return Message(id: docId, content: content, sender: sender)
-            })
+            DispatchQueue.main.async {
+                self.messages = documents.map({ docSnapShot -> Message in
+                    let data = docSnapShot.data()
+                    let docId = docSnapShot.documentID
+                    let content = data["content"] as? String ?? ""
+                    let sender = data["sender"] as? Int ?? 0
+                    let sentAt = (data["sentAt"] as? Timestamp)?.dateValue() ?? Date()
+                    print("hello")
+                    return Message(id: docId, content: content, sender: sender, sentAt: sentAt)
+                })
+            }
         }
+    }
+    
+    func getSectionMessages (for messages: [Message]) -> [[Message]] {
+        var res = [[Message]]()
+        var tmp = [Message]()
+        
+        for message in messages {
+            if let firstMessage = tmp.first {
+                let daysBetween = firstMessage.sentAt.daysBetween(date: message.sentAt)
+                if daysBetween >= 1 {
+                    res.append(tmp)
+                    tmp.removeAll()
+                    tmp.append(message)
+                } else {
+                    tmp.append(message)
+                }
+            } else {
+                tmp.append(message)
+            }
+        }
+        res.append(tmp)
+        return res
     }
 }

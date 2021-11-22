@@ -16,6 +16,7 @@ struct Message: Codable, Identifiable {
     var id: String?
     var content: String
     var sender: Int
+    var sentAt: Date
 }
 
 struct ProfileChat : Identifiable {

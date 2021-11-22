@@ -14,20 +14,22 @@ struct ChatList: View {
     var body: some View {
         NavigationView {
             VStack {
-                ForEach(chatRoomVM.chatData, id: \.id) { data in
-                    NavigationLink(destination: PersonalChat(chatRoom: data.chatRooms)) {
-                        HStack {
-                            WebImage(url: URL(string: data.targetUser.photo))
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 45, height: 45)
-                                .clipShape(Circle())
-                            Text("\(data.targetUser.name)")
+                Divider().background(Color.init(hex: "A7A7A7"))
+                
+                ScrollView (.vertical, showsIndicators: false){
+                    VStack {
+                        ForEach(chatRoomVM.chatData, id: \.id) { data in
+                            NavigationLink(destination: PersonalChat(chatRoom: data.chatRooms, personName: data.targetUser.name, photoURL: data.targetUser.photo)) {
+                                ChatListChildView(chatroomId: data.chatRooms.id, photoURL: data.targetUser.photo, name: data.targetUser.name)
+                            }
+                            Divider().background(Color.init(hex: "E4E4E4"))
                         }
                     }
                 }
             }
+            .background(Color.bgColorView)
             .navigationTitle("Chats")
+            
         }
         .onAppear {
             chatRoomVM.fetchData()
