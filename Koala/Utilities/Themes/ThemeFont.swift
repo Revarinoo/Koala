@@ -18,4 +18,5 @@ struct ThemeFont {
     static let poppinsBold = "Poppins-Bold"
     static let poppinsExtraBold = "Poppins-ExtraBold"
     static let poppinsBlack = "Poppins-Black"
+    static let sfProDisplay = "SFProDisplay-Bold"
 }
