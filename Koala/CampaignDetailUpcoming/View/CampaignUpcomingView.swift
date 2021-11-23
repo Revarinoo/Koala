@@ -46,7 +46,7 @@ struct CampaignUpcomingView: View {
                 }
                 VStack{
                     Rectangle().fill(ThemeColor.primary)
-                        .frame(height: 88)//.padding(.top,)
+                        .frame(height: 88).padding(.top,0).ignoresSafeArea(.all)
                     Spacer()
                 }
             }
