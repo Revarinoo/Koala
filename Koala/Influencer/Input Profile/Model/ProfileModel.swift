@@ -1,15 +1,29 @@
 //
-//  SpecialtyViewModel.swift
+//  ProfileModel.swift
 //  Koala
 //
-//  Created by Syahrul Apple Developer BINUS on 22/10/21.
+//  Created by Sholihatul Richas on 23/11/21.
 //
 
 import Foundation
 
-class SpecialtyViewModel: ObservableObject {
+
+
+enum locationProvince: String, CaseIterable, Equatable{
+    case aceh = "Aceh"
+    case bengkulu = "Bengkulu"
+    case banten = "Banten"
+    case bali = "Bali"
+    case yogyakarta = "DI Yogyakarta"
+    case dkijakarta = "DKI Jakarta"
+    case gorontalo = "Gorontalo"
+    case jambi = "Jambi"
+    case jawabarat = "Jawa Barat"
+}
+
+class InfluencerSpecialty: ObservableObject {
     
-    @Published var specialties: [ClickedFilterModel] = [
+    @Published var interest: [ClickedFilterModel] = [
         ClickedFilterModel(name: "Asian", isClicked: false),
         ClickedFilterModel(name: "Coffee", isClicked: false),
         ClickedFilterModel(name: "Dessert", isClicked: false),
@@ -26,10 +40,10 @@ class SpecialtyViewModel: ObservableObject {
     ]
     
     func countSpecialtyClicked() -> Int {
-        return self.specialties.filter({$0.isClicked == true}).count
+        return self.interest.filter({$0.isClicked == true}).count
     }
     
     func getSpecialtyClicked() -> [String] {
-        return self.specialties.filter({$0.isClicked == true}).map { $0.name }
+        return self.interest.filter({$0.isClicked == true}).map { $0.name }
     }
 }

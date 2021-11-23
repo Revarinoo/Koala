@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SpecialtySelector: View {
     
-    @ObservedObject var specialtyVM = SpecialtyViewModel()
-    @State var selectedSpecialty: [String] = [""]
+    @StateObject var specialtyVM = SpecialtyViewModel()
+    @Binding var specialties: [String]
     var phoneWidth = UIScreen.main.bounds.width
     let columns = [
         GridItem(.flexible(minimum: 115, maximum: 130)),
@@ -32,7 +32,7 @@ struct SpecialtySelector: View {
                         if specialtyVM.countSpecialtyClicked() < 3 || specialtyVM.specialties[index].isClicked == true {
                             specialtyVM.specialties[index].isClicked.toggle()
                         }
-                        self.selectedSpecialty = specialtyVM.getSpecialtyClicked()
+                        self.specialties = specialtyVM.getSpecialtyClicked()
                     }, label: {
                         Text(specialtyVM.specialties[index].name)
                             .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
@@ -50,11 +50,5 @@ struct SpecialtySelector: View {
             }
         }
         .padding(.horizontal)
-    }
-}
-
-struct SpecialtySelector_Previews: PreviewProvider {
-    static var previews: some View {
-        SpecialtySelector().previewLayout(.sizeThatFits)
     }
 }

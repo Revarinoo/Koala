@@ -10,6 +10,7 @@ struct HomepageView: View {
     @AppStorage("JWT", store: .standard) var token = ""
     @StateObject var recomenndationList = RecommendationViewModel()
     @StateObject var userProfile = UserProfileViewModel()
+    @State var influencerDetailViewModel = InfluencerDetailViewModel()
     @State var toRecommendedInfluencerList: Bool = false
     @State var showDetails = false
     @State var influencerID = 0
@@ -56,6 +57,7 @@ struct HomepageView: View {
                                         Button(action:{
                                             self.influencerID = i.id
                                             showDetails = true
+                                            influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
                                         }){
                                             RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
                                         }
@@ -64,8 +66,6 @@ struct HomepageView: View {
                                                                                 RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
                                                                             }
                                     }
-                                    
-//
                                 }
                             }
                         }
@@ -83,11 +83,11 @@ struct HomepageView: View {
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
             .navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))
-            .onTapGesture {
-                self.dismissKeyboard()
-            }
+//            .onTapGesture {
+//                self.dismissKeyboard()
+//            }
             .fullScreenCover(isPresented: $showDetails){
-                InfluencerDetailView(isPresent: $showDetails, previousView: "Discover", influencerID: influencerID, fromBackButton: false)
+                InfluencerDetailView(influencerDetailViewModel: $influencerDetailViewModel, isPresent: $showDetails, previousView: "Discover", influencerID: $influencerID, fromBackButton: false)
             }
         }
     }

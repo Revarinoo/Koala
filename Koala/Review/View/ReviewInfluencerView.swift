@@ -101,6 +101,7 @@ struct ReviewInfluencerView: View {
                     }.foregroundColor(ThemeColor.primary)
                 }
             }
+            .keyboardAware()
         }
         
         .onTapGesture {

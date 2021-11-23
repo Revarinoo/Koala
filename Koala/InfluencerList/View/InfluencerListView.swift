@@ -11,11 +11,16 @@ struct InfluencerListView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @AppStorage("JWT", store: .standard) var token = ""
+    
+    var showBackButton : Bool
     var categorySelected : String = ""
+    
     @StateObject var influencerListVM = InfluencerListViewModel()
+    @StateObject var filtersVM = FilterModalViewModel()
+    @StateObject var specialtyVM = SpecialtyViewModel()
+    @State var influencerDetailViewModel = InfluencerDetailViewModel()
     @State var isFilterModalShown: Bool = false
     @State private var searchText = ""
-    var showBackButton : Bool
     @State var influencerID = 0
     @State var showDetails = false
     
@@ -58,10 +63,23 @@ struct InfluencerListView: View {
                                 .background(ThemeColor.primary)
                                 .cornerRadius(10)
                         })
-                        ScrollView(.horizontal) {
+                        ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 8) {
-                                ForEach([categorySelected], id: \.self) { filter in
-                                    if filter != "" {
+                                if categorySelected != "" {
+                                    Text(categorySelected)
+                                        .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
+                                        .padding(.horizontal, 12)
+                                        .padding(.vertical, 6)
+                                        .foregroundColor(ThemeColor.primary)
+                                        .background(ThemeColor.primaryLight)
+                                        .cornerRadius(10)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .stroke(ThemeColor.primary, lineWidth: 1)
+                                                .frame(maxHeight: 33)
+                                        )
+                                } else {
+                                    ForEach(filtersVM.getFormattedFilters(), id: \.self) { filter in
                                         Text(filter)
                                             .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
                                             .padding(.horizontal, 12)
@@ -81,13 +99,14 @@ struct InfluencerListView: View {
                         }
                     }.padding(EdgeInsets(top: -2, leading: 10, bottom: 8, trailing: 0))
                     
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         VStack(spacing: 16) {
                             ForEach(influencerListVM.influencersModel.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) }), id:\.id) { influencer in
                                 if token != ""{
                                     Button(action:{
                                         self.influencerID = influencer.id
                                         showDetails = true
+                                        influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencer.id)
                                     }){
                                         InfluencerCardList(photoURL: influencer.photo, categories: influencer.category, name: influencer.name, location: influencer.location, price: influencer.ratePrice, ER: influencer.rateEngagement, rating: influencer.rating)
                                             .padding(.horizontal, 10)
@@ -108,16 +127,6 @@ struct InfluencerListView: View {
                     } else {
                         influencerListVM.callGetInfluencerList()
                     }
-//                    let coloredAppearance = UINavigationBarAppearance()
-//                    coloredAppearance.configureWithTransparentBackground()
-//                    coloredAppearance.backgroundColor = UIColor(ThemeColor.background)
-//                    coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor(.black)]
-//                    coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(.black)]
-//
-//                    UINavigationBar.appearance().standardAppearance = coloredAppearance
-//                    UINavigationBar.appearance().compactAppearance = coloredAppearance
-//                    UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
-//                    UINavigationBar.appearance().tintColor = UIColor(ThemeColor.primary)
                 }
             }
             .navigationBarTitle("Influencer List", displayMode: .inline)
@@ -134,13 +143,13 @@ struct InfluencerListView: View {
                 }
             }
             .fullScreenCover(isPresented: $showDetails){
-                InfluencerDetailView(isPresent: $showDetails, previousView: "Influencer List", influencerID: influencerID, fromBackButton: showBackButton)
+                InfluencerDetailView(influencerDetailViewModel: $influencerDetailViewModel, isPresent: $showDetails, previousView: "Influencer List", influencerID: $influencerID, fromBackButton: showBackButton)
             }
             
             .navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))
             
             .sheet(isPresented: $isFilterModalShown) {
-                FilterModal(isPresented: $isFilterModalShown)
+                FilterModal(isPresented: $isFilterModalShown, location: $filtersVM.location, specialties: $filtersVM.specialties, minPrice: $filtersVM.minPrice, maxPrice: $filtersVM.maxPrice, engagementRate: $filtersVM.engagementRate, rating: $filtersVM.rating)
             }
         }
     }
