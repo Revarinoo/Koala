@@ -17,21 +17,11 @@ struct CampaignView: View {
     @State var willMoveToTheNextScreen = false
     
     @State var isCreateModalShown = false
+    @State var showUpcomingDetails = false
+    @State var showCompletedDetails = false
+    @State var upcomingID = 0
+    @State var completedID = 0
     
-    
-    
-//    init(){
-//        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "primary")
-//        UISegmentedControl.appearance().backgroundColor = .white
-//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.gray], for: .normal)
-//        UINavigationBarAppearance().shadowColor = .clear
-//        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.red]
-//
-//                //Use this if NavigationBarTitle is with displayMode = .inline
-//                UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.red]
-//    }
-//    
     var body: some View {
         NavigationView {
             VStack {
@@ -48,16 +38,33 @@ struct CampaignView: View {
                         ForEach(campaignList.campaignModel) { i in
                             if campaignType.contains("Upcoming") {
                                 if i.status != "Completed" {
-                                    NavigationLink(destination: CampaignUpcomingView(id: i.content_id)) {      CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
-                                            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                                    
+                                    Button(action: {
+                                        self.showUpcomingDetails = true
+                                        upcomingID = i.content_id
+                                    }){
+                                        //CampaignUpcomingView(id: i.content_id)) {
+                                        CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
+                                                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                                     }
+                                    
+//                                    NavigationLink(destination: CampaignUpcomingView(id: i.content_id)) {      CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
+//                                            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+//                                    }
                                 }
                             } else {
                                 if i.status.contains("Completed") {
-                                    NavigationLink(destination: CampaignDetailReportView(campaignID: i.content_id)) {
+                                    Button(action: {
+                                        self.showCompletedDetails = true
+                                        completedID = i.content_id
+                                    }){
                                         CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
                                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                                     }
+//                                    NavigationLink(destination: CampaignDetailReportView(campaignID: i.content_id)) {
+//                                        CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
+//                                            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+//                                    }
                                 }
                             }
                         }
@@ -84,7 +91,13 @@ struct CampaignView: View {
                         .foregroundColor(Color.orange1)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 16))
                 })
-            }  
+            }
+            .fullScreenCover(isPresented: $showUpcomingDetails){
+                CampaignUpcomingView(id: upcomingID, isPresent: $showUpcomingDetails)
+            }
+            .fullScreenCover(isPresented: $showCompletedDetails){
+                CampaignDetailReportView(isPresent: $showCompletedDetails, campaignID: completedID)
+            }
             .sheet(isPresented: $isCreateModalShown) {
                 CreateCampaign(isPresent: $isCreateModalShown)
             }

@@ -12,42 +12,59 @@ struct CampaignUpcomingView: View {
     @StateObject var campaignVM = CampaignUpcomingViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var id: Int = 1
+    @Binding var isPresent : Bool
     
     var body: some View {
-        ScrollView (.vertical, showsIndicators: false) {
-            ZStack(alignment: .top) {
-                VStack {
-                    btnBack
-                    
+        NavigationView{
+            ScrollView (.vertical, showsIndicators: false) {
+                ZStack(alignment: .top) {
                     VStack {
-                        CampaingUpcomingFieldView(campaign: campaignVM.campaignModel, campaignDetail: campaignVM.campaignDetailModel)
+                        btnBack
+                        
+                        VStack {
+                            CampaingUpcomingFieldView(campaign: campaignVM.campaignModel, campaignDetail: campaignVM.campaignDetailModel)
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 28, alignment: .leading)
+                            .padding(EdgeInsets(top: 60, leading: 28, bottom: 100, trailing: 0))
+                        .background(Color.white)
+                        .cornerRadius(20, corners: [.topLeft, .topRight])
                     }
-                    .frame(width: UIScreen.main.bounds.width - 28, alignment: .leading)
-                        .padding(EdgeInsets(top: 60, leading: 28, bottom: 100, trailing: 0))
-                    .background(Color.white)
-                    .cornerRadius(20, corners: [.topLeft, .topRight])
+                    
+                    VStack{
+                        
+                        WebImage(url: URL(string: campaignVM.campaignModel.campaign_logo))
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 127, height: 127)
+                            .cornerRadius(20.0)
+                            .overlay(RoundedRectangle(cornerRadius: 20.0)
+                                .stroke(Color.white, lineWidth: 5))
+                        
+                    }.padding(.top, 157)
                 }
-                
-                VStack{
-                    
-                    WebImage(url: URL(string: campaignVM.campaignModel.campaign_logo))
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 127, height: 127)
-                        .cornerRadius(20.0)
-                        .overlay(RoundedRectangle(cornerRadius: 20.0)
-                            .stroke(Color.white, lineWidth: 5))
-                    
-                }.padding(.top, 157)
             }
+            .onAppear {
+                campaignVM.getUpcomingDetail(id: self.id)
+            }
+            .toolbar{
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        self.isPresent = false
+                    }){
+                        HStack{
+                            Image(systemName: "chevron.left")
+                            Text("My Campaigns")
+                        }
+                        
+                    }.foregroundColor(.white)
+                }
+            }
+            .background(ThemeColor.primary.ignoresSafeArea())
+            .frame(height: UIScreen.main.bounds.height + 40)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarHidden(false)
         }
-        .onAppear {
-            campaignVM.getUpcomingDetail(id: self.id)
-        }
-        .background(ThemeColor.primary.ignoresSafeArea())
-        .frame(height: UIScreen.main.bounds.height + 40)
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarHidden(false)
+        
     }
     
     var btnBack: some View {
@@ -70,6 +87,6 @@ struct CampaignUpcomingView: View {
 
 struct CampaignUpcomingView_Previews: PreviewProvider {
     static var previews: some View {
-        CampaignUpcomingView()
+        CampaignUpcomingView(isPresent: .constant(true))
     }
 }
