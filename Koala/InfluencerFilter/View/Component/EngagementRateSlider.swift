@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EngagementRateSlider: View {
     
-    @State var engagementRate: Double = 3
+    @Binding var engagementRate: Double
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -39,11 +39,5 @@ struct EngagementRateSlider: View {
             .padding(.top, -4)
         }
         .padding(.horizontal)
-    }
-}
-
-struct EngagementRateSlider_Previews: PreviewProvider {
-    static var previews: some View {
-        EngagementRateSlider().previewLayout(.sizeThatFits)
     }
 }

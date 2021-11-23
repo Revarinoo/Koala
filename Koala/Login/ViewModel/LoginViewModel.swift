@@ -14,7 +14,7 @@ class LoginViewModel: ObservableObject {
     private let loginService: LoginService = LoginService()
     private let loginValidation = LoginValidation()
     
-    @AppStorage("role", store: .standard) var role = "Influencer"
+    @AppStorage("role", store: .standard) var role = ""
     @AppStorage("JWT", store: .standard) var token = ""
     
     func validateUserInputs() -> Bool {

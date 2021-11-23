@@ -12,6 +12,8 @@ import Firebase
 struct KoalaApp: App {
     @AppStorage("JWT", store: .standard) var token = ""
     @StateObject var tabBarVM = TabBarViewModel.shared
+    @AppStorage("role", store: .standard) var role = ""
+    
     init() {
         FirebaseApp.configure()
         UIWindow.appearance().overrideUserInterfaceStyle = .light
@@ -20,13 +22,16 @@ struct KoalaApp: App {
     var body: some Scene {
         WindowGroup {
             if token != "" {
-                TabBar(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
+               if role == "Business" {
+                    TabBar(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
+               }
+               else {
+                   TabBarInfluencer(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
+               }
             }
             else {
                 SplashScreen().environment(\.colorScheme, .light)
             }
-            
-//            ChatList()
         }
     }
 }

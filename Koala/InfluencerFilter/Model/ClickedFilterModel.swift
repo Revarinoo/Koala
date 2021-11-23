@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SpecialtyModel: Identifiable {
+struct ClickedFilterModel: Identifiable {
     let id = UUID()
     let name: String
     var isClicked: Bool

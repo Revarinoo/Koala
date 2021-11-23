@@ -19,7 +19,7 @@ struct CategoriesCard: View {
         VStack(spacing: 6) {
             NavigationLink(
                 destination:
-                    InfluencerListView(categorySelected: category, showBackButton: true).navigationBarTitle("")
+                    InfluencerListView(showBackButton: true, categorySelected: category).navigationBarTitle("")
                     .navigationBarHidden(true)
                     .navigationBarBackButtonHidden(true),
                 isActive: $gotoInfluencerList,

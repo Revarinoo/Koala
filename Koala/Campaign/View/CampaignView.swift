@@ -16,57 +16,66 @@ struct CampaignView: View {
     var campaignTypes = ["Upcoming", "Completed"]
     @State var willMoveToTheNextScreen = false
     
-    init(){
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "primary")
-        UISegmentedControl.appearance().backgroundColor = .white
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.gray], for: .normal)
-    }
+    @State var isCreateModalShown = false
+    @State var showUpcomingDetails = false
+    @State var showCompletedDetails = false
+    @State var upcomingID = 0
+    @State var completedID = 0
     
     var body: some View {
         NavigationView {
             VStack {
-                VStack(alignment: .trailing) {
-                    Button(action: {
-                        willMoveToTheNextScreen = true
-                        //print("add new")
-                    }, label: {
-                        Image(systemName: "plus")
-                            .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
-                            .foregroundColor(Color.orange1)
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 18))
-                    })
-                    HStack {
-                        Text("My Campaigns")
-                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 27))
-                            .foregroundColor(.black)
-                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
-                        Spacer()
-                    }
-                }
                 Picker("Campaign Type?", selection: $campaignType) {
                     ForEach(campaignTypes, id: \.self) {
                         Text($0)
                     }
                 }
                 .pickerStyle(.segmented)
-                .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 
                 ScrollView(.vertical){
                     VStack(spacing: 12){
                         ForEach(campaignList.campaignModel) { i in
                             if campaignType.contains("Upcoming") {
                                 if i.status != "Completed" {
-                                    NavigationLink(destination: CampaignUpcomingView(id: i.content_id)) {      CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
-                                            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                                    
+                                    Button(action: {
+                                        upcomingID = i.content_id
+                                        DispatchQueue.main.async() {
+                                            // your code here
+                                            upcomingID = i.content_id
+                                            self.showUpcomingDetails = true
+                                            print("IDNYE YE \(upcomingID)")
+                                        }
+                                       
+                                    }){
+                                        //CampaignUpcomingView(id: i.content_id)) {
+                                        CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
+                                                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                                     }
+                                    
+//                                    NavigationLink(destination: CampaignUpcomingView(id: i.content_id)) {      CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
+//                                            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+//                                    }
                                 }
                             } else {
                                 if i.status.contains("Completed") {
-                                    NavigationLink(destination: CampaignDetailReportView(campaignID: i.content_id)) {
+                                    Button(action: {
+                                        
+                                        completedID = i.content_id
+                                        //DispatchQueue.main.async() {
+                                            // your code here
+                                            self.showCompletedDetails = true
+                                        //}
+                                        
+                                    }){
                                         CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
                                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                                     }
+//                                    NavigationLink(destination: CampaignDetailReportView(campaignID: i.content_id)) {
+//                                        CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
+//                                            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+//                                    }
                                 }
                             }
                         }
@@ -79,14 +88,36 @@ struct CampaignView: View {
                 campaignList.refresh()
             })
             
-            .ignoresSafeArea()
             .padding(.top, 10)
             .background(ThemeColor.background.ignoresSafeArea())
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
+            .navigationBarTitle("My Campaigns", displayMode: .large)
+            .navigationBarHidden(false)
+            .navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))
+            .toolbar {
+                Button(action: {
+                    self.isCreateModalShown = true
+                }, label: {
+                    Image(systemName: "plus")
+                        .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
+                        .foregroundColor(Color.orange1)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 16))
+                })
+            }
+            .fullScreenCover(isPresented: $showUpcomingDetails){
+                CampaignUpcomingView(id: $upcomingID, isPresent: $showUpcomingDetails)
+            }.onAppear(){
+                print("IDNYAAA \(upcomingID)")
+            }
+            .fullScreenCover(isPresented: $showCompletedDetails){
+                CampaignDetailReportView(isPresent: $showCompletedDetails, campaignID: $completedID)
+            }.onAppear(){
+                print("IDNYAAA \(completedID)")
+            }
+            .sheet(isPresented: $isCreateModalShown) {
+                CreateCampaign(isPresent: $isCreateModalShown)
+            }
+            
         }
-        .navigate(to: CreateCampaign(), when: $willMoveToTheNextScreen)
     }
 }
 

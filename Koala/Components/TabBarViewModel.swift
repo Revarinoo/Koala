@@ -11,3 +11,7 @@ class TabBarViewModel: ObservableObject {
     static let shared = TabBarViewModel()
     @Published var selectedTab = 0
 }
+class TabBarViewModelNotLoggedIn: ObservableObject {
+    static let shared = TabBarViewModel()
+    @Published var selectedTab = 0
+}
