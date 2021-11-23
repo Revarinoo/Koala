@@ -20,7 +20,7 @@ struct InfluencerDetailView: View {
     @State var isShowingMailView = false
     @Binding var isPresent : Bool
     var previousView : String
-    var influencerID: Int
+    @Binding var influencerID: Int
     var fromBackButton : Bool
     
 //    init(influencerID: Int, fromBackButton: Bool) {
@@ -143,7 +143,7 @@ struct InfluencerDetailView: View {
             .background(ThemeColor.primary.ignoresSafeArea())
             .ignoresSafeArea()
             .onAppear(perform: {
-                influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
+                //influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
                 campaignList.callGetCampaigns()
                     //UINavigationBarAppearance().backgroundColor = UIColor(ThemeColor.primary)
             })

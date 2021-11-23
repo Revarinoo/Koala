@@ -143,7 +143,7 @@ struct InfluencerListView: View {
                 }
             }
             .fullScreenCover(isPresented: $showDetails){
-                InfluencerDetailView(influencerDetailViewModel: $influencerDetailViewModel, isPresent: $showDetails, previousView: "Influencer List", influencerID: influencerID, fromBackButton: showBackButton)
+                InfluencerDetailView(influencerDetailViewModel: $influencerDetailViewModel, isPresent: $showDetails, previousView: "Influencer List", influencerID: $influencerID, fromBackButton: showBackButton)
             }
             
             .navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))
