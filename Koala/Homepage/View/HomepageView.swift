@@ -75,6 +75,7 @@ struct HomepageView: View {
             .onAppear(perform: {
                 userProfile.callData()
                 recomenndationList.callGetInfluencerList(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? [""])
+                print("homepage id ye \(influencerID)")
                 
             })
             .padding(.top, 25)

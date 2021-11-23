@@ -56,9 +56,10 @@ class InfluencerDetailViewModel: ObservableObject {
 
             guard let unwrapped = influencer_profile else {return}
             influencer = InfluencerDetailModel(id: unwrapped.id, influencer_profile: unwrapped, categories: categories, platforms: platforms, products: products, analytic_photos: analytic_photos, projects: projects)
-            DispatchQueue.main.async {
+            //DispatchQueue.main.async {
                 self.influencerModel = influencer
-            }
+                print("idnya influencer \(influencer_id)")
+            //}
         }
     )}
 }

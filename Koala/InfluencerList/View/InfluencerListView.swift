@@ -127,6 +127,7 @@ struct InfluencerListView: View {
                     } else {
                         influencerListVM.callGetInfluencerList()
                     }
+                    print("ID yEeee \(influencerID)")
                 }
             }
             .navigationBarTitle("Influencer List", displayMode: .inline)
