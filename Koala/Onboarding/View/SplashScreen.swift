@@ -11,7 +11,7 @@ struct SplashScreen: View {
     
     @State var toBusinessPage: Bool = false
     @State var toInfluencerPage: Bool = false
-    @AppStorage("role", store: .standard) var role = "Business"
+    @AppStorage("role", store: .standard) var role = ""
     
     var body: some View {
         //NavigationView {
@@ -83,7 +83,7 @@ struct SplashScreen: View {
             }
             .navigationBarHidden(true)
             .navigate(to: OnboardingView(), when: $toBusinessPage).navigationBarHidden(true)
-            .navigate(to: UnderMaintenanceView(), when: $toInfluencerPage).navigationBarHidden(true)
+//            .navigate(to: UnderMaintenanceView(), when: $toInfluencerPage).navigationBarHidden(true)
         //}
     }
 }

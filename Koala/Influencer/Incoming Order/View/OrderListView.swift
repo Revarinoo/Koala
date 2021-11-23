@@ -16,6 +16,7 @@ enum OrderListStatus: String, CaseIterable{
 struct OrderListView: View {
     @StateObject var orderListVM = OrderListViewModel()
     @State private var orderTypeSelected : OrderListStatus = .incoming
+    @StateObject var userProfile = UserProfileViewModel.shared
     
     init(){
         
@@ -70,6 +71,7 @@ struct OrderListView: View {
         }
         .onAppear {
             orderListVM.fetchOrderList()
+            userProfile.callData()
         }
     }
 }

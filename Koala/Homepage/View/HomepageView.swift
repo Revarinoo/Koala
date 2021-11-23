@@ -33,6 +33,12 @@ struct HomepageView: View {
                         Image(systemName: "bell")
                             .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
                     }
+                    
+                    NavigationLink(destination: (token != "") ? AnyView(ChatList.shared) : AnyView(LoginView())){
+                        Image(systemName: "message")
+                            .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
+                    }
+
                 }
                 .padding(.horizontal, 16.0)
                 ScrollView(.vertical, showsIndicators: false){

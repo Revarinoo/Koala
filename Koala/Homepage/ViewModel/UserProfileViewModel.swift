@@ -6,21 +6,23 @@
 //
 
 import Foundation
+import SwiftUI
 
 class UserProfileViewModel: ObservableObject{
-    @Published var user : UserProfileData = UserProfileData(name: "", photo: "")
+    static let shared = UserProfileViewModel()
+    @Published var user : UserProfileData = UserProfileData(id: 1, name: "", photo: "")
     private let userProfileService : UserProfileService = UserProfileService()
     
     func signOut() {
-        user = UserProfileData(name: "", photo: "")
+        user = UserProfileData(id: 1, name: "", photo: "")
         callData()
     }
     
     func callData(){
         userProfileService.getUserProfile(){ response in
-            if let name = response?.name, let photo = response?.photo {
+            if let name = response?.name, let photo = response?.photo, let id = response?.id {
                 DispatchQueue.main.async {
-                    self.user = UserProfileData(name: name, photo: "http://34.124.208.0/Koala-backend/public/storage/images/" + photo)
+                    self.user = UserProfileData(id: id, name: name, photo: "https://koala-influencer.xyz/storage/images/" + photo)
                 }
             }
         }

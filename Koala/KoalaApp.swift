@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct KoalaApp: App {
@@ -14,23 +15,23 @@ struct KoalaApp: App {
     @AppStorage("role", store: .standard) var role = ""
     
     init() {
+        FirebaseApp.configure()
         UIWindow.appearance().overrideUserInterfaceStyle = .light
     }
     
     var body: some Scene {
         WindowGroup {
             if token != "" {
-//                if role == "Business" {
+               if role == "Business" {
                     TabBar(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
-//                }
-//                else {
-//                    TabBarInfluencer(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
-//                }
+               }
+               else {
+                   TabBarInfluencer(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
+               }
             }
             else {
                 SplashScreen().environment(\.colorScheme, .light)
             }
-           // InfluencerListView()
         }
     }
 }

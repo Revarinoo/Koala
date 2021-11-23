@@ -23,9 +23,9 @@ struct LoginView: View {
     @StateObject var userProfile = UserProfileViewModel()
     @State var nextNavigation = false
     @StateObject var tabBarVM = TabBarViewModel.shared
+    @AppStorage("role", store: .standard) var role = ""
     
     var body: some View {
-        //NavigationView{
             ZStack(alignment: .topLeading) {
                 LinearGradient(gradient: Gradient(colors: [.orange2, .orange1, .white]), startPoint: .top, endPoint: .center).ignoresSafeArea(.all)
                 
@@ -64,11 +64,6 @@ struct LoginView: View {
                         SecureInputView("Enter your password", text: $loginVM.loginModel.password)
                         Spacer()
                     }
-                    
-    //                NavigationLink(
-    //                    destination: Text("Login Success").navigationBarBackButtonHidden(true),
-    //                    isActive: $loginVM.loginModel.navigate,
-    //                    label: {
                             Button {
                                 if(loginVM.validateUserInputs()) {
                                     loginVM.login()
@@ -88,7 +83,6 @@ struct LoginView: View {
                             .alert(isPresented: $loginVM.loginModel.isPresentingErrorAlert, content: {
                                 Alert(title: Text("Alert"), message: Text(loginVM.loginModel.errorMessage), dismissButton: .cancel(Text("Ok")))
                             })
-                       // })
                     
                     HStack(alignment: .center, spacing: 4){
                         Text("Not registered yet?")
@@ -116,13 +110,15 @@ struct LoginView: View {
                 .padding(31)
                 .background(Color.white.ignoresSafeArea(edges: .bottom))
                 .cornerRadius(15)
-                //.padding(.top, 88)
-                
                 .fullScreenCover(isPresented: $nextNavigation){
-                    TabBar(selectedTab: $tabBarVM.selectedTab)
+                    if role == "Business" {
+                        TabBar(selectedTab: $tabBarVM.selectedTab)
+                    }
+                    else {
+                        TabBarInfluencer(selectedTab: $tabBarVM.selectedTab)
+                    }
                 }
             }
-        //}
         
         .onTapGesture{
             self.dismissKeyboard()
