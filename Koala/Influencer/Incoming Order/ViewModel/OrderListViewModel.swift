@@ -9,5 +9,7 @@ import Foundation
 
 class OrderListViewModel: ObservableObject {
     
-    
+    func fetchOrderList() {
+        
+    }
 }
