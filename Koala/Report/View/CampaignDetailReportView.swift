@@ -121,6 +121,7 @@ struct CampaignDetailReportView: View {
             }
             
             .navigationBarHidden(false)
+            .navigationAppearance(backgroundColor: UIColor(ThemeColor.primary), foregroundColor: UIColor(ThemeColor.primary), hideSeparator: true)
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
@@ -139,6 +140,7 @@ struct CampaignDetailReportView: View {
                 })
                     .background(ThemeColor.primary.ignoresSafeArea())
                     .ignoresSafeArea()
+                    .transition(.move(edge: .trailing))
         }
         
     }
