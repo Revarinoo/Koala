@@ -19,13 +19,11 @@ protocol WebViewHandlerDelegate {
 struct PaymentProcessView: View {
     @ObservedObject var webViewModel = WebViewModel()
     @State var showLoader = false
-    var payment_url = "https://app.midtrans.com/snap/v2/vtweb/640fe242-666f-4013-96b1-603a15a04d13"
+    var payment_url = "https://app.midtrans.com/snap/v2/vtweb/589f3fc0-63c7-41a8-8e5d-3b242cd228f9"
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
                 WebView(payment_url: payment_url, viewModel: webViewModel)
-                
-                
             }.onReceive(self.webViewModel.showLoader.receive(on: RunLoop.main)) { value in
                 self.showLoader = value
             }
@@ -80,6 +78,7 @@ struct WebView: UIViewRepresentable, WebViewHandlerDelegate {
     
     func makeUIView(context: Context) -> WKWebView {
         let preferences = WKPreferences()
+        
         preferences.javaScriptEnabled = true
         
         let configuration = WKWebViewConfiguration()
@@ -190,6 +189,7 @@ struct WebView: UIViewRepresentable, WebViewHandlerDelegate {
                 decisionHandler(.allow)
             }
         }
+        
     }
 }
 
