@@ -11,6 +11,9 @@ struct HomepageView: View {
     @StateObject var recomenndationList = RecommendationViewModel()
     @StateObject var userProfile = UserProfileViewModel()
     @State var toRecommendedInfluencerList: Bool = false
+    @State var showDetails = false
+    @State var influencerID = 0
+    
     
     init(){
         UINavigationBarAppearance().backgroundColor = UIColor(ThemeColor.background)
@@ -49,9 +52,20 @@ struct HomepageView: View {
                         }.padding(.leading,16).padding([.trailing], 16.0).padding(.top, 28)
                             VStack(spacing: 12){
                                 ForEach (recomenndationList.recommendationModel){ i in
-                                    NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: i.id, fromBackButton: false)) : AnyView(LoginView())) {
-                                        RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
+                                    if token != ""{
+                                        Button(action:{
+                                            self.influencerID = i.id
+                                            showDetails = true
+                                        }){
+                                            RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
+                                        }
+                                    } else {
+                                        NavigationLink(destination: LoginView()) {
+                                                                                RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
+                                                                            }
                                     }
+                                    
+//
                                 }
                             }
                         }
@@ -68,9 +82,12 @@ struct HomepageView: View {
             .navigationBarTitle("Discover", displayMode: .inline)
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
-            .navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .black, tintColor: UIColor(ThemeColor.primary))
+            .navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))
             .onTapGesture {
                 self.dismissKeyboard()
+            }
+            .fullScreenCover(isPresented: $showDetails){
+                InfluencerDetailView(isPresent: $showDetails, previousView: "Discover", influencerID: influencerID, fromBackButton: false)
             }
         }
     }

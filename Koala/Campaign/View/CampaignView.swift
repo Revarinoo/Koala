@@ -74,7 +74,7 @@ struct CampaignView: View {
             .background(ThemeColor.background.ignoresSafeArea())
             .navigationBarTitle("My Campaigns", displayMode: .large)
             .navigationBarHidden(false)
-            //.navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .white, tintColor: UIColor(ThemeColor.primary))
+            .navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))
             .toolbar {
                 Button(action: {
                     self.isCreateModalShown = true

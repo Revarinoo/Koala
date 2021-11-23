@@ -37,7 +37,7 @@ struct OrderView: View {
             }
             .padding(.top, 10)
             .navigationBarTitle("My Order", displayMode: .large)
-            .navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .black, tintColor: UIColor(ThemeColor.primary))
+            .navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))
             .background(ThemeColor.background.ignoresSafeArea())
         }
         

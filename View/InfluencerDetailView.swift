@@ -18,17 +18,19 @@ struct InfluencerDetailView: View {
     @State var categories: [String] = []
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
+    @Binding var isPresent : Bool
+    var previousView : String
     var influencerID: Int
     var fromBackButton : Bool
     
-    init(influencerID: Int, fromBackButton: Bool) {
-        UIScrollView.appearance().bounces = false
-        self.influencerID = influencerID
-        self.fromBackButton = fromBackButton
-    }
+//    init(influencerID: Int, fromBackButton: Bool) {
+//        UIScrollView.appearance().bounces = false
+//        self.influencerID = influencerID
+//        self.fromBackButton = fromBackButton
+//    }
     
     var body: some View {
-       //NavigationView{
+       NavigationView{
             ScrollView(.vertical, showsIndicators: false){
                 ZStack(alignment: .top){
                     VStack{
@@ -139,14 +141,27 @@ struct InfluencerDetailView: View {
             })
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(false).accentColor(.white)
+            .toolbar{
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        self.isPresent = false
+                    }){
+                        HStack{
+                            Image(systemName: "chevron.left")
+                            Text(previousView)
+                        }
+                        
+                    }.foregroundColor(.white)
+                }
+            }
 
-        //}
+        }
     }
 }
 
 struct InfluencerDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        InfluencerDetailView(influencerID: 1, fromBackButton: true)
+        InfluencerDetailView(isPresent: .constant(true), previousView: "Influencer List", influencerID: 1, fromBackButton: true)
     }
 }
 
