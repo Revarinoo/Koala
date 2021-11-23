@@ -126,6 +126,7 @@
 		D20B099E2737AF62007B1636 /* CreateCampaignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B099D2737AF62007B1636 /* CreateCampaignService.swift */; };
 		D20B09A027381C42007B1636 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B099F27381C42007B1636 /* ImagePicker.swift */; };
 		D20B09A2273826C7007B1636 /* CreateCampaignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B09A1273826C7007B1636 /* CreateCampaignViewModel.swift */; };
+		D20BEEE1274D69DF005319A6 /* PriceForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20BEEE0274D69DF005319A6 /* PriceForm.swift */; };
 		D2131CAD2729172D006ACDC2 /* PendingOrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CAC2729172D006ACDC2 /* PendingOrdersViewModel.swift */; };
 		D2131CAF272917DA006ACDC2 /* MyOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CAE272917DA006ACDC2 /* MyOrders.swift */; };
 		D2131CB12729AC7D006ACDC2 /* MyOrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CB02729AC7D006ACDC2 /* MyOrderService.swift */; };
@@ -325,6 +326,7 @@
 		D20B099D2737AF62007B1636 /* CreateCampaignService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateCampaignService.swift; path = "Koala/Create Campaign/View/CreateCampaignService.swift"; sourceTree = SOURCE_ROOT; };
 		D20B099F27381C42007B1636 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		D20B09A1273826C7007B1636 /* CreateCampaignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateCampaignViewModel.swift; path = "Koala/Create Campaign/View/CreateCampaignViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		D20BEEE0274D69DF005319A6 /* PriceForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceForm.swift; sourceTree = "<group>"; };
 		D2131CAC2729172D006ACDC2 /* PendingOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOrdersViewModel.swift; sourceTree = "<group>"; };
 		D2131CAE272917DA006ACDC2 /* MyOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrders.swift; sourceTree = "<group>"; };
 		D2131CB02729AC7D006ACDC2 /* MyOrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderService.swift; sourceTree = "<group>"; };
@@ -1156,6 +1158,7 @@
 			children = (
 				D2F5B280274D27BB002E31CB /* InputProfileView.swift */,
 				D2F5B285274D2AFA002E31CB /* ProfileBasicForm.swift */,
+				D20BEEE0274D69DF005319A6 /* PriceForm.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1689,6 +1692,7 @@
 				2FD875AB2731460B0052DA4D /* ReviewService.swift in Sources */,
 				D201AF8A273C064700FB0DFA /* KeyboardGuardian.swift in Sources */,
 				D20B09A027381C42007B1636 /* ImagePicker.swift in Sources */,
+				D20BEEE1274D69DF005319A6 /* PriceForm.swift in Sources */,
 				F7A52B922727073B0067D3E6 /* FollowerProfile.swift in Sources */,
 				2F0D9DA7273118FB0012DAAF /* CampaignDetailView.swift in Sources */,
 				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
