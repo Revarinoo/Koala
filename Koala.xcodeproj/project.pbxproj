@@ -189,6 +189,12 @@
 		F7A52B9027267D700067D3E6 /* SocialMediaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A52B8F27267D700067D3E6 /* SocialMediaCard.swift */; };
 		F7A52B922727073B0067D3E6 /* FollowerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A52B912727073B0067D3E6 /* FollowerProfile.swift */; };
 		F7A52B94272707C70067D3E6 /* ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A52B93272707C70067D3E6 /* ImageSlider.swift */; };
+		F7AD44D9274B9A500030D380 /* TabBarInfluencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AD44D8274B9A500030D380 /* TabBarInfluencer.swift */; };
+		F7AD44DB274B9A9D0030D380 /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AD44DA274B9A9D0030D380 /* OrderListView.swift */; };
+		F7AD44DD274BAA6B0030D380 /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7AD44DC274BAA6B0030D380 /* SFProDisplay-Bold.ttf */; };
+		F7AD44DF274BB4440030D380 /* OrderListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AD44DE274BB4440030D380 /* OrderListService.swift */; };
+		F7AD44E1274BB44F0030D380 /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AD44E0274BB44F0030D380 /* OrderListViewModel.swift */; };
+		F7AD44E4274BB47B0030D380 /* OrderListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AD44E3274BB47B0030D380 /* OrderListModel.swift */; };
 		F7BD4CB42747E4040035E12E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F7BD4CB32747E4040035E12E /* FirebaseAuth */; };
 		F7BD4CB62747E4040035E12E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F7BD4CB52747E4040035E12E /* FirebaseFirestore */; };
 		F7BD4CB82747E5820035E12E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7BD4CB72747E5820035E12E /* GoogleService-Info.plist */; };
@@ -197,12 +203,6 @@
 		F7BD4CBE2747F9960035E12E /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BD4CBD2747F9960035E12E /* ChatList.swift */; };
 		F7BD4CC02747FEC40035E12E /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BD4CBF2747FEC40035E12E /* MessageViewModel.swift */; };
 		F7BD4CC2274803AD0035E12E /* PersonalChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BD4CC1274803AD0035E12E /* PersonalChat.swift */; };
-		F7AD44D9274B9A500030D380 /* TabBarInfluencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AD44D8274B9A500030D380 /* TabBarInfluencer.swift */; };
-		F7AD44DB274B9A9D0030D380 /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AD44DA274B9A9D0030D380 /* OrderListView.swift */; };
-		F7AD44DD274BAA6B0030D380 /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7AD44DC274BAA6B0030D380 /* SFProDisplay-Bold.ttf */; };
-		F7AD44DF274BB4440030D380 /* OrderListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AD44DE274BB4440030D380 /* OrderListService.swift */; };
-		F7AD44E1274BB44F0030D380 /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AD44E0274BB44F0030D380 /* OrderListViewModel.swift */; };
-		F7AD44E4274BB47B0030D380 /* OrderListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AD44E3274BB47B0030D380 /* OrderListModel.swift */; };
 		F7C683B027338A72005BFE6D /* CampaingUpcomingFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C683AF27338A71005BFE6D /* CampaingUpcomingFieldView.swift */; };
 		F7ED1FC127422ABC00BCE02C /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ED1FC027422ABC00BCE02C /* TabBarViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -389,18 +389,18 @@
 		F7A52B8F27267D700067D3E6 /* SocialMediaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocialMediaCard.swift; path = View/ChildView/SocialMediaCard.swift; sourceTree = SOURCE_ROOT; };
 		F7A52B912727073B0067D3E6 /* FollowerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FollowerProfile.swift; path = View/ChildView/FollowerProfile.swift; sourceTree = SOURCE_ROOT; };
 		F7A52B93272707C70067D3E6 /* ImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageSlider.swift; path = View/ChildView/ImageSlider.swift; sourceTree = SOURCE_ROOT; };
-		F7BD4CB72747E5820035E12E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		F7BD4CB92747E8820035E12E /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
-		F7BD4CBB2747E8BA0035E12E /* ChatRoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomModel.swift; sourceTree = "<group>"; };
-		F7BD4CBD2747F9960035E12E /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
-		F7BD4CBF2747FEC40035E12E /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
-		F7BD4CC1274803AD0035E12E /* PersonalChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalChat.swift; sourceTree = "<group>"; };
 		F7AD44D8274B9A500030D380 /* TabBarInfluencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarInfluencer.swift; sourceTree = "<group>"; };
 		F7AD44DA274B9A9D0030D380 /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		F7AD44DC274BAA6B0030D380 /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		F7AD44DE274BB4440030D380 /* OrderListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListService.swift; sourceTree = "<group>"; };
 		F7AD44E0274BB44F0030D380 /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewModel.swift; sourceTree = "<group>"; };
 		F7AD44E3274BB47B0030D380 /* OrderListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListModel.swift; sourceTree = "<group>"; };
+		F7BD4CB72747E5820035E12E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F7BD4CB92747E8820035E12E /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
+		F7BD4CBB2747E8BA0035E12E /* ChatRoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomModel.swift; sourceTree = "<group>"; };
+		F7BD4CBD2747F9960035E12E /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
+		F7BD4CBF2747FEC40035E12E /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		F7BD4CC1274803AD0035E12E /* PersonalChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalChat.swift; sourceTree = "<group>"; };
 		F7C683AF27338A71005BFE6D /* CampaingUpcomingFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaingUpcomingFieldView.swift; sourceTree = "<group>"; };
 		F7ED1FC027422ABC00BCE02C /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1373,35 +1373,6 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		F7BD4CAE2747E1CE0035E12E /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				F7BD4CB12747E1E50035E12E /* Model */,
-				F7BD4CB02747E1DD0035E12E /* ViewModel */,
-				F7BD4CAF2747E1D70035E12E /* View */,
-			);
-			path = Chat;
-			sourceTree = "<group>";
-		};
-		F7BD4CAF2747E1D70035E12E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F7BD4CBD2747F9960035E12E /* ChatList.swift */,
-				84DA5AA0274AC68300A2A349 /* ChatListChildView.swift */,
-				F7BD4CC1274803AD0035E12E /* PersonalChat.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		F7BD4CB02747E1DD0035E12E /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				F7BD4CB92747E8820035E12E /* ChatRoomViewModel.swift */,
-				F7BD4CBF2747FEC40035E12E /* MessageViewModel.swift */,
-					);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		F7AD44D1274B98AA0030D380 /* Influencer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1438,14 +1409,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		F7BD4CB12747E1E50035E12E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F7BD4CBB2747E8BA0035E12E /* ChatRoomModel.swift */,
-				);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		F7AD44D5274B98CC0030D380 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1459,6 +1422,43 @@
 			isa = PBXGroup;
 			children = (
 				F7AD44E3274BB47B0030D380 /* OrderListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F7BD4CAE2747E1CE0035E12E /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F7BD4CB12747E1E50035E12E /* Model */,
+				F7BD4CB02747E1DD0035E12E /* ViewModel */,
+				F7BD4CAF2747E1D70035E12E /* View */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		F7BD4CAF2747E1D70035E12E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F7BD4CBD2747F9960035E12E /* ChatList.swift */,
+				84DA5AA0274AC68300A2A349 /* ChatListChildView.swift */,
+				F7BD4CC1274803AD0035E12E /* PersonalChat.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F7BD4CB02747E1DD0035E12E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F7BD4CB92747E8820035E12E /* ChatRoomViewModel.swift */,
+				F7BD4CBF2747FEC40035E12E /* MessageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F7BD4CB12747E1E50035E12E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F7BD4CBB2747E8BA0035E12E /* ChatRoomModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1868,7 +1868,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Koala/Preview Content\"";
-				DEVELOPMENT_TEAM = SB885LAGT7;
+				DEVELOPMENT_TEAM = PKF8ACHM24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Koala/Info.plist;
@@ -1901,7 +1901,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Koala/Preview Content\"";
-				DEVELOPMENT_TEAM = SB885LAGT7;
+				DEVELOPMENT_TEAM = PKF8ACHM24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Koala/Info.plist;
