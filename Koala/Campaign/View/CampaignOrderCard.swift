@@ -54,18 +54,18 @@ struct CampaignOrderCard: View {
                 .padding(.leading, 5)
                 .foregroundColor(Color.gray)
                 Spacer()
-            }
-            HStack {
-                Spacer()
                 NavigationLink(
                     destination: CampaignDetailView(campaignTitle: name, contentID: contentID),
                     label: {
-                        Text("Detail")
-                            .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
-                            .foregroundColor(ThemeColor.primary)
-                            .frame(width: 90, height: 38)
+                        Image(systemName: "chevron.right").resizable().frame(width: 11, height: 20)
+                            .foregroundColor(Color.orange2)
+                            .padding(.leading, 10)
                     }
                 )
+            }
+            HStack {
+                Spacer()
+                
                 Button(
                     action: {
                         orderCampaignVM.order(date: dateFormat(date: date), contentID: contentID, influencerID: influencerID)

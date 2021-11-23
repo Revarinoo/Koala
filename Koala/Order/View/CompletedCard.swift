@@ -16,6 +16,7 @@ struct CompletedCard: View {
     let engagement: String
     let photo: String
     let orderId: Int
+    @State var showReview = false
     
     var body: some View {
         VStack{
@@ -49,18 +50,31 @@ struct CompletedCard: View {
             }.padding(.top, 16).padding(.leading, 16)
             HStack{
                 Spacer()
-                NavigationLink(destination: ReviewInfluencerView(photoURL: photo, name: name, orderId: orderId)) {
-                        Text("Review").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                            .foregroundColor(.white)
-                            .padding()
-                            .padding([.leading, .trailing])
-                   .frame(height: 38)
-                        .background(ThemeColor.primary)
-                        .cornerRadius(10)
+                Button(action:{
+                    showReview = true
+                }){
+                    Text("Review").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                        .foregroundColor(.white)
+                        .padding()
+                        .padding([.leading, .trailing])
+                        .frame(height: 38)
+                    .background(ThemeColor.primary)
+                    .cornerRadius(10)
                 }
+//                NavigationLink(destination: ReviewInfluencerView(photoURL: photo, name: name, orderId: orderId)) {
+//                        Text("Review").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+//                            .foregroundColor(.white)
+//                            .padding()
+//                            .padding([.leading, .trailing])
+//                   .frame(height: 38)
+//                        .background(ThemeColor.primary)
+//                        .cornerRadius(10)
+//                }
             }.padding(.bottom, 9).padding(.trailing, 16)
             
-            
+                .fullScreenCover(isPresented: $showReview){
+                    ReviewInfluencerView(photoURL: photo, name: name, orderId: orderId, isPresent: $showReview)
+                }
         }
         .background(Color.white)
         .cornerRadius(10)

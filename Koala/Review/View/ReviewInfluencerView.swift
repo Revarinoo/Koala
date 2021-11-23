@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import Introspect
 
 struct ReviewInfluencerView: View {
     
@@ -16,14 +15,14 @@ struct ReviewInfluencerView: View {
     var orderId: Int
     
     @ObservedObject var reviewVM = ReviewPageViewModel()
-    @State var uiTabarController: UITabBarController?
     @State var submitButtonPressed: Bool = false
+    @Binding var isPresent : Bool
     
     var body: some View {
-        ZStack {
-            Color.bgColorView.edgesIgnoringSafeArea(.all)
-            
-            ScrollView {
+        NavigationView{
+            ZStack {
+                Color.bgColorView.edgesIgnoringSafeArea(.all)
+                
                 VStack(alignment: .center) {
                     WebImage(url: URL(string: photoURL))
                         .resizable()
@@ -58,7 +57,7 @@ struct ReviewInfluencerView: View {
                             .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
                             .foregroundColor(.black)
                             .disableAutocorrection(true)
-                            .frame(height: 180)
+                            .frame(maxHeight: 180)
                             .shadow(color: ThemeColor.gray, radius: 8, x: 0, y: 5)
                     }
                     .overlay(RoundedRectangle(cornerRadius: 10)
@@ -85,15 +84,26 @@ struct ReviewInfluencerView: View {
                     })
                     .padding(EdgeInsets(top: 48, leading: 16, bottom: -24, trailing: 16))
                 }
-                .introspectTabBarController { (UITabBarController) in
-                    UITabBarController.tabBar.isHidden = true
-                    uiTabarController = UITabBarController
-                }.onDisappear{
-                    uiTabarController?.tabBar.isHidden = false
+                
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarHidden(false)
+            .toolbar{
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        self.isPresent = false
+                    }){
+                        HStack{
+                            Image(systemName: "chevron.left")
+                            Text("My Orders")
+                        }
+                        
+                    }.foregroundColor(ThemeColor.primary)
                 }
             }
             .keyboardAware()
         }
+        
         .onTapGesture {
             self.dismissKeyboard()
         }
