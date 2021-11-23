@@ -87,7 +87,7 @@ struct HomepageView: View {
 //                self.dismissKeyboard()
 //            }
             .fullScreenCover(isPresented: $showDetails){
-                InfluencerDetailView(influencerDetailViewModel: $influencerDetailViewModel, isPresent: $showDetails, previousView: "Discover", influencerID: influencerID, fromBackButton: false)
+                InfluencerDetailView(influencerDetailViewModel: $influencerDetailViewModel, isPresent: $showDetails, previousView: "Discover", influencerID: $influencerID, fromBackButton: false)
             }
         }
     }
