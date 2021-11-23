@@ -12,7 +12,7 @@ struct CampaignDetailReportView: View {
     @StateObject var campaignReportVM = CampaignReportBusinessViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Binding var isPresent : Bool
-    
+    @Binding var campaignID: Int
     
     private func dateFormatter(dateBefore: Date) -> String {
         let dateFormatter = DateFormatter()
@@ -42,7 +42,7 @@ struct CampaignDetailReportView: View {
         }
     }
     
-    var campaignID: Int
+    
     
 //    init(campaignID: Int) {
 //        UIScrollView.appearance().bounces = false
@@ -156,7 +156,7 @@ struct CampaignDetailReportView: View {
 
 struct CampaignDetailReportView_Previews: PreviewProvider {
     static var previews: some View {
-        CampaignDetailReportView(isPresent: .constant(true), campaignID: 1)
+        CampaignDetailReportView(isPresent: .constant(true), campaignID: .constant(1))
     }
 }
 

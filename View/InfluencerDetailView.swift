@@ -11,7 +11,7 @@ import MessageUI
 import Introspect
 
 struct InfluencerDetailView: View {
-    @StateObject var influencerDetailViewModel = InfluencerDetailViewModel()
+    @Binding var influencerDetailViewModel : InfluencerDetailViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var campaignList = CampaignViewModel.shared
     @State var isFavorite: Bool = false
@@ -167,11 +167,11 @@ struct InfluencerDetailView: View {
     }
 }
 
-struct InfluencerDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        InfluencerDetailView(isPresent: .constant(true), previousView: "Influencer List", influencerID: 1, fromBackButton: true)
-    }
-}
+//struct InfluencerDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        //InfluencerDetailView(influencerDetailViewModel: <#Binding<InfluencerDetailViewModel>#>, isPresent: .constant(true), previousView: "Influencer List", influencerID: 1, fromBackButton: true)
+//    }
+//}
 
 struct OrderButton: View {
     var body: some View{

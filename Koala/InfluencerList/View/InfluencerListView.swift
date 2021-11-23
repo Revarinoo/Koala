@@ -18,6 +18,7 @@ struct InfluencerListView: View {
     @StateObject var influencerListVM = InfluencerListViewModel()
     @StateObject var filtersVM = FilterModalViewModel()
     @StateObject var specialtyVM = SpecialtyViewModel()
+    @State var influencerDetailViewModel = InfluencerDetailViewModel()
     @State var isFilterModalShown: Bool = false
     @State private var searchText = ""
     @State var influencerID = 0
@@ -105,6 +106,7 @@ struct InfluencerListView: View {
                                     Button(action:{
                                         self.influencerID = influencer.id
                                         showDetails = true
+                                        influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencer.id)
                                     }){
                                         InfluencerCardList(photoURL: influencer.photo, categories: influencer.category, name: influencer.name, location: influencer.location, price: influencer.ratePrice, ER: influencer.rateEngagement, rating: influencer.rating)
                                             .padding(.horizontal, 10)
@@ -125,16 +127,6 @@ struct InfluencerListView: View {
                     } else {
                         influencerListVM.callGetInfluencerList()
                     }
-//                    let coloredAppearance = UINavigationBarAppearance()
-//                    coloredAppearance.configureWithTransparentBackground()
-//                    coloredAppearance.backgroundColor = UIColor(ThemeColor.background)
-//                    coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor(.black)]
-//                    coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(.black)]
-//
-//                    UINavigationBar.appearance().standardAppearance = coloredAppearance
-//                    UINavigationBar.appearance().compactAppearance = coloredAppearance
-//                    UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
-//                    UINavigationBar.appearance().tintColor = UIColor(ThemeColor.primary)
                 }
             }
             .navigationBarTitle("Influencer List", displayMode: .inline)
@@ -151,7 +143,7 @@ struct InfluencerListView: View {
                 }
             }
             .fullScreenCover(isPresented: $showDetails){
-                InfluencerDetailView(isPresent: $showDetails, previousView: "Influencer List", influencerID: influencerID, fromBackButton: showBackButton)
+                InfluencerDetailView(influencerDetailViewModel: $influencerDetailViewModel, isPresent: $showDetails, previousView: "Influencer List", influencerID: influencerID, fromBackButton: showBackButton)
             }
             
             .navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))

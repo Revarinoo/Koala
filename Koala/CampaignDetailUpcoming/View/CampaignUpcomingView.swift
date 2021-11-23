@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct CampaignUpcomingView: View {
     @StateObject var campaignVM = CampaignUpcomingViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var id: Int = 1
+    @Binding var id: Int 
     @Binding var isPresent : Bool
     
     var body: some View {
@@ -53,6 +53,8 @@ struct CampaignUpcomingView: View {
             
             .onAppear {
                 campaignVM.getUpcomingDetail(id: self.id)
+                print(campaignVM.campaignDetailModel)
+                print("id ye \(id)")
             }
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -93,8 +95,8 @@ struct CampaignUpcomingView: View {
     }
 }
 
-struct CampaignUpcomingView_Previews: PreviewProvider {
-    static var previews: some View {
-        CampaignUpcomingView(isPresent: .constant(true))
-    }
-}
+//struct CampaignUpcomingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CampaignUpcomingView(isPresent: .constant(true))
+//    }
+//}

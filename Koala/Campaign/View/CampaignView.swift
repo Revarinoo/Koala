@@ -40,8 +40,14 @@ struct CampaignView: View {
                                 if i.status != "Completed" {
                                     
                                     Button(action: {
-                                        self.showUpcomingDetails = true
                                         upcomingID = i.content_id
+                                        DispatchQueue.main.async() {
+                                            // your code here
+                                            upcomingID = i.content_id
+                                            self.showUpcomingDetails = true
+                                            print("IDNYE YE \(upcomingID)")
+                                        }
+                                       
                                     }){
                                         //CampaignUpcomingView(id: i.content_id)) {
                                         CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
@@ -55,8 +61,13 @@ struct CampaignView: View {
                             } else {
                                 if i.status.contains("Completed") {
                                     Button(action: {
-                                        self.showCompletedDetails = true
+                                        
                                         completedID = i.content_id
+                                        //DispatchQueue.main.async() {
+                                            // your code here
+                                            self.showCompletedDetails = true
+                                        //}
+                                        
                                     }){
                                         CampaignCard(photoURL: i.photo, name: i.name, date: i.schedule)
                                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
@@ -93,10 +104,14 @@ struct CampaignView: View {
                 })
             }
             .fullScreenCover(isPresented: $showUpcomingDetails){
-                CampaignUpcomingView(id: upcomingID, isPresent: $showUpcomingDetails)
+                CampaignUpcomingView(id: $upcomingID, isPresent: $showUpcomingDetails)
+            }.onAppear(){
+                print("IDNYAAA \(upcomingID)")
             }
             .fullScreenCover(isPresented: $showCompletedDetails){
-                CampaignDetailReportView(isPresent: $showCompletedDetails, campaignID: completedID)
+                CampaignDetailReportView(isPresent: $showCompletedDetails, campaignID: $completedID)
+            }.onAppear(){
+                print("IDNYAAA \(completedID)")
             }
             .sheet(isPresented: $isCreateModalShown) {
                 CreateCampaign(isPresent: $isCreateModalShown)

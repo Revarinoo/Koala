@@ -44,9 +44,7 @@ struct OrderView: View {
         .onAppear {
             orderVM.callData()
         }
-        
     }
-    
 }
 
 enum OrderStatus: String, CaseIterable{
