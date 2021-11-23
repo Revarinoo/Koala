@@ -23,7 +23,7 @@ struct TabBarInfluencer: View {
                         selectedTab == 0 ? Image("discoveractive") : Image("discovergrey")
                         Text("Order")
                     }.tag(0)
-                UnderMaintenanceView()
+            ChatList.shared
                     .tabItem{
                         selectedTab == 1 ? Image(systemName: "message.fill") : Image(systemName: "message")
                         Text("Chat")

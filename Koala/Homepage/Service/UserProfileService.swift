@@ -18,4 +18,13 @@ struct UserProfileService {
                    _ = completionHandler(response)
                }
     }
+    
+    func getSpecificUserProfile(userId: Int, completionHandler:@escaping(_ result: UserProfile?)->Void){
+        let request = NSMutableURLRequest(url: NSURL(string:  HttpUtility.endpoint + "user/\(userId)")! as URL)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+       
+               HttpUtility.shared.request(request as URLRequest, resultType: UserProfile.self) { response in
+                   _ = completionHandler(response)
+               }
+    }
 }
