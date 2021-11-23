@@ -16,33 +16,41 @@ struct CampaignUpcomingView: View {
     
     var body: some View {
         NavigationView{
-            ScrollView (.vertical, showsIndicators: false) {
-                ZStack(alignment: .top) {
-                    VStack {
-                        btnBack
-                        
+            ZStack{
+                ScrollView (.vertical, showsIndicators: false) {
+                    ZStack(alignment: .top) {
                         VStack {
-                            CampaingUpcomingFieldView(campaign: campaignVM.campaignModel, campaignDetail: campaignVM.campaignDetailModel)
+                            btnBack
+                            
+                            VStack {
+                                CampaingUpcomingFieldView(campaign: campaignVM.campaignModel, campaignDetail: campaignVM.campaignDetailModel)
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 28, alignment: .leading)
+                                .padding(EdgeInsets(top: 60, leading: 28, bottom: 100, trailing: 0))
+                            .background(Color.white)
+                            .cornerRadius(20, corners: [.topLeft, .topRight])
                         }
-                        .frame(width: UIScreen.main.bounds.width - 28, alignment: .leading)
-                            .padding(EdgeInsets(top: 60, leading: 28, bottom: 100, trailing: 0))
-                        .background(Color.white)
-                        .cornerRadius(20, corners: [.topLeft, .topRight])
+                        
+                        VStack{
+                            
+                            WebImage(url: URL(string: campaignVM.campaignModel.campaign_logo))
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 127, height: 127)
+                                .cornerRadius(20.0)
+                                .overlay(RoundedRectangle(cornerRadius: 20.0)
+                                    .stroke(Color.white, lineWidth: 5))
+                            
+                        }.padding(.top, 157)
                     }
-                    
-                    VStack{
-                        
-                        WebImage(url: URL(string: campaignVM.campaignModel.campaign_logo))
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 127, height: 127)
-                            .cornerRadius(20.0)
-                            .overlay(RoundedRectangle(cornerRadius: 20.0)
-                                .stroke(Color.white, lineWidth: 5))
-                        
-                    }.padding(.top, 157)
+                }
+                VStack{
+                    Rectangle().fill(ThemeColor.primary)
+                        .frame(height: 88)//.padding(.top,)
+                    Spacer()
                 }
             }
+            
             .onAppear {
                 campaignVM.getUpcomingDetail(id: self.id)
             }

@@ -10,7 +10,7 @@ import Alamofire
 import SwiftUI
 
 //let serverURLnya = "http://34.124.208.0/Koala-backend/public/api/campaign/create"
-let serverURLnya = "http://127.0.0.1:8000/api/campaign/create"
+let serverURLnya = "https://koala-influencer.xyz/api/campaign/create"
 
 class CreateCampaignViewModel : ObservableObject {
     @AppStorage("JWT", store: .standard) var token = ""

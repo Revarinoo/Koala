@@ -32,7 +32,6 @@ struct InfluencerDetailView: View {
     var body: some View {
        NavigationView{
            ZStack{
-               
                ScrollView(.vertical, showsIndicators: false){
                    ZStack(alignment: .top){
                        VStack{
@@ -133,7 +132,6 @@ struct InfluencerDetailView: View {
                            }
                    }
                }
-               
                VStack{
                    Rectangle().fill(ThemeColor.primary)
                        .frame(height: 88)//.padding(.top,)
