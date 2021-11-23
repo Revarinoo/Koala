@@ -14,7 +14,7 @@ class MessageViewModel: ObservableObject {
     @Published var messages: [Message] = []
     private let db = Firestore.firestore()
     @State var userVM = UserProfileViewModel.shared
-    
+    @Published var lastMessage = ""
     
     func sendMessage(content: String, docId: String) {
         db.collection("chatrooms").document(docId).collection("messages").addDocument(data: [

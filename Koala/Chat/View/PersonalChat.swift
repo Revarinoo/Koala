@@ -13,7 +13,7 @@ struct PersonalChat: View {
     let chatRoom: ChatRoom
     let personName: String
     let photoURL: String
-    @ObservedObject var messagesVM = MessageViewModel.shared
+    @StateObject var messagesVM = MessageViewModel.shared
     @State var messageField = ""
     @State private var messageIDScroll: String?
     @State var first: Bool = true
@@ -23,11 +23,11 @@ struct PersonalChat: View {
         self.chatRoom = chatRoom
         self.personName = personName
         self.photoURL = photoURL
-        messagesVM.fetchData(docId: chatRoom.id)
-        print("done")
+        
     }
     
     var body: some View {
+        
         VStack {
             GeometryReader { reader in
                 ScrollView {
@@ -49,9 +49,6 @@ struct PersonalChat: View {
             }
             
             HStack {
-//                FirstResponderTextField(text: $messageField, placeholder: "Text Message...")
-//                    .textFieldStyle(ChatTextFieldStyle())
-//
                 TextField("Text Message...", text: $messageField)
                     .textFieldStyle(ChatTextFieldStyle())
                 
@@ -75,7 +72,8 @@ struct PersonalChat: View {
                         .disabled(messageField.isEmpty)
                 }
             }
-            .padding(10)
+            .padding(.leading, 16)
+            .padding(.trailing, 10)
         }
         .background(Color.bgColorView.ignoresSafeArea())
         .navigationTitle(personName)
@@ -83,6 +81,9 @@ struct PersonalChat: View {
         .onTapGesture {
             self.dismissKeyboard()
         }
+        .onAppear(perform: {
+            messagesVM.fetchData(docId: chatRoom.id)
+        })
         .introspectTabBarController { (UITabBarController) in
             UITabBarController.tabBar.isHidden = true
             uiTabarController = UITabBarController
@@ -99,7 +100,7 @@ struct PersonalChat: View {
             let sectionMessages = messagesVM.getSectionMessages(for: messagesVM.messages)
             ForEach(sectionMessages.indices, id: \.self) { sectionIndex in
                 let messages = sectionMessages[sectionIndex]
-                Section(header: Text(messages.first!.sentAt.descriptiveString(dateStyle: .medium, inChat: true)).font(.system(size: 13.5)).foregroundColor(Color.init(hex: "999999")).padding(10)) {
+                Section(header: Text(messages.first?.sentAt.descriptiveString(dateStyle: .medium, inChat: true) ?? "").font(.system(size: 13.5)).foregroundColor(Color.init(hex: "999999")).padding(10)) {
                     ForEach(messages) { message in
                         let isUser = message.sender == messagesVM.userVM.user.id
                         HStack {

@@ -15,14 +15,15 @@ class ChatRoomViewModel: ObservableObject {
     private var db = Firestore.firestore()
     private var userService = UserProfileService()
     @Published var chatData: [ChatData] = []
-    @State var userVM = UserProfileViewModel.shared
-    @AppStorage("role", store: .standard) var role = "Influencer"
-    
-    init(){
-        self.fetchData()
-    }
+    @ObservedObject var userVM = UserProfileViewModel.shared
+    @AppStorage("role", store: .standard) var role = ""
     
     func fetchData() {
+        print("INIIII \(userVM.user)")
+        if !chatRooms.isEmpty || !chatData.isEmpty {
+            chatRooms.removeAll()
+            chatData.removeAll()
+        }
         db.collection("chatrooms").whereField("users", arrayContains: userVM.user.id).addSnapshotListener { snapshot, error in
                 guard let documents = snapshot?.documents else {
                     return

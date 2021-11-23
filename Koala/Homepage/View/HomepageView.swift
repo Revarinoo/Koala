@@ -34,7 +34,7 @@ struct HomepageView: View {
                             .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
                     }
                     
-                    NavigationLink(destination: (token != "") ? AnyView(ChatList()) : AnyView(LoginView())){
+                    NavigationLink(destination: (token != "") ? AnyView(ChatList.shared) : AnyView(LoginView())){
                         Image(systemName: "message")
                             .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
                     }

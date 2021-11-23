@@ -14,14 +14,13 @@ struct ChatListChildView: View {
     let name: String
     var lastMessage: String
     
-    @ObservedObject var messagesVM = MessageViewModel.shared
+    @StateObject var messagesVM = MessageViewModel.shared
     
     init(chatroomId: String, photoURL: String, name: String){
         self.chatroomId = chatroomId
         self.photoURL = photoURL
         self.name = name
         self.lastMessage = ""
-        messagesVM.fetchData(docId: chatroomId)
     }
     
     var body: some View {
@@ -36,9 +35,9 @@ struct ChatListChildView: View {
                     Text("\(name)")
                         .font(.system(size: 15))
                         .foregroundColor(.black)
-                    Text("\(messagesVM.messages.last?.content ?? "")")
-                        .font(.system(size: 12))
-                        .foregroundColor(Color.init(hex: "999999"))
+//                    Text("")
+//                        .font(.system(size: 12))
+//                        .foregroundColor(Color.init(hex: "999999"))
                 }
                 Spacer()
                 VStack (alignment: .trailing) {
@@ -59,7 +58,9 @@ struct ChatListChildView: View {
         }
         .padding()
         .frame(minWidth: 390, maxHeight: 85)
-        
+        .onAppear {
+            messagesVM.fetchData(docId: chatroomId)
+        }
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class UserProfileViewModel: ObservableObject{
     static let shared = UserProfileViewModel()
@@ -21,7 +22,7 @@ class UserProfileViewModel: ObservableObject{
         userProfileService.getUserProfile(){ response in
             if let name = response?.name, let photo = response?.photo, let id = response?.id {
                 DispatchQueue.main.async {
-                    self.user = UserProfileData(id: id, name: name, photo: "http://127.0.0.1:8000/storage/images/" + photo)
+                    self.user = UserProfileData(id: id, name: name, photo: "https://koala-influencer.xyz/storage/images/" + photo)
                 }
             }
         }
