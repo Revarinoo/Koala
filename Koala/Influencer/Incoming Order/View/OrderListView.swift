@@ -14,7 +14,7 @@ enum OrderListStatus: String, CaseIterable{
 }
 
 struct OrderListView: View {
-    
+    @StateObject var orderListVM = OrderListViewModel()
     @State private var orderTypeSelected : OrderListStatus = .incoming
     
     init(){
@@ -30,21 +30,46 @@ struct OrderListView: View {
         
         NavigationView {
             VStack (alignment: .leading) {
-                Text("Order List")
-                    .font(.custom(ThemeFont.sfProDisplay, size: 34))
-                    .padding(EdgeInsets(top: 44, leading: 16, bottom: 10, trailing: 0))
-                
-                Picker("What is your favorite color?", selection: $orderTypeSelected) {
+                Picker("", selection: $orderTypeSelected) {
                     ForEach (OrderListStatus.allCases, id: \.self){
                         Text($0.rawValue)                    }
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding([.leading, .trailing], 16)
+                .padding(.top, 157)
+                
+                ScrollView {
+                    
+                    VStack{
+                        switch orderTypeSelected {
+                        case .incoming:
+                            ForEach(orderListVM.incomingOrders, id: \.id) { order in
+//                                NavigationLink(destination: )
+                                OrderListCard(orderList: order)
+                            }
+                        case .ongoing:
+                            ForEach(orderListVM.ongoingOrders, id: \.id) { order in
+                                OrderListCard(orderList: order)
+                            }
+                        case .completed:
+                            ForEach(orderListVM.completedOrders, id: \.id) { order in
+                                OrderListCard(orderList: order)
+                            }
+                        }
+                    }
+                    .padding()
+                    
+                
+                }
                 
                 Spacer()
             }
-            .navigationBarTitle("", displayMode: .inline)
-            .navigationBarHidden(true)
+            .navigationBarTitle("Order List")
+            .background(Color.init(hex: "F2F2F2"))
+            .edgesIgnoringSafeArea(.top)
+        }
+        .onAppear {
+            orderListVM.fetchOrderList()
         }
     }
 }
@@ -52,27 +77,5 @@ struct OrderListView: View {
 struct OrderListView_Previews: PreviewProvider {
     static var previews: some View {
         OrderListView()
-    }
-}
-
-
-struct ChosenOrder: View {
-    
-    var selectedStatus: OrderListStatus
-    @ObservedObject var orderViewModel = OrderViewModel()
-
-    init(selectedStatus: OrderListStatus){
-        self.selectedStatus = selectedStatus
-        orderViewModel.callData()
-    }
-    var body: some View {
-        switch selectedStatus {
-        case .incoming:
-            PendingCardScrollView(orderVM: orderViewModel)
-        case .ongoing:
-            OngoingCardScrollView(onGoingOrders: orderViewModel.ongoingOrders)
-        case .completed:
-            CompletedCardScrollView(completedOrders: orderViewModel.completedOrders)
-        }
     }
 }

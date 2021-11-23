@@ -22,3 +22,14 @@ struct OrderList: Codable {
     let end_date: String
     let photo: String
 }
+
+struct OrderListModel: Identifiable {
+    let id = UUID()
+    let orderId: Int
+    let campaingId: Int
+    let campaignStatus: String
+    let campaignName: String
+    let startDate: String
+    let endDate: String
+    let campaignLogo: String
+}
