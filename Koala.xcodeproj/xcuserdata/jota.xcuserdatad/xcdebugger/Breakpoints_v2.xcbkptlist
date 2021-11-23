@@ -7,7 +7,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B1FDF5DE-7D88-4372-9082-566E4E4D2EB2"
+            uuid = "9DE2BB0F-E66A-4079-8856-096F28C63645"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -23,15 +23,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "480F3F49-77EA-4036-9468-44F6E7F53C83"
+            uuid = "4F524F51-B496-4569-9671-74486DBD5CDA"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Koala/Chat/View/PersonalChat.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "messageView(viewWidth:)"
             landmarkType = "7">
          </BreakpointContent>

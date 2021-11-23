@@ -16,7 +16,7 @@ class ChatRoomViewModel: ObservableObject {
     private var userService = UserProfileService()
     @Published var chatData: [ChatData] = []
     @State var userVM = UserProfileViewModel.shared
-    @AppStorage("role", store: .standard) var role = "Business"
+    @AppStorage("role", store: .standard) var role = "Influencer"
     
     func fetchData() {
         db.collection("chatrooms").whereField("users", arrayContains: userVM.user.id).addSnapshotListener { snapshot, error in

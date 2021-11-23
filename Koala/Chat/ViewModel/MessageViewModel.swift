@@ -37,7 +37,6 @@ class MessageViewModel: ObservableObject {
                     let content = data["content"] as? String ?? ""
                     let sender = data["sender"] as? Int ?? 0
                     let sentAt = (data["sentAt"] as? Timestamp)?.dateValue() ?? Date()
-                    print("hello")
                     return Message(id: docId, content: content, sender: sender, sentAt: sentAt)
                 })
             }

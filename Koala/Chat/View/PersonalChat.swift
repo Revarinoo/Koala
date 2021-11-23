@@ -15,6 +15,7 @@ struct PersonalChat: View {
     @ObservedObject var messagesVM = MessageViewModel.shared
     @State var messageField = ""
     @State private var messageIDScroll: String?
+    @State var first: Bool = true
     
     init(chatRoom: ChatRoom, personName: String, photoURL: String) {
         self.chatRoom = chatRoom
@@ -49,38 +50,32 @@ struct PersonalChat: View {
             
             HStack {
                 TextField("Text Message...", text: $messageField)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .textFieldStyle(ChatTextFieldStyle())
                 
-                if !messageField.isEmpty {
-                    withAnimation {
-                        Button(action: {
-                            messagesVM.sendMessage(content: messageField, docId: chatRoom.id)
-                            self.messageField = ""
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                                messageIDScroll = messagesVM.messages.last?.id
-                            })
-                        }, label: {
-                            Image(systemName: "paperplane.fill")
-                                .foregroundColor(.white)
-                                .frame(width: 35, height: 35)
-                                .background(
-                                    Circle()
-                                        .foregroundColor(.orange)
-                                )
+                withAnimation {
+                    Button(action: {
+                        messagesVM.sendMessage(content: messageField, docId: chatRoom.id)
+                        self.messageField = ""
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                            messageIDScroll = messagesVM.messages.last?.id
                         })
-                    }
+                    }, label: {
+                        Image(systemName: "paperplane.fill")
+                            .foregroundColor(.white)
+                            .frame(width: 35, height: 35)
+                            .background(
+                                Circle()
+                                    .foregroundColor(.orange)
+                                    .opacity(messageField.isEmpty ? 0.5 : 1)
+                            )
+                    })
+                        .disabled(messageField.isEmpty)
                 }
             }
             .padding(10)
         }
         .navigationTitle(personName)
-        .toolbar(content: {
-            WebImage(url: URL(string: photoURL))
-                .resizable()
-                .scaledToFill()
-                .frame(width: 45, height: 45)
-                .clipShape(Circle())
-        })
+        .navigationBarTitleDisplayMode(.inline)
         .background(Color.bgColorView)
         
     }
@@ -96,12 +91,27 @@ struct PersonalChat: View {
                     ForEach(messages) { message in
                         let isUser = message.sender == messagesVM.userVM.user.id
                         HStack {
+//                            if !isUser {
+//                                if true {
+//                                    WebImage(url: URL(string: photoURL))
+//                                        .resizable()
+//                                        .scaledToFill()
+//                                        .frame(width: 40, height: 40)
+//                                        .clipShape(Circle())
+//
+//                                } else {
+//                                    Text("")
+//                                        .padding(.leading, 40)
+//                                }
+//                            } else {
+//                                self.first = true
+//                            }
                             ZStack{
                                 Text(message.content)
                                     .padding(.horizontal)
                                     .padding(.vertical, 12)
                                     .background(isUser ? Color.init(hex: "FFDED4") : Color.white)
-                                    .cornerRadius(10)
+                                    .cornerRadius(15, corners: isUser ? [.topLeft, .bottomLeft, .bottomRight] : [.topRight, .bottomLeft, .bottomRight])
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: isUser ? . trailing : .leading)
@@ -126,5 +136,23 @@ struct PersonalChat: View {
 struct PersonalChat_Previews: PreviewProvider {
     static var previews: some View {
         PersonalChat(chatRoom: ChatRoom(id: "1", users: [1,2]), personName: "nama", photoURL: "")
+    }
+}
+
+class TextFieldWithPadding: UITextField {
+    var textPadding = UIEdgeInsets(
+        top: 10,
+        left: 20,
+        bottom: 10,
+        right: 20
+    )
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        let rect = super.textRect(forBounds: bounds)
+        return rect.inset(by: textPadding)
+    }
+
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        let rect = super.editingRect(forBounds: bounds)
+        return rect.inset(by: textPadding)
     }
 }
