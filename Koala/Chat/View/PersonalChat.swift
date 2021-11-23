@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Introspect
 
 struct PersonalChat: View {
     let chatRoom: ChatRoom
@@ -16,6 +17,7 @@ struct PersonalChat: View {
     @State var messageField = ""
     @State private var messageIDScroll: String?
     @State var first: Bool = true
+    @State var uiTabarController: UITabBarController?
     
     init(chatRoom: ChatRoom, personName: String, photoURL: String) {
         self.chatRoom = chatRoom
@@ -27,8 +29,6 @@ struct PersonalChat: View {
     
     var body: some View {
         VStack {
-            Divider().background(Color.init(hex: "A7A7A7"))
-            
             GeometryReader { reader in
                 ScrollView {
                     ScrollViewReader { scrollReader in
@@ -49,6 +49,9 @@ struct PersonalChat: View {
             }
             
             HStack {
+//                FirstResponderTextField(text: $messageField, placeholder: "Text Message...")
+//                    .textFieldStyle(ChatTextFieldStyle())
+//
                 TextField("Text Message...", text: $messageField)
                     .textFieldStyle(ChatTextFieldStyle())
                 
@@ -74,9 +77,18 @@ struct PersonalChat: View {
             }
             .padding(10)
         }
+        .background(Color.bgColorView.ignoresSafeArea())
         .navigationTitle(personName)
-        .navigationBarTitleDisplayMode(.inline)
-        .background(Color.bgColorView)
+        .navigationBarTitleDisplayMode(.automatic)
+        .onTapGesture {
+            self.dismissKeyboard()
+        }
+        .introspectTabBarController { (UITabBarController) in
+            UITabBarController.tabBar.isHidden = true
+            uiTabarController = UITabBarController
+        }.onDisappear{
+            uiTabarController?.tabBar.isHidden = false
+        }
         
     }
     
@@ -91,21 +103,6 @@ struct PersonalChat: View {
                     ForEach(messages) { message in
                         let isUser = message.sender == messagesVM.userVM.user.id
                         HStack {
-//                            if !isUser {
-//                                if true {
-//                                    WebImage(url: URL(string: photoURL))
-//                                        .resizable()
-//                                        .scaledToFill()
-//                                        .frame(width: 40, height: 40)
-//                                        .clipShape(Circle())
-//
-//                                } else {
-//                                    Text("")
-//                                        .padding(.leading, 40)
-//                                }
-//                            } else {
-//                                self.first = true
-//                            }
                             ZStack{
                                 Text(message.content)
                                     .padding(.horizontal)
@@ -133,26 +130,43 @@ struct PersonalChat: View {
     }
 }
 
-struct PersonalChat_Previews: PreviewProvider {
-    static var previews: some View {
-        PersonalChat(chatRoom: ChatRoom(id: "1", users: [1,2]), personName: "nama", photoURL: "")
+struct FirstResponderTextField: UIViewRepresentable {
+    @Binding var text: String
+    let placeholder: String
+    
+    class Coordinator: NSObject, UITextFieldDelegate {
+        @Binding var text: String
+        var becameFirstResponder = false
+        init(text: Binding<String>) {
+            self._text = text
+        }
+        
+        func textFieldDidChangeSelection(_ textField: UITextField) {
+        text = textField.text ?? ""
+        }
+    }
+    
+    func makeCoordinator () -> Coordinator {
+        return Coordinator(text: $text)
+    }
+    
+    func makeUIView(context: Context) -> some UIView {
+        let textField = UITextField()
+        textField.delegate = context.coordinator
+        textField.placeholder = placeholder
+        return textField
+    }
+    
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+        if !context.coordinator.becameFirstResponder {
+            uiView.becomeFirstResponder()
+            context.coordinator.becameFirstResponder = true
+        }
     }
 }
 
-class TextFieldWithPadding: UITextField {
-    var textPadding = UIEdgeInsets(
-        top: 10,
-        left: 20,
-        bottom: 10,
-        right: 20
-    )
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
-        let rect = super.textRect(forBounds: bounds)
-        return rect.inset(by: textPadding)
-    }
-
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        let rect = super.editingRect(forBounds: bounds)
-        return rect.inset(by: textPadding)
+struct PersonalChat_Previews: PreviewProvider {
+    static var previews: some View {
+        PersonalChat(chatRoom: ChatRoom(id: "1", users: [1,2]), personName: "nama", photoURL: "")
     }
 }

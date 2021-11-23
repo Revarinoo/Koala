@@ -11,7 +11,6 @@ struct HomepageView: View {
     @StateObject var recomenndationList = RecommendationViewModel()
     @StateObject var userProfile = UserProfileViewModel.shared
     @State var toRecommendedInfluencerList: Bool = false
-    @State var chat = false
     
     var body: some View {
         NavigationView {
@@ -27,15 +26,9 @@ struct HomepageView: View {
                             .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
                     }
                     
-                    NavigationLink(destination: ChatList(), isActive: $chat){
-                        Button {
-                            if token != "" {
-                                chat = true
-                            }
-                        } label: {
-                            Image(systemName: "message")
-                                .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
-                        }
+                    NavigationLink(destination: (token != "") ? AnyView(ChatList()) : AnyView(LoginView())){
+                        Image(systemName: "message")
+                            .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
                     }
 
                 }

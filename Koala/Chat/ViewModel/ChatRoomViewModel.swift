@@ -18,6 +18,10 @@ class ChatRoomViewModel: ObservableObject {
     @State var userVM = UserProfileViewModel.shared
     @AppStorage("role", store: .standard) var role = "Influencer"
     
+    init(){
+        self.fetchData()
+    }
+    
     func fetchData() {
         db.collection("chatrooms").whereField("users", arrayContains: userVM.user.id).addSnapshotListener { snapshot, error in
                 guard let documents = snapshot?.documents else {
