@@ -11,6 +11,7 @@ struct SplashScreen: View {
     
     @State var toBusinessPage: Bool = false
     @State var toInfluencerPage: Bool = false
+    @AppStorage("role", store: .standard) var role = "Business"
     
     var body: some View {
         //NavigationView {
@@ -41,6 +42,7 @@ struct SplashScreen: View {
 //                        isActive: $toBusinessPage,
 //                        label: {
                             Button {
+                                role = "Business"
                                 toBusinessPage.toggle()
                             } label: {
                                 Text("Find an Influencer")
@@ -55,11 +57,12 @@ struct SplashScreen: View {
 //                        })
                     
                     
-//                    NavigationLink(
-//                        destination: UnderMaintenanceView(),
-//                        isActive: $toInfluencerPage,
-//                        label: {
+                    NavigationLink(
+                        destination: LoginView(),
+                        isActive: $toInfluencerPage,
+                        label: {
                             Button {
+                                role = "Influencer"
                                 toInfluencerPage.toggle()
                             } label: {
                                 Text("I'm an Influencer")
@@ -74,7 +77,7 @@ struct SplashScreen: View {
                                     .stroke(.white, lineWidth: 1)
                             )
                             .padding(.bottom, 30)
-                     //   })
+                       })
                 }
                 .padding(.horizontal, 16)
             }
