@@ -9,14 +9,33 @@ import SwiftUI
 
 struct SubmitReportView: View {
     @StateObject var reportVM = SubmitReportViewModel()
+    @StateObject var orderDetailVM = InfluencerCampaignDetailViewModel()
     
     var body: some View {
         NavigationView{
             ScrollView (.vertical, showsIndicators: false) {
                 VStack {
-                    PostForm(post: $reportVM.igPost)
-                    StoryForm(story: $reportVM.igStory)
-                    ReelsForm(reels: $reportVM.igReels)
+                        ForEach(orderDetailVM.campaignDetailModel) { data in
+                            switch data.content_type {
+                            case "Instagram Post":
+                                PostForm(post: $reportVM.igPost)
+                                    .onAppear {
+                                        reportVM.contents.append(ContentStorage(type: ContentType.Post, orderDetailId: data.order_detail_id))
+                                    }
+                                
+                            case "Instagram Story":
+                                StoryForm(story: $reportVM.igStory)
+                                    .onAppear {
+                                        reportVM.contents.append(ContentStorage(type: ContentType.Story, orderDetailId: data.order_detail_id))
+                                    }
+                            case "Instagram Reels":
+                                ReelsForm(reels: $reportVM.igReels)
+                                    .onAppear {
+                                        reportVM.contents.append(ContentStorage(type: ContentType.Reels, orderDetailId: data.order_detail_id))
+                                    }
+                            default: PostForm(post: $reportVM.igPost)
+                        }
+                    }
                 }
             }
             .navigationTitle("Submit Report")
@@ -42,6 +61,12 @@ struct SubmitReportView: View {
         .onTapGesture {
             self.dismissKeyboard()
         }
+        
+        // MARK: Sementara, nanti hapus -/\-
+        .onAppear {
+            orderDetailVM.getOrderDetails(id: 3)
+        }
+        
     }
 }
 
