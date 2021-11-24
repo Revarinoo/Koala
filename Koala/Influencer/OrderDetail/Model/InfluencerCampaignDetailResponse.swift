@@ -5,6 +5,8 @@ struct InfluencerCampaignDetailResponse: Codable {
     let campaign: CampaignContentModel
     let campaign_details: [CampaignContentDetailModel]
     let references: [String]
+    let business_photo: String?
+    let business_name: String
     let message: String
     let code: Int
 }
