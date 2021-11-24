@@ -15,7 +15,9 @@ struct KoalaApp: App {
     @AppStorage("role", store: .standard) var role = ""
     
     init() {
-        FirebaseApp.configure()
+//        if role != "" {
+            FirebaseApp.configure()
+//        }
         UIWindow.appearance().overrideUserInterfaceStyle = .light
     }
     
