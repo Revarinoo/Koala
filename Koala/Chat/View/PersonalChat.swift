@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 import Introspect
 
 struct PersonalChat: View {
+    
     let chatRoom: ChatRoom
     let personName: String
     let photoURL: String

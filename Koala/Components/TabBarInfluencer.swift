@@ -17,21 +17,23 @@ struct TabBarInfluencer: View {
     }
     
     var body: some View {
-        TabView(selection: $selectedTab){
-                OrderListView()
-                    .tabItem{
-                        selectedTab == 0 ? Image("discoveractive") : Image("discovergrey")
-                        Text("Order")
-                    }.tag(0)
-            ChatList.shared
-                    .tabItem{
-                        selectedTab == 1 ? Image(systemName: "message.fill") : Image(systemName: "message")
-                        Text("Chat")
-                    }.tag(1)
-            }
-            .accentColor(Color(UIColor(named: "primary")!))
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
+        NavigationView {
+            TabView(selection: $selectedTab){
+                    OrderListView()
+                        .tabItem{
+                            selectedTab == 0 ? Image("discoveractive") : Image("discovergrey")
+                            Text("Order")
+                        }.tag(0)
+                ChatList.shared
+                        .tabItem{
+                            selectedTab == 1 ? Image(systemName: "message.fill") : Image(systemName: "message")
+                            Text("Chat")
+                        }.tag(1)
+                }
+                .accentColor(Color(UIColor(named: "primary")!))
+                .navigationBarHidden(true)
+                .navigationBarBackButtonHidden(true)
+        }
     }
 }
 
