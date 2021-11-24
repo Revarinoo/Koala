@@ -10,6 +10,8 @@ struct InfluencerCampaignDetailModel: Identifiable {
     var description: String = ""
     var rules: String = ""
     var references: [String] = [""]
+    var business_photo: String = ""
+    var business_name: String = ""
 }
 
 struct InfluencerCampaignDetailContentModel: Identifiable {
