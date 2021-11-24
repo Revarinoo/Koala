@@ -25,13 +25,13 @@ class PaymentViewModel: ObservableObject{
     private let paymentService: PaymentService = PaymentService()
     @Published var paymentProcess: PaymentProcess?
     
-    func getOrderURL(order_id: Int){
+    func getOrderPayment(order_id: Int){
        
         var payment: PaymentProcess?
         paymentService.getPaymentProcess(order_id: order_id){ response in
             if let response = response{
                 if response.code == 201{
-                    payment = PaymentProcess(order_id: response.order_id, token: response.token, payment_url: response.payment_url)
+                    payment = PaymentProcess(order_id: response.order_id, token: response.token, payment_url: response.payment_url, payment_status: response.payment_status)
                 }
             }
         }

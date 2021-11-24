@@ -11,6 +11,7 @@ struct PaymentProcessResponse: Decodable{
     var order_id: Int
     var token: String
     var payment_url: String
+    var payment_status: String
     var code: Int
     var message: String
 }
@@ -19,4 +20,5 @@ struct PaymentProcess{
     var order_id: Int
     var token: String
     var payment_url: String
+    var payment_status: String
 }

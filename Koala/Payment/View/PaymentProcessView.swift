@@ -18,18 +18,45 @@ protocol WebViewHandlerDelegate {
 
 struct PaymentProcessView: View {
     @ObservedObject var webViewModel = WebViewModel()
+    @ObservedObject var paymentViewModel = PaymentViewModel()
+    @ObservedObject var campaignViewModel = CampaignViewModel()
+    
     @State var showLoader = false
-    var payment_url = "https://app.midtrans.com/snap/v2/vtweb/589f3fc0-63c7-41a8-8e5d-3b242cd228f9"
+    @State var showWebView = false
+    @State var payment_url = "https://app.midtrans.com/snap/v2/vtweb/9ae3a328-8b04-47f2-b3d0-eaa9bc4ff74c"
+    @State var payment_status = ""
+//    "https://app.midtrans.com/snap/v2/vtweb/589f3fc0-63c7-41a8-8e5d-3b242cd228f9"
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                WebView(payment_url: payment_url, viewModel: webViewModel)
+                Button(action: {
+//                    campaignViewModel.order(date: Date().formatToString(), contentID: 1, influencerID: 6)
+//                    paymentViewModel.getOrderURL(order_id: 26)
+//                    guard let paymentProcess = paymentViewModel.paymentProcess else {return}
+//                    payment_url = paymentProcess.payment_url
+                    showWebView.toggle()
+                }){
+                    Text("Proceed to Payment")
+                }
+//                WebView(payment_url: payment_url, viewModel: webViewModel)
             }.onReceive(self.webViewModel.showLoader.receive(on: RunLoop.main)) { value in
                 self.showLoader = value
             }
             
             if showLoader {
                 Loader()
+            }
+        }
+        .sheet(isPresented: $showWebView){
+            WebView(payment_url: payment_url, viewModel: webViewModel)
+        }
+        .onAppear{
+            paymentViewModel.getOrderPayment(order_id: 20)
+            guard let order_payment = paymentViewModel.paymentProcess else {return}
+            if(order_payment.payment_status == "paid"){
+                showWebView.toggle()
+            }else{
+                print("NOT PAID")
             }
         }
     }
