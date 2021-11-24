@@ -8,8 +8,40 @@
 import SwiftUI
 
 struct SubmitReportView: View {
+    @StateObject var reportVM = SubmitReportViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            ScrollView (.vertical, showsIndicators: false) {
+                VStack {
+                    PostForm(post: $reportVM.igPost)
+                    StoryForm(story: $reportVM.igStory)
+                    ReelsForm(reels: $reportVM.igReels)
+                }
+            }
+            .navigationTitle("Submit Report")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel") {
+                    }.foregroundColor(ThemeColor.primary)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        reportVM.submit()
+                    } label: {
+                        Text("Submit")
+                            .foregroundColor(ThemeColor.primary)
+                    }
+
+                }
+            }
+        }
+        .preferredColorScheme(.light)
+        .navigationAppearance(backgroundColor: .white, foregroundColor: .black, hideSeparator: true)
+        .onTapGesture {
+            self.dismissKeyboard()
+        }
     }
 }
 
