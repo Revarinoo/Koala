@@ -40,6 +40,7 @@
 		2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */; };
 		2F99D364271D8309003DD86C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D363271D8309003DD86C /* SDWebImageSwiftUI */; };
 		2F99D391271DC6CE003DD86C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F99D390271DC6CE003DD86C /* Alamofire */; };
+		2F9B7F13274D2C5F0015FF0A /* OrderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9B7F12274D2C5F0015FF0A /* OrderDetailView.swift */; };
 		2FA152AE274864C300231492 /* FilterModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA152AD274864C300231492 /* FilterModalViewModel.swift */; };
 		2FA152B02748A15000231492 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA152AF2748A15000231492 /* ArrayExtension.swift */; };
 		2FA152B22748AC8E00231492 /* LocationSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA152B12748AC8E00231492 /* LocationSelection.swift */; };
@@ -239,6 +240,7 @@
 		2F95BCCD273A2EDD00F78F83 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		2F95BCCE273A2EDD00F78F83 /* Path+QuadCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+QuadCurve.swift"; sourceTree = "<group>"; };
 		2F99D360271D7F1C003DD86C /* InfluencerCardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCardList.swift; sourceTree = "<group>"; };
+		2F9B7F12274D2C5F0015FF0A /* OrderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailView.swift; sourceTree = "<group>"; };
 		2FA152AD274864C300231492 /* FilterModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModalViewModel.swift; sourceTree = "<group>"; };
 		2FA152AF2748A15000231492 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		2FA152B12748AC8E00231492 /* LocationSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelection.swift; sourceTree = "<group>"; };
@@ -599,6 +601,46 @@
 				2F95BCCE273A2EDD00F78F83 /* Path+QuadCurve.swift */,
 			);
 			path = ChartHelper;
+			sourceTree = "<group>";
+		};
+		2F9B7F0D274D29D00015FF0A /* OrderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2F9B7F11274D2A0B0015FF0A /* Model */,
+				2F9B7F10274D2A040015FF0A /* View */,
+				2F9B7F0F274D29FC0015FF0A /* ViewModel */,
+				2F9B7F0E274D29F70015FF0A /* Service */,
+			);
+			path = OrderDetail;
+			sourceTree = "<group>";
+		};
+		2F9B7F0E274D29F70015FF0A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		2F9B7F0F274D29FC0015FF0A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2F9B7F10274D2A040015FF0A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F9B7F12274D2C5F0015FF0A /* OrderDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F9B7F11274D2A0B0015FF0A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2FA40E3D271DE2F50095A812 /* Themes */ = {
@@ -1379,6 +1421,7 @@
 		F7AD44D1274B98AA0030D380 /* Influencer */ = {
 			isa = PBXGroup;
 			children = (
+				2F9B7F0D274D29D00015FF0A /* OrderDetail */,
 				D2F5B27C274D2776002E31CB /* Input Profile */,
 				F7AD44D2274B98B50030D380 /* Incoming Order */,
 			);
@@ -1618,6 +1661,7 @@
 				2F95BCD2273A2EDD00F78F83 /* Helpers.swift in Sources */,
 				2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */,
 				F7A52B94272707C70067D3E6 /* ImageSlider.swift in Sources */,
+				2F9B7F13274D2C5F0015FF0A /* OrderDetailView.swift in Sources */,
 				F76174062732475900019B79 /* CampaignUpcomingService.swift in Sources */,
 				D2900DC527267CA700D6E901 /* TabBar.swift in Sources */,
 				2F1D57802726539800E4354C /* SearchBar.swift in Sources */,
