@@ -19,6 +19,7 @@ struct CampaignContentModel: Codable {
 }
 
 struct CampaignContentDetailModel: Codable {
+    let order_detail_id: Int?
     let content_type: String?
     let instruction: String?
 }

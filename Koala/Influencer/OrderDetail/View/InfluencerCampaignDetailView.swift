@@ -1,14 +1,16 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Introspect
 
 struct InfluencerCampaignDetailView: View {
-
+    
     @StateObject var campaignVM = InfluencerCampaignDetailViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var uiTabarController: UITabBarController?
     
-    var id: Int 
-
+    var id: Int
+    
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             VStack {
@@ -21,7 +23,7 @@ struct InfluencerCampaignDetailView: View {
                     .background(Color.white)
                     .cornerRadius(20, corners: [.topLeft, .topRight])
                 }
-
+                
                 HStack {
                     Text("Footer")
                 }
@@ -29,9 +31,15 @@ struct InfluencerCampaignDetailView: View {
             }
         }
         .onAppear {
-                campaignVM.getOrderDetails(id: self.id)
-                print(campaignVM.campaignDetailModel)
-                print("id ye \(id)")
-            }
+            campaignVM.getOrderDetails(id: self.id)
+            print(campaignVM.campaignDetailModel)
+            print("id ye \(id)")
+        }
+        .introspectTabBarController { (UITabBarController) in
+            UITabBarController.tabBar.isHidden = true
+            uiTabarController = UITabBarController
+        }.onDisappear{
+            uiTabarController?.tabBar.isHidden = false
+        }
     }
 }
