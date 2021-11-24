@@ -181,6 +181,8 @@
 		F761740A273247A900019B79 /* CampaignUpcomingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7617409273247A900019B79 /* CampaignUpcomingView.swift */; };
 		F761740C2732485C00019B79 /* CampaignUpcomingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F761740B2732485C00019B79 /* CampaignUpcomingResponse.swift */; };
 		F761740E27324F2800019B79 /* CampaignUpcomingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F761740D27324F2800019B79 /* CampaignUpcomingModel.swift */; };
+		F768344D274E4EF60051F7FC /* SubmitReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F768344C274E4EF60051F7FC /* SubmitReportView.swift */; };
+		F768344F274E4FD20051F7FC /* PostForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F768344E274E4FD20051F7FC /* PostForm.swift */; };
 		F76CE8752721C4B40055D58C /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CE8742721C4B40055D58C /* AuthResponse.swift */; };
 		F76CE879272275B90055D58C /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CE878272275B90055D58C /* RegisterViewModel.swift */; };
 		F76CE87B272275D20055D58C /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CE87A272275D20055D58C /* RegisterService.swift */; };
@@ -382,6 +384,8 @@
 		F7617409273247A900019B79 /* CampaignUpcomingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignUpcomingView.swift; sourceTree = "<group>"; };
 		F761740B2732485C00019B79 /* CampaignUpcomingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignUpcomingResponse.swift; sourceTree = "<group>"; };
 		F761740D27324F2800019B79 /* CampaignUpcomingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignUpcomingModel.swift; sourceTree = "<group>"; };
+		F768344C274E4EF60051F7FC /* SubmitReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitReportView.swift; sourceTree = "<group>"; };
+		F768344E274E4FD20051F7FC /* PostForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostForm.swift; sourceTree = "<group>"; };
 		F76CE8742721C4B40055D58C /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		F76CE878272275B90055D58C /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		F76CE87A272275D20055D58C /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
@@ -1397,6 +1401,39 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F7683448274E4EB00051F7FC /* Submit Report */ = {
+			isa = PBXGroup;
+			children = (
+				F768344B274E4EE40051F7FC /* View */,
+				F768344A274E4EDA0051F7FC /* ViewModel */,
+				F7683449274E4ECD0051F7FC /* Service */,
+			);
+			path = "Submit Report";
+			sourceTree = "<group>";
+		};
+		F7683449274E4ECD0051F7FC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F768344A274E4EDA0051F7FC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F768344B274E4EE40051F7FC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F768344C274E4EF60051F7FC /* SubmitReportView.swift */,
+				F768344E274E4FD20051F7FC /* PostForm.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F76CE8762722756D0055D58C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -1418,6 +1455,7 @@
 		F7AD44D1274B98AA0030D380 /* Influencer */ = {
 			isa = PBXGroup;
 			children = (
+				F7683448274E4EB00051F7FC /* Submit Report */,
 				2F9B7F0D274D29D00015FF0A /* OrderDetail */,
 				D2F5B27C274D2776002E31CB /* Input Profile */,
 				F7AD44D2274B98B50030D380 /* Incoming Order */,
@@ -1658,6 +1696,7 @@
 				2F95BCD2273A2EDD00F78F83 /* Helpers.swift in Sources */,
 				2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */,
 				F7A52B94272707C70067D3E6 /* ImageSlider.swift in Sources */,
+				F768344F274E4FD20051F7FC /* PostForm.swift in Sources */,
 				2F9B7F13274D2C5F0015FF0A /* OrderDetailView.swift in Sources */,
 				F76174062732475900019B79 /* CampaignUpcomingService.swift in Sources */,
 				D2900DC527267CA700D6E901 /* TabBar.swift in Sources */,
@@ -1668,6 +1707,7 @@
 				2FD875A52731460B0052DA4D /* ReviewValidation.swift in Sources */,
 				2FA152AE274864C300231492 /* FilterModalViewModel.swift in Sources */,
 				2F1E8F6F273EB3160056D9BC /* ReportingModel.swift in Sources */,
+				F768344D274E4EF60051F7FC /* SubmitReportView.swift in Sources */,
 				D23FB800273C180A0099AC01 /* KeyboardExtension.swift in Sources */,
 				2FACD84927211A7600E9F578 /* SpecialtySelector.swift in Sources */,
 				D291A3D0273035BB00BAAA75 /* UserProfile.swift in Sources */,
