@@ -12,35 +12,42 @@ struct OrderListCard: View {
     var orderList: OrderListModel
     
     var body: some View {
-        HStack {
-            WebImage(url: URL(string: orderList.campaignLogo))
-                .resizable()
-                .scaledToFill()
-                .frame(width: 83, height: 88)
+        NavigationLink(
+            destination: InfluencerCampaignDetailView(id: orderList.orderId),
+            label: {
+                HStack {
+                    WebImage(url: URL(string: orderList.campaignLogo))
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 83, height: 88)
+                        .cornerRadius(10)
+                        .padding(.leading, 15)
+                    
+                    VStack (alignment: .leading, spacing: 3) {
+                        Text(orderList.campaignName)
+                            .font(.custom(ThemeFont.poppinsMedium, size: 18))
+                            .foregroundColor(.black)
+                        Text("\(orderList.startDate) - \(orderList.endDate)")
+                            .font(.custom(ThemeFont.poppinsRegular, size: 14))
+                            .foregroundColor(ThemeColor.grayDark)
+                    }
+                    .frame(maxWidth: 205, alignment: .leading)
+                    .padding(.leading, 5)
+                    
+                    Image(systemName: "chevron.right")
+                        .resizable()
+                        .foregroundColor(ThemeColor.primary)
+                        .frame(width: 14, height: 25)
+                        .padding(.trailing, 15)
+                }
+                .frame(width: 358, height: 129)
+                .background(Color.white)
                 .cornerRadius(10)
-                .padding(.leading, 15)
-            
-            VStack (alignment: .leading, spacing: 3) {
-                Text(orderList.campaignName)
-                    .font(.custom(ThemeFont.poppinsMedium, size: 18))
-                    .foregroundColor(.black)
-                Text("\(orderList.startDate) - \(orderList.endDate)")
-                    .font(.custom(ThemeFont.poppinsRegular, size: 14))
-                    .foregroundColor(ThemeColor.grayDark)
+                .shadow(color: ThemeColor.grayDark.opacity(0.4), radius: 3, x: 0, y: 5)
             }
-            .frame(maxWidth: 205, alignment: .leading)
-            .padding(.leading, 5)
-            
-            Image(systemName: "chevron.right")
-                .resizable()
-                .foregroundColor(ThemeColor.primary)
-                .frame(width: 14, height: 25)
-                .padding(.trailing, 15)
-        }
-        .frame(width: 358, height: 129)
-        .background(Color.white)
-        .cornerRadius(10)
-        .shadow(color: ThemeColor.grayDark.opacity(0.4), radius: 3, x: 0, y: 5)
+        )
+        
+        
     }
 }
 
