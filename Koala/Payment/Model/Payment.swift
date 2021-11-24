@@ -13,7 +13,6 @@ struct PaymentProcessResponse: Decodable{
     var payment_url: String
     var payment_status: String
     var code: Int
-    var message: String
 }
 
 struct PaymentProcess{

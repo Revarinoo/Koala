@@ -19,7 +19,7 @@ struct KoalaApp: App {
     
     var body: some Scene {
         WindowGroup {
-            PaymentProcessView()
+            PaymentView()
 //            if token != "" {
 //                if role == "Business" {
 //                    TabBar(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)

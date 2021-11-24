@@ -7,17 +7,12 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 class WebViewModel: ObservableObject {
-    var webViewNavigationPublisher = PassthroughSubject<WebViewNavigation, Never>()
     var showWebTitle = PassthroughSubject<String, Never>()
     var showLoader = PassthroughSubject<Bool, Never>()
     var valuePublisher = PassthroughSubject<String, Never>()
-}
-
-// For identifiying WebView's forward and backward navigation
-enum WebViewNavigation {
-    case backward, forward, reload
 }
 
 class PaymentViewModel: ObservableObject{
@@ -34,13 +29,13 @@ class PaymentViewModel: ObservableObject{
                     payment = PaymentProcess(order_id: response.order_id, token: response.token, payment_url: response.payment_url, payment_status: response.payment_status)
                 }
             }
-        }
-        guard let payment = payment else {
-            return
-        }
+            guard let unwrappedPayment = payment else {
+                return
+            }
 
-        DispatchQueue.main.async {
-            self.paymentProcess = payment
+            DispatchQueue.main.async {
+                self.paymentProcess = unwrappedPayment
+            }
         }
     }
 }

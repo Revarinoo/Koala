@@ -90,6 +90,8 @@
 		780C8E8A274CA0C8008BD574 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E89274CA0C8008BD574 /* PaymentViewModel.swift */; };
 		780C8E8C274CA0D4008BD574 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E8B274CA0D4008BD574 /* Payment.swift */; };
 		780C8E8E274CA24A008BD574 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E8D274CA24A008BD574 /* PaymentService.swift */; };
+		780C8E98274E0690008BD574 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E97274E0690008BD574 /* PaymentView.swift */; };
+		780C8E9A274E91E3008BD574 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E99274E91E3008BD574 /* WebView.swift */; };
 		782E328E2730EC0100FA9795 /* RescheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E328D2730EC0100FA9795 /* RescheduleView.swift */; };
 		782E3290273248E600FA9795 /* RescheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E328F273248E600FA9795 /* RescheduleViewModel.swift */; };
 		78B933362726704B0040882D /* InfluencerDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B933352726704B0040882D /* InfluencerDetailResponse.swift */; };
@@ -274,6 +276,8 @@
 		780C8E89274CA0C8008BD574 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		780C8E8B274CA0D4008BD574 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		780C8E8D274CA24A008BD574 /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
+		780C8E97274E0690008BD574 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
+		780C8E99274E91E3008BD574 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		782E328D2730EC0100FA9795 /* RescheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleView.swift; sourceTree = "<group>"; };
 		782E328F273248E600FA9795 /* RescheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleViewModel.swift; sourceTree = "<group>"; };
 		78B933352726704B0040882D /* InfluencerDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfluencerDetailResponse.swift; path = Model/InfluencerDetailResponse.swift; sourceTree = SOURCE_ROOT; };
@@ -816,6 +820,8 @@
 			isa = PBXGroup;
 			children = (
 				780C8E87274CA0B0008BD574 /* PaymentProcessView.swift */,
+				780C8E97274E0690008BD574 /* PaymentView.swift */,
+				780C8E99274E91E3008BD574 /* WebView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1512,6 +1518,7 @@
 				F7A52B9027267D700067D3E6 /* SocialMediaCard.swift in Sources */,
 				2F8DAD7D2741D0C100DE643F /* StringExtension.swift in Sources */,
 				2F95BCC8273A176000F78F83 /* BusinessReportCard.swift in Sources */,
+				780C8E98274E0690008BD574 /* PaymentView.swift in Sources */,
 				84671FFD2726614F008FD954 /* PreviousProjectCard.swift in Sources */,
 				8451B832272A553C0061D389 /* CampaignModel.swift in Sources */,
 				2FACD84B272144D700E9F578 /* PriceRange.swift in Sources */,
@@ -1519,6 +1526,7 @@
 				8451B83D272A55570061D389 /* CampaignListView.swift in Sources */,
 				2FACD8442721137F00E9F578 /* FilterModal.swift in Sources */,
 				2F95BCD3273A2EDD00F78F83 /* Path+QuadCurve.swift in Sources */,
+				780C8E9A274E91E3008BD574 /* WebView.swift in Sources */,
 				8451B84B272B92DB0061D389 /* ResultExpenseCard.swift in Sources */,
 				2F95BCD2273A2EDD00F78F83 /* Helpers.swift in Sources */,
 				2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */,
