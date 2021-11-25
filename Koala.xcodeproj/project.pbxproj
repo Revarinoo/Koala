@@ -1174,6 +1174,7 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+
 		D299558A271E64E80025D0CB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1300,6 +1301,7 @@
 		F75CEE6C2713E80D00E36A1F /* Koala */ = {
 			isa = PBXGroup;
 			children = (
+				7850CEDE274C981500841ACE /* Payment */,
 				F7BD4CB72747E5820035E12E /* GoogleService-Info.plist */,
 				F7BD4CAE2747E1CE0035E12E /* Chat */,
 				F7AD44D1274B98AA0030D380 /* Influencer */,
