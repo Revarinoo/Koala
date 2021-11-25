@@ -14,16 +14,54 @@ class InfluencerProfileViewModel : ObservableObject {
     @AppStorage("JWT", store: .standard) var token = ""
     @Published var updateProfileModel : UpdateProfileModel = UpdateProfileModel()
     @Published var influencerProfile : InfluencerProfileData = InfluencerProfileData(name: "", email: "", photo: "", instagram: "", location: "", specialty: [], storyMax: 0, storyMin: 0, postMax: 0, postMin: 0, reelsMax: 0, reelsMin: 0)
-    @Published var dataNotComplete = false
-    @Published var numberIsNotValid = false
+    @Published var dataError = false
+    @Published var errorTitle = ""
+    @Published var errorMessage = ""
+    @Published var isFinishedUpload = false
     
     var influencerService = InfluencerService()
     
     func validateInput(){
-        if influencerProfile.name == "" {
-            self.dataNotComplete = true
+        if updateProfileModel.name == "" || updateProfileModel.specialties == [] || updateProfileModel.email == "" || updateProfileModel.socialMedia == "" || updateProfileModel.location == locationProvince.defaultValue {
+            self.errorTitle = "Data is Not Complete"
+            self.errorMessage = "Make sure to fill out all the form."
+            self.dataError = true
             return
         }
+        if !isValidEmail(value: updateProfileModel.email){
+            self.errorTitle = "Wrong Email Format"
+            self.errorMessage = "Make sure your email format is correct."
+            self.dataError = true
+            return
+        }
+        if updateProfileModel.image.size.width == 0 {
+            self.errorTitle = "Data is Not Complete"
+            self.errorMessage = "Please input your profile photo."
+            self.dataError = true
+            return
+        }
+        if updateProfileModel.socialMedia.containsWhitespace{
+            self.errorTitle = "Wrong Format"
+            self.errorMessage = "Make sure your Instagram account contains no space."
+            self.dataError = true
+            return
+        }
+        
+        if !updateProfileModel.reelsMax.isInt || !updateProfileModel.reelsMin.isInt || !updateProfileModel.storyMax.isInt || !updateProfileModel.storyMin.isInt || !updateProfileModel.postMax.isInt || !updateProfileModel.postMin.isInt {
+            self.errorTitle = "Wrong Format"
+            self.errorMessage = "Make sure your put number on the price form."
+            self.dataError = true
+            return
+        }
+        
+        submitProfileData(updateProfileModel)
+        
+    }
+    
+    private func isValidEmail(value: String) -> Bool
+    {
+        let regex = try! NSRegularExpression(pattern: "(^[0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,64}$)", options: .caseInsensitive)
+        return regex.firstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count)) != nil
     }
     
     func callInfluencerData(){
@@ -94,10 +132,6 @@ class InfluencerProfileViewModel : ObservableObject {
         Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append((profileImage ?? defaultImage) ?? Data(), withName: "image",fileName: "\(data.socialMedia).jpeg", mimeType: "image/jpeg")
             
-//            for (key, value) in updateProfileRequest {
-//                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
-//
-//                                }
             for (key, value) in parameters {
                         if let temp = value as? String {
                             multipartFormData.append(temp.data(using: .utf8)!, withName: key)
@@ -110,7 +144,7 @@ class InfluencerProfileViewModel : ObservableObject {
                             print("KEYNYA \(key)")
                         }
                     }
-            for category in self.influencerProfile.specialty {
+            for category in data.specialties {
                 print("thiosca \(category)")
                 multipartFormData.append(category.data(using: .utf8)!, withName: "categories[]")
             }
@@ -131,11 +165,14 @@ class InfluencerProfileViewModel : ObservableObject {
                     if let code = response.response?.statusCode{
                         print(response)
                         print("KODE \(code)")
-                        if code == 200 {
+                        if code >= 200 && code < 300 {
                             let campaignResponse = try? JSONDecoder().decode(UpdateInfluencerProfileResponse.self, from: response.value as! Data)
                             print(campaignResponse)
                             //print(res)
+                            self.isFinishedUpload = true
                         } else {
+                            let campaignResponse = try? JSONDecoder().decode(UpdateInfluencerProfileResponse.self, from: response.value as! Data)
+                            print(campaignResponse)
                         }
                     }
                 }
@@ -147,4 +184,13 @@ class InfluencerProfileViewModel : ObservableObject {
         }
         
     }
+}
+
+extension String {
+    var containsWhitespace : Bool {
+        return(self.rangeOfCharacter(from: .whitespacesAndNewlines) != nil)
+    }
+    var isInt: Bool {
+            return Int(self) != nil
+        }
 }
