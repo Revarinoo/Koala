@@ -187,6 +187,9 @@
 		F76CE87B272275D20055D58C /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CE87A272275D20055D58C /* RegisterService.swift */; };
 		F76CE87D2723B5010055D58C /* RegisterInfluencerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CE87C2723B5010055D58C /* RegisterInfluencerView.swift */; };
 		F76CE87F2723B9E80055D58C /* RegisterBusinessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CE87E2723B9E80055D58C /* RegisterBusinessView.swift */; };
+		F7A3BBD9274F5827000CF2AA /* OrderReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A3BBD8274F5827000CF2AA /* OrderReviewService.swift */; };
+		F7A3BBDD274F5845000CF2AA /* OrderReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A3BBDC274F5845000CF2AA /* OrderReviewViewModel.swift */; };
+		F7A3BBDF274F5851000CF2AA /* OrderReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A3BBDE274F5851000CF2AA /* OrderReviewModel.swift */; };
 		F7A52B8E27267B9C0067D3E6 /* SocialMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A52B8D27267B9C0067D3E6 /* SocialMedia.swift */; };
 		F7A52B9027267D700067D3E6 /* SocialMediaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A52B8F27267D700067D3E6 /* SocialMediaCard.swift */; };
 		F7A52B922727073B0067D3E6 /* FollowerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A52B912727073B0067D3E6 /* FollowerProfile.swift */; };
@@ -389,6 +392,9 @@
 		F76CE87A272275D20055D58C /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		F76CE87C2723B5010055D58C /* RegisterInfluencerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInfluencerView.swift; sourceTree = "<group>"; };
 		F76CE87E2723B9E80055D58C /* RegisterBusinessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBusinessView.swift; sourceTree = "<group>"; };
+		F7A3BBD8274F5827000CF2AA /* OrderReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReviewService.swift; sourceTree = "<group>"; };
+		F7A3BBDC274F5845000CF2AA /* OrderReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReviewViewModel.swift; sourceTree = "<group>"; };
+		F7A3BBDE274F5851000CF2AA /* OrderReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReviewModel.swift; sourceTree = "<group>"; };
 		F7A52B8D27267B9C0067D3E6 /* SocialMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocialMedia.swift; path = View/ChildView/SocialMedia.swift; sourceTree = SOURCE_ROOT; };
 		F7A52B8F27267D700067D3E6 /* SocialMediaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocialMediaCard.swift; path = View/ChildView/SocialMediaCard.swift; sourceTree = SOURCE_ROOT; };
 		F7A52B912727073B0067D3E6 /* FollowerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FollowerProfile.swift; path = View/ChildView/FollowerProfile.swift; sourceTree = SOURCE_ROOT; };
@@ -1030,9 +1036,9 @@
 		849E2C28274EE05C00F679E3 /* Order Review */ = {
 			isa = PBXGroup;
 			children = (
-				849E2C2E274EE0A300F679E3 /* ViewModel */,
-				849E2C2D274EE09E00F679E3 /* Service */,
-				849E2C2C274EE09200F679E3 /* Model */,
+				F7A3BBDB274F5838000CF2AA /* Model */,
+				F7A3BBDA274F5832000CF2AA /* View Model */,
+				F7A3BBD7274F581A000CF2AA /* Service */,
 				849E2C29274EE07600F679E3 /* View */,
 			);
 			path = "Order Review";
@@ -1044,27 +1050,6 @@
 				849E2C2F274EE0C000F679E3 /* OrderReviewView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		849E2C2C274EE09200F679E3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		849E2C2D274EE09E00F679E3 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		849E2C2E274EE0A300F679E3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D265F1852730DCB6008E08C8 /* Create Campaign */ = {
@@ -1457,6 +1442,30 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		F7A3BBD7274F581A000CF2AA /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F7A3BBD8274F5827000CF2AA /* OrderReviewService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F7A3BBDA274F5832000CF2AA /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				F7A3BBDC274F5845000CF2AA /* OrderReviewViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		F7A3BBDB274F5838000CF2AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F7A3BBDE274F5851000CF2AA /* OrderReviewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F7AD44D1274B98AA0030D380 /* Influencer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1645,6 +1654,7 @@
 			files = (
 				2FACD83B2720811300E9F578 /* OvalTextFieldStyle.swift in Sources */,
 				2FBC8BB5271C38E8007E7B76 /* InfluencerListModel.swift in Sources */,
+				F7A3BBDF274F5851000CF2AA /* OrderReviewModel.swift in Sources */,
 				2F1D578227266F5A00E4354C /* RecommendedInfluencerList.swift in Sources */,
 				D246DBF82734E3D100DE680A /* ContentRequest.swift in Sources */,
 				F76CE87D2723B5010055D58C /* RegisterInfluencerView.swift in Sources */,
@@ -1667,6 +1677,7 @@
 				D265F18B2730DE03008E08C8 /* CreateCampaign.swift in Sources */,
 				F76CE87F2723B9E80055D58C /* RegisterBusinessView.swift in Sources */,
 				2FCB0B242724FE5E0017C9D6 /* InstaAccModel.swift in Sources */,
+				F7A3BBD9274F5827000CF2AA /* OrderReviewService.swift in Sources */,
 				8475D64F27323C130021E87A /* CampaignReportBusinessService.swift in Sources */,
 				8451B83A272A55570061D389 /* CampaignOrderCard.swift in Sources */,
 				84DA5AA1274AC68300A2A349 /* ChatListChildView.swift in Sources */,
@@ -1705,6 +1716,7 @@
 				2F9B7F13274D2C5F0015FF0A /* OrderDetailView.swift in Sources */,
 				F76174062732475900019B79 /* CampaignUpcomingService.swift in Sources */,
 				D2900DC527267CA700D6E901 /* TabBar.swift in Sources */,
+				F7A3BBDD274F5845000CF2AA /* OrderReviewViewModel.swift in Sources */,
 				2F1D57802726539800E4354C /* SearchBar.swift in Sources */,
 				F76174082732479A00019B79 /* CampaignUpcomingViewModel.swift in Sources */,
 				D283B9FB272A8C0100CA87EC /* PendingCardScrollView.swift in Sources */,

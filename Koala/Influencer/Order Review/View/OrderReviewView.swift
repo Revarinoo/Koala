@@ -9,29 +9,24 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct OrderReviewView: View {
-    let photoURL: String
-    let name: String
-    let comment: String
-    let rating: Int?
+    var orderId: Int
+    
+    @StateObject var orderReviewVM = OrderReviewViewModel()
     
     private func starType(index: Int) -> String {
-        if let rating = self.rating {
-            return index <= rating ? "star.fill" : "star"
-        } else {
-            return "star"
-        }
+        return index <= orderReviewVM.data.review.rating ? "star.fill" : "star"
     }
     
     var body: some View {
         VStack (alignment: .leading) {
             HStack {
-                WebImage(url: URL(string: photoURL))
+                WebImage(url: URL(string: orderReviewVM.data.business.photo))
                     .resizable()
                     .scaledToFill()
                     .frame(width: 78, height: 78)
                     .cornerRadius(20)
                 VStack (alignment: .leading) {
-                    Text(name)
+                    Text(orderReviewVM.data.business.name)
                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 20))
                         .padding(.bottom, -8)
                     HStack{
@@ -55,7 +50,7 @@ struct OrderReviewView: View {
                     .cornerRadius(10)
                     .foregroundColor(Color.init(hex: "F3F4F8"))
                     .shadow(color: Color.init(hex: "BFBFBF"), radius: 3, x: 1, y: 2)
-                Text(comment)
+                Text(orderReviewVM.data.review.comment)
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .padding()
             }
@@ -66,11 +61,14 @@ struct OrderReviewView: View {
         .background(Color.bgColorView.ignoresSafeArea())
         .navigationTitle("Review")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            orderReviewVM.getReview(orderId: orderId)
+        }
     }
 }
 
 struct OrderReviewView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderReviewView(photoURL: "https://imgv3.fotor.com/images/homepage-feature-card/Fotor-AI-photo-enhancement-tool.jpg", name: "Kopi Janji Jiwa", comment: "Thank you! Satisfied with the work and worth the price. Would love to reccomend you to my other friends who also got coffee shops. ", rating: 4)
+        OrderReviewView(orderId: 1)
     }
 }
