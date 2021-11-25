@@ -12,6 +12,9 @@ struct InfluencerCampaignDetailModel: Identifiable {
     var references: [String] = [""]
     var business_photo: String = ""
     var business_name: String = ""
+    var isPresentingStatusAlert: Bool = false
+    var alertTitle: String = ""
+    var alertMessage: String = ""
 }
 
 struct InfluencerCampaignDetailContentModel: Identifiable {

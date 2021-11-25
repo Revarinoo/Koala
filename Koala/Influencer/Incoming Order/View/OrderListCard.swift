@@ -9,11 +9,13 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct OrderListCard: View {
+    
     var orderList: OrderListModel
+    var status: String
     
     var body: some View {
         NavigationLink(
-            destination: InfluencerCampaignDetailView(id: orderList.orderId),
+            destination: status != OrderListStatus.completed.rawValue ? AnyView(InfluencerCampaignDetailView(id: orderList.orderId, status: status)) : AnyView(Text("Review")),
             label: {
                 HStack {
                     WebImage(url: URL(string: orderList.campaignLogo))
@@ -53,7 +55,7 @@ struct OrderListCard: View {
 
 struct OrderListCard_Previews: PreviewProvider {
     static var previews: some View {
-        OrderListCard(orderList: OrderListModel(orderId: 1, campaingId: 1, campaignStatus: "Pending", campaignName: "12 Des Campaign", startDate: "22 Nov 2021", endDate: "02 Des 2021", campaignLogo: "https://koala-influencer.xyz/storage/images/default.png"))
+        OrderListCard(orderList: OrderListModel(orderId: 1, campaingId: 1, campaignStatus: "Pending", campaignName: "12 Des Campaign", startDate: "22 Nov 2021", endDate: "02 Des 2021", campaignLogo: "https://koala-influencer.xyz/storage/images/default.png"), status: "Ongoing")
             .previewLayout(.sizeThatFits)
     }
     

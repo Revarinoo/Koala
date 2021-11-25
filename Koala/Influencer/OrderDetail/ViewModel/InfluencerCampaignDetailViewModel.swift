@@ -3,7 +3,7 @@ import Foundation
 
 class InfluencerCampaignDetailViewModel: ObservableObject {
 
-    @Published var campaignModel = InfluencerCampaignDetailModel(campaign_logo: "", campaign_title: "", due_date: "", product: "", description: "", rules: "", references: [""], business_photo: "", business_name: "")
+    @Published var campaignModel = InfluencerCampaignDetailModel()
     @Published var campaignDetailModel: [InfluencerCampaignDetailContentModel] = []
     private var influencerCampaignService = InfluencerCampaignDetailService()
     
@@ -34,6 +34,26 @@ class InfluencerCampaignDetailViewModel: ObservableObject {
                 }
                 DispatchQueue.main.async {
                     self.campaignDetailModel = campaignDetails
+                }
+            }
+        }
+    }
+    
+    func submitCampaignStatus(_ id: Int, status: String) {
+        let campaignStatus = InfluencerCampaignStatusRequest(order_id: id, status: status)
+        influencerCampaignService.submitOrderStatus(campaignStatus) { response in
+            DispatchQueue.main.async {
+                if let code = response?.code, let message = response?.message {
+                    if code == 201 {
+                        self.campaignModel.isPresentingStatusAlert = true
+                        self.campaignModel.alertTitle = "Success"
+                        self.campaignModel.alertMessage = message
+                    }
+                    else {
+                        self.campaignModel.isPresentingStatusAlert = true
+                        self.campaignModel.alertTitle = "Failed"
+                        self.campaignModel.alertMessage = message
+                    }
                 }
             }
         }
