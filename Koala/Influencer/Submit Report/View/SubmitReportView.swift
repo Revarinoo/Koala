@@ -61,6 +61,7 @@ struct SubmitReportView: View {
         .onTapGesture {
             self.dismissKeyboard()
         }
+        .navigate(to: OrderListView(), when: $reportVM.isSucceed)
         
         // MARK: Sementara, nanti hapus -/\-
         .onAppear {
