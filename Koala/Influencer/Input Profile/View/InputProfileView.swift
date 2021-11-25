@@ -160,6 +160,7 @@ struct InputProfileView: View {
             }
             
         }
+        .navigationAppearance(backgroundColor: UIColor(ThemeColor.background), foregroundColor: .black)
         .navigate(to: ProfileView().onAppear(perform: {
             self.isPresent = false
             updateProfileVM.callInfluencerData()

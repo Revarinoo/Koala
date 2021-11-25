@@ -29,17 +29,13 @@ struct ProfileView: View {
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 127, height: 127)
-                                .background(ThemeColor.background)
+                                .background(ThemeColor.secondary)
                                 .cornerRadius(20.0)
-                                .overlay(RoundedRectangle(cornerRadius: 20.0)
-                                            .stroke(Color.white, lineWidth: 5))
                         }
                         else {
                             Image(systemName: "person").font(.system(size: 36)).foregroundColor(.gray).scaledToFill().frame(width: 127, height: 127)
                                 .background(ThemeColor.background)
                                 .cornerRadius(20.0)
-                                .overlay(RoundedRectangle(cornerRadius: 20.0)
-                                            .stroke(Color.white, lineWidth: 5))
                         }
                         Spacer()
                     }.padding(.top, 10)
@@ -87,6 +83,7 @@ struct ProfileView: View {
                     }.foregroundColor(ThemeColor.primary)
                 }
             }
+            .background(ThemeColor.background.ignoresSafeArea())
             
         }
         

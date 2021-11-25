@@ -21,7 +21,7 @@ struct TabBarInfluencer: View {
             TabView(selection: $selectedTab){
                     OrderListView()
                         .tabItem{
-                            selectedTab == 0 ? Image("discoveractive") : Image("discovergrey")
+                            selectedTab == 0 ? Image(systemName: "list.star") : Image(systemName: "list.bullet")
                             Text("Order")
                         }.tag(0)
                 ChatList.shared
@@ -31,8 +31,8 @@ struct TabBarInfluencer: View {
                         }.tag(1)
                 ProfileView()
                     .tabItem{
-                        selectedTab == 2 ? Image("discoveractive") : Image("discovergrey")
-                        Text("Order")
+                        selectedTab == 2 ? Image(systemName: "person.fill") : Image(systemName: "person")
+                        Text("Profile")
                     }.tag(2)
                 }
                 .accentColor(Color(UIColor(named: "primary")!))
