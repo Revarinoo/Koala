@@ -13,11 +13,12 @@ extension View {
             ZStack {
                 self
                     .navigationBarTitle("")
+                    .navigationBarTitleDisplayMode(.inline)
                     .navigationBarHidden(true)
                 
                 NavigationLink(
                     destination: view
-                        .navigationBarTitle("")
+                        .navigationBarTitle("").navigationBarTitleDisplayMode(.inline)
                         .navigationBarHidden(true),
                     isActive: binding
                 ) {

@@ -16,50 +16,53 @@ struct CampaignListView: View {
     
     let influencerID: Int
     
+    init(influencerID : Int){
+        self.influencerID = influencerID
+//        UINavigationBarAppearance().backgroundColor = UIColor(ThemeColor.background)
+//        UINavigationBarAppearance().shadowColor = .clear
+//        UINavigationBar.appearance().tintColor = UIColor(ThemeColor.primary)
+//        UINavigationBarAppearance().titleTextAttributes = [.foregroundColor: UIColor(ThemeColor.primary)]
+//        UINavigationBarAppearance().largeTitleTextAttributes = [.foregroundColor: UIColor(ThemeColor.primary)]
+        UINavigationBar.appearance().barTintColor = .clear
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+
+        
+    }
+    
     var body: some View {
-        ZStack(alignment: .topLeading) {
-            Color.bgColorView.edgesIgnoringSafeArea(.all)
-            
-            VStack(alignment: .leading) {
-                HStack {
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Image(systemName: "chevron.left")
-                            .font(Font.custom(ThemeFont.poppinsMedium, size: 20))
-                            .foregroundColor(ThemeColor.primary)
-                            .cornerRadius(10)
-                    })
-                    Spacer()
-                    Text("Campaign List")
-                        .font(Font.custom(ThemeFont.poppinsSemiBold, size: 17))
-                        .padding(.trailing)
-                    Spacer()
-                }
-                .padding(EdgeInsets(top: 0, leading: 16, bottom: 14, trailing: 0))
+        //NavigationView{
+            ZStack(alignment: .topLeading) {
+                Color.bgColorView.edgesIgnoringSafeArea(.all)
                 
-                ScrollView {
-                    VStack(spacing: 16) {
-                        ForEach(campaignListVM.campaignModel) { campaign in
-                            CampaignOrderCard(influencerID: influencerID, contentID: campaign.content_id, photoURL: campaign.photo, productTypes: campaign.type, name: campaign.name, date: campaign.schedule)
-                                .padding(.horizontal)
+                VStack(alignment: .leading) {
+                    ScrollView {
+                        VStack(spacing: 16) {
+                            ForEach(campaignListVM.campaignModel) { campaign in
+                                CampaignOrderCard(influencerID: influencerID, contentID: campaign.content_id, photoURL: campaign.photo, productTypes: campaign.type, name: campaign.name, date: campaign.schedule)
+                                    .padding(.horizontal)
+                            }
                         }
                     }
                 }
             }
-        }
-        .navigationBarTitle("", displayMode: .inline)
-        .accentColor(.white)
-        .navigationBarHidden(true)
-        .onAppear() {
-            campaignListVM.callGetCampaigns()
-        }
-        .introspectTabBarController { (UITabBarController) in
-                                UITabBarController.tabBar.isHidden = true
-                                uiTabarController = UITabBarController
-                            }.onDisappear{
-                                uiTabarController?.tabBar.isHidden = false
-                            }
+            .navigationBarTitle("Campaign List", displayMode: .inline)
+            .navigationBarHidden(false)
+//            .toolbar {
+//                Button(action: {
+//                    self.presentationMode.wrappedValue.dismiss()
+//                    //print("add new")
+//                }, label: {
+//                    Image(systemName: "chevron.left")
+//                        .foregroundColor(ThemeColor.primary)
+//                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 16))
+//                })
+//            }
+            //.navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .black, tintColor: UIColor(ThemeColor.primary))
+            .onAppear() {
+                campaignListVM.callGetCampaigns()
+            }
+        //}
+        
     }
 }
 

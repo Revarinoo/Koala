@@ -11,10 +11,10 @@ struct SplashScreen: View {
     
     @State var toBusinessPage: Bool = false
     @State var toInfluencerPage: Bool = false
-    @AppStorage("role", store: .standard) var role = "Business"
+    @AppStorage("role", store: .standard) var role = ""
     
     var body: some View {
-        NavigationView {
+        //NavigationView {
             ZStack {
                 Image("splashScreen")
                     .resizable()
@@ -37,10 +37,10 @@ struct SplashScreen: View {
                         .foregroundColor(.white)
                         .padding(.bottom, 70)
                     
-                    NavigationLink(
-                        destination: OnboardingView(),
-                        isActive: $toBusinessPage,
-                        label: {
+//                    NavigationLink(
+//                        destination: OnboardingView(),
+//                        isActive: $toBusinessPage,
+//                        label: {
                             Button {
                                 role = "Business"
                                 toBusinessPage.toggle()
@@ -54,7 +54,7 @@ struct SplashScreen: View {
                             .background(ThemeColor.primary)
                             .cornerRadius(15)
                             .padding(.bottom, 8)
-                        })
+//                        })
                     
                     
                     NavigationLink(
@@ -77,12 +77,14 @@ struct SplashScreen: View {
                                     .stroke(.white, lineWidth: 1)
                             )
                             .padding(.bottom, 30)
-                        })
+                       })
                 }
                 .padding(.horizontal, 16)
             }
             .navigationBarHidden(true)
-        }
+            .navigate(to: OnboardingView(), when: $toBusinessPage).navigationBarHidden(true)
+//            .navigate(to: UnderMaintenanceView(), when: $toInfluencerPage).navigationBarHidden(true)
+        //}
     }
 }
 

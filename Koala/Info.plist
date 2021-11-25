@@ -11,6 +11,7 @@
 	
     <key>UIAppFonts</key>
 	<array>
+		<string>SFProDisplay-Bold.ttf</string>
 		<string>Poppins-Black.ttf</string>
 		<string>Poppins-Bold.ttf</string>
 		<string>Poppins-ExtraBold.ttf</string>

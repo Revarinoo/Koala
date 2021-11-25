@@ -10,7 +10,15 @@ struct HomepageView: View {
     @AppStorage("JWT", store: .standard) var token = ""
     @StateObject var recomenndationList = RecommendationViewModel()
     @StateObject var userProfile = UserProfileViewModel()
+    @State var influencerDetailViewModel = InfluencerDetailViewModel()
     @State var toRecommendedInfluencerList: Bool = false
+    @State var showDetails = false
+    @State var influencerID = 0
+    
+    
+    init(){
+        UINavigationBarAppearance().backgroundColor = UIColor(ThemeColor.background)
+    }
     
     var body: some View {
         NavigationView {
@@ -25,6 +33,12 @@ struct HomepageView: View {
                         Image(systemName: "bell")
                             .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
                     }
+                    
+                    NavigationLink(destination: (token != "") ? AnyView(ChatList.shared) : AnyView(LoginView())){
+                        Image(systemName: "message")
+                            .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
+                    }
+
                 }
                 .padding(.horizontal, 16.0)
                 ScrollView(.vertical, showsIndicators: false){
@@ -45,8 +59,18 @@ struct HomepageView: View {
                         }.padding(.leading,16).padding([.trailing], 16.0).padding(.top, 28)
                             VStack(spacing: 12){
                                 ForEach (recomenndationList.recommendationModel){ i in
-                                    NavigationLink(destination: (token != "") ? AnyView(InfluencerDetailView(influencerID: i.id, fromBackButton: false)) : AnyView(LoginView())) {
-                                        RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
+                                    if token != ""{
+                                        Button(action:{
+                                            self.influencerID = i.id
+                                            showDetails = true
+                                            influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
+                                        }){
+                                            RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
+                                        }
+                                    } else {
+                                        NavigationLink(destination: LoginView()) {
+                                                                                RecommendationInfluencerCard(photoURL: i.photo, categories: i.category, name: i.name, price: i.price).padding(.leading,16).padding(.trailing, 16)
+                                                                            }
                                     }
                                 }
                             }
@@ -57,14 +81,20 @@ struct HomepageView: View {
             .onAppear(perform: {
                 userProfile.callData()
                 recomenndationList.callGetInfluencerList(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? [""])
+                print("homepage id ye \(influencerID)")
+                
             })
             .padding(.top, 25)
             .background(ThemeColor.background.ignoresSafeArea())
-            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarTitle("Discover", displayMode: .inline)
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
-            .onTapGesture {
-                self.dismissKeyboard()
+            .navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))
+//            .onTapGesture {
+//                self.dismissKeyboard()
+//            }
+            .fullScreenCover(isPresented: $showDetails){
+                InfluencerDetailView(influencerDetailViewModel: $influencerDetailViewModel, isPresent: $showDetails, previousView: "Discover", influencerID: $influencerID, fromBackButton: false)
             }
         }
     }

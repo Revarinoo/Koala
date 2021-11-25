@@ -7,10 +7,11 @@
 
 import Foundation
 import Alamofire
-import UIKit
 import SwiftUI
 
-let serverURLnya = "http://34.124.208.0/Koala-backend/public/api/campaign/create"
+//let serverURLnya = "http://34.124.208.0/Koala-backend/public/api/campaign/create"
+let serverURLnya = "https://koala-influencer.xyz/api/campaign/create"
+//let serverURLnya = "http://127.0.0.1:8000/api/campaign/create"
 
 class CreateCampaignViewModel : ObservableObject {
     @AppStorage("JWT", store: .standard) var token = ""
@@ -52,6 +53,8 @@ class CreateCampaignViewModel : ObservableObject {
             "Content-type": "multipart/form-data"
         ]
         
+        print("Data \(self.dataisNotComplete)")
+        print("Finish \(self.isFinishedUploading)")
         checkDuplicateContent()
         if self.dataHasSameType{
             return
@@ -73,6 +76,8 @@ class CreateCampaignViewModel : ObservableObject {
                 
                 upload.uploadProgress(closure: { (progress) in
                     print("Upload Progress: \(progress.fractionCompleted)")
+                    print("Data \(self.dataisNotComplete)")
+                    print("Finish \(self.isFinishedUploading)")
                     if progress.fractionCompleted == 1.0 {
                         
                     }
@@ -80,7 +85,7 @@ class CreateCampaignViewModel : ObservableObject {
                 
                 upload.responseData { response in
                     if let code = response.response?.statusCode{
-                        print(code)
+                        print("KODE \(code)")
                         if code == 201 {
                             let campaignResponse = try? JSONDecoder().decode(CreateCampaignResponse.self, from: response.value as! Data)
                             self.content_id = campaignResponse?.content_id ?? 0
@@ -95,7 +100,7 @@ class CreateCampaignViewModel : ObservableObject {
                 }
                 
             case .failure(let encodingError):
-                print("failure")
+                print("failure!!!!")
                 print(encodingError)
             }
         }
@@ -112,7 +117,7 @@ class CreateCampaignViewModel : ObservableObject {
             createCampaignService.postCreateCampaign(content){ response in
                 DispatchQueue.main.async {
                     if let code = response?.code{
-                        //print("RESPONSENYA \(response)")
+                        print("RESPONSENYA \(response)")
                     }
                 }
             }
