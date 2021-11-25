@@ -1676,6 +1676,7 @@
 				F7BD4CBE2747F9960035E12E /* ChatList.swift in Sources */,
 				2FD875AA2731460B0052DA4D /* StarReviewComponent.swift in Sources */,
 				8475D65127323C840021E87A /* CampaignReportBusinessResponse.swift in Sources */,
+				780C8E88274CA0B0008BD574 /* PaymentProcessView.swift in Sources */,
 				D2F5B284274D2874002E31CB /* ProfileModel.swift in Sources */,
 				84DA5AA3274CA16900A2A349 /* ChatTextFieldStyle.swift in Sources */,
 				8451B830272A55360061D389 /* CampaignResponse.swift in Sources */,
