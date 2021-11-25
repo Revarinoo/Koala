@@ -87,6 +87,12 @@
 		2FD875AB2731460B0052DA4D /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD875A42731460A0052DA4D /* ReviewService.swift */; };
 		2FD875AE27323E030052DA4D /* OrderRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD875AD27323E030052DA4D /* OrderRequestResponse.swift */; };
 		2FD875B02732438D0052DA4D /* OrderCampaignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD875AF2732438D0052DA4D /* OrderCampaignModel.swift */; };
+		780C8E88274CA0B0008BD574 /* PaymentProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E87274CA0B0008BD574 /* PaymentProcessView.swift */; };
+		780C8E8A274CA0C8008BD574 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E89274CA0C8008BD574 /* PaymentViewModel.swift */; };
+		780C8E8C274CA0D4008BD574 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E8B274CA0D4008BD574 /* Payment.swift */; };
+		780C8E8E274CA24A008BD574 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E8D274CA24A008BD574 /* PaymentService.swift */; };
+		780C8E98274E0690008BD574 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E97274E0690008BD574 /* PaymentView.swift */; };
+		780C8E9A274E91E3008BD574 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E99274E91E3008BD574 /* WebView.swift */; };
 		782E328E2730EC0100FA9795 /* RescheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E328D2730EC0100FA9795 /* RescheduleView.swift */; };
 		782E3290273248E600FA9795 /* RescheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E328F273248E600FA9795 /* RescheduleViewModel.swift */; };
 		78B933362726704B0040882D /* InfluencerDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B933352726704B0040882D /* InfluencerDetailResponse.swift */; };
@@ -287,6 +293,12 @@
 		2FD875A42731460A0052DA4D /* ReviewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
 		2FD875AD27323E030052DA4D /* OrderRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequestResponse.swift; sourceTree = "<group>"; };
 		2FD875AF2732438D0052DA4D /* OrderCampaignModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCampaignModel.swift; sourceTree = "<group>"; };
+		780C8E87274CA0B0008BD574 /* PaymentProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessView.swift; sourceTree = "<group>"; };
+		780C8E89274CA0C8008BD574 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
+		780C8E8B274CA0D4008BD574 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		780C8E8D274CA24A008BD574 /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
+		780C8E97274E0690008BD574 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
+		780C8E99274E91E3008BD574 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		782E328D2730EC0100FA9795 /* RescheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleView.swift; sourceTree = "<group>"; };
 		782E328F273248E600FA9795 /* RescheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleViewModel.swift; sourceTree = "<group>"; };
 		78B933352726704B0040882D /* InfluencerDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfluencerDetailResponse.swift; path = Model/InfluencerDetailResponse.swift; sourceTree = SOURCE_ROOT; };
@@ -855,6 +867,51 @@
 			isa = PBXGroup;
 			children = (
 				2FD875A42731460A0052DA4D /* ReviewService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		7850CEDE274C981500841ACE /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				7850CEE2274C98A300841ACE /* Service */,
+				7850CEE1274C989500841ACE /* View */,
+				7850CEE0274C988300841ACE /* ViewModel */,
+				7850CEDF274C987800841ACE /* Model */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		7850CEDF274C987800841ACE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				780C8E8B274CA0D4008BD574 /* Payment.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7850CEE0274C988300841ACE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				780C8E89274CA0C8008BD574 /* PaymentViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7850CEE1274C989500841ACE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				780C8E87274CA0B0008BD574 /* PaymentProcessView.swift */,
+				780C8E97274E0690008BD574 /* PaymentView.swift */,
+				780C8E99274E91E3008BD574 /* WebView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7850CEE2274C98A300841ACE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				780C8E8D274CA24A008BD574 /* PaymentService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1610,6 +1667,7 @@
 				2F95BCC52739F34D00F78F83 /* BusinessReportView.swift in Sources */,
 				78B9334227284D6F0040882D /* MailView.swift in Sources */,
 				2FBC8BB7271C3994007E7B76 /* InfluencerListViewModel.swift in Sources */,
+				780C8E8A274CA0C8008BD574 /* PaymentViewModel.swift in Sources */,
 				78B93340272725D40040882D /* RoundedCorner.swift in Sources */,
 				8451B83E272A55570061D389 /* CampaignReportCard.swift in Sources */,
 				2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */,
@@ -1646,6 +1704,7 @@
 				2F8DAD7D2741D0C100DE643F /* StringExtension.swift in Sources */,
 				F7BD4CC2274803AD0035E12E /* PersonalChat.swift in Sources */,
 				2F95BCC8273A176000F78F83 /* BusinessReportCard.swift in Sources */,
+				780C8E98274E0690008BD574 /* PaymentView.swift in Sources */,
 				84671FFD2726614F008FD954 /* PreviousProjectCard.swift in Sources */,
 				8451B832272A553C0061D389 /* CampaignModel.swift in Sources */,
 				2FACD84B272144D700E9F578 /* PriceRange.swift in Sources */,
@@ -1654,6 +1713,7 @@
 				8451B83D272A55570061D389 /* CampaignListView.swift in Sources */,
 				2FACD8442721137F00E9F578 /* FilterModal.swift in Sources */,
 				2F95BCD3273A2EDD00F78F83 /* Path+QuadCurve.swift in Sources */,
+				780C8E9A274E91E3008BD574 /* WebView.swift in Sources */,
 				8451B84B272B92DB0061D389 /* ResultExpenseCard.swift in Sources */,
 				2F95BCD2273A2EDD00F78F83 /* Helpers.swift in Sources */,
 				2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */,
@@ -1680,6 +1740,7 @@
 				D2131CB12729AC7D006ACDC2 /* MyOrderService.swift in Sources */,
 				8475D65327323EF10021E87A /* CampaignReportBusinessModel.swift in Sources */,
 				D23FB802273C37B60099AC01 /* DateCalendarExtension.swift in Sources */,
+				780C8E8E274CA24A008BD574 /* PaymentService.swift in Sources */,
 				2FD875A82731460B0052DA4D /* ReviewServiceModel.swift in Sources */,
 				F707D5A4274CA799004FFE77 /* OrderListCard.swift in Sources */,
 				D28D625827201ECB00BE7345 /* CategoriesServices.swift in Sources */,
@@ -1753,6 +1814,7 @@
 				2F0D9DAE27311BAB0012DAAF /* CampaignDetailService.swift in Sources */,
 				D28EC2A92722536400FCEA2B /* RecommendationViewModel.swift in Sources */,
 				8451B849272B923F0061D389 /* CampaignDetailReportView.swift in Sources */,
+				780C8E8C274CA0D4008BD574 /* Payment.swift in Sources */,
 				84402B5C2738DF700037C045 /* EstimatedPriceCard.swift in Sources */,
 				D28D625627201E8300BE7345 /* RecommendationInfluencerService.swift in Sources */,
 				D2C3C59C2727A2B700C338B4 /* OngoingCard.swift in Sources */,
