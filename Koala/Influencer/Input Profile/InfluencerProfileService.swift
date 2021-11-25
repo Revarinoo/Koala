@@ -16,7 +16,7 @@ struct InfluencerService{
     func getInfluencer(completionHandler:@escaping(_ result: GetProfileResponse?)->Void) {
         
         let request = NSMutableURLRequest(url: NSURL(string: HttpUtility.endpoint + "influencer/profile/detail")! as URL)
-        request.addValue("Bearer 2|740IuKwaXPyxF6iYUQ4j7g29ub5f7X2sWofm3nUY", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer 2|fDUQdBRfJ28oEcg7A9LeccSfzzBb1H4WekgCmKH5", forHTTPHeaderField: "Authorization")
 
         HttpUtility.shared.request(request as URLRequest, resultType: GetProfileResponse.self) { response in
             print("this is response \(response)")

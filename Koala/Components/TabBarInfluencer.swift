@@ -29,6 +29,11 @@ struct TabBarInfluencer: View {
                             selectedTab == 1 ? Image(systemName: "message.fill") : Image(systemName: "message")
                             Text("Chat")
                         }.tag(1)
+                ProfileView()
+                    .tabItem{
+                        selectedTab == 2 ? Image("discoveractive") : Image("discovergrey")
+                        Text("Order")
+                    }.tag(2)
                 }
                 .accentColor(Color(UIColor(named: "primary")!))
                 .navigationBarHidden(true)

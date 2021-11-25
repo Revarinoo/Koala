@@ -33,6 +33,7 @@ struct Specialties : Codable {
 struct InfluencerProfileData {
     var name : String
     var email : String
+    var photo : String
     var instagram : String
     var location : String
     var specialty : [String]

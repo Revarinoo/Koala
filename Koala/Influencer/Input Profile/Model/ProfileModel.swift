@@ -78,6 +78,7 @@ struct UpdateProfileModel {
     var typeRole : String = String()
     var name : String = String()
     var location : locationProvince = .defaultValue
+    var specialties : [String] = []
     var categories : [String] = []
     var email : String = String()
     var postMin : String = String()

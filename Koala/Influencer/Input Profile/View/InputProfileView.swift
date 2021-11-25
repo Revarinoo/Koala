@@ -12,6 +12,7 @@ struct InputProfileView: View {
     @ObservedObject var updateProfileVM = InfluencerProfileViewModel()
     @ObservedObject var influencerSpecialty = InfluencerSpecialty()
     @State var showImagePicker = false
+    @Binding var isPresent : Bool
     
     let columns = [
         GridItem(.flexible(minimum: 115, maximum: 130)),
@@ -85,8 +86,10 @@ struct InputProfileView: View {
                     PriceForm(updateProfileModel: $updateProfileVM.updateProfileModel)
                     
                     Button(action:{
-                        //updateProfileVM.submitProfileData(updateProfileVM.updateProfileModel)
-                        updateProfileVM.callInfluencerData()
+                        updateProfileVM.influencerProfile.specialty = influencerSpecialty.getSpecialtyClicked()
+                        
+                        updateProfileVM.submitProfileData(updateProfileVM.updateProfileModel)
+                        
                     }){
                         Text("Next").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                             .foregroundColor(.white)
@@ -111,13 +114,22 @@ struct InputProfileView: View {
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar(){
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        self.isPresent = false
+                    }){
+                        Text("Cancel")
+                        
+                    }.foregroundColor(ThemeColor.primary)
+                }
+            }
         }
-        
     }
 }
 
 struct InputProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        InputProfileView()
+        InputProfileView(isPresent: .constant(true))
     }
 }

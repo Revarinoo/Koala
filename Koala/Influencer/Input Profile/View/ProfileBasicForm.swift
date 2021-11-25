@@ -32,7 +32,7 @@ struct ProfileBasicForm: View {
                 Text("Instagram")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
-                TextField("Enter your instagram username", text: $updateProfileModel.socialMedia).textFieldStyle(OvalTextFieldStyleForm())
+                TextField("Enter your instagram username (with @)", text: $updateProfileModel.socialMedia).textFieldStyle(OvalTextFieldStyleForm())
             }
             
             VStack(alignment: .leading, spacing: 12){
