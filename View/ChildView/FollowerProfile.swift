@@ -10,12 +10,12 @@ import SwiftUI
 struct FollowerProfile: View {
     
     @State var currentIndex: Int = 0
-    var images: [AnalyticPhotoModel] = []
+    var projects: [ProjectModel] = []
     
     var body: some View {
         VStack (alignment: .leading) {
-            if images.isEmpty {
-                Text("Follower Profile")
+            if projects.isEmpty {
+                Text("Portofolio")
                     .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                     .padding(.bottom, 16)
                 Text("Follower profile not set yet")
@@ -24,7 +24,7 @@ struct FollowerProfile: View {
                     .frame(minWidth: 300, maxWidth: 356)
                     .padding(.top, 10)
             } else {
-                Text("Follower Profile")
+                Text("Portofolio")
                     .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                     .padding(.leading, 16)
                     .padding(.bottom, 16)

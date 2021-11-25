@@ -10,29 +10,30 @@ import SDWebImageSwiftUI
 
 struct PreviousProjectCard: View {
     let photoURL: String
-    let reach: String
-    let impression: String
+    let business_photo: String
     
     var body: some View {
-        VStack (alignment: .center) {
+        HStack (alignment: .center) {
             WebImage(url: URL(string: photoURL))
                 .resizable()
                 .scaledToFill()
                 .clipShape(Circle())
                 .frame(width: 82, height: 82)
                 .overlay(Circle().stroke(Color.init(hex: "FE724C"), lineWidth: 2))
-            Text(reach)
-                .font(Font.custom(ThemeFont.poppinsSemiBold, size: 16))
-                .foregroundColor(Color.init(hex: "541605"))
-            Text("Reach")
-                .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
-                .foregroundColor(Color.init(hex: "DC5B38"))
-            Text(impression)
-                .font(Font.custom(ThemeFont.poppinsSemiBold, size: 16))
-                .foregroundColor(Color.init(hex: "541605"))
-            Text("Impression")
-                .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
-                .foregroundColor(Color.init(hex: "DC5B38"))
+            VStack{
+                Text(reach)
+                    .font(Font.custom(ThemeFont.poppinsSemiBold, size: 16))
+                    .foregroundColor(Color.init(hex: "541605"))
+                Text("Reach")
+                    .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
+                    .foregroundColor(Color.init(hex: "DC5B38"))
+                Text(impression)
+                    .font(Font.custom(ThemeFont.poppinsSemiBold, size: 16))
+                    .foregroundColor(Color.init(hex: "541605"))
+                Text("Impression")
+                    .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
+                    .foregroundColor(Color.init(hex: "DC5B38"))
+            }
         }
         .frame(width: 106, height: 182)
         .background(Color.init(hex: "FFF1ED"))

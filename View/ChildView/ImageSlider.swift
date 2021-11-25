@@ -15,7 +15,7 @@ struct ImageSlider: View {
     @GestureState var offset: CGFloat = 0
     @State var currentIndex: Int = 0
     
-    var images: [AnalyticPhotoModel]
+    var projects: [ProjectModel]
     
     var body: some View {
         
@@ -24,9 +24,9 @@ struct ImageSlider: View {
             let width = proxy.size.width
             
             HStack (spacing: 0) {
-                ForEach(images, id: \.id) { item in
+                ForEach(projects, id: \.id) { project in
                     VStack {
-                        WebImage(url: URL(string: item.photo))
+                        WebImage(url: URL(string: "https://media.matamata.com/thumbs/2021/05/26/91972-rose-blackpink-instagramatroses-are-rosie/745x489-img-91972-rose-blackpink-instagramatroses-are-rosie.jpg"))
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .cornerRadius(10)
@@ -49,7 +49,7 @@ struct ImageSlider: View {
                         let offsetX = value.translation.width
                         let progress = -offsetX / width
                         let roundIndex = progress.rounded()
-                        currentIndex = max(min(currentIndex + Int(roundIndex), images.count-1), 0)
+                        currentIndex = max(min(currentIndex + Int(roundIndex), projects.count-1), 0)
                         
                         currentIndex = index
                     })
@@ -57,7 +57,7 @@ struct ImageSlider: View {
                         let offsetX = value.translation.width
                         let progress = -offsetX / width
                         let roundIndex = progress.rounded()
-                        index = max(min(currentIndex + Int(roundIndex), images.count-1), 0)
+                        index = max(min(currentIndex + Int(roundIndex), projects.count-1), 0)
                     })
             )
         }
