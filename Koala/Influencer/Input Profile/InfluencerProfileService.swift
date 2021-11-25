@@ -13,12 +13,13 @@ struct InfluencerService{
     
     @AppStorage("JWT", store: .standard) var token = ""
     let tkn = "1|m537lhpvOSjSVy8crTgJYZQOL6xCC5d0ouxnl3Nn"
-    func getCampaign(completionHandler:@escaping(_ result: CreateCampaignResponse?)->Void) {
+    func getInfluencer(completionHandler:@escaping(_ result: GetProfileResponse?)->Void) {
         
-        let request = NSMutableURLRequest(url: NSURL(string: HttpUtility.endpoint + "campaign")! as URL)
-        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let request = NSMutableURLRequest(url: NSURL(string: HttpUtility.endpoint + "influencer/profile/detail")! as URL)
+        request.addValue("Bearer 2|740IuKwaXPyxF6iYUQ4j7g29ub5f7X2sWofm3nUY", forHTTPHeaderField: "Authorization")
 
-        HttpUtility.shared.request(request as URLRequest, resultType: CreateCampaignResponse.self) { response in
+        HttpUtility.shared.request(request as URLRequest, resultType: GetProfileResponse.self) { response in
+            print("this is response \(response)")
             _ = completionHandler(response)
         }
     }

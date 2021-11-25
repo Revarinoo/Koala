@@ -7,8 +7,10 @@
 
 import Foundation
 
-struct GetProfile : Codable {
-    let name : String
+struct GetProfileResponse : Codable {
+    let code : Int
+    let message : String
+    let influencer_name : String
     let photo : String
     let email : String
     let instagram : String
@@ -25,4 +27,19 @@ struct InfluencerPrice : Codable {
 
 struct Specialties : Codable {
     let name : String
+}
+
+
+struct InfluencerProfileData {
+    var name : String
+    var email : String
+    var instagram : String
+    var location : String
+    var specialty : [String]
+    var storyMax : Int
+    var storyMin : Int
+    var postMax : Int
+    var postMin : Int
+    var reelsMax : Int
+    var reelsMin : Int
 }

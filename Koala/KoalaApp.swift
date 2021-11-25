@@ -35,7 +35,8 @@ struct KoalaApp: App {
 //                SplashScreen().environment(\.colorScheme, .light)
 //            }
             
-            InputProfileView()
+//            InputProfileView()
+            ProfileView()
         }
     }
 }

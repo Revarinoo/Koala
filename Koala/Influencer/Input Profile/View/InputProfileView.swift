@@ -85,7 +85,8 @@ struct InputProfileView: View {
                     PriceForm(updateProfileModel: $updateProfileVM.updateProfileModel)
                     
                     Button(action:{
-                        updateProfileVM.submitProfileData(updateProfileVM.updateProfileModel)
+                        //updateProfileVM.submitProfileData(updateProfileVM.updateProfileModel)
+                        updateProfileVM.callInfluencerData()
                     }){
                         Text("Next").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                             .foregroundColor(.white)
