@@ -125,7 +125,7 @@ class InfluencerProfileViewModel : ObservableObject {
         ]
 
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer 2|fDUQdBRfJ28oEcg7A9LeccSfzzBb1H4WekgCmKH5",
+            "Authorization": "Bearer \(token)",
             "Content-type": "multipart/form-data"
         ]
         
@@ -149,7 +149,7 @@ class InfluencerProfileViewModel : ObservableObject {
                 multipartFormData.append(category.data(using: .utf8)!, withName: "categories[]")
             }
             print("INIDATA \(multipartFormData)")
-        }, to: "http://127.0.0.1:8000/api/profile/update", method: .post , headers: headers)
+        }, to: HttpUtility.endpoint + "profile/update", method: .post , headers: headers)
         { (result) in
             print(result)
             switch result {
