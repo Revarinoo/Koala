@@ -13,6 +13,7 @@ struct PendingCard: View {
     @State private var showingAlert = false
     @StateObject private var orderViewModel = OrderViewModel()
     @Binding var deletedAt: Int
+    @State var pay: Bool = false
     var body: some View {
         VStack{
             HStack(spacing: 18){
@@ -47,19 +48,38 @@ struct PendingCard: View {
             }.padding([.top, .leading, .trailing], 16)
             HStack{
                 Spacer()
-                Button(action: {
-                    showingAlert.toggle()
-                }){
-                    Text("Cancel").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                        .foregroundColor(ThemeColor.primary)
-                        .padding()
-                        .padding([.leading, .trailing])
-                }.frame(width: 113, height: 38)
-                    .cornerRadius(12)
-                    .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(ThemeColor.primary, lineWidth: 1)
-                        )
+                if !pendingOrder.availableToPay {
+                    Button(action: {
+                        showingAlert.toggle()
+                    }){
+                        Text("Cancel").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                            .foregroundColor(ThemeColor.primary)
+                            .padding()
+                            .padding([.leading, .trailing])
+                    }.frame(width: 113, height: 38)
+                        .cornerRadius(12)
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(ThemeColor.primary, lineWidth: 1)
+                            )
+                }
+                else {
+                    NavigationLink(destination: PaymentView(order_id: pendingOrder.order_id), isActive: $pay) {
+                        Button {
+                            pay.toggle()
+                        } label: {
+                            Text("Pay Now")
+                                .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                                .foregroundColor(.white)
+                                .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
+                                .frame(width: 113, height: 38)
+                                .background(ThemeColor.primary)
+                                .cornerRadius(12)
+                        }
+                    }
+                    
+
+                }
             }.padding(.bottom, 9).padding(.trailing, 15)
              .alert(isPresented: $showingAlert) {
                     Alert(

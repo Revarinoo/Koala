@@ -7,28 +7,59 @@
 
 import Foundation
 import SwiftUI
+import Introspect
 
 struct PaymentView: View {
-    @ObservedObject var paymentViewModel = PaymentViewModel()
+    @StateObject var paymentViewModel = PaymentViewModel()
     @ObservedObject var campaignViewModel = CampaignViewModel()
+    @State var uiTabarController: UITabBarController?
     
     @State var showWebView = false
     @State var payment_url = ""
     @State var payment_status = ""
-    var order_id = 26
+    var order_id: Int
     
     var body: some View {
         ZStack {
-            VStack{
-                Button(action: {
-                    guard let paymentProcess = paymentViewModel.paymentProcess else {return}
-                    payment_url = paymentProcess.payment_url
-                    print(paymentProcess.payment_url)
-                    showWebView.toggle()
-                }){
-                    Text("Proceed to Payment")
+            ZStack {
+                VStack {
+                    PaymentOrderDetail(paymentVM: paymentViewModel)
+                    Spacer()
                 }
-                Text(paymentViewModel.paymentProcess?.payment_status ?? "NIL")
+                
+                VStack {
+                    Spacer()
+                    VStack (spacing: 14) {
+                        Divider()
+                        HStack {
+                            Text("Total Payment")
+                                .font(.custom(ThemeFont.poppinsMedium, size: 18))
+                                .foregroundColor(.black)
+                            Spacer()
+                            Text(totalPayment(detailModel: paymentViewModel.orderDetail.detail))
+                                .font(.custom(ThemeFont.poppinsMedium, size: 20))
+                        }
+                        .padding([.leading, .trailing], 16)
+                        
+                        Button(action: {
+                            guard let paymentProcess = paymentViewModel.paymentProcess else {return}
+                            payment_url = paymentProcess.payment_url
+                            print(paymentProcess.payment_url)
+                            showWebView.toggle()
+                        }){
+                            Text("Choose Payment Method")
+                                .font(.custom(ThemeFont.poppinsSemiBold, size: 18))
+                                .foregroundColor(Color.white)
+                                .padding(EdgeInsets(top: 11, leading: 62, bottom: 12, trailing: 61))
+                                .frame(width: 358, height: 50)
+                                .background(ThemeColor.primary)
+                                .cornerRadius(15)
+                        }
+                    }
+                    .frame(width: UIScreen.main.bounds.width, height: 120)
+                    .padding(.bottom, 35)
+                }
+                .edgesIgnoringSafeArea(.bottom)
             }
         }.sheet(isPresented: $showWebView){
             
@@ -51,6 +82,28 @@ struct PaymentView: View {
             
           }).onAppear{
             paymentViewModel.getOrderPayment(order_id: order_id)
+              paymentViewModel.getOrderDetail(orderId: order_id)
         }
+          .introspectTabBarController { (UITabBarController) in
+                                  UITabBarController.tabBar.isHidden = true
+                                  uiTabarController = UITabBarController
+                              }.onDisappear{
+                                  uiTabarController?.tabBar.isHidden = false
+                              }
+          .navigationBarTitle("Review", displayMode: .inline)
+    }
+    
+    private func totalPayment(detailModel: [DetailModel]) -> String {
+        var total: Double = 0.0
+        for detail in detailModel {
+            total += detail.price
+        }
+        return "Rp \(Int(total).rupiahFormatter())"
+    }
+}
+
+struct PaymentView_Previews: PreviewProvider {
+    static var previews: some View {
+        PaymentView(order_id: 10)
     }
 }
