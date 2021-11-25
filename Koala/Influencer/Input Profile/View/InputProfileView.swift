@@ -9,10 +9,8 @@ import SwiftUI
 
 struct InputProfileView: View {
     
-    @State var text = ""
-    @State var province : locationProvince = .aceh
+    @ObservedObject var updateProfileVM = InfluencerProfileViewModel()
     @ObservedObject var influencerSpecialty = InfluencerSpecialty()
-    @State var profilePhoto : UIImage = UIImage()
     @State var showImagePicker = false
     
     let columns = [
@@ -26,7 +24,7 @@ struct InputProfileView: View {
             ScrollView(showsIndicators: false){
                 VStack(spacing: 18){
                     VStack{
-                        if profilePhoto.size.width == 0 {
+                        if updateProfileVM.updateProfileModel.image.size.width == 0 {
                             Image(systemName: "camera").font(.system(size: 36)).foregroundColor(.gray).scaledToFill().frame(width: 127, height: 127)
                                 .background(ThemeColor.background)
                                 .cornerRadius(20.0)
@@ -37,7 +35,7 @@ struct InputProfileView: View {
                                 }
                             Text("Add Photo").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
                         } else {
-                            Image(uiImage: profilePhoto).resizable().foregroundColor(.gray)
+                            Image(uiImage: updateProfileVM.updateProfileModel.image).resizable().foregroundColor(.gray)
                                 .scaledToFill().frame(width: 127, height: 127)
                                 .background(ThemeColor.background)
                                 .cornerRadius(20.0)
@@ -49,7 +47,7 @@ struct InputProfileView: View {
                             Text("Change Photo").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
                         }
                     }.padding(.top, 30)
-                    ProfileBasicForm()
+                    ProfileBasicForm(updateProfileModel: $updateProfileVM.updateProfileModel)
                     
                     HStack{
                         VStack(alignment: .leading){
@@ -84,10 +82,10 @@ struct InputProfileView: View {
                         }
                     }
                     
-                    PriceForm()
+                    PriceForm(updateProfileModel: $updateProfileVM.updateProfileModel)
                     
                     Button(action:{
-                        
+                        updateProfileVM.submitProfileData(updateProfileVM.updateProfileModel)
                     }){
                         Text("Next").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                             .foregroundColor(.white)
@@ -108,7 +106,7 @@ struct InputProfileView: View {
             }
             .sheet(isPresented: $showImagePicker) {
                 // Pick an image from the photo library:
-                ImagePicker(sourceType: .photoLibrary, selectedImage: $profilePhoto)
+                ImagePicker(sourceType: .photoLibrary, selectedImage: $updateProfileVM.updateProfileModel.image)
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)

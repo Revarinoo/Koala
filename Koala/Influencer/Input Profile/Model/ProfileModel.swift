@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 
@@ -70,4 +71,42 @@ class InfluencerSpecialty: ObservableObject {
     func getSpecialtyClicked() -> [String] {
         return self.interest.filter({$0.isClicked == true}).map { $0.name }
     }
+}
+
+struct UpdateProfileModel {
+    var image : UIImage = UIImage()
+    var typeRole : String = String()
+    var name : String = String()
+    var location : locationProvince = .defaultValue
+    var categories : [String] = []
+    var email : String = String()
+    var postMin : String = String()
+    var postMax : String = String()
+    var storyMin : String = String()
+    var storyMax : String = String()
+    var reelsMin : String = String()
+    var reelsMax : String = String()
+    var socialMedia : String = String()
+}
+
+struct UpdateProfileModelRequest : Encodable {
+    let image : Data
+    let type_role : String
+    let name : String
+    let location : String
+    let categories : [String]
+    let email : String
+    let post_min_rate : Int
+    let post_max_rate : Int
+    let story_min_rate : Int
+    let story_max_rate : Int
+    let reels_min_rete : Int
+    let reels_max_rate : Int
+    let socialmeida_id : String
+}
+
+
+struct UpdateInfluencerProfileResponse : Codable {
+    let message : String?
+    let code: Int?
 }

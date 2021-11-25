@@ -11,7 +11,7 @@ struct PriceForm: View {
     
     @State var lowPrice = ""
     @State var highPrice = ""
-//    @ObservedObject var input = NumbersOnly()
+    @Binding var updateProfileModel : UpdateProfileModel
     
     var body: some View {
         VStack(spacing: 18){
@@ -20,11 +20,11 @@ struct PriceForm: View {
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
                 HStack{
-                    TextField("Rp ", text: $lowPrice).textFieldStyle(OvalTextFieldStyleForm()).keyboardType(.numberPad)
+                    TextField("Rp ", text: $updateProfileModel.postMin).textFieldStyle(OvalTextFieldStyleForm())//.keyboardType(.numberPad)
                     Spacer()
                     Text("-")
                     Spacer()
-                    TextField("Rp ", text: $highPrice).textFieldStyle(OvalTextFieldStyleForm()).keyboardType(.numberPad)
+                    TextField("Rp ", text: $updateProfileModel.postMax).textFieldStyle(OvalTextFieldStyleForm())//.keyboardType(.numberPad)
                 }
                 
             }
@@ -33,11 +33,11 @@ struct PriceForm: View {
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
                 HStack{
-                    TextField("Rp ", text: $lowPrice).textFieldStyle(OvalTextFieldStyleForm()).keyboardType(.numberPad)
+                    TextField("Rp ", text: $updateProfileModel.storyMin).textFieldStyle(OvalTextFieldStyleForm())//.keyboardType(.numberPad)
                     Spacer()
                     Text("-")
                     Spacer()
-                    TextField("Rp ", text: $highPrice).textFieldStyle(OvalTextFieldStyleForm()).keyboardType(.numberPad)
+                    TextField("Rp ", text: $updateProfileModel.storyMax).textFieldStyle(OvalTextFieldStyleForm())//.keyboardType(.numberPad)
                 }
                 
             }
@@ -46,13 +46,12 @@ struct PriceForm: View {
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
                 HStack{
-                    TextField("Rp ", text: $lowPrice).textFieldStyle(OvalTextFieldStyleForm()).keyboardType(.numberPad)
+                    TextField("Rp ", text: $updateProfileModel.reelsMin).textFieldStyle(OvalTextFieldStyleForm())//.keyboardType(.numberPad)
                     Spacer()
                     Text("-")
                     Spacer()
-                    TextField("Rp ", text: $highPrice).textFieldStyle(OvalTextFieldStyleForm()).keyboardType(.numberPad)
+                    TextField("Rp ", text: $updateProfileModel.reelsMax).textFieldStyle(OvalTextFieldStyleForm())//.keyboardType(.numberPad)
                 }
-                
             }
         }
     }
@@ -60,7 +59,7 @@ struct PriceForm: View {
 
 struct PriceForm_Previews: PreviewProvider {
     static var previews: some View {
-        PriceForm()
+        PriceForm(updateProfileModel: .constant(UpdateProfileModel()))
     }
 }
 
