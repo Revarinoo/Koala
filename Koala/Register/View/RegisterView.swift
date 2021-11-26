@@ -12,7 +12,7 @@ struct RegisterView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var registerVM = RegisterViewModel()
     @State private var agree: Bool = false
-    @AppStorage("role", store: .standard) var role = "Business"
+    @AppStorage("role", store: .standard) var role = ""
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -64,7 +64,6 @@ struct RegisterView: View {
                 NavigationLink(destination: Text("Home"), isActive: $registerVM.isAuthenticate) {
                     Button {
                         registerVM.register()
-                        print(registerVM.role)
                     } label: {
                         Text("Sign Up")
                         .padding(15)
