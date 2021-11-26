@@ -18,4 +18,12 @@ struct PaymentService {
         }
     }
     
+    func getOrderDetail(orderId: Int, completionHandler: @escaping(_ result: OrderDetailData?) -> Void) {
+        let request = NSMutableURLRequest(url: NSURL(string: HttpUtility.endpoint + "payment/detail/\(orderId)")! as URL)
+        
+        HttpUtility.shared.request(request as URLRequest, resultType: OrderDetailData.self) { response in
+            completionHandler(response)
+        }
+    }
+    
 }

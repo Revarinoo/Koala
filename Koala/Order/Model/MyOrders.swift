@@ -19,4 +19,5 @@ struct MyOrders: Identifiable{
     var avgReach : String
     var avgImpression: String
     var avgER: Double
+    var availableToPay: Bool
 }

@@ -192,6 +192,9 @@
 		F76CE87B272275D20055D58C /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CE87A272275D20055D58C /* RegisterService.swift */; };
 		F76CE87D2723B5010055D58C /* RegisterInfluencerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CE87C2723B5010055D58C /* RegisterInfluencerView.swift */; };
 		F76CE87F2723B9E80055D58C /* RegisterBusinessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CE87E2723B9E80055D58C /* RegisterBusinessView.swift */; };
+		F7A3BBE3274F9A9E000CF2AA /* PaymentOrderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A3BBE2274F9A9E000CF2AA /* PaymentOrderDetail.swift */; };
+		F7A3BBE5274F9DE8000CF2AA /* PaymentOrderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A3BBE4274F9DE8000CF2AA /* PaymentOrderDetailModel.swift */; };
+		F7A3BBE7274FCEC7000CF2AA /* PaymentOrderDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A3BBE6274FCEC7000CF2AA /* PaymentOrderDetailResponse.swift */; };
 		F7A52B8E27267B9C0067D3E6 /* SocialMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A52B8D27267B9C0067D3E6 /* SocialMedia.swift */; };
 		F7A52B9027267D700067D3E6 /* SocialMediaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A52B8F27267D700067D3E6 /* SocialMediaCard.swift */; };
 		F7A52B922727073B0067D3E6 /* FollowerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A52B912727073B0067D3E6 /* FollowerProfile.swift */; };
@@ -399,6 +402,9 @@
 		F76CE87A272275D20055D58C /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		F76CE87C2723B5010055D58C /* RegisterInfluencerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInfluencerView.swift; sourceTree = "<group>"; };
 		F76CE87E2723B9E80055D58C /* RegisterBusinessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBusinessView.swift; sourceTree = "<group>"; };
+		F7A3BBE2274F9A9E000CF2AA /* PaymentOrderDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOrderDetail.swift; sourceTree = "<group>"; };
+		F7A3BBE4274F9DE8000CF2AA /* PaymentOrderDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOrderDetailModel.swift; sourceTree = "<group>"; };
+		F7A3BBE6274FCEC7000CF2AA /* PaymentOrderDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOrderDetailResponse.swift; sourceTree = "<group>"; };
 		F7A52B8D27267B9C0067D3E6 /* SocialMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocialMedia.swift; path = View/ChildView/SocialMedia.swift; sourceTree = SOURCE_ROOT; };
 		F7A52B8F27267D700067D3E6 /* SocialMediaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocialMediaCard.swift; path = View/ChildView/SocialMediaCard.swift; sourceTree = SOURCE_ROOT; };
 		F7A52B912727073B0067D3E6 /* FollowerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FollowerProfile.swift; path = View/ChildView/FollowerProfile.swift; sourceTree = SOURCE_ROOT; };
@@ -886,6 +892,8 @@
 			isa = PBXGroup;
 			children = (
 				780C8E8B274CA0D4008BD574 /* Payment.swift */,
+				F7A3BBE4274F9DE8000CF2AA /* PaymentOrderDetailModel.swift */,
+				F7A3BBE6274FCEC7000CF2AA /* PaymentOrderDetailResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -904,6 +912,7 @@
 				780C8E87274CA0B0008BD574 /* PaymentProcessView.swift */,
 				780C8E97274E0690008BD574 /* PaymentView.swift */,
 				780C8E99274E91E3008BD574 /* WebView.swift */,
+				F7A3BBE2274F9A9E000CF2AA /* PaymentOrderDetail.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1174,7 +1183,6 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-
 		D299558A271E64E80025D0CB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1673,6 +1681,7 @@
 				78B93340272725D40040882D /* RoundedCorner.swift in Sources */,
 				8451B83E272A55570061D389 /* CampaignReportCard.swift in Sources */,
 				2F99D361271D7F1C003DD86C /* InfluencerCardList.swift in Sources */,
+				F7A3BBE7274FCEC7000CF2AA /* PaymentOrderDetailResponse.swift in Sources */,
 				F7BD4CBE2747F9960035E12E /* ChatList.swift in Sources */,
 				2FD875AA2731460B0052DA4D /* StarReviewComponent.swift in Sources */,
 				8475D65127323C840021E87A /* CampaignReportBusinessResponse.swift in Sources */,
@@ -1759,6 +1768,7 @@
 				2FD875A62731460B0052DA4D /* ReviewPageViewModel.swift in Sources */,
 				F7BD4CBA2747E8820035E12E /* ChatRoomViewModel.swift in Sources */,
 				2FCB0B232724FE5E0017C9D6 /* InstaFeedModel.swift in Sources */,
+				F7A3BBE3274F9A9E000CF2AA /* PaymentOrderDetail.swift in Sources */,
 				F75CEE8E27143BF100E36A1F /* LoginView.swift in Sources */,
 				F761740C2732485C00019B79 /* CampaignUpcomingResponse.swift in Sources */,
 				782E3290273248E600FA9795 /* RescheduleViewModel.swift in Sources */,
@@ -1806,6 +1816,7 @@
 				2F0D9DB027311C380012DAAF /* CampaignDetailModel.swift in Sources */,
 				F76CE879272275B90055D58C /* RegisterViewModel.swift in Sources */,
 				2F95BCC32739F12700F78F83 /* UnderMaintenanceView.swift in Sources */,
+				F7A3BBE5274F9DE8000CF2AA /* PaymentOrderDetailModel.swift in Sources */,
 				8451B84D272B95510061D389 /* ResultTypeCard.swift in Sources */,
 				2F1E8F71273EB6BD0056D9BC /* BusinessReportViewModel.swift in Sources */,
 				2FA152B02748A15000231492 /* ArrayExtension.swift in Sources */,

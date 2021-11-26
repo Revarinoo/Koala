@@ -23,18 +23,18 @@ struct KoalaApp: App {
     
     var body: some Scene {
         WindowGroup {
-            PaymentView()
-//            if token != "" {
-//                if role == "Business" {
-//                    TabBar(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
-//                }
-//                else {
-//                    TabBarInfluencer(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
-//                }
-//            }
-//            else {
-//                SplashScreen().environment(\.colorScheme, .light)
-//            }
+//            PaymentView(order_id: 10)
+            if token != "" {
+                if role == "Business" {
+                    TabBar(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
+                }
+                else {
+                    TabBarInfluencer(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
+                }
+            }
+            else {
+                SplashScreen().environment(\.colorScheme, .light)
+            }
         }
     }
 }
