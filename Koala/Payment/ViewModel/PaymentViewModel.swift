@@ -19,6 +19,7 @@ class PaymentViewModel: ObservableObject{
     
     private let paymentService: PaymentService = PaymentService()
     @Published var paymentProcess: PaymentProcess?
+    @Published var orderDetail: OrderDetailPaymentModel = OrderDetailPaymentModel()
     
     func getOrderPayment(order_id: Int){
        
@@ -38,4 +39,23 @@ class PaymentViewModel: ObservableObject{
             }
         }
     }
+    
+    func getOrderDetail(orderId: Int) {
+        paymentService.getOrderDetail(orderId: orderId) { response in
+            if let response = response {
+                if response.code == 201 {
+                    var detail: [DetailModel] = []
+                    for data in response.detail {
+                        detail.append(DetailModel(content_type: data.content_type, price: data.price))
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.orderDetail = OrderDetailPaymentModel(campaign_name: response.campaign_name, time_period: response.time_period, detail: detail, influencer: response.influencer)
+                        print(self.orderDetail)
+                    }
+                }
+            }
+        }
+    }
+    
 }
