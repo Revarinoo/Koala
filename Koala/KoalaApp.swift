@@ -15,26 +15,23 @@ struct KoalaApp: App {
     @AppStorage("role", store: .standard) var role = ""
     
     init() {
-//        if role != "" {
-            FirebaseApp.configure()
-//        }
+        FirebaseApp.configure()
         UIWindow.appearance().overrideUserInterfaceStyle = .light
     }
     
     var body: some Scene {
         WindowGroup {
-//            if token != "" {
-//               if role == "Business" {
-//                    TabBar(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
-//               }
-//               else {
-//                   TabBarInfluencer(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
-//               }
-//            }
-//            else {
-//                SplashScreen().environment(\.colorScheme, .light)
-//            }
-            OrderReviewView(orderId: 1)
+            if token != "" {
+                if role == "Business" {
+                    TabBar(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
+                }
+                else {
+                    TabBarInfluencer(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
+                }
+            }
+            else {
+                SplashScreen().environment(\.colorScheme, .light)
+            }
         }
     }
 }
