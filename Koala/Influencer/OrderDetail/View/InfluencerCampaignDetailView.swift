@@ -32,7 +32,7 @@ struct InfluencerCampaignDetailView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 ZStack(alignment: .bottomLeading) {
                     VStack {
-                        InfluencerCampaignDetailFieldView(campaign: campaignVM.campaignModel, campaignDetail: campaignVM.campaignDetailModel)
+                        InfluencerCampaignDetailFieldView(campaign: campaignVM.campaignModel, campaignDetail: campaignVM.campaignDetailModel, campaignPrice: campaignVM.campaignPriceModel)
                         VStack {
                             Button {
                                 campaignVM.submitCampaignStatus(id, status: CampaignStatus.accepted.rawValue)

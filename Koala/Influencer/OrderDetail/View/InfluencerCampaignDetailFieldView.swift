@@ -6,6 +6,7 @@ struct InfluencerCampaignDetailFieldView: View {
     
     var campaign: InfluencerCampaignDetailModel
     var campaignDetail: [InfluencerCampaignDetailContentModel]
+    var campaignPrice: [InfluencerCampaignPriceModel]
     
     var body: some View {
         VStack (alignment: .leading, spacing: 18) {
@@ -20,6 +21,10 @@ struct InfluencerCampaignDetailFieldView: View {
             ForEach(campaignDetail, id: \.id) { detail in
                 DetailField(title: "Content Type", data: detail.content_type, font: ThemeFont.poppinsRegular, fontSize: 16)
                 DetailField(title: "Content Detail", data: detail.content_detail, font: ThemeFont.poppinsMedium, fontSize: 12)
+            }
+            
+            ForEach(campaignPrice, id: \.id) { price in
+                DetailField(title: price.content_type, data: "Rp \(price.price.rupiahFormatter())", font: ThemeFont.poppinsRegular, fontSize: 16)
             }
         }
     }

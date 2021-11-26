@@ -15,7 +15,7 @@ struct OrderListCard: View {
     
     var body: some View {
         NavigationLink(
-            destination: status != OrderListStatus.completed.rawValue ? AnyView(InfluencerCampaignDetailView(id: orderList.orderId, status: status)) : AnyView(Text("Review")),
+            destination: status != OrderListStatus.completed.rawValue ? AnyView(InfluencerCampaignDetailView(id: orderList.orderId, status: status)) : AnyView(OrderReviewView(orderId: orderList.orderId)),
             label: {
                 HStack {
                     WebImage(url: URL(string: orderList.campaignLogo))
