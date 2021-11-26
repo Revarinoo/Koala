@@ -14,7 +14,7 @@ struct PendingCardScrollView: View {
         ScrollView(.vertical){
             VStack{
                 ForEach (orderVM.pendingOrders.indices, id: \.self){i in
-                    PendingCard(pendingOrder: PendingOrder(id: orderVM.pendingOrders[i].id, index: i , order_id: orderVM.pendingOrders[i].orderID, name: orderVM.pendingOrders[i].name, productType: orderVM.pendingOrders[i].productType, dueDate: orderVM.pendingOrders[i].dueDate, photo: orderVM.pendingOrders[i].photo), deletedAt: $deletedAt).padding([.leading,.trailing], 16)
+                    PendingCard(pendingOrder: PendingOrder(id: orderVM.pendingOrders[i].id, index: i , order_id: orderVM.pendingOrders[i].orderID, name: orderVM.pendingOrders[i].name, productType: orderVM.pendingOrders[i].productType, dueDate: orderVM.pendingOrders[i].dueDate, photo: orderVM.pendingOrders[i].photo, availableToPay: orderVM.pendingOrders[i].availableToPay), deletedAt: $deletedAt).padding([.leading,.trailing], 16)
                 }
             }
             Spacer()

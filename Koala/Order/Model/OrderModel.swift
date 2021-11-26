@@ -19,6 +19,7 @@ struct Order: Codable{
     var order_date: String
     var status: String
     var product_data : [OrderProductData]
+    var availableToPay: Int
 }
 
 struct OrderProductData: Codable{
@@ -36,7 +37,7 @@ struct PendingOrder: Identifiable{
     var productType : [String]
     var dueDate : String
     var photo: String
-    
+    var availableToPay: Bool
 }
 
 enum productType: String, CaseIterable, Equatable{
