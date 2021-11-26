@@ -29,8 +29,8 @@ struct InfluencerCampaignDetailView: View {
                     .ignoresSafeArea(.all)
                 Spacer()
             }
-            ZStack(alignment: .bottomLeading) {
-                ScrollView(.vertical, showsIndicators: false) {
+            ScrollView(.vertical, showsIndicators: false) {
+                ZStack(alignment: .bottomLeading) {
                     VStack {
                         InfluencerCampaignDetailFieldView(campaign: campaignVM.campaignModel, campaignDetail: campaignVM.campaignDetailModel)
                         VStack {
@@ -85,11 +85,16 @@ struct InfluencerCampaignDetailView: View {
                         
                     }
                     .frame(width: UIScreen.main.bounds.width - 28, alignment: .leading)
-                    .padding(EdgeInsets(top: 60, leading: 28, bottom: 28, trailing: 0))
+                    .padding(EdgeInsets(top: 24, leading: 28, bottom: 28, trailing: 0))
                     .background(Color.white)
                     .cornerRadius(20, corners: [.topLeft, .topRight])
+                    
                 }
-                
+                .padding(.top, 160)
+            }
+            
+            VStack {
+                Spacer()
                 HStack {
                     WebImage(url: URL(string: campaignVM.campaignModel.business_photo))
                         .resizable()
@@ -126,6 +131,8 @@ struct InfluencerCampaignDetailView: View {
         .navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(.white))
         .onAppear {
             campaignVM.getOrderDetails(id: self.id)
+            print("Gtau")
+            print(campaignVM.campaignModel.campaign_logo)
         }
         .introspectTabBarController { (UITabBarController) in
             UITabBarController.tabBar.isHidden = true
