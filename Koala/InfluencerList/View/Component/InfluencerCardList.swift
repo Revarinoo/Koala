@@ -44,29 +44,18 @@ struct InfluencerCardList: View {
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 18))
                     .foregroundColor(.black)
                 
-                HStack(spacing: 2) {
-                    Image("mapIcon")
-                        .font(Font.system(size: 8))
-                        .foregroundColor(ThemeColor.primary)
-                    Text(location)
-                        .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                        .foregroundColor(.gray)
-                }
+                
                 
                 Text("Starts IDR \(price.rupiahFormatter())")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
                     .foregroundColor(.gray)
                 
+                
                 HStack(spacing: 2) {
-                    Text("ER \(ER.oneDecimalFormatter)%")
-                        .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
-                        .foregroundColor(.gray)
-                    Text("|")
-                        .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
-                        .foregroundColor(.gray)
-                        .padding(.horizontal, 2)
-                    Image("starIcon")
-                        .font(Font.system(size: 8))
+                    Image("starIcon2")
+                        .resizable()
+                        .frame(width: 12, height: 12)
+                        .padding(.bottom, 1)
                         .foregroundColor(ThemeColor.secondary)
                     Text("\(rating.oneDecimalFormatter)")
                         .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
