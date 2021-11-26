@@ -24,32 +24,37 @@ struct EstimatedPriceCard: View {
     
     var body: some View {
         HStack {
-            VStack {
+           
                 Image("ig")
                     .resizable()
                     .frame(width: 45, height: 45)
+                    .padding(.leading)
                 Text("Instagram")
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
                     .foregroundColor(ThemeColor.darkOrange)
-            }.padding(.trailing, 35)
-            VStack {
+           Spacer()
+            VStack(spacing: 10) {
+                
                 ForEach(products) { product in
-                    HStack {
+                  
                         let words = product.content_type.byWords
                         Text("\(String(words.last ?? ""))")
                             .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
-                            .foregroundColor(.init(hex: "DC5B38"))
-                        Spacer()
-                        Text("\(pricePrint(price:product.minPrice)) - \(pricePrint(price:product.maxPrice))")
-                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
-                            .foregroundColor(ThemeColor.darkOrange)
-                    }
-                    .frame(width: 160)
+                            .foregroundColor(.init(hex: "DC5B38")).padding(.trailing)
+                        
                 }
             }
+            VStack(alignment: .leading,spacing: 2){
+                ForEach(products) { product in
+                    Text("\(pricePrint(price:product.minPrice)) - \(pricePrint(price:product.maxPrice))")
+                        .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
+                        .foregroundColor(ThemeColor.darkOrange)
+                }
+            }
+            Spacer(minLength: 0)
         }
         .frame(maxWidth: 358, minHeight: 126)
-        .background(Color.init(hex: "FFF1ED"))
+        .background(Color.white)
         .cornerRadius(10)
         .shadow(color: Color.init(hex: "C4C4C4"), radius: 3, x: 0, y: 3)
     }
