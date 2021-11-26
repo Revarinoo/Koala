@@ -44,17 +44,16 @@ class InfluencerDetailViewModel: ObservableObject {
                 }
 
                 for project in unwrappedProjects {
-                    projects.append(ProjectModel(id: project.order_id, business_photo: project.business_photo ?? "", business_name: project.business_name, total_likes: project.total_likes, total_comments: project.total_comments, engagement_rate: project.engagement_rate, comment: project.comment ?? ""))
+                    projects.append(ProjectModel(id: project.order_id, business_photo: project.business_photo ?? "", business_name: project.business_name, total_likes: project.total_likes, total_comments: project.total_comments, engagement_rate: project.engagement_rate, post_photo: project.post_photo ?? "",comment: project.comment ?? ""))
                 }
 
             }
 
             guard let unwrapped = influencer_profile else {return}
             influencer = InfluencerDetailModel(id: unwrapped.id, influencer_profile: unwrapped, categories: categories, platforms: platforms, products: products, projects: projects)
-            //DispatchQueue.main.async {
+            DispatchQueue.main.async {
                 self.influencerModel = influencer
-                print("idnya influencer \(influencer_id)")
-            //}
+            }
         }
     )}
 }

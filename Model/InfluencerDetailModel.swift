@@ -19,7 +19,7 @@ struct InfluencerDetailModel: Identifiable {
 struct InfluencerProfileModel: Identifiable{
     let id: Int
     let contact_email: String
-    let rating: Int
+    let rating: Double
     let name: String
     let location: String
     let photo: String
@@ -50,5 +50,6 @@ struct ProjectModel: Identifiable{
     let total_likes: String
     let total_comments: String
     let engagement_rate: String
+    let post_photo: String
     let comment: String
 }

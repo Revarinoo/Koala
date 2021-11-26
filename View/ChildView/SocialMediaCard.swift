@@ -33,8 +33,10 @@ struct SocialMediaCard: View {
             
         }
         .frame(maxWidth: 358, maxHeight: 151)
-        .background(Color.init(hex: "FFF1ED"))
+        .background(Color.white)
         .cornerRadius(10)
+        .shadow(color: Color.init(hex: "C4C4C4"), radius: 3, x: 0, y: 3)
+        
         
     }
 }

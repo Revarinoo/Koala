@@ -29,9 +29,9 @@ struct FollowerProfile: View {
                     .padding(.leading, 16)
                     .padding(.bottom, 16)
                 VStack (alignment: .center, spacing: 14) {
-                    ImageSlider(index: $currentIndex, images: images)
+                    ImageSlider(index: $currentIndex, projects: projects)
                     HStack {
-                        ForEach(images.indices, id:\.self) { index in
+                        ForEach(projects.indices, id:\.self) { index in
                             Circle()
                                 .fill(currentIndex == index ? ThemeColor.primary: Color.init(hex: "C4C4C4"))
                                 .frame(width: 10, height: 10)

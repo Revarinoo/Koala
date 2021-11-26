@@ -7,61 +7,35 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import Alamofire
 
 struct ReviewCard: View {
-    let photoURL: String
-    let name: String
+    let business_name: String
     let message: String
-    let rating: Int?
-    
-    private func starType(index: Int) -> String {
-        if let rating = self.rating {
-            return index <= rating ? "star.fill" : "star"
-        } else {
-            return "star"
-        }
+    @State var value = false
+    init(business_name: String, message: String){
+        UIScrollView.appearance().bounces = false
+        self.business_name = business_name
+        self.message = message
     }
-    
     var body: some View {
-        HStack {
-            VStack {
-                WebImage(url: URL(string: photoURL))
-                    .resizable()
-                    .clipShape(Circle())
-                    .frame(width: 50, height: 50)
-                Text("\(name)")
+        VStack {
+            ScrollView(.vertical){
+                ExpandableText(message, lineLimit: 4)
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
-                    .foregroundColor(Color.init(hex: "541605"))
+                    .padding(.horizontal, 4)
             }
-            .padding(.leading, 10)
-            .frame(width: 80)
-            VStack {
-                HStack {
-                    Text("\(message)")
-                        .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
-                        .foregroundColor(.black)
-                        .fixedSize(horizontal: false, vertical: true)
-                    Spacer()
-                }
-                .padding(.top, 10)
-                .padding(.leading, 20)
-                .padding(.bottom, 2)
-                HStack {
-                    Spacer()
-                    ForEach(1...5, id: \.self) { index in
-                        Image(systemName: self.starType(index: index))
-                            .foregroundColor(.yellow)
-                            .frame(width: 15.82, height: 14)
-                    }
-                }
-                .padding(.bottom, 5)
-                .padding(.trailing, 10)
+            
+            Spacer()
+            
+            HStack{
+                Spacer()
+                Text("\(business_name)")
+                    .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
+                    .foregroundColor(ThemeColor.grayDark)
             }
-        }
-        .padding(.top, 5)
-        .padding(.bottom, 5)
-        .frame(minWidth: 300, maxWidth: 356)
+        }.frame(width: 210, height: 120)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 8)
         
         .background(Color.init(hex: "FFFFFF"))
         .cornerRadius(10)
@@ -71,6 +45,8 @@ struct ReviewCard: View {
 
 struct ReviewCard_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewCard(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", name: "Arief Lasso", message: "Creative Content and amazing result of brand awareness.", rating: 4).previewLayout(.sizeThatFits)
+        ReviewCard(business_name:"Kopi Kenangan", message: "Creative Content and amazing result of brand awareness.Creative Content and amazing result of brand awareness.Creative Content and amazing result of brand awareness.Creative Content and amazing result of brand awareness.Creative Content and amazing result of brand awareness.").previewLayout(.sizeThatFits)
     }
 }
+
+

@@ -94,6 +94,7 @@
 		780C8E9A274E91E3008BD574 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E99274E91E3008BD574 /* WebView.swift */; };
 		780C8EBA274FC4B4008BD574 /* SpecialtyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8EB9274FC4B4008BD574 /* SpecialtyView.swift */; };
 		780C8EBC274FCD15008BD574 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8EBB274FCD15008BD574 /* LocationView.swift */; };
+		780C8EBE27506B08008BD574 /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8EBD27506B07008BD574 /* ExpandableText.swift */; };
 		782E328E2730EC0100FA9795 /* RescheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E328D2730EC0100FA9795 /* RescheduleView.swift */; };
 		782E3290273248E600FA9795 /* RescheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E328F273248E600FA9795 /* RescheduleViewModel.swift */; };
 		78B933362726704B0040882D /* InfluencerDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B933352726704B0040882D /* InfluencerDetailResponse.swift */; };
@@ -302,6 +303,7 @@
 		780C8E99274E91E3008BD574 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		780C8EB9274FC4B4008BD574 /* SpecialtyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyView.swift; sourceTree = "<group>"; };
 		780C8EBB274FCD15008BD574 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		780C8EBD27506B07008BD574 /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
 		782E328D2730EC0100FA9795 /* RescheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleView.swift; sourceTree = "<group>"; };
 		782E328F273248E600FA9795 /* RescheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleViewModel.swift; sourceTree = "<group>"; };
 		78B933352726704B0040882D /* InfluencerDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfluencerDetailResponse.swift; path = Model/InfluencerDetailResponse.swift; sourceTree = SOURCE_ROOT; };
@@ -1083,6 +1085,7 @@
 				84972DA12726711D0097D2D2 /* ReviewCard.swift */,
 				780C8EB9274FC4B4008BD574 /* SpecialtyView.swift */,
 				780C8EBB274FCD15008BD574 /* LocationView.swift */,
+				780C8EBD27506B07008BD574 /* ExpandableText.swift */,
 			);
 			path = ChildView;
 			sourceTree = "<group>";
@@ -1686,6 +1689,7 @@
 				8467200127266302008FD954 /* PreviousProjectView.swift in Sources */,
 				D265F18B2730DE03008E08C8 /* CreateCampaign.swift in Sources */,
 				F76CE87F2723B9E80055D58C /* RegisterBusinessView.swift in Sources */,
+				780C8EBE27506B08008BD574 /* ExpandableText.swift in Sources */,
 				2FCB0B242724FE5E0017C9D6 /* InstaAccModel.swift in Sources */,
 				8475D64F27323C130021E87A /* CampaignReportBusinessService.swift in Sources */,
 				8451B83A272A55570061D389 /* CampaignOrderCard.swift in Sources */,

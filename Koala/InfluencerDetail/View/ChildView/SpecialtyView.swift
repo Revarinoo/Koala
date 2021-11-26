@@ -13,26 +13,29 @@ struct SpecialtyView: View {
     let categories: [String]
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Specialty").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
-            HStack(spacing: 14) {
+        HStack{
+            VStack(alignment: .leading) {
                 
-                ForEach(categories ?? [], id: \.self) { category in
+                Text("Specialty").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
+                HStack(spacing: 14) {
                     
-                    Text(category).scaledToFill()
-                        .frame(width:110)
-                        .font(Font.custom(ThemeFont.poppinsSemiBold, size: 14))
-                        .padding(.vertical, 10)
-                        .foregroundColor(ThemeColor.primary)
-                        .background(Color(hex: "FFF1ED"))
-                        .cornerRadius(10)
+                    ForEach(categories ?? [], id: \.self) { category in
+                        
+                        Text(category).scaledToFill()
+                            .frame(width:110)
+                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 14))
+                            .padding(.vertical, 10)
+                            .foregroundColor(ThemeColor.primary)
+                            .background(Color(hex: "FFF1ED"))
+                            .cornerRadius(10)
+                    }
+                    
                 }
-                
-            }.padding(.bottom, 16)
+            }
+            Spacer()
         }
-        .padding(.vertical, 5)
-        .padding(.horizontal, 16)
-        .frame(minWidth: 300, maxWidth: 356)
+        
+        .frame(width: 358)
         
         .background(Color.init(hex: "FFFFFF"))
     }

@@ -23,7 +23,7 @@ struct InfluencerProfileResponse: Codable{
     let photo: String?
     let user_id: Int
     let engagement_rate: Double?
-    let rating: Int
+    let rating: Double
 }
 
 struct PlatformResponse: Codable{
@@ -48,5 +48,6 @@ struct ProjectResponse: Codable{
     let total_likes: String
     let total_comments: String
     let engagement_rate: String
+    let post_photo: String?
     let comment: String?
 }

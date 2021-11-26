@@ -13,7 +13,7 @@ struct EstimatedPrice: View {
         VStack (alignment: .leading) {
             Text("Estimated Price")
                 .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
-            EstimatedPriceCard(products: products)
+            EstimatedPriceCard(products: products).padding(.vertical, 8)
         }
     }
 }
