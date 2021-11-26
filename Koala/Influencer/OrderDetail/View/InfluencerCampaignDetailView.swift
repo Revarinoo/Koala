@@ -21,7 +21,7 @@ struct InfluencerCampaignDetailView: View {
     var body: some View {
         ZStack(alignment: .top) {
             VStack{
-                WebImage(url: URL(string: "https://koala-influencer.xyz/storage/images/birthday.jpg"))
+                WebImage(url: URL(string: campaignVM.campaignModel.campaign_logo))
                     .resizable()
                     .scaledToFill()
                     .frame(height: 390)
@@ -37,7 +37,7 @@ struct InfluencerCampaignDetailView: View {
                             Button {
                                 campaignVM.submitCampaignStatus(id, status: CampaignStatus.accepted.rawValue)
                             } label: {
-                                Text(status == OrderListStatus.ongoing.rawValue ? "Accept" : "Submit Report")
+                                Text(status == OrderListStatus.incoming.rawValue ? "Accept" : "Submit Report")
                                     .padding(15)
                                     .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                                     .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
@@ -54,7 +54,7 @@ struct InfluencerCampaignDetailView: View {
                             
                             
                             
-                            if status == OrderListStatus.ongoing.rawValue {
+                            if status == OrderListStatus.incoming.rawValue {
                                 Button {
                                     showingAlert.toggle()
                                 } label: {
