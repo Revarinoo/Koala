@@ -133,6 +133,7 @@
 		D20B099E2737AF62007B1636 /* CreateCampaignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B099D2737AF62007B1636 /* CreateCampaignService.swift */; };
 		D20B09A027381C42007B1636 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B099F27381C42007B1636 /* ImagePicker.swift */; };
 		D20B09A2273826C7007B1636 /* CreateCampaignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B09A1273826C7007B1636 /* CreateCampaignViewModel.swift */; };
+		D20BEEE1274D69DF005319A6 /* PriceForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20BEEE0274D69DF005319A6 /* PriceForm.swift */; };
 		D2131CAD2729172D006ACDC2 /* PendingOrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CAC2729172D006ACDC2 /* PendingOrdersViewModel.swift */; };
 		D2131CAF272917DA006ACDC2 /* MyOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CAE272917DA006ACDC2 /* MyOrders.swift */; };
 		D2131CB12729AC7D006ACDC2 /* MyOrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CB02729AC7D006ACDC2 /* MyOrderService.swift */; };
@@ -143,10 +144,15 @@
 		D23FB802273C37B60099AC01 /* DateCalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23FB801273C37B60099AC01 /* DateCalendarExtension.swift */; };
 		D246DBF62734BA8A00DE680A /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D246DBF52734BA8A00DE680A /* TextArea.swift */; };
 		D246DBF82734E3D100DE680A /* ContentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D246DBF72734E3D100DE680A /* ContentRequest.swift */; };
+		D2533852274DEE7D00981137 /* InfluencerProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2533851274DEE7D00981137 /* InfluencerProfileViewModel.swift */; };
+		D2533854274DF05D00981137 /* Influencer Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2533853274DF05D00981137 /* Influencer Profile.swift */; };
 		D2577BC4271F11BD00E7AC5D /* HomepageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2577BC3271F11BD00E7AC5D /* HomepageView.swift */; };
 		D2577BC6271F239B00E7AC5D /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2577BC5271F239B00E7AC5D /* Categories.swift */; };
 		D2577BC8271F23BE00E7AC5D /* RecommendationInfluencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2577BC7271F23BE00E7AC5D /* RecommendationInfluencer.swift */; };
 		D2577BCA271F244100E7AC5D /* RecommendationInfluencerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2577BC9271F244100E7AC5D /* RecommendationInfluencerCard.swift */; };
+		D2610F9C274EA311003E5B40 /* InfluencerProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2610F9B274EA311003E5B40 /* InfluencerProfileService.swift */; };
+		D2610F9E274EB3FE003E5B40 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2610F9D274EB3FE003E5B40 /* ProfileView.swift */; };
+		D2610FA0274EC0A1003E5B40 /* GetProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2610F9F274EC0A1003E5B40 /* GetProfileModel.swift */; };
 		D265F18B2730DE03008E08C8 /* CreateCampaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = D265F18A2730DE03008E08C8 /* CreateCampaign.swift */; };
 		D26955FE273B78B6005AD9E0 /* NavigationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26955FD273B78B6005AD9E0 /* NavigationExtension.swift */; };
 		D283B9F5272A3DB900CA87EC /* PendingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283B9F4272A3DB900CA87EC /* PendingCard.swift */; };
@@ -342,6 +348,7 @@
 		D20B099D2737AF62007B1636 /* CreateCampaignService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateCampaignService.swift; path = "Koala/Create Campaign/View/CreateCampaignService.swift"; sourceTree = SOURCE_ROOT; };
 		D20B099F27381C42007B1636 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		D20B09A1273826C7007B1636 /* CreateCampaignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateCampaignViewModel.swift; path = "Koala/Create Campaign/View/CreateCampaignViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		D20BEEE0274D69DF005319A6 /* PriceForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceForm.swift; sourceTree = "<group>"; };
 		D2131CAC2729172D006ACDC2 /* PendingOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOrdersViewModel.swift; sourceTree = "<group>"; };
 		D2131CAE272917DA006ACDC2 /* MyOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrders.swift; sourceTree = "<group>"; };
 		D2131CB02729AC7D006ACDC2 /* MyOrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderService.swift; sourceTree = "<group>"; };
@@ -352,10 +359,15 @@
 		D23FB801273C37B60099AC01 /* DateCalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalendarExtension.swift; sourceTree = "<group>"; };
 		D246DBF52734BA8A00DE680A /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
 		D246DBF72734E3D100DE680A /* ContentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentRequest.swift; path = "Koala/Create Campaign/View/ContentRequest.swift"; sourceTree = SOURCE_ROOT; };
+		D2533851274DEE7D00981137 /* InfluencerProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerProfileViewModel.swift; sourceTree = "<group>"; };
+		D2533853274DF05D00981137 /* Influencer Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Influencer Profile.swift"; sourceTree = "<group>"; };
 		D2577BC3271F11BD00E7AC5D /* HomepageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageView.swift; sourceTree = "<group>"; };
 		D2577BC5271F239B00E7AC5D /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		D2577BC7271F23BE00E7AC5D /* RecommendationInfluencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationInfluencer.swift; sourceTree = "<group>"; };
 		D2577BC9271F244100E7AC5D /* RecommendationInfluencerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationInfluencerCard.swift; sourceTree = "<group>"; };
+		D2610F9B274EA311003E5B40 /* InfluencerProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerProfileService.swift; sourceTree = "<group>"; };
+		D2610F9D274EB3FE003E5B40 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		D2610F9F274EC0A1003E5B40 /* GetProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileModel.swift; sourceTree = "<group>"; };
 		D265F18A2730DE03008E08C8 /* CreateCampaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCampaign.swift; sourceTree = "<group>"; };
 		D26955FD273B78B6005AD9E0 /* NavigationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExtension.swift; sourceTree = "<group>"; };
 		D283B9F4272A3DB900CA87EC /* PendingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingCard.swift; sourceTree = "<group>"; };
@@ -1264,6 +1276,9 @@
 			children = (
 				D2F5B280274D27BB002E31CB /* InputProfileView.swift */,
 				D2F5B285274D2AFA002E31CB /* ProfileBasicForm.swift */,
+				D20BEEE0274D69DF005319A6 /* PriceForm.swift */,
+				D2533853274DF05D00981137 /* Influencer Profile.swift */,
+				D2610F9D274EB3FE003E5B40 /* ProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1271,6 +1286,7 @@
 		D2F5B27E274D2791002E31CB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D2533851274DEE7D00981137 /* InfluencerProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1278,6 +1294,7 @@
 		D2F5B27F274D2797002E31CB /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				D2610F9B274EA311003E5B40 /* InfluencerProfileService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -1286,6 +1303,7 @@
 			isa = PBXGroup;
 			children = (
 				D2F5B283274D2874002E31CB /* ProfileModel.swift */,
+				D2610F9F274EC0A1003E5B40 /* GetProfileModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1723,6 +1741,7 @@
 				2FA40E57271DF44E0095A812 /* ColorExtension.swift in Sources */,
 				D23703B627498725000D4B2C /* NavigationModifier.swift in Sources */,
 				8451B83D272A55570061D389 /* CampaignListView.swift in Sources */,
+				D2610F9C274EA311003E5B40 /* InfluencerProfileService.swift in Sources */,
 				2FACD8442721137F00E9F578 /* FilterModal.swift in Sources */,
 				2F95BCD3273A2EDD00F78F83 /* Path+QuadCurve.swift in Sources */,
 				780C8E9A274E91E3008BD574 /* WebView.swift in Sources */,
@@ -1742,6 +1761,7 @@
 				2F1E8F6F273EB3160056D9BC /* ReportingModel.swift in Sources */,
 				D23FB800273C180A0099AC01 /* KeyboardExtension.swift in Sources */,
 				2FACD84927211A7600E9F578 /* SpecialtySelector.swift in Sources */,
+				D2533852274DEE7D00981137 /* InfluencerProfileViewModel.swift in Sources */,
 				D291A3D0273035BB00BAAA75 /* UserProfile.swift in Sources */,
 				2F6C2C30272259250026EF3E /* ClickedFilterModel.swift in Sources */,
 				2FACD83827207EFF00E9F578 /* LoginValidation.swift in Sources */,
@@ -1798,6 +1818,7 @@
 				F75CEE6E2713E80D00E36A1F /* KoalaApp.swift in Sources */,
 				78B9333E27270F1A0040882D /* InfluencerDetailModel.swift in Sources */,
 				2F6C2C3D27228D780026EF3E /* SplashScreen.swift in Sources */,
+				D2610FA0274EC0A1003E5B40 /* GetProfileModel.swift in Sources */,
 				D2C3C59E272863F200C338B4 /* CompletedCard.swift in Sources */,
 				F761740E27324F2800019B79 /* CampaignUpcomingModel.swift in Sources */,
 				F75CEE8A27143BD800E36A1F /* LoginViewModel.swift in Sources */,
@@ -1807,12 +1828,14 @@
 				2FD875AB2731460B0052DA4D /* ReviewService.swift in Sources */,
 				D201AF8A273C064700FB0DFA /* KeyboardGuardian.swift in Sources */,
 				D20B09A027381C42007B1636 /* ImagePicker.swift in Sources */,
+				D20BEEE1274D69DF005319A6 /* PriceForm.swift in Sources */,
 				F7A52B922727073B0067D3E6 /* FollowerProfile.swift in Sources */,
 				2F0D9DA7273118FB0012DAAF /* CampaignDetailView.swift in Sources */,
 				2FA40E5A271DFB2C0095A812 /* NumberFormatterExtension.swift in Sources */,
 				2F6C2C2927215DE70026EF3E /* RatingStar.swift in Sources */,
 				78B9333C2726A0380040882D /* InfluencerDetailView.swift in Sources */,
 				F76CE87B272275D20055D58C /* RegisterService.swift in Sources */,
+				D2610F9E274EB3FE003E5B40 /* ProfileView.swift in Sources */,
 				2F0D9DB027311C380012DAAF /* CampaignDetailModel.swift in Sources */,
 				F76CE879272275B90055D58C /* RegisterViewModel.swift in Sources */,
 				2F95BCC32739F12700F78F83 /* UnderMaintenanceView.swift in Sources */,
@@ -1857,6 +1880,7 @@
 				D2995592271F0D120025D0CB /* CategoriesCard.swift in Sources */,
 				D2131CAD2729172D006ACDC2 /* PendingOrdersViewModel.swift in Sources */,
 				2F0D9DB227311C530012DAAF /* CampaignDetailResponse.swift in Sources */,
+				D2533854274DF05D00981137 /* Influencer Profile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
