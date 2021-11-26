@@ -24,7 +24,7 @@ struct OrderListView: View {
         UISegmentedControl.appearance().backgroundColor = UIColor(ThemeColor.background)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
-        UINavigationBar.appearance().backgroundColor = UIColor(ThemeColor.background)
+        UINavigationBar.appearance().backgroundColor = UIColor(.clear)
     }
     
     var body: some View {
@@ -45,16 +45,15 @@ struct OrderListView: View {
                         switch orderTypeSelected {
                         case .incoming:
                             ForEach(orderListVM.incomingOrders, id: \.id) { order in
-//                                NavigationLink(destination: )
-                                OrderListCard(orderList: order)
+                                OrderListCard(orderList: order, status: OrderListStatus.incoming.rawValue)
                             }
                         case .ongoing:
                             ForEach(orderListVM.ongoingOrders, id: \.id) { order in
-                                OrderListCard(orderList: order)
+                                OrderListCard(orderList: order, status: OrderListStatus.ongoing.rawValue)
                             }
                         case .completed:
                             ForEach(orderListVM.completedOrders, id: \.id) { order in
-                                OrderListCard(orderList: order)
+                                OrderListCard(orderList: order, status: OrderListStatus.completed.rawValue)
                             }
                         }
                     }

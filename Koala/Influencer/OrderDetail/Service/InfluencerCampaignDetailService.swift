@@ -11,4 +11,16 @@ class InfluencerCampaignDetailService {
             _ = completionHandler(response)
         }
     }
+    
+    func submitOrderStatus(_ postRequest: InfluencerCampaignStatusRequest, completionHandler:@escaping(_ result: InfluencerCampaignStatusResponse?)->Void) {
+        
+        let request = NSMutableURLRequest(url: NSURL(string: HttpUtility.endpoint + "influencer/campaign/status")! as URL)
+        request.httpMethod = "post"
+        request.addValue("application/json", forHTTPHeaderField: "content-type")
+        request.httpBody = try? JSONEncoder().encode(postRequest)
+
+        HttpUtility.shared.request(request as URLRequest, resultType: InfluencerCampaignStatusResponse.self) { response in
+            completionHandler(response)
+        }
+    }
 }
