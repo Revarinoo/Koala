@@ -25,6 +25,8 @@ struct CampaignView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Divider()
+                    .padding(.bottom, 14)
                 Picker("Campaign Type?", selection: $campaignType) {
                     ForEach(campaignTypes, id: \.self) {
                         Text($0)
