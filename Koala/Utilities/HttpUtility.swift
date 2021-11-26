@@ -11,7 +11,7 @@ import SwiftUI
 final class HttpUtility {
     
     static let shared = HttpUtility()
-    static let endpoint = "http://127.0.0.1:8000/api/"
+    static let endpoint = "https://koala-influencer.xyz/api/"
     //"http://127.0.0.1:8000/api/"
     static let defaultImages = "https://koala-influencer.xyz/storage/images/default.png"
     
@@ -19,7 +19,7 @@ final class HttpUtility {
     
     public let headers = [
         "x-rapidapi-host": "instagram85.p.rapidapi.com",
-        "x-rapidapi-key": "9a25a8b9dcmsh2dd84681963ec6fp1786eejsn1904b13c01a1"] // Change with valid Rapid API Key
+        "x-rapidapi-key": "2fb67c8deemsh00377571dd231a5p12ef9djsnc9bc87981232"] // Change with valid Rapid API Key
     
     func request<T:Decodable>(_ urlRequest: URLRequest, resultType:T.Type, completionHandler:@escaping(_ result: T?)-> Void) {
 
