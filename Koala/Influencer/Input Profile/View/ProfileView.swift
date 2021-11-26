@@ -11,13 +11,13 @@ import SDWebImageSwiftUI
 struct ProfileView: View {
     
     @AppStorage("JWT", store: .standard) var token = ""
-    @ObservedObject var updateProfileVM = InfluencerProfileViewModel()
+    @StateObject var updateProfileVM = InfluencerProfileViewModel()
     @State var signOut = false
     @State var toEditProfile = false
     
-    init(){
-        updateProfileVM.callInfluencerData()
-    }
+//    init(){
+//        updateProfileVM.callInfluencerData()
+//    }
     var body: some View {
         NavigationView{
             ScrollView (showsIndicators: false){
