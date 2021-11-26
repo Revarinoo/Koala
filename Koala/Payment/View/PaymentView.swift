@@ -13,6 +13,9 @@ struct PaymentView: View {
     @StateObject var paymentViewModel = PaymentViewModel()
     @ObservedObject var campaignViewModel = CampaignViewModel()
     @State var uiTabarController: UITabBarController?
+    @StateObject var tabBarVM = TabBarViewModel.shared
+    @State var paymentDone = false
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State var showWebView = false
     @State var payment_url = ""
@@ -78,12 +81,16 @@ struct PaymentView: View {
             
             if payment_status == "paid"{
                 showWebView = false
+                presentationMode.wrappedValue.dismiss()
+                paymentDone.toggle()
+                tabBarVM.selectedTab = 2
             }
             
           }).onAppear{
             paymentViewModel.getOrderPayment(order_id: order_id)
               paymentViewModel.getOrderDetail(orderId: order_id)
         }
+          .navigate(to: TabBar(selectedTab: $tabBarVM.selectedTab), when: $paymentDone)
           .introspectTabBarController { (UITabBarController) in
                                   UITabBarController.tabBar.isHidden = true
                                   uiTabarController = UITabBarController
