@@ -24,6 +24,8 @@ struct OrderView: View {
     var body: some View {
         NavigationView {
             VStack{
+                Divider()
+                    .padding(.bottom, 14)
                 Picker("What is your favorite color?", selection: $orderTypeSelected) {
                     ForEach (OrderStatus.allCases, id: \.self){
                         Text($0.rawValue)                    }

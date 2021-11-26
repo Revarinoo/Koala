@@ -93,12 +93,14 @@
 		2FD875AB2731460B0052DA4D /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD875A42731460A0052DA4D /* ReviewService.swift */; };
 		2FD875AE27323E030052DA4D /* OrderRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD875AD27323E030052DA4D /* OrderRequestResponse.swift */; };
 		2FD875B02732438D0052DA4D /* OrderCampaignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD875AF2732438D0052DA4D /* OrderCampaignModel.swift */; };
-		780C8E88274CA0B0008BD574 /* PaymentProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E87274CA0B0008BD574 /* PaymentProcessView.swift */; };
 		780C8E8A274CA0C8008BD574 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E89274CA0C8008BD574 /* PaymentViewModel.swift */; };
 		780C8E8C274CA0D4008BD574 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E8B274CA0D4008BD574 /* Payment.swift */; };
 		780C8E8E274CA24A008BD574 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E8D274CA24A008BD574 /* PaymentService.swift */; };
 		780C8E98274E0690008BD574 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E97274E0690008BD574 /* PaymentView.swift */; };
 		780C8E9A274E91E3008BD574 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E99274E91E3008BD574 /* WebView.swift */; };
+		780C8EBA274FC4B4008BD574 /* SpecialtyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8EB9274FC4B4008BD574 /* SpecialtyView.swift */; };
+		780C8EBC274FCD15008BD574 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8EBB274FCD15008BD574 /* LocationView.swift */; };
+		780C8EBE27506B08008BD574 /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8EBD27506B07008BD574 /* ExpandableText.swift */; };
 		782E328E2730EC0100FA9795 /* RescheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E328D2730EC0100FA9795 /* RescheduleView.swift */; };
 		782E3290273248E600FA9795 /* RescheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E328F273248E600FA9795 /* RescheduleViewModel.swift */; };
 		78B933362726704B0040882D /* InfluencerDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B933352726704B0040882D /* InfluencerDetailResponse.swift */; };
@@ -332,6 +334,9 @@
 		780C8E8D274CA24A008BD574 /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
 		780C8E97274E0690008BD574 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
 		780C8E99274E91E3008BD574 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		780C8EB9274FC4B4008BD574 /* SpecialtyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyView.swift; sourceTree = "<group>"; };
+		780C8EBB274FCD15008BD574 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		780C8EBD27506B07008BD574 /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
 		782E328D2730EC0100FA9795 /* RescheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleView.swift; sourceTree = "<group>"; };
 		782E328F273248E600FA9795 /* RescheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleViewModel.swift; sourceTree = "<group>"; };
 		78B933352726704B0040882D /* InfluencerDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfluencerDetailResponse.swift; path = Model/InfluencerDetailResponse.swift; sourceTree = SOURCE_ROOT; };
@@ -1141,6 +1146,9 @@
 				F7A52B93272707C70067D3E6 /* ImageSlider.swift */,
 				84671FFA27265A62008FD954 /* ReviewView.swift */,
 				84972DA12726711D0097D2D2 /* ReviewCard.swift */,
+				780C8EB9274FC4B4008BD574 /* SpecialtyView.swift */,
+				780C8EBB274FCD15008BD574 /* LocationView.swift */,
+				780C8EBD27506B07008BD574 /* ExpandableText.swift */,
 			);
 			path = ChildView;
 			sourceTree = "<group>";
@@ -1849,6 +1857,7 @@
 				D265F18B2730DE03008E08C8 /* CreateCampaign.swift in Sources */,
 				2FA6F39C274F037400C65538 /* InfluencerCampaignStatusRequest.swift in Sources */,
 				F76CE87F2723B9E80055D58C /* RegisterBusinessView.swift in Sources */,
+				780C8EBE27506B08008BD574 /* ExpandableText.swift in Sources */,
 				2FCB0B242724FE5E0017C9D6 /* InstaAccModel.swift in Sources */,
 				F7A3BBD9274F5827000CF2AA /* OrderReviewService.swift in Sources */,
 				8475D64F27323C130021E87A /* CampaignReportBusinessService.swift in Sources */,
@@ -1859,6 +1868,7 @@
 				D2577BCA271F244100E7AC5D /* RecommendationInfluencerCard.swift in Sources */,
 				D28D625C2720957500BE7345 /* PromotionCard.swift in Sources */,
 				2FD875A92731460B0052DA4D /* ReviewInfluencerView.swift in Sources */,
+				780C8EBA274FC4B4008BD574 /* SpecialtyView.swift in Sources */,
 				2F2DDD76272F6637007FA0FC /* CampaignService.swift in Sources */,
 				2FBC8B97271C2E09007E7B76 /* HttpUtility.swift in Sources */,
 				2FA40E41271DE3980095A812 /* ThemeFont.swift in Sources */,
@@ -1892,6 +1902,7 @@
 				F768344F274E4FD20051F7FC /* PostForm.swift in Sources */,
 				F76174062732475900019B79 /* CampaignUpcomingService.swift in Sources */,
 				D2900DC527267CA700D6E901 /* TabBar.swift in Sources */,
+				780C8EBC274FCD15008BD574 /* LocationView.swift in Sources */,
 				F7A3BBDD274F5845000CF2AA /* OrderReviewViewModel.swift in Sources */,
 				2F1D57802726539800E4354C /* SearchBar.swift in Sources */,
 				F76174082732479A00019B79 /* CampaignUpcomingViewModel.swift in Sources */,

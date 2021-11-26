@@ -9,40 +9,63 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct PreviousProjectCard: View {
-    let photoURL: String
-    let reach: String
-    let impression: String
+    let post_photo: String
+    let business_photo: String
+    let business_name: String
+    let total_comments: String
+    let total_likes: String
+    let engagement_rate: String
     
     var body: some View {
-        VStack (alignment: .center) {
-            WebImage(url: URL(string: photoURL))
-                .resizable()
-                .scaledToFill()
-                .clipShape(Circle())
-                .frame(width: 82, height: 82)
-                .overlay(Circle().stroke(Color.init(hex: "FE724C"), lineWidth: 2))
-            Text(reach)
-                .font(Font.custom(ThemeFont.poppinsSemiBold, size: 16))
-                .foregroundColor(Color.init(hex: "541605"))
-            Text("Reach")
-                .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
-                .foregroundColor(Color.init(hex: "DC5B38"))
-            Text(impression)
-                .font(Font.custom(ThemeFont.poppinsSemiBold, size: 16))
-                .foregroundColor(Color.init(hex: "541605"))
-            Text("Impression")
-                .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
-                .foregroundColor(Color.init(hex: "DC5B38"))
-        }
-        .frame(width: 106, height: 182)
-        .background(Color.init(hex: "FFF1ED"))
-        .cornerRadius(10)
-        .shadow(color: Color.init(hex: "C4C4C4"), radius: 3, x: 0, y: 3)
+        HStack{
+            if(post_photo != ""){
+                WebImage(url: URL(string: post_photo))
+                    .resizable()
+                    .imageScale(.large)
+                    .frame(width: 140, height: 140)
+                    .padding(.trailing, 16)
+            }else{
+                Text("No Post Image").frame(width: 140, height: 140)
+            }
+            
+            VStack(alignment: .leading){
+                HStack{
+                    WebImage(url: URL(string: business_photo))
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 20, height: 20)
+                        .cornerRadius(5)
+                    Text(business_name)
+                        .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
+                }
+                HStack(spacing: 20){
+                    VStack(alignment: .leading, spacing: 10){
+                        Text(Double(total_comments)?.thousandsFormatter() ?? "")
+                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 16))
+                            .padding(.trailing,8)
+                        Text(Double(total_likes)?.thousandsFormatter() ?? "") .font(Font.custom(ThemeFont.poppinsSemiBold, size: 16))
+                            .padding(.trailing,8)
+                        Text(engagement_rate + "%")
+                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 16))
+                            .padding(.trailing,8)
+                    }
+                    VStack(alignment: .leading, spacing: 10){
+                        Text("Comments")
+                            .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
+                        Text("Likes")
+                            .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
+                        Text("Engagement Rate")
+                            .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
+                    }
+                }
+            }
+            Spacer(minLength: 0)
+        }.frame(width: 358, height: 140)
     }
 }
 
 struct PreviousProjectCard_Previews: PreviewProvider {
     static var previews: some View {
-        PreviousProjectCard(photoURL: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", reach: "100K", impression: "100K").previewLayout(.sizeThatFits)
+        PreviousProjectCard(post_photo: "https://media.matamata.com/thumbs/2021/05/26/91972-rose-blackpink-instagramatroses-are-rosie/745x489-img-91972-rose-blackpink-instagramatroses-are-rosie.jpg", business_photo: "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg", business_name: "Kopi Memory", total_comments: "42.4K", total_likes: "89.3K", engagement_rate: "17.3").previewLayout(.sizeThatFits)
     }
 }
