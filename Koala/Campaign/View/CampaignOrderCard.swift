@@ -11,6 +11,8 @@ import SDWebImageSwiftUI
 struct CampaignOrderCard: View {
     
     @ObservedObject var orderCampaignVM = CampaignViewModel()
+    @ObservedObject var tabBarVM = TabBarViewModel.shared
+    @State var isNavigate = false
     
     let influencerID: Int
     let contentID: Int
@@ -66,38 +68,22 @@ struct CampaignOrderCard: View {
             HStack {
                 Spacer()
                 
-                Button(
-                    action: {
-                        orderCampaignVM.order(date: dateFormat(date: date), contentID: contentID, influencerID: influencerID)
-                        TabBarViewModel.shared.selectedTab = 2
-                    },
-                    label: {
-                        Text("Choose")
-                            .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
-                            .foregroundColor(.white)
-                            .frame(width: 113, height: 38)
-                            .background(ThemeColor.primary)
-                            .cornerRadius(12)
-                    })
-//                NavigationLink(
-//                    destination: OrderView().navigationBarHidden(true).navigationBarBackButtonHidden(true),
-//                    isActive: $orderCampaignVM.orderCampaignModel.navigate,
-//                    label: {
-//                        Button(
-//                            action: {
-//                                orderCampaignVM.order(date: dateFormat(date: date), contentID: contentID, influencerID: influencerID)
-//                                TabBar.selectedTab = 2
-//                            },
-//                            label: {
-//                                Text("Choose")
-//                                    .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
-//                                    .foregroundColor(.white)
-//                                    .frame(width: 113, height: 38)
-//                                    .background(ThemeColor.primary)
-//                                    .cornerRadius(12)
-//                            })
-//                    }
-//                )
+                NavigationLink(destination: TabBar(selectedTab: $tabBarVM.selectedTab), isActive: $isNavigate) {
+                    Button(
+                        action: {
+                            orderCampaignVM.order(date: dateFormat(date: date), contentID: contentID, influencerID: influencerID)
+                            tabBarVM.selectedTab = 2
+                            isNavigate = true
+                        },
+                        label: {
+                            Text("Choose")
+                                .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
+                                .foregroundColor(.white)
+                                .frame(width: 113, height: 38)
+                                .background(ThemeColor.primary)
+                                .cornerRadius(12)
+                        })
+                }
             }
         }
         .padding()

@@ -27,16 +27,16 @@ struct CreateCampaignForm: View {
                     HStack{
                         DatePicker("", selection: $campaignModel.startDate, in: Date()..., displayedComponents: [.date]).padding([.top, .bottom], 5)
                             .background(RoundedRectangle(cornerRadius: 10).fill(Color("lightGray").opacity(0)))
-                            //.fixedSize()
+                            .fixedSize()
                         Spacer()
-                        Image(systemName: "calendar").font(.system(size: 24)).padding(.trailing, 10).foregroundColor(ThemeColor.grayDark)
+//                        Image(systemName: "calendar").font(.system(size: 24)).padding(.trailing, 10).foregroundColor(ThemeColor.grayDark)
                     }
-                    
-                        .background(Color("lightGray"))
-                        .cornerRadius(10)
-                        .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                        .padding(.bottom, 5)
-                        .padding(.top, -5)
+//
+//                        .background(Color("lightGray"))
+//                        .cornerRadius(10)
+//                        .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+//                        .padding(.bottom, 5)
+//                        .padding(.top, -5)
                 }
                 Spacer()
                 VStack(alignment: .leading, spacing: 6){
@@ -45,16 +45,16 @@ struct CreateCampaignForm: View {
                         .foregroundColor(ThemeColor.grayDark)
                     HStack{
                         DatePicker("", selection: $campaignModel.endDate, in: Date.tomorrow..., displayedComponents: [.date]).padding([.top, .bottom], 5)
-                           // .fixedSize()
+                            .fixedSize()
                         Spacer()
-                        Image(systemName: "calendar").font(.system(size: 24)).padding(.trailing, 10).foregroundColor(ThemeColor.grayDark)
+//                        Image(systemName: "calendar").font(.system(size: 24)).padding(.trailing, 10).foregroundColor(ThemeColor.grayDark)
                     }
-                    
-                        .background(Color("lightGray"))
-                        .cornerRadius(10)
-                        .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                        .padding(.bottom, 5)
-                        .padding(.top, -5)
+//
+//                        .background(Color("lightGray"))
+//                        .cornerRadius(10)
+//                        .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+//                        .padding(.bottom, 5)
+//                        .padding(.top, -5)
                 }
             }
             TextArea(textTitle: "Product", product: $campaignModel.product, textFieldHeight: 63, placeHolderText: "Enter your product", fieldBackgroundColor: Color("lightGray"))
