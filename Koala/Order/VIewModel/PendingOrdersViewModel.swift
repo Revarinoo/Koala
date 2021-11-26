@@ -63,10 +63,9 @@ class OrderViewModel: ObservableObject{
             }
             DispatchQueue.main.async {
                 self.orders = orderData
-                self.pendingOrders = orderData.filter({$0.orderStatus == "Pending"})
+                self.pendingOrders = orderData.filter({$0.orderStatus == "Pending" || $0.orderStatus == "Accepted"})
                 self.ongoingOrders = orderData.filter({$0.orderStatus == "On Going"})
                 self.completedOrders = orderData.filter({$0.orderStatus == "Completed"})
-//                print("INI YG BARU \(orderData)")
             }
         }
     }

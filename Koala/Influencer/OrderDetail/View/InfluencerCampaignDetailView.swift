@@ -4,7 +4,7 @@ import SDWebImageSwiftUI
 import Introspect
 
 enum CampaignStatus: String, CaseIterable{
-    case accepted = "On Going"
+    case accepted = "Accepted"
     case rejected = "Rejected"
 }
 

@@ -22,7 +22,7 @@ class OrderListViewModel: ObservableObject {
                 }
                 
                 DispatchQueue.main.async {
-                    self.incomingOrders = temp.filter{ $0.campaignStatus == "Pending" }
+                    self.incomingOrders = temp.filter{ $0.campaignStatus == "Pending" || $0.campaignStatus == "Accepted" }
                     self.ongoingOrders = temp.filter{ $0.campaignStatus == "On Going" }
                     self.completedOrders = temp.filter{ $0.campaignStatus == "Completed" }
                 }

@@ -76,9 +76,21 @@ struct PersonalChat: View {
             .padding(.leading, 16)
             .padding(.trailing, 10)
         }
+        
+        .toolbar(content: {
+            ToolbarItem(placement: .principal) {
+                HStack (spacing: 6) {
+                    WebImage(url: URL(string: photoURL))
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .clipShape(Circle())
+                    Text(personName)
+                        .font(Font.system(size: 17))
+                        .fontWeight(.semibold)
+                }
+            }
+        })
         .background(Color.bgColorView.ignoresSafeArea())
-        .navigationTitle(personName)
-        .navigationBarTitleDisplayMode(.automatic)
         .onTapGesture {
             self.dismissKeyboard()
         }
