@@ -17,7 +17,7 @@ class RegisterViewModel: ObservableObject {
     @Published var errorMessage = ""
     @Published var username = ""
     
-    @AppStorage("role", store: .standard) var role = "Business"
+    @AppStorage("role", store: .standard) var role = ""
     @AppStorage("JWT", store: .standard) var token = ""
     
     private let accountInfoFetcher: AccountInfoFetcher = AccountInfoFetcher()

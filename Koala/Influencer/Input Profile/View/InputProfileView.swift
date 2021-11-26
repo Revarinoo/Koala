@@ -10,7 +10,7 @@ import SwiftUI
 struct InputProfileView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+    @StateObject var tabInfluencerVM = TabBarViewModel.shared
     @ObservedObject var updateProfileVM = InfluencerProfileViewModel()
     @ObservedObject var influencerSpecialty = InfluencerSpecialty()
     @State var showImagePicker = false
@@ -132,6 +132,10 @@ struct InputProfileView: View {
             }
             
             
+            .onTapGesture(){
+                self.dismissKeyboard()
+            }
+            
             .alert(isPresented: $updateProfileVM.dataError) {
                 Alert(
                     title: Text(updateProfileVM.errorTitle),
@@ -161,10 +165,17 @@ struct InputProfileView: View {
             
         }
         .navigationAppearance(backgroundColor: UIColor(ThemeColor.background), foregroundColor: .black)
-        .navigate(to: ProfileView().onAppear(perform: {
+        .onChange(of: updateProfileVM.isFinishedUpload){ _ in
+            //tabInfluencerVM.selectedTab = 2
             self.isPresent = false
-            updateProfileVM.callInfluencerData()
-        }), when: $updateProfileVM.isFinishedUpload)
+            //UINavigationBar.appearance().isHidden = true
+        }
+//        .navigate(to: TabBarInfluencer(selectedTab: .constant(1)).navigationBarHidden(true)
+//                    .onAppear(perform: {
+//            tabInfluencerVM.selectedTab = 2
+//            self.isPresent = false
+//            //updateProfileVM.callInfluencerData()
+//        }), when: $updateProfileVM.isFinishedUpload)
     }
 }
 

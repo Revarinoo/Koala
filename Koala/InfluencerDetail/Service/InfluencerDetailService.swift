@@ -17,6 +17,8 @@ struct InfluencerDetailService {
         
         HttpUtility.shared.request(request as URLRequest, resultType: InfluencerDetailResponse.self) { response in
             _ = completionHandler(response)
+            print(response)
+            print(influencerID)
         }
     }
 }

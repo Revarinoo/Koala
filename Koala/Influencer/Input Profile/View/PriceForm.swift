@@ -20,11 +20,11 @@ struct PriceForm: View {
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
                 HStack{
-                    TextField("Rp ", text: $updateProfileModel.postMin).textFieldStyle(OvalTextFieldStyleForm())//.keyboardType(.numberPad)
+                    TextField("Rp ", text: $updateProfileModel.postMin).textFieldStyle(OvalTextFieldStyleForm()).keyboardType(.decimalPad)
                     Spacer()
                     Text("-")
                     Spacer()
-                    TextField("Rp ", text: $updateProfileModel.postMax).textFieldStyle(OvalTextFieldStyleForm())//.keyboardType(.numberPad)
+                    TextField("Rp ", text: $updateProfileModel.postMax).textFieldStyle(OvalTextFieldStyleForm()).keyboardType(.decimalPad)
                 }
                 
             }
@@ -33,11 +33,11 @@ struct PriceForm: View {
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
                 HStack{
-                    TextField("Rp ", text: $updateProfileModel.storyMin).textFieldStyle(OvalTextFieldStyleForm())//.keyboardType(.numberPad)
+                    TextField("Rp ", text: $updateProfileModel.storyMin).textFieldStyle(OvalTextFieldStyleForm()).keyboardType(.decimalPad)
                     Spacer()
                     Text("-")
                     Spacer()
-                    TextField("Rp ", text: $updateProfileModel.storyMax).textFieldStyle(OvalTextFieldStyleForm())//.keyboardType(.numberPad)
+                    TextField("Rp ", text: $updateProfileModel.storyMax).textFieldStyle(OvalTextFieldStyleForm()).keyboardType(.decimalPad)
                 }
                 
             }
@@ -46,11 +46,11 @@ struct PriceForm: View {
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
                 HStack{
-                    TextField("Rp ", text: $updateProfileModel.reelsMin).textFieldStyle(OvalTextFieldStyleForm())//.keyboardType(.numberPad)
+                    TextField("Rp ", text: $updateProfileModel.reelsMin).textFieldStyle(OvalTextFieldStyleForm()).keyboardType(.decimalPad)
                     Spacer()
                     Text("-")
                     Spacer()
-                    TextField("Rp ", text: $updateProfileModel.reelsMax).textFieldStyle(OvalTextFieldStyleForm())//.keyboardType(.numberPad)
+                    TextField("Rp ", text: $updateProfileModel.reelsMax).textFieldStyle(OvalTextFieldStyleForm()).keyboardType(.decimalPad)
                 }
             }
         }

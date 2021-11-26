@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import MessageUI
 import Introspect
 
 struct InfluencerDetailView: View {
@@ -16,8 +15,6 @@ struct InfluencerDetailView: View {
     @StateObject var campaignList = CampaignViewModel.shared
     @State var isFavorite: Bool = false
     @State var categories: [String] = []
-    @State var result: Result<MFMailComposeResult, Error>? = nil
-    @State var isShowingMailView = false
     @Binding var isPresent : Bool
     var previousView : String
     @Binding var influencerID: Int
@@ -32,110 +29,81 @@ struct InfluencerDetailView: View {
     var body: some View {
        NavigationView{
            ZStack{
+               
                ScrollView(.vertical, showsIndicators: false){
                    ZStack(alignment: .top){
-                       VStack{
-                           HStack{
-                           }.padding(.horizontal, 16)
-                               .padding(.top, 72)
-                               .padding(.bottom, 140)
-                           
-                           VStack{
-                               
-                               HStack{
-                                   
-                                   Text(influencerDetailViewModel.influencerModel?.influencer_profile.name ?? "").font(Font.custom(ThemeFont.poppinsSemiBold, size: 30))
-                                   Image(systemName: "checkmark.seal.fill")
-                                       .resizable()
-                                       .scaledToFill()
-                                       .frame(width: 25, height: 25, alignment: .center)
-                                       .foregroundColor(Color.orange1)
-                                   
-                               }
-                               
-                               Text(influencerDetailViewModel.influencerModel?.influencer_profile.location ?? "Jakarta Utara").font(Font.custom(ThemeFont.poppinsMedium, size: 14)).padding(.bottom, 15)
-                               
-                               Text("Specialty").font(Font.custom(ThemeFont.poppinsRegular, size: 14))
-                               
-                               HStack(spacing: 14) {
-                                   
-                                   ForEach(influencerDetailViewModel.influencerModel?.categories ?? [], id: \.self) { category in
-                                       
-                                       Text(category).scaledToFill()
-                                           .frame(width:110)
-                                           .font(Font.custom(ThemeFont.poppinsMedium, size: 14))
-                                           .padding(.vertical, 10)
-                                           .foregroundColor(ThemeColor.primary)
-                                           .background(ThemeColor.primaryLight)
-                                           .cornerRadius(10)
-                                   }
-                                   
-                               }.padding(.bottom, 16)
-                               
-                               HStack{
-                                   NavigationLink(destination: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign(isPresent: .constant(true)).navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0))){
-                                       OrderButton()
-                                   }
-                                   
-                                   
-                                   Button(action:{
-                                       self.isShowingMailView.toggle()
-                                   }){
-                                       Image(uiImage: UIImage(named: "Message")!)
-                                           .resizable()
-                                           .scaledToFit()
-                                           .frame(width: 50, height: 50)
-                                           .padding(.top, 8)
-                                       
-                                   }
-                                   
-                               }.padding(.bottom, 8)
-                               
-                               Path() { path in
-                                   path.move(to: CGPoint(x: 0, y: 0))
-                                   path.addLine(to: CGPoint(x: UIScreen.main.bounds.width, y: 0))
-                               }
-                               .stroke(Color.gray, lineWidth: 0.2)
-                               .frame(height: 0.4)
-                               
-                               Group {
-                                   SocialMedia(influencer: influencerDetailViewModel.influencerModel).padding()
-                                   FollowerProfile(images: influencerDetailViewModel.influencerModel?.analytic_photos ?? []).padding([.top, .bottom], 16)
-                                   
-                                   EstimatedPrice(products: influencerDetailViewModel.influencerModel?.products ?? []).padding([.top, .bottom], 16)
-                                   
-                                   PreviousProjectView(projects: influencerDetailViewModel.influencerModel?.projects ?? [])
-                                       .padding(.top, 16)
-                                   
-                                   ReviewView(projects: influencerDetailViewModel.influencerModel?.projects ?? []).padding()
-                                       .padding(.bottom, 86)
-                               }
-                           }.frame(width: UIScreen.main.bounds.width, alignment: .topLeading)
-                               .ignoresSafeArea()
-                               .padding(.top, 60)
-                               .background(Color.white)
-                               .cornerRadius(20, corners: [.topLeft, .topRight])
-                       }
                        
                        VStack{
                            WebImage(url: URL(string: influencerDetailViewModel.influencerModel?.influencer_profile.photo ?? ""))
                                .resizable()
-                               .scaledToFill()
-                               .frame(width: 127, height: 127)
-                               .cornerRadius(20.0)
-                               .overlay(RoundedRectangle(cornerRadius: 20.0)
-                                           .stroke(Color.white, lineWidth: 5))
-                       }.padding(.top, 150)
-                           .disabled(!MFMailComposeViewController.canSendMail())
-                           .sheet(isPresented: $isShowingMailView) {
-                               MailView(isShowing: $isShowingMailView, result: self.$result, toRecipient: influencerDetailViewModel.influencerModel?.influencer_profile.contact_email ?? "")
-                           }
+                               .aspectRatio(contentMode: .fill)
+                       }.frame(width: 390,height: 390)
+                       
+                       VStack{
+                          
+                           HStack{
+                           }.padding(.horizontal, 16)
+                               .padding(.vertical, 161)
+                           
+                           VStack(alignment: .leading, spacing: 16){
+                               
+                               HStack{
+                                   LocationView(title: influencerDetailViewModel.influencerModel?.influencer_profile.location ?? "", subtitle: "Location").padding(.trailing, 54)
+                                   LocationView(title: String(influencerDetailViewModel.influencerModel?.influencer_profile.rating ?? 0), subtitle: "Rating")
+                               }.padding(.horizontal,20)
+                                .padding(.bottom, 20)
+                               
+                               Divider()
+                               
+                               FollowerProfile(projects: influencerDetailViewModel.influencerModel?.projects ?? [])
+                               
+                               ReviewView(projects: influencerDetailViewModel.influencerModel?.projects ?? [])
+//                                   .padding(.top, 16)
+                                   .padding(.leading, 16)
+                              
+                               SpecialtyView(categories: influencerDetailViewModel.influencerModel?.categories ?? [])
+                                   .padding(.horizontal, 16)
+                               
+                               Group {
+                                   SocialMedia(influencer: influencerDetailViewModel.influencerModel).padding()
+                                   
+                                   EstimatedPrice(products: influencerDetailViewModel.influencerModel?.products ?? [])
+                                       .padding(.horizontal, 16)
+                                   Spacer(minLength: 120)
+                               }
+                           }.frame(width: UIScreen.main.bounds.width, alignment: .topLeading)
+                               .ignoresSafeArea()
+                               .padding(.top, 20)
+                               .background(Color.white)
+                               .cornerRadius(20, corners: [.topLeft, .topRight])
+                       }
                    }
                }
+//               VStack{
+//                   Rectangle().fill(ThemeColor.primary)
+//                       .frame(height: 88)//.padding(.top,)
+//                   Spacer()
+//               }
                VStack{
-                   Rectangle().fill(ThemeColor.primary)
-                       .frame(height: 88)//.padding(.top,)
                    Spacer()
+                   HStack{
+                       Text(influencerDetailViewModel.influencerModel?.influencer_profile.name ?? "")
+                           .font(Font.custom(ThemeFont.poppinsMedium, size: 16))
+                           .foregroundColor(.black)
+                           .padding(.trailing, 51)
+                       ChatButton()
+                           .padding(.trailing, 10)
+                       NavigationLink(destination: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign(isPresent: .constant(true)).navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0))){
+                           
+                           OrderButton()
+                                
+                        }
+                        
+                   }.padding(.vertical)
+//                       .padding(.horizontal, 30)
+                   .frame(minWidth: 390, minHeight: 93)
+                       .background(ThemeColor.grayLight)
+                   
                }
            }
             
@@ -143,7 +111,7 @@ struct InfluencerDetailView: View {
             .background(ThemeColor.primary.ignoresSafeArea())
             .ignoresSafeArea()
             .onAppear(perform: {
-                //influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
+//                influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
                 campaignList.callGetCampaigns()
                     //UINavigationBarAppearance().backgroundColor = UIColor(ThemeColor.primary)
             })
@@ -175,13 +143,25 @@ struct InfluencerDetailView: View {
 
 struct OrderButton: View {
     var body: some View{
-        Text("Order").font(Font.custom(ThemeFont.poppinsBold, size: 18))
+        Text("Order")
+            .font(Font.system(size: 15, weight: .semibold))
             .foregroundColor(Color.white)
-            .frame(width: 300, height: 50, alignment: .center)
+            .frame(width: 93, height: 33, alignment: .center)
             .background(ThemeColor.primary)
-            .cornerRadius(15)
-            .shadow(radius: 4)
+            .cornerRadius(10)
     }
 }
 
-
+struct ChatButton: View {
+    var body: some View{
+        Text("Chat")
+            .font(Font.system(size: 15, weight: .semibold))
+            .foregroundColor(ThemeColor.primary)
+            .frame(width: 93, height: 33, alignment: .center)
+            .background(Color.clear)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(ThemeColor.primary, lineWidth: 1)
+            )
+    }
+}

@@ -13,13 +13,13 @@ struct InfluencerDetailModel: Identifiable {
     let categories: [String]
     let platforms: [PlatformModel]
     let products: [ProductModel]
-    let analytic_photos: [AnalyticPhotoModel]
     let projects: [ProjectModel]
 }
 
 struct InfluencerProfileModel: Identifiable{
     let id: Int
     let contact_email: String
+    let rating: Double
     let name: String
     let location: String
     let photo: String
@@ -46,15 +46,10 @@ struct ProductModel: Identifiable {
 struct ProjectModel: Identifiable{
     let id: Int
     let business_photo: String
-    let sum_impressions: Double
-    let sum_reach: Double
-    let businessOwner_photo: String
-    let businessOwner_name: String
+    let business_name: String
+    let total_likes: String
+    let total_comments: String
+    let engagement_rate: String
+    let post_photo: String
     let comment: String
-    let rating: Double
-}
-
-struct AnalyticPhotoModel: Identifiable{
-    let id: Int
-    let photo: String
 }

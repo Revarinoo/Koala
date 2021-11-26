@@ -11,13 +11,13 @@ import SDWebImageSwiftUI
 struct ProfileView: View {
     
     @AppStorage("JWT", store: .standard) var token = ""
-    @ObservedObject var updateProfileVM = InfluencerProfileViewModel()
+    @StateObject var updateProfileVM = InfluencerProfileViewModel()
     @State var signOut = false
     @State var toEditProfile = false
     
-    init(){
-        updateProfileVM.callInfluencerData()
-    }
+//    init(){
+//        updateProfileVM.callInfluencerData()
+//    }
     var body: some View {
         NavigationView{
             ScrollView (showsIndicators: false){
@@ -90,7 +90,7 @@ struct ProfileView: View {
             .onAppear(){
                 updateProfileVM.callInfluencerData()
             }
-            .fullScreenCover(isPresented: $toEditProfile){
+            .sheet(isPresented: $toEditProfile){
                 InputProfileView(isPresent: $toEditProfile)
             }
             .navigate(to: LoginView(), when: $signOut)

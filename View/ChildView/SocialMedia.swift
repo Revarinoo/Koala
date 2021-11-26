@@ -10,12 +10,11 @@ import SwiftUI
 struct SocialMedia: View {
     var influencer: InfluencerDetailModel?
     var body: some View {
-        VStack (alignment: .leading, spacing: 14) {
+        VStack (alignment: .leading, spacing: 25) {
             Text("Social Media")
                 .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
             if let influencer = influencer {
                 SocialMediaCard(influencer: influencer)
-                    .shadow(color: Color.init(hex: "C4C4C4"), radius: 3, x: 0, y: 3)
             }
             
         }

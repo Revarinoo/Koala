@@ -66,7 +66,7 @@ struct PaymentView: View {
             }
         }.sheet(isPresented: $showWebView){
             
-            PaymentProcessView(showWebView: $showWebView, payment_url: $payment_url)
+//            PaymentProcessView(showWebView: $showWebView, payment_url: $payment_url)
         
         }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             
