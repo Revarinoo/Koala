@@ -166,13 +166,13 @@ class InfluencerProfileViewModel : ObservableObject {
                         print(response)
                         print("KODE \(code)")
                         if code >= 200 && code < 300 {
-                            let campaignResponse = try? JSONDecoder().decode(UpdateInfluencerProfileResponse.self, from: response.value as! Data)
-                            print(campaignResponse)
+                            //let campaignResponse = try? JSONDecoder().decode(UpdateInfluencerProfileResponse.self, from: response.value as! Data)
+                            //print(campaignResponse)
                             //print(res)
                             self.isFinishedUpload = true
                         } else {
-                            let campaignResponse = try? JSONDecoder().decode(UpdateInfluencerProfileResponse.self, from: response.value as! Data)
-                            print(campaignResponse)
+                            //let campaignResponse = try? JSONDecoder().decode(UpdateInfluencerProfileResponse.self, from: response.value as! Data)
+                            //print(campaignResponse)
                         }
                     }
                 }

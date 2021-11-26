@@ -90,7 +90,7 @@ struct ProfileView: View {
             .onAppear(){
                 updateProfileVM.callInfluencerData()
             }
-            .fullScreenCover(isPresented: $toEditProfile){
+            .sheet(isPresented: $toEditProfile){
                 InputProfileView(isPresent: $toEditProfile)
             }
             .navigate(to: LoginView(), when: $signOut)
