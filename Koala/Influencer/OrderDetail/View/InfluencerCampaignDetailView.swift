@@ -14,6 +14,7 @@ struct InfluencerCampaignDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var uiTabarController: UITabBarController?
     @State private var showingAlert = false
+    @State private var showingModalSheet = false
     
     var id: Int
     var status: String
@@ -32,56 +33,92 @@ struct InfluencerCampaignDetailView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 ZStack(alignment: .bottomLeading) {
                     VStack {
-                        InfluencerCampaignDetailFieldView(campaign: campaignVM.campaignModel, campaignDetail: campaignVM.campaignDetailModel, campaignPrice: campaignVM.campaignPriceModel)
-                        VStack {
-                            Button {
-                                campaignVM.submitCampaignStatus(id, status: CampaignStatus.accepted.rawValue)
-                            } label: {
-                                Text(status == OrderListStatus.incoming.rawValue ? "Accept" : "Submit Report")
-                                    .padding(15)
-                                    .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
-                                    .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
-                                    .foregroundColor(.white)
-                                    .background(ThemeColor.primary)
-                                    .cornerRadius(15)
+                        InfluencerCampaignDetailFieldView(campaign: campaignVM.campaignModel, campaignDetail: campaignVM.campaignDetailModel)
+                        
+                        if campaignVM.campaignPriceModel.allSatisfy({ $0.price == 0 }) {
+                            VStack {
+                                ForEach(campaignVM.campaignPriceModel, id: \.id) { price in
+                                    HStack {
+                                        VStack (alignment: .leading, spacing: 6) {
+                                            Text(price.content_type)
+                                                .font(.custom(ThemeFont.poppinsRegular, size: 14))
+                                                .foregroundColor(Color.init(hex: "A7A7A7"))
+                                            Text(price.price == 0 ? "No price yet" : "Rp \(price.price.rupiahFormatter())")
+                                                .font(.custom(ThemeFont.poppinsRegular, size: 16))
+                                                .frame(maxWidth: 334, alignment: .leading)
+                                        }
+                                        Spacer()
+                                        Button(action: {
+                                            
+                                        }, label: {
+                                            Text("Input Price")
+                                                .font(Font.custom(ThemeFont.poppinsSemiBold, size: 15))
+                                                .padding(EdgeInsets(top: 6, leading: 28, bottom: 6, trailing: 28))
+                                                .foregroundColor(.white)
+                                                .background(ThemeColor.primary)
+                                                .cornerRadius(10)
+                                        })
+                                            .padding(.top, 20)
+                                    }
+                                    .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 28))
+                                }
                             }
-                            .padding(.bottom, 8)
-                            .alert(isPresented: $campaignVM.campaignModel.isPresentingStatusAlert) {
-                                Alert(title: Text(campaignVM.campaignModel.alertTitle), message: Text(campaignVM.campaignModel.alertMessage), dismissButton: .cancel(Text("Ok"), action: {
-                                    self.presentationMode.wrappedValue.dismiss()
-                                }))
-                            }
-                            
-                            
-                            
-                            if status == OrderListStatus.incoming.rawValue {
+                            .padding(.bottom, 88)
+                        }
+                        
+                        else {
+                            VStack {
                                 Button {
-                                    showingAlert.toggle()
+                                    if status == OrderListStatus.incoming.rawValue {
+                                        campaignVM.submitCampaignStatus(id, status: CampaignStatus.accepted.rawValue)
+                                    } else {
+                                        self.showingModalSheet = true
+                                    }
                                 } label: {
-                                    Text("Decline")
+                                    Text(status == OrderListStatus.incoming.rawValue ? "Accept" : "Submit Report")
                                         .padding(15)
                                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                                         .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
-                                        .foregroundColor(ThemeColor.primary)
+                                        .foregroundColor(.white)
+                                        .background(ThemeColor.primary)
                                         .cornerRadius(15)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 15)
-                                                .stroke(ThemeColor.primary, lineWidth: 1)
-                                        )
                                 }
-                                .alert(isPresented: $showingAlert) {
-                                    Alert(
-                                        title: Text("Decline Campaign"),
-                                        message: Text("Are you sure you want decline this campaign?"),
-                                        primaryButton: .default(Text("Cancel"), action: {}),
-                                        secondaryButton: .destructive(Text("Decline").font(Font.custom(ThemeFont.poppinsBold, size: 14)).bold(), action: {
-                                            campaignVM.submitCampaignStatus(id, status: CampaignStatus.rejected.rawValue)
-                                        })
-                                    )
+                                .padding(.bottom, 8)
+                                .alert(isPresented: $campaignVM.campaignModel.isPresentingStatusAlert) {
+                                    Alert(title: Text(campaignVM.campaignModel.alertTitle), message: Text(campaignVM.campaignModel.alertMessage), dismissButton: .cancel(Text("Ok"), action: {
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    }))
+                                }
+                                
+                                if status == OrderListStatus.incoming.rawValue {
+                                    Button {
+                                        showingAlert.toggle()
+                                    } label: {
+                                        Text("Decline")
+                                            .padding(15)
+                                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
+                                            .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
+                                            .foregroundColor(ThemeColor.primary)
+                                            .cornerRadius(15)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 15)
+                                                    .stroke(ThemeColor.primary, lineWidth: 1)
+                                            )
+                                    }
+                                    .alert(isPresented: $showingAlert) {
+                                        Alert(
+                                            title: Text("Decline Campaign"),
+                                            message: Text("Are you sure you want decline this campaign?"),
+                                            primaryButton: .default(Text("Cancel"), action: {}),
+                                            secondaryButton: .destructive(Text("Decline").font(Font.custom(ThemeFont.poppinsBold, size: 14)).bold(), action: {
+                                                campaignVM.submitCampaignStatus(id, status: CampaignStatus.rejected.rawValue)
+                                            })
+                                        )
+                                    }
                                 }
                             }
+                            .padding(EdgeInsets(top: 16, leading: 0, bottom: 88, trailing: 28))
                         }
-                        .padding(EdgeInsets(top: 16, leading: 0, bottom: 88, trailing: 28))
                         
                     }
                     .frame(width: UIScreen.main.bounds.width - 28, alignment: .leading)
@@ -133,6 +170,9 @@ struct InfluencerCampaignDetailView: View {
             campaignVM.getOrderDetails(id: self.id)
             print("Gtau")
             print(campaignVM.campaignModel.campaign_logo)
+        }
+        .sheet(isPresented: $showingModalSheet){
+            SubmitReportView(isModalPresented: $showingModalSheet)
         }
         .introspectTabBarController { (UITabBarController) in
             UITabBarController.tabBar.isHidden = true

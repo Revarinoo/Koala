@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SubmitReportView: View {
+    
+    @Binding var isModalPresented: Bool
     @StateObject var reportVM = SubmitReportViewModel()
     @StateObject var orderDetailVM = InfluencerCampaignDetailViewModel()
     
@@ -43,6 +45,7 @@ struct SubmitReportView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") {
+                        self.isModalPresented = false
                     }.foregroundColor(ThemeColor.primary)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -71,8 +74,8 @@ struct SubmitReportView: View {
     }
 }
 
-struct SubmitReportView_Previews: PreviewProvider {
-    static var previews: some View {
-        SubmitReportView()
-    }
-}
+//struct SubmitReportView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SubmitReportView()
+//    }
+//}

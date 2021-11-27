@@ -15,9 +15,6 @@ struct ProfileView: View {
     @State var signOut = false
     @State var toEditProfile = false
     
-//    init(){
-//        updateProfileVM.callInfluencerData()
-//    }
     var body: some View {
         NavigationView{
             ScrollView (showsIndicators: false){
