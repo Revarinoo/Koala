@@ -12,9 +12,12 @@ struct InfluencerCampaignDetailView: View {
     
     @StateObject var campaignVM = InfluencerCampaignDetailViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var uiTabarController: UITabBarController?
+    @State private var uiTabarController: UITabBarController?
     @State private var showingAlert = false
     @State private var showingModalSheet = false
+    @State private var showingPriceSheet = false
+    @State private var seletedType = ""
+    @State private var seletedOrderID = 0
     
     var id: Int
     var status: String
@@ -35,21 +38,24 @@ struct InfluencerCampaignDetailView: View {
                     VStack {
                         InfluencerCampaignDetailFieldView(campaign: campaignVM.campaignModel, campaignDetail: campaignVM.campaignDetailModel)
                         
-                        if campaignVM.campaignPriceModel.allSatisfy({ $0.price == 0 }) {
-                            VStack {
-                                ForEach(campaignVM.campaignPriceModel, id: \.id) { price in
-                                    HStack {
-                                        VStack (alignment: .leading, spacing: 6) {
-                                            Text(price.content_type)
-                                                .font(.custom(ThemeFont.poppinsRegular, size: 14))
-                                                .foregroundColor(Color.init(hex: "A7A7A7"))
-                                            Text(price.price == 0 ? "No price yet" : "Rp \(price.price.rupiahFormatter())")
-                                                .font(.custom(ThemeFont.poppinsRegular, size: 16))
-                                                .frame(maxWidth: 334, alignment: .leading)
-                                        }
-                                        Spacer()
+                        VStack {
+                            ForEach(campaignVM.campaignPriceModel, id: \.id) { price in
+                                HStack {
+                                    VStack (alignment: .leading, spacing: 6) {
+                                        Text(price.content_type)
+                                            .font(.custom(ThemeFont.poppinsRegular, size: 14))
+                                            .foregroundColor(Color.init(hex: "A7A7A7"))
+                                        Text(price.price == 0 ? "No price yet" : "Rp \(price.price.rupiahFormatter())")
+                                            .font(.custom(ThemeFont.poppinsRegular, size: 16))
+                                            .frame(maxWidth: 334, alignment: .leading)
+                                    }
+                                    Spacer()
+                                    
+                                    if price.price == 0 {
                                         Button(action: {
-                                            
+                                            self.seletedType = price.content_type
+                                            self.seletedOrderID = price.order_detail_id
+                                            self.showingPriceSheet = true
                                         }, label: {
                                             Text("Input Price")
                                                 .font(Font.custom(ThemeFont.poppinsSemiBold, size: 15))
@@ -60,13 +66,14 @@ struct InfluencerCampaignDetailView: View {
                                         })
                                             .padding(.top, 20)
                                     }
-                                    .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 28))
+                                    
                                 }
+                                .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 28))
                             }
-                            .padding(.bottom, 88)
                         }
+                        .padding(.bottom, campaignVM.campaignPriceModel.allSatisfy({ $0.price != 0 }) ? 0 : 88)
                         
-                        else {
+                        if campaignVM.campaignPriceModel.allSatisfy({ $0.price != 0 }) {
                             VStack {
                                 Button {
                                     if status == OrderListStatus.incoming.rawValue {
@@ -168,11 +175,12 @@ struct InfluencerCampaignDetailView: View {
         .navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(.white))
         .onAppear {
             campaignVM.getOrderDetails(id: self.id)
-            print("Gtau")
-            print(campaignVM.campaignModel.campaign_logo)
         }
         .sheet(isPresented: $showingModalSheet){
             SubmitReportView(isModalPresented: $showingModalSheet)
+        }
+        .sheet(isPresented: $showingPriceSheet) {
+            SubmitPriceView(isModalPresented: $showingPriceSheet, serviceType: seletedType, orderDetailId: seletedOrderID)
         }
         .introspectTabBarController { (UITabBarController) in
             UITabBarController.tabBar.isHidden = true

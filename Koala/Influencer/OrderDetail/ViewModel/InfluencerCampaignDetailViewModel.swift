@@ -33,7 +33,7 @@ class InfluencerCampaignDetailViewModel: ObservableObject {
                     let instruction = detail.instruction ?? ""
                     let price = prices.map{ $0.price }[index] ?? 0
                     let singleDetail = InfluencerCampaignDetailContentModel(order_detail_id: order_detail_id, content_type: content_type, content_detail: instruction)
-                    let singlePrice = InfluencerCampaignPriceModel(price: price, content_type: content_type)
+                    let singlePrice = InfluencerCampaignPriceModel(order_detail_id: order_detail_id, price: price, content_type: content_type)
                     
                     campaignDetails.append(singleDetail)
                     campaignPrices.append(singlePrice)

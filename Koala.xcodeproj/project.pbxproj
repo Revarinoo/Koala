@@ -93,6 +93,10 @@
 		2FD875AB2731460B0052DA4D /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD875A42731460A0052DA4D /* ReviewService.swift */; };
 		2FD875AE27323E030052DA4D /* OrderRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD875AD27323E030052DA4D /* OrderRequestResponse.swift */; };
 		2FD875B02732438D0052DA4D /* OrderCampaignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD875AF2732438D0052DA4D /* OrderCampaignModel.swift */; };
+		2FE6E5962751E5B5009CB75B /* SubmitPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE6E5952751E5B5009CB75B /* SubmitPriceView.swift */; };
+		2FE6E59A2751E843009CB75B /* SubmitPriceRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE6E5992751E843009CB75B /* SubmitPriceRequestResponse.swift */; };
+		2FE6E59C2751E88C009CB75B /* SubmitPriceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE6E59B2751E88C009CB75B /* SubmitPriceService.swift */; };
+		2FE6E59E2751EA5A009CB75B /* SubmitPriceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE6E59D2751EA5A009CB75B /* SubmitPriceViewModel.swift */; };
 		780C8E8A274CA0C8008BD574 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E89274CA0C8008BD574 /* PaymentViewModel.swift */; };
 		780C8E8C274CA0D4008BD574 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E8B274CA0D4008BD574 /* Payment.swift */; };
 		780C8E8E274CA24A008BD574 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E8D274CA24A008BD574 /* PaymentService.swift */; };
@@ -327,6 +331,10 @@
 		2FD875A42731460A0052DA4D /* ReviewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
 		2FD875AD27323E030052DA4D /* OrderRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequestResponse.swift; sourceTree = "<group>"; };
 		2FD875AF2732438D0052DA4D /* OrderCampaignModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCampaignModel.swift; sourceTree = "<group>"; };
+		2FE6E5952751E5B5009CB75B /* SubmitPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitPriceView.swift; sourceTree = "<group>"; };
+		2FE6E5992751E843009CB75B /* SubmitPriceRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitPriceRequestResponse.swift; sourceTree = "<group>"; };
+		2FE6E59B2751E88C009CB75B /* SubmitPriceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitPriceService.swift; sourceTree = "<group>"; };
+		2FE6E59D2751EA5A009CB75B /* SubmitPriceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitPriceViewModel.swift; sourceTree = "<group>"; };
 		780C8E87274CA0B0008BD574 /* PaymentProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessView.swift; sourceTree = "<group>"; };
 		780C8E89274CA0C8008BD574 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		780C8E8B274CA0D4008BD574 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
@@ -932,6 +940,49 @@
 				2FD875A42731460A0052DA4D /* ReviewService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		2FE6E5902751E565009CB75B /* Submit Price */ = {
+			isa = PBXGroup;
+			children = (
+				2FE6E5942751E598009CB75B /* Model */,
+				2FE6E5932751E591009CB75B /* View */,
+				2FE6E5922751E585009CB75B /* ViewModel */,
+				2FE6E5912751E57D009CB75B /* Service */,
+			);
+			path = "Submit Price";
+			sourceTree = "<group>";
+		};
+		2FE6E5912751E57D009CB75B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2FE6E59B2751E88C009CB75B /* SubmitPriceService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		2FE6E5922751E585009CB75B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FE6E59D2751EA5A009CB75B /* SubmitPriceViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FE6E5932751E591009CB75B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FE6E5952751E5B5009CB75B /* SubmitPriceView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FE6E5942751E598009CB75B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FE6E5992751E843009CB75B /* SubmitPriceRequestResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		7850CEDE274C981500841ACE /* Payment */ = {
@@ -1640,6 +1691,7 @@
 		F7AD44D1274B98AA0030D380 /* Influencer */ = {
 			isa = PBXGroup;
 			children = (
+				2FE6E5902751E565009CB75B /* Submit Price */,
 				849E2C28274EE05C00F679E3 /* Order Review */,
 				F7683448274E4EB00051F7FC /* Submit Report */,
 				2F9B7F0D274D29D00015FF0A /* OrderDetail */,
@@ -1874,6 +1926,7 @@
 				8451B83C272A55570061D389 /* CampaignCard.swift in Sources */,
 				F7AD44DB274B9A9D0030D380 /* OrderListView.swift in Sources */,
 				2FBC8BB9271C3C66007E7B76 /* InfluencerListView.swift in Sources */,
+				2FE6E5962751E5B5009CB75B /* SubmitPriceView.swift in Sources */,
 				D291A3D42730416400BAAA75 /* UserProfileViewModel.swift in Sources */,
 				F7A52B9027267D700067D3E6 /* SocialMediaCard.swift in Sources */,
 				2F8DAD7D2741D0C100DE643F /* StringExtension.swift in Sources */,
@@ -1895,6 +1948,7 @@
 				2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */,
 				F7A52B94272707C70067D3E6 /* ImageSlider.swift in Sources */,
 				F768344F274E4FD20051F7FC /* PostForm.swift in Sources */,
+				2FE6E59E2751EA5A009CB75B /* SubmitPriceViewModel.swift in Sources */,
 				F76174062732475900019B79 /* CampaignUpcomingService.swift in Sources */,
 				D2900DC527267CA700D6E901 /* TabBar.swift in Sources */,
 				780C8EBC274FCD15008BD574 /* LocationView.swift in Sources */,
@@ -1953,6 +2007,7 @@
 				2F0D9DB627311E3C0012DAAF /* CampaignTaskCard.swift in Sources */,
 				78B9333827267ACA0040882D /* InfluencerDetailService.swift in Sources */,
 				D2B6F6C42732FF8F00B00020 /* ContentForm.swift in Sources */,
+				2FE6E59A2751E843009CB75B /* SubmitPriceRequestResponse.swift in Sources */,
 				F7AD44D9274B9A500030D380 /* TabBarInfluencer.swift in Sources */,
 				D283B9F9272A8BCB00CA87EC /* CompletedCardScrollView.swift in Sources */,
 				D2577BC4271F11BD00E7AC5D /* HomepageView.swift in Sources */,
@@ -2005,6 +2060,7 @@
 				2F0D9DAE27311BAB0012DAAF /* CampaignDetailService.swift in Sources */,
 				D28EC2A92722536400FCEA2B /* RecommendationViewModel.swift in Sources */,
 				8451B849272B923F0061D389 /* CampaignDetailReportView.swift in Sources */,
+				2FE6E59C2751E88C009CB75B /* SubmitPriceService.swift in Sources */,
 				780C8E8C274CA0D4008BD574 /* Payment.swift in Sources */,
 				84402B5C2738DF700037C045 /* EstimatedPriceCard.swift in Sources */,
 				D28D625627201E8300BE7345 /* RecommendationInfluencerService.swift in Sources */,
