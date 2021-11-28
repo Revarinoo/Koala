@@ -22,7 +22,7 @@ struct InputBusinessProfileView: View {
                 ScrollView(showsIndicators: false){
                     VStack(spacing: 18){
                         VStack{
-                            if businessProfileVM.businessProfileModel.business_photo.size.width == 0 {
+                            if businessProfileVM.inputBusinessProfileModel.business_photo.size.width == 0 {
                                 Image(systemName: "camera").font(.system(size: 36)).foregroundColor(.gray).scaledToFill().frame(width: 127, height: 127)
                                     .background(ThemeColor.background)
                                     .cornerRadius(20.0)
@@ -33,7 +33,7 @@ struct InputBusinessProfileView: View {
                                     }
                                 Text("Add Photo").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
                             } else {
-                                Image(uiImage: businessProfileVM.businessProfileModel.business_photo).resizable().foregroundColor(.gray)
+                                Image(uiImage: businessProfileVM.inputBusinessProfileModel.business_photo).resizable().foregroundColor(.gray)
                                     .scaledToFill().frame(width: 127, height: 127)
                                     .background(ThemeColor.background)
                                     .cornerRadius(20.0)
@@ -46,7 +46,7 @@ struct InputBusinessProfileView: View {
                             }
                         }.padding(.top, 30)
                         
-                        BusinessProfileForm(businessProfileModel: $businessProfileVM.businessProfileModel)
+                        BusinessProfileForm(inputBusinessProfileModel: $businessProfileVM.inputBusinessProfileModel)
                             .padding(.bottom, 42)
                         
                         Button(action:{
@@ -90,7 +90,7 @@ struct InputBusinessProfileView: View {
                 )
             }.sheet(isPresented: $showImagePicker) {
                 
-                ImagePicker(sourceType: .photoLibrary, selectedImage: $businessProfileVM.businessProfileModel.business_photo)
+                ImagePicker(sourceType: .photoLibrary, selectedImage: $businessProfileVM.inputBusinessProfileModel.business_photo)
                     
             }
             .navigationTitle("Profile")
@@ -110,6 +110,8 @@ struct InputBusinessProfileView: View {
         .navigationAppearance(backgroundColor: UIColor(ThemeColor.background), foregroundColor: .black)
         .onChange(of: businessProfileVM.isFinishedUpload){ _ in
             self.isPresent = false
+        }.onAppear{
+            businessProfileVM.getBusinessProfile()
         }
     }
 }

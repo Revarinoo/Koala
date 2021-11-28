@@ -10,14 +10,14 @@ import SwiftUI
 
 struct BusinessProfileForm: View {
 //    @State var province : locationProvince = .defaultValue
-    @Binding var businessProfileModel : BusinessProfileModel
+    @Binding var inputBusinessProfileModel : InputBusinessProfileModel
     var body: some View {
         VStack(alignment: .leading, spacing : 18){
             VStack(alignment: .leading, spacing: 12){
                 Text("Business Name")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
-                TextField("Enter your business name", text: $businessProfileModel.business_name ?? "").textFieldStyle(OvalTextFieldStyleForm())
+                TextField("Enter your business name", text: $inputBusinessProfileModel.business_name ?? "").textFieldStyle(OvalTextFieldStyleForm())
             }
             
             VStack(alignment: .leading, spacing: 12){
@@ -26,12 +26,12 @@ struct BusinessProfileForm: View {
                     .foregroundColor(ThemeColor.grayDark)
                 HStack{
                     Section{
-                        Picker("Number of people", selection: $businessProfileModel.location) {
+                        Picker("Number of people", selection: $inputBusinessProfileModel.location) {
                             ForEach(locationProvince.allCases, id: \.self) { value in
                                 Text("\(value.rawValue)").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
                             }
                         }
-                        .font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray).accentColor(businessProfileModel.location == .defaultValue ? ThemeColor.grayDark : .black)
+                        .font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray).accentColor(inputBusinessProfileModel.location == .defaultValue ? ThemeColor.grayDark : .black)
                     }.padding(8).padding(.leading, 7)
                     Spacer()
                 }
@@ -46,20 +46,20 @@ struct BusinessProfileForm: View {
                 Text("Instagram")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
-                TextField("Enter your instagram username (with @)", text: $businessProfileModel.instagram ?? "").textFieldStyle(OvalTextFieldStyleForm())
+                TextField("Enter your instagram username (with @)", text: $inputBusinessProfileModel.instagram ?? "").textFieldStyle(OvalTextFieldStyleForm())
             }
             VStack(alignment: .leading, spacing: 12){
                 Text("Website")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
-                TextField("Enter your website", text: $businessProfileModel.website ?? "").textFieldStyle(OvalTextFieldStyleForm())
+                TextField("Enter your website", text: $inputBusinessProfileModel.website ?? "").textFieldStyle(OvalTextFieldStyleForm())
             }
             
             VStack(alignment: .leading, spacing: 12){
                 Text("Description")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
-                CustomTextEditor.init(placeholder: "Enter your business descriptions.", text: $businessProfileModel.description ?? "")
+                CustomTextEditor.init(placeholder: "Enter your business descriptions.", text: $inputBusinessProfileModel.description ?? "")
                     .background(ThemeColor.grayLight)
                     .frame(height: 152)
                     .cornerRadius(8)
@@ -72,7 +72,7 @@ struct BusinessProfileForm: View {
 
 struct BusinessProfileForm_Previews: PreviewProvider {
     static var previews: some View {
-        BusinessProfileForm(businessProfileModel: .constant(BusinessProfileModel()))
+        BusinessProfileForm(inputBusinessProfileModel: .constant(InputBusinessProfileModel()))
     }
 }
 
