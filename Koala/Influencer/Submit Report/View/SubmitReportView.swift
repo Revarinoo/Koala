@@ -11,8 +11,9 @@ struct SubmitReportView: View {
     
     @Binding var isModalPresented: Bool
     @StateObject var reportVM = SubmitReportViewModel()
-    @StateObject var orderDetailVM = InfluencerCampaignDetailViewModel()
+    @StateObject var orderDetailVM = InfluencerCampaignDetailViewModel.shared
     @State var uploadingView = false
+    var orderId: Int
     
     var body: some View {
         NavigationView{
@@ -79,6 +80,8 @@ struct SubmitReportView: View {
                             message: Text("Congratulation, you're report successfully submited"),
                             dismissButton: .default(Text("Got it!")){
                                 reportVM.isSucceed = true
+                                isModalPresented = false
+                                orderDetailVM.getOrderDetails(id: orderId)
                             }
                         )
                     }
@@ -91,11 +94,8 @@ struct SubmitReportView: View {
         .onTapGesture {
             self.dismissKeyboard()
         }
-        .navigate(to: OrderListView(), when: $reportVM.isSucceed)
-        
-        // MARK: Sementara, nanti hapus -/\-
         .onAppear {
-            orderDetailVM.getOrderDetails(id: 1)
+            orderDetailVM.getOrderDetails(id: orderId)
         }
         
     }

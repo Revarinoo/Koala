@@ -10,7 +10,7 @@ enum CampaignStatus: String, CaseIterable{
 
 struct InfluencerCampaignDetailView: View {
     
-    @StateObject var campaignVM = InfluencerCampaignDetailViewModel()
+    @StateObject var campaignVM = InfluencerCampaignDetailViewModel.shared
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var uiTabarController: UITabBarController?
     @State private var showingAlert = false
@@ -177,10 +177,10 @@ struct InfluencerCampaignDetailView: View {
             campaignVM.getOrderDetails(id: self.id)
         }
         .sheet(isPresented: $showingModalSheet){
-            SubmitReportView(isModalPresented: $showingModalSheet)
+            SubmitReportView(isModalPresented: $showingModalSheet, orderId: self.id)
         }
         .sheet(isPresented: $showingPriceSheet) {
-            SubmitPriceView(isModalPresented: $showingPriceSheet, serviceType: seletedType, orderDetailId: seletedOrderID)
+            SubmitPriceView(isModalPresented: $showingPriceSheet, serviceType: seletedType, orderDetailId: seletedOrderID, orderId: self.id)
         }
         .introspectTabBarController { (UITabBarController) in
             UITabBarController.tabBar.isHidden = true

@@ -11,10 +11,11 @@ struct SubmitPriceView: View {
     
     @Binding var isModalPresented: Bool
     @StateObject var priceVM = SubmitPriceViewModel()
-    @StateObject var campaignVM = InfluencerCampaignDetailViewModel()
+    @StateObject var campaignVM = InfluencerCampaignDetailViewModel.shared
     
     var serviceType: String
     var orderDetailId: Int
+    var orderId: Int
     
     var body: some View {
         NavigationView {
@@ -51,6 +52,7 @@ struct SubmitPriceView: View {
                     }
                     .alert(isPresented: $priceVM.isSucceed) {
                         Alert(title: Text("Success"), message: Text("Price successfully updated"), dismissButton: .cancel(Text("Ok"), action: {
+                            campaignVM.getOrderDetails(id: orderId)
                             self.isModalPresented = false
                         }))
                     }

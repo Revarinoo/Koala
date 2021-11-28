@@ -24,7 +24,6 @@ struct OrderListView: View {
         UISegmentedControl.appearance().backgroundColor = UIColor(ThemeColor.background)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
-        UINavigationBar.appearance().backgroundColor = UIColor(.clear)
     }
     
     var body: some View {
