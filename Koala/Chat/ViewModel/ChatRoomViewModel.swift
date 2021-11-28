@@ -11,6 +11,7 @@ import SwiftUI
 
 
 class ChatRoomViewModel: ObservableObject {
+    static let shared = ChatRoomViewModel()
     @Published var chatRooms: [ChatRoom] = []
     private var db = Firestore.firestore()
     private var userService = UserProfileService()
@@ -19,7 +20,6 @@ class ChatRoomViewModel: ObservableObject {
     @AppStorage("role", store: .standard) var role = ""
     
     func fetchData() {
-        print("INIIII \(userVM.user)")
         if !chatRooms.isEmpty || !chatData.isEmpty {
             chatRooms.removeAll()
             chatData.removeAll()
@@ -45,7 +45,13 @@ class ChatRoomViewModel: ObservableObject {
     
     func createChatRoom(target: Int) -> Bool {
         if isCreated(user: userVM.user.id, target: target) { return false }
-        db.collection("chatrooms").addDocument(data: ["users": [userVM.user.id, target]]) { err in
+        var target1 = userVM.user.id
+        var target2 = target
+        if role == "Influencer" {
+            target1 = target
+            target2 = userVM.user.id
+        }
+        db.collection("chatrooms").addDocument(data: ["users": [target1, target2]]) { err in
             if let err = err {
                 print(err.localizedDescription)
             }

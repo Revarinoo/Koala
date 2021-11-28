@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct ChatList: View {
     
     @AppStorage("role", store: .standard) var role = ""
-    @StateObject var chatRoomVM = ChatRoomViewModel()
+    @StateObject var chatRoomVM = ChatRoomViewModel.shared
     static let shared = ChatList()
     
     var body: some View {

@@ -8,10 +8,11 @@ class InfluencerCampaignDetailViewModel: ObservableObject {
     @Published var campaignDetailModel: [InfluencerCampaignDetailContentModel] = []
     @Published var campaignPriceModel: [InfluencerCampaignPriceModel] = []
     private var influencerCampaignService = InfluencerCampaignDetailService()
+    @Published var targetUserId: Int = 0
     
     func getOrderDetails(id: Int) {
         influencerCampaignService.getOrderDetails(id: id) { result in
-            if let campaign_logo = result?.campaign.campaign_logo, let campaign_title = result?.campaign.name, let due_date = result?.campaign.end_date, let product = result?.campaign.product_name, let description = result?.campaign.description, let rules = result?.campaign.rules, let references = result?.references, let details = result?.campaign_details, let business_photo = result?.business_photo, let business_name = result?.business_name, let prices = result?.order_detail {
+            if let campaign_logo = result?.campaign.campaign_logo, let campaign_title = result?.campaign.name, let due_date = result?.campaign.end_date, let product = result?.campaign.product_name, let description = result?.campaign.description, let rules = result?.campaign.rules, let references = result?.references, let details = result?.campaign_details, let business_photo = result?.business_photo, let business_name = result?.business_name, let prices = result?.order_detail, let targetId = result?.campaign.business.user_id {
                 
                 var campaignDetails: [InfluencerCampaignDetailContentModel] = []
                 var campaignPrices: [InfluencerCampaignPriceModel] = []
@@ -26,6 +27,7 @@ class InfluencerCampaignDetailViewModel: ObservableObject {
                     self.campaignModel.references = references
                     self.campaignModel.business_photo = business_photo
                     self.campaignModel.business_name = business_name
+                    self.targetUserId = targetId
                 }
                 
                 for (index, detail) in details.enumerated() {

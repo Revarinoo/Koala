@@ -19,6 +19,8 @@ struct InfluencerCampaignDetailView: View {
     @State private var seletedType = ""
     @State private var seletedOrderID = 0
     @State private var showingWaitingButton = false
+    @StateObject var chatRoomVM = ChatRoomViewModel.shared
+    @State private var isChat = false
     
     var id: Int
     var status: String
@@ -168,15 +170,18 @@ struct InfluencerCampaignDetailView: View {
                     
                     Spacer()
                     
-                    Button {
-                        
-                    } label: {
-                        Text("Chat")
-                            .font(Font.custom(ThemeFont.poppinsSemiBold, size: 15))
-                            .foregroundColor(.white)
-                            .padding(EdgeInsets(top: 8, leading: 28, bottom: 8, trailing: 28))
-                            .background(ThemeColor.primary)
-                            .cornerRadius(10)
+                    NavigationLink(destination: TabBarInfluencer(selectedTab: .constant(1)), isActive: $isChat) {
+                        Button {
+                            self.isChat = chatRoomVM.createChatRoom(target: campaignVM.targetUserId)
+                            
+                        } label: {
+                            Text("Chat")
+                                .font(Font.custom(ThemeFont.poppinsSemiBold, size: 15))
+                                .foregroundColor(.white)
+                                .padding(EdgeInsets(top: 8, leading: 28, bottom: 8, trailing: 28))
+                                .background(ThemeColor.primary)
+                                .cornerRadius(10)
+                        }
                     }
                     
                 }

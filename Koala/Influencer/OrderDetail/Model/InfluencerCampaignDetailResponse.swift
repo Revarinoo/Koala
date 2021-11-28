@@ -19,6 +19,7 @@ struct CampaignContentModel: Codable {
     let product_name: String?
     let rules: String?
     let campaign_logo: String?
+    let business: BusinessCampaign
 }
 
 struct CampaignContentDetailModel: Codable {
@@ -29,4 +30,8 @@ struct CampaignContentDetailModel: Codable {
 
 struct CampaignPriceModel: Codable {
     let price: Int?
+}
+
+struct BusinessCampaign: Codable {
+    let user_id: Int?
 }
