@@ -14,7 +14,7 @@ final class HttpUtility {
     static let endpoint = "http://127.0.0.1:8000/api/"
     //"https://koala-influencer.xyz/api/"
     //"http://127.0.0.1:8000/api/"
-    static let defaultImages = "https://koala-influencer.xyz/storage/images/default.png"
+    static let defaultImages = "http://127.0.0.1:8000/api/storage/images/default.png"
     
     private init(){}
     
