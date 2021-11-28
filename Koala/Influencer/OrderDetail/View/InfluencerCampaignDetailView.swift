@@ -19,7 +19,6 @@ struct InfluencerCampaignDetailView: View {
     @State private var seletedType = ""
     @State private var seletedOrderID = 0
     @State private var showingWaitingButton = false
-    @AppStorage("isAccepted", store: .standard) var isAccepted = false
     
     var id: Int
     var status: String
@@ -75,16 +74,16 @@ struct InfluencerCampaignDetailView: View {
                         }
                         .padding(.bottom, campaignVM.campaignPriceModel.allSatisfy({ $0.price != 0 }) ? 0 : 88)
                         
-                        if (campaignVM.campaignPriceModel.allSatisfy({ $0.price != 0 }) && isAccepted == false) {
+                        if (campaignVM.campaignPriceModel.allSatisfy({ $0.price != 0 }) && status != "Accepted") {
                             VStack {
                                 Button {
-                                    if status == OrderListStatus.incoming.rawValue {
+                                    if status == "Pending" {
                                         campaignVM.submitCampaignStatus(id, status: CampaignStatus.accepted.rawValue)
                                     } else {
                                         self.showingModalSheet = true
                                     }
                                 } label: {
-                                    Text(status == OrderListStatus.incoming.rawValue ? "Accept" : "Submit Report")
+                                    Text(status == "Pending" ? "Accept" : "Submit Report")
                                         .padding(15)
                                         .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                                         .frame(minWidth: 326, maxWidth: .infinity, alignment: .center)
@@ -97,11 +96,10 @@ struct InfluencerCampaignDetailView: View {
                                     Alert(title: Text(campaignVM.campaignModel.alertTitle), message: Text(campaignVM.campaignModel.alertMessage), dismissButton: .cancel(Text("Ok"), action: {
                                         self.presentationMode.wrappedValue.dismiss()
                                         self.showingWaitingButton = true
-                                        isAccepted = true
                                     }))
                                 }
                                 
-                                if status == OrderListStatus.incoming.rawValue {
+                                if status == "Pending" {
                                     Button {
                                         showingAlert.toggle()
                                     } label: {
@@ -131,7 +129,7 @@ struct InfluencerCampaignDetailView: View {
                             .padding(EdgeInsets(top: 16, leading: 0, bottom: 88, trailing: 28))
                         }
                         
-                        if (showingWaitingButton || isAccepted) {
+                        if (status == "Accepted") {
                             VStack {
                                 Text("Waiting For Payment")
                                     .padding(15)

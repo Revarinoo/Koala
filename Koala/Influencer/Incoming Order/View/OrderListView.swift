@@ -44,15 +44,15 @@ struct OrderListView: View {
                         switch orderTypeSelected {
                         case .incoming:
                             ForEach(orderListVM.incomingOrders, id: \.id) { order in
-                                OrderListCard(orderList: order, status: OrderListStatus.incoming.rawValue)
+                                OrderListCard(orderList: order, status: order.campaignStatus)
                             }
                         case .ongoing:
                             ForEach(orderListVM.ongoingOrders, id: \.id) { order in
-                                OrderListCard(orderList: order, status: OrderListStatus.ongoing.rawValue)
+                                OrderListCard(orderList: order, status: order.campaignStatus)
                             }
                         case .completed:
                             ForEach(orderListVM.completedOrders, id: \.id) { order in
-                                OrderListCard(orderList: order, status: OrderListStatus.completed.rawValue)
+                                OrderListCard(orderList: order, status: order.campaignStatus)
                             }
                         }
                     }

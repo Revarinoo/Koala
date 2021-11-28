@@ -80,8 +80,8 @@ struct SubmitReportView: View {
                             title: Text("Success"),
                             message: Text("Congratulation, you're report successfully submited"),
                             dismissButton: .default(Text("Got it!")){
-                                reportVM.isSucceed = true
                                 isModalPresented = false
+                                reportVM.isSucceed = true
                                 orderDetailVM.getOrderDetails(id: orderId)
                             }
                         )
@@ -98,7 +98,7 @@ struct SubmitReportView: View {
         .onAppear {
             orderDetailVM.getOrderDetails(id: orderId)
         }
-        
+        .navigate(to: TabBarInfluencer(selectedTab: .constant(0)), when: $reportVM.isSucceed)
     }
 }
 
