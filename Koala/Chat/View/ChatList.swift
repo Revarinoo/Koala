@@ -44,6 +44,7 @@ struct ChatList: View {
         .background(Color.bgColorView.ignoresSafeArea())
         .navigationTitle("\(tabBarVM.titleBar)")
         .navigationBarTitleDisplayMode(.large)
+        //.navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))
         .onAppear(perform: {
             chatRoomVM.fetchData()
             self.dismissKeyboard()

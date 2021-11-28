@@ -69,6 +69,7 @@ struct ProfileView: View {
                     }
                 }.padding([.leading, .trailing], 16)
             }
+            //.navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))
             .navigationTitle("\(tabBarVM.getTitle())")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(){

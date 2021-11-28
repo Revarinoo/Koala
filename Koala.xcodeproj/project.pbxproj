@@ -154,6 +154,7 @@
 		D2131CB12729AC7D006ACDC2 /* MyOrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CB02729AC7D006ACDC2 /* MyOrderService.swift */; };
 		D2131CB32729BE1D006ACDC2 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CB22729BE1D006ACDC2 /* OrderModel.swift */; };
 		D21476242723F4B2009985BD /* RecommendationInfluencerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21476232723F4B2009985BD /* RecommendationInfluencerModel.swift */; };
+		D21AD2FA2753F98800073246 /* NavBar Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21AD2F92753F98800073246 /* NavBar Extension.swift */; };
 		D23703B627498725000D4B2C /* NavigationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23703B527498725000D4B2C /* NavigationModifier.swift */; };
 		D23FB800273C180A0099AC01 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23FB7FF273C180A0099AC01 /* KeyboardExtension.swift */; };
 		D23FB802273C37B60099AC01 /* DateCalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23FB801273C37B60099AC01 /* DateCalendarExtension.swift */; };
@@ -396,6 +397,7 @@
 		D2131CB02729AC7D006ACDC2 /* MyOrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderService.swift; sourceTree = "<group>"; };
 		D2131CB22729BE1D006ACDC2 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		D21476232723F4B2009985BD /* RecommendationInfluencerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationInfluencerModel.swift; sourceTree = "<group>"; };
+		D21AD2F92753F98800073246 /* NavBar Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavBar Extension.swift"; sourceTree = "<group>"; };
 		D23703B527498725000D4B2C /* NavigationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModifier.swift; sourceTree = "<group>"; };
 		D23FB7FF273C180A0099AC01 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		D23FB801273C37B60099AC01 /* DateCalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalendarExtension.swift; sourceTree = "<group>"; };
@@ -734,6 +736,7 @@
 				D23703B527498725000D4B2C /* NavigationModifier.swift */,
 				2FA152AF2748A15000231492 /* ArrayExtension.swift */,
 				2FE6E5A327533AA7009CB75B /* DataExtension.swift */,
+				D21AD2F92753F98800073246 /* NavBar Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1954,6 +1957,7 @@
 				780C8E9A274E91E3008BD574 /* WebView.swift in Sources */,
 				8451B84B272B92DB0061D389 /* ResultExpenseCard.swift in Sources */,
 				2F95BCD2273A2EDD00F78F83 /* Helpers.swift in Sources */,
+				D21AD2FA2753F98800073246 /* NavBar Extension.swift in Sources */,
 				2F6C2C412722B6990026EF3E /* OnboardViewModel.swift in Sources */,
 				F7A52B94272707C70067D3E6 /* ImageSlider.swift in Sources */,
 				F768344F274E4FD20051F7FC /* PostForm.swift in Sources */,

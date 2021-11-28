@@ -38,9 +38,11 @@ struct TabBarInfluencer: View {
                 }
                 .accentColor(Color(UIColor(named: "primary")!))
                 .navigationBarTitle("\(tabBarVM.getTitle())")
+                //.navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))
                 //.navigationBarHidden(true)
                 //.navigationBarBackButtonHidden(true)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

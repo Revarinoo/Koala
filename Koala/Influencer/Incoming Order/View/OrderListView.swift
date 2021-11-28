@@ -63,8 +63,11 @@ struct OrderListView: View {
                 Spacer()
             }
             .navigationBarTitle("\(tabBarVM.getTitle())")
+            .navigationBarTitleDisplayMode(.inline)
+            //.navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))
             .background(Color.init(hex: "F2F2F2"))
             .edgesIgnoringSafeArea(.top)
+            //.navigationBarColor(backgroundColor: UIColor(ThemeColor.background), titleColor: .black, tintColor: UIColor(ThemeColor.primary))
         //}
         .onAppear {
             orderListVM.fetchOrderList()

@@ -189,7 +189,7 @@ struct InfluencerCampaignDetailView: View {
             
         }
         .edgesIgnoringSafeArea(.bottom)
-        .navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(.white))
+        //.navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))
         .onAppear {
             campaignVM.getOrderDetails(id: self.id)
         }
