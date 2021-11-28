@@ -17,8 +17,9 @@ struct ThumbnailImageFetcher {
     func fetchInfo(_ mediaURL: String, completion: @escaping (Result<InstaMediaData, Error>) -> Void) {
         
         // Create URL
-        print(mediaURL)
-        guard let url = URL(string: "https://instagram85.p.rapidapi.com/media/\(mediaURL)") else {
+        let range = mediaURL.range(of: "?")
+        let firstPart = mediaURL[(mediaURL.startIndex)..<range!.lowerBound]
+        guard let url = URL(string: "https://instagram85.p.rapidapi.com/media/\(firstPart)/?by=url&utm_source=ig_web_copy_link") else {
             completion(.failure(ThumbnailImageFetcherError.invalidURL))
             return
         }
@@ -46,8 +47,6 @@ struct ThumbnailImageFetcher {
             
             do {
                 // Parse the JSON data
-                print("Parse the JSON data")
-                print(data.prettyPrintedJSONString)
                 let instaAccountResult = try JSONDecoder().decode(InstaMediaModel.self, from: data)
                 completion(.success(instaAccountResult.data))
             } catch {

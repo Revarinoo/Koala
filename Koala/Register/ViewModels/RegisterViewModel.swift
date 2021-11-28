@@ -105,7 +105,6 @@ class RegisterViewModel: ObservableObject {
                 self.igEngagementRate = avgOfERs
                 
                 DispatchQueue.main.async {
-                    
                     callRegisterService()
                 }
                 

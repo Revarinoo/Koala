@@ -78,6 +78,7 @@ struct SubmitReportView: View {
                             title: Text("Success"),
                             message: Text("Congratulation, you're report successfully submited"),
                             dismissButton: .default(Text("Got it!")){
+                                reportVM.isSucceed = true
                             }
                         )
                     }

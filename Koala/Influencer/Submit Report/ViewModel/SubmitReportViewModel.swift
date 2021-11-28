@@ -35,16 +35,14 @@ class SubmitReportViewModel: ObservableObject {
             switch content.type {
             case .Post:
                 igThumbnailFetcher.fetchInfo(igPost.link) { [unowned self] result in
-
+                    
                     switch result {
                     case .success(let media):
                         
                         self.post_photo = media.images.thumbnail
-                        print("post_photo")
-                        print(post_photo)
-                    
+                        
                         DispatchQueue.main.async {
-                            service.submitReport(requestBody: ReportRequest(post_url: igPost.link, views: nil, likes: igPost.likes, comments: igPost.comments, reach: nil, impressions: nil, post_photo: post_photo , order_detail_id: content.orderDetailId)) { result in
+                            service.submitReport(requestBody: ReportRequest(post_url: self.igPost.link, views: nil, likes: self.igPost.likes, comments: self.igPost.comments, reach: nil, impressions: nil, post_photo: self.post_photo, order_detail_id: content.orderDetailId)) { result in
                                 if let response = result {
                                     if response.code == 201 {
                                         DispatchQueue.main.async {
@@ -72,13 +70,27 @@ class SubmitReportViewModel: ObservableObject {
                 }
                 
             case .Reels:
-                service.submitReport(requestBody: ReportRequest(post_url: igReels.link, views: igReels.views, likes: igReels.likes, comments: igReels.comments, reach: nil, impressions: nil, post_photo: nil ,order_detail_id: content.orderDetailId)) { result in
-                    if let response = result {
-                        if response.code == 201 {
-                            DispatchQueue.main.async {
-                                self.isSucceed = true
+                igThumbnailFetcher.fetchInfo(igPost.link) { [unowned self] result in
+                    
+                    switch result {
+                    case .success(let media):
+                        
+                        self.post_photo = media.images.thumbnail
+                        
+                        DispatchQueue.main.async {
+                            service.submitReport(requestBody: ReportRequest(post_url: igReels.link, views: igReels.views, likes: igReels.likes, comments: igReels.comments, reach: nil, impressions: nil, post_photo: nil ,order_detail_id: content.orderDetailId)) { result in
+                                if let response = result {
+                                    if response.code == 201 {
+                                        DispatchQueue.main.async {
+                                            self.isSucceed = true
+                                        }
+                                    }
+                                }
                             }
                         }
+                        
+                    case .failure(let error):
+                        print("Request failed with error: \(error)")
                     }
                 }
             default:
@@ -86,4 +98,5 @@ class SubmitReportViewModel: ObservableObject {
             }
         }
     }
+    
 }
