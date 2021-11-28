@@ -3,7 +3,7 @@
 //  Koala
 //
 //  Created by Revarino Putra on 22/11/21.
-//
+// 
 
 import SwiftUI
 
@@ -17,6 +17,9 @@ struct OrderListView: View {
     @StateObject var orderListVM = OrderListViewModel()
     @State private var orderTypeSelected : OrderListStatus = .incoming
     @StateObject var userProfile = UserProfileViewModel.shared
+    @StateObject var updateProfileVM = InfluencerProfileViewModel()
+    @State var showUpdateProfile = false
+    @State var updateProfileSheet = false
     
     init(){
         
@@ -30,7 +33,7 @@ struct OrderListView: View {
     var body: some View {
         
         NavigationView {
-            VStack (alignment: .leading) {
+            VStack () {
                 Picker("", selection: $orderTypeSelected) {
                     ForEach (OrderListStatus.allCases, id: \.self){
                         Text($0.rawValue)                    }
@@ -39,30 +42,32 @@ struct OrderListView: View {
                 .padding([.leading, .trailing], 16)
                 .padding(.top, 157)
                 
-                ScrollView {
-                    
-                    VStack{
-                        switch orderTypeSelected {
-                        case .incoming:
-                            ForEach(orderListVM.incomingOrders, id: \.id) { order in
-                                OrderListCard(orderList: order, status: OrderListStatus.incoming.rawValue)
-                            }
-                        case .ongoing:
-                            ForEach(orderListVM.ongoingOrders, id: \.id) { order in
-                                OrderListCard(orderList: order, status: OrderListStatus.ongoing.rawValue)
-                            }
-                        case .completed:
-                            ForEach(orderListVM.completedOrders, id: \.id) { order in
-                                OrderListCard(orderList: order, status: OrderListStatus.completed.rawValue)
+                if showUpdateProfile {
+                    Spacer()
+                    UpdateProfileInfluencer(showSheet: $updateProfileSheet)
+                    Spacer()
+                } else {
+                    ScrollView {
+                        VStack{
+                            switch orderTypeSelected {
+                            case .incoming:
+                                ForEach(orderListVM.incomingOrders, id: \.id) { order in
+                                    OrderListCard(orderList: order, status: OrderListStatus.incoming.rawValue)
+                                }
+                            case .ongoing:
+                                ForEach(orderListVM.ongoingOrders, id: \.id) { order in
+                                    OrderListCard(orderList: order, status: OrderListStatus.ongoing.rawValue)
+                                }
+                            case .completed:
+                                ForEach(orderListVM.completedOrders, id: \.id) { order in
+                                    OrderListCard(orderList: order, status: OrderListStatus.completed.rawValue)
+                                }
                             }
                         }
+                        .padding()
                     }
-                    .padding()
-                    
-                
+                    Spacer()
                 }
-                
-                Spacer()
             }
             .navigationBarTitle("Order List")
             .background(Color.init(hex: "F2F2F2"))
@@ -71,6 +76,13 @@ struct OrderListView: View {
         .onAppear {
             orderListVM.fetchOrderList()
             userProfile.callData()
+            updateProfileVM.callInfluencerData()
+            if updateProfileVM.influencerProfile.location == ""{
+                showUpdateProfile = true
+            }
+        }
+        .sheet(isPresented: $updateProfileSheet){
+            InputProfileView(isPresent: $updateProfileSheet)
         }
     }
 }
