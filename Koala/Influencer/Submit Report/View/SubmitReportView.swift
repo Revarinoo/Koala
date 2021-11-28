@@ -12,11 +12,13 @@ struct SubmitReportView: View {
     @Binding var isModalPresented: Bool
     @StateObject var reportVM = SubmitReportViewModel()
     @StateObject var orderDetailVM = InfluencerCampaignDetailViewModel()
+    @State var uploadingView = false
     
     var body: some View {
         NavigationView{
             ScrollView (.vertical, showsIndicators: false) {
-                VStack {
+                ZStack {
+                    VStack {
                         ForEach(orderDetailVM.campaignDetailModel) { data in
                             switch data.content_type {
                             case "Instagram Post":
@@ -36,9 +38,25 @@ struct SubmitReportView: View {
                                         reportVM.contents.append(ContentStorage(type: ContentType.Reels, orderDetailId: data.order_detail_id))
                                     }
                             default: PostForm(post: $reportVM.igPost)
+                            }
+                        }
+                    }
+                    
+                    if uploadingView
+                    {
+                        ThemeColor.primary.ignoresSafeArea()
+                        VStack(spacing: 25){
+                            Spacer()
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: ThemeColor.secondary))
+                                .scaleEffect(3)
+                            Text("Uploading Your Data").foregroundColor(.white).font(Font.custom(ThemeFont.poppinsMedium, size: 14))
+                            Spacer()
                         }
                     }
                 }
+                
+                
             }
             .navigationTitle("Submit Report")
             .navigationBarTitleDisplayMode(.inline)
@@ -55,8 +73,16 @@ struct SubmitReportView: View {
                         Text("Submit")
                             .foregroundColor(ThemeColor.primary)
                     }
-
+                    .alert(isPresented: $reportVM.isSucceed) {
+                        Alert(
+                            title: Text("Success"),
+                            message: Text("Congratulation, you're report successfully submited"),
+                            dismissButton: .default(Text("Got it!")){
+                            }
+                        )
+                    }
                 }
+                
             }
         }
         .preferredColorScheme(.light)

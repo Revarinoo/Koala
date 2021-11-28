@@ -20,7 +20,7 @@ final class HttpUtility {
     
     public let headers = [
         "x-rapidapi-host": "instagram85.p.rapidapi.com",
-        "x-rapidapi-key": "2fb67c8deemsh00377571dd231a5p12ef9djsnc9bc87981232"] // Change with valid Rapid API Key
+        "x-rapidapi-key": "858be92df0msh3d40085e729261ep1f26bfjsn8357bb3be414"] // Change with valid Rapid API Key
     
     func request<T:Decodable>(_ urlRequest: URLRequest, resultType:T.Type, completionHandler:@escaping(_ result: T?)-> Void) {
 

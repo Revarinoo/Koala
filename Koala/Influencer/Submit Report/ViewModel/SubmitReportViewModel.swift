@@ -24,21 +24,39 @@ class SubmitReportViewModel: ObservableObject {
     @Published var igReels: ReelsModel = ReelsModel()
     @Published var contents: [ContentStorage] = []
     @Published var isSucceed: Bool = false
+    
     private var post_photo: String = ""
     
     private let service = SubmitReportService()
+    private let igThumbnailFetcher: ThumbnailImageFetcher = ThumbnailImageFetcher()
     
     func submit() {
         for content in contents {
             switch content.type {
             case .Post:
-                service.submitReport(requestBody: ReportRequest(post_url: igPost.link, views: nil, likes: igPost.likes, comments: igPost.comments, reach: nil, impressions: nil,post_photo: post_photo , order_detail_id: content.orderDetailId)) { result in
-                    if let response = result {
-                        if response.code == 201 {
-                            DispatchQueue.main.async {
-                                self.isSucceed = true
+                igThumbnailFetcher.fetchInfo(igPost.link) { [unowned self] result in
+
+                    switch result {
+                    case .success(let media):
+                        
+                        self.post_photo = media.images.thumbnail
+                        print("post_photo")
+                        print(post_photo)
+                    
+                        DispatchQueue.main.async {
+                            service.submitReport(requestBody: ReportRequest(post_url: igPost.link, views: nil, likes: igPost.likes, comments: igPost.comments, reach: nil, impressions: nil, post_photo: post_photo , order_detail_id: content.orderDetailId)) { result in
+                                if let response = result {
+                                    if response.code == 201 {
+                                        DispatchQueue.main.async {
+                                            self.isSucceed = true
+                                        }
+                                    }
+                                }
                             }
                         }
+                        
+                    case .failure(let error):
+                        print("Request failed with error: \(error)")
                     }
                 }
                 

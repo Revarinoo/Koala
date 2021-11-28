@@ -97,6 +97,9 @@
 		2FE6E59A2751E843009CB75B /* SubmitPriceRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE6E5992751E843009CB75B /* SubmitPriceRequestResponse.swift */; };
 		2FE6E59C2751E88C009CB75B /* SubmitPriceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE6E59B2751E88C009CB75B /* SubmitPriceService.swift */; };
 		2FE6E59E2751EA5A009CB75B /* SubmitPriceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE6E59D2751EA5A009CB75B /* SubmitPriceViewModel.swift */; };
+		2FE6E5A027532379009CB75B /* ThumbnailImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE6E59F27532379009CB75B /* ThumbnailImageFetcher.swift */; };
+		2FE6E5A227532446009CB75B /* InstaMediaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE6E5A127532446009CB75B /* InstaMediaModel.swift */; };
+		2FE6E5A427533AA7009CB75B /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE6E5A327533AA7009CB75B /* DataExtension.swift */; };
 		780C8E8A274CA0C8008BD574 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E89274CA0C8008BD574 /* PaymentViewModel.swift */; };
 		780C8E8C274CA0D4008BD574 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E8B274CA0D4008BD574 /* Payment.swift */; };
 		780C8E8E274CA24A008BD574 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8E8D274CA24A008BD574 /* PaymentService.swift */; };
@@ -335,6 +338,9 @@
 		2FE6E5992751E843009CB75B /* SubmitPriceRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitPriceRequestResponse.swift; sourceTree = "<group>"; };
 		2FE6E59B2751E88C009CB75B /* SubmitPriceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitPriceService.swift; sourceTree = "<group>"; };
 		2FE6E59D2751EA5A009CB75B /* SubmitPriceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitPriceViewModel.swift; sourceTree = "<group>"; };
+		2FE6E59F27532379009CB75B /* ThumbnailImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailImageFetcher.swift; sourceTree = "<group>"; };
+		2FE6E5A127532446009CB75B /* InstaMediaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaMediaModel.swift; sourceTree = "<group>"; };
+		2FE6E5A327533AA7009CB75B /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		780C8E87274CA0B0008BD574 /* PaymentProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessView.swift; sourceTree = "<group>"; };
 		780C8E89274CA0C8008BD574 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		780C8E8B274CA0D4008BD574 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
@@ -727,6 +733,7 @@
 				2F8DAD7C2741D0C100DE643F /* StringExtension.swift */,
 				D23703B527498725000D4B2C /* NavigationModifier.swift */,
 				2FA152AF2748A15000231492 /* ArrayExtension.swift */,
+				2FE6E5A327533AA7009CB75B /* DataExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1614,6 +1621,7 @@
 			isa = PBXGroup;
 			children = (
 				F7683459274EADF30051F7FC /* SubmitReportService.swift */,
+				2FE6E59F27532379009CB75B /* ThumbnailImageFetcher.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1642,6 +1650,7 @@
 			children = (
 				F7683451274E5DB40051F7FC /* SubmitReportModel.swift */,
 				F768345B274EAE3F0051F7FC /* SubmitReportRequest.swift */,
+				2FE6E5A127532446009CB75B /* InstaMediaModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1960,6 +1969,7 @@
 				2FD875A52731460B0052DA4D /* ReviewValidation.swift in Sources */,
 				2FA152AE274864C300231492 /* FilterModalViewModel.swift in Sources */,
 				2F1E8F6F273EB3160056D9BC /* ReportingModel.swift in Sources */,
+				2FE6E5A227532446009CB75B /* InstaMediaModel.swift in Sources */,
 				F768344D274E4EF60051F7FC /* SubmitReportView.swift in Sources */,
 				D23FB800273C180A0099AC01 /* KeyboardExtension.swift in Sources */,
 				2FACD84927211A7600E9F578 /* SpecialtySelector.swift in Sources */,
@@ -2006,6 +2016,7 @@
 				2FD875B02732438D0052DA4D /* OrderCampaignModel.swift in Sources */,
 				2F0D9DB627311E3C0012DAAF /* CampaignTaskCard.swift in Sources */,
 				78B9333827267ACA0040882D /* InfluencerDetailService.swift in Sources */,
+				2FE6E5A027532379009CB75B /* ThumbnailImageFetcher.swift in Sources */,
 				D2B6F6C42732FF8F00B00020 /* ContentForm.swift in Sources */,
 				2FE6E59A2751E843009CB75B /* SubmitPriceRequestResponse.swift in Sources */,
 				F7AD44D9274B9A500030D380 /* TabBarInfluencer.swift in Sources */,
@@ -2085,6 +2096,7 @@
 				D21476242723F4B2009985BD /* RecommendationInfluencerModel.swift in Sources */,
 				D2C3C5A02728674400C338B4 /* OrderView.swift in Sources */,
 				F7AD44E1274BB44F0030D380 /* OrderListViewModel.swift in Sources */,
+				2FE6E5A427533AA7009CB75B /* DataExtension.swift in Sources */,
 				2F95BCD1273A2EDD00F78F83 /* Line.swift in Sources */,
 				2FCB0B1A272462690017C9D6 /* SecureInputView.swift in Sources */,
 				F7683458274E75E80051F7FC /* ReelsForm.swift in Sources */,
