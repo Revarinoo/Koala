@@ -11,7 +11,7 @@ import SwiftUI
 struct InputBusinessProfileView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var businessProfileVM = BusinessProfileViewModel()
+    @StateObject var businessProfileVM = BusinessProfileViewModel.shared
     @State var showImagePicker = false
     @Binding var isPresent : Bool
     @State var uploadingView = false
@@ -109,9 +109,8 @@ struct InputBusinessProfileView: View {
         }
         .navigationAppearance(backgroundColor: UIColor(ThemeColor.background), foregroundColor: .black)
         .onChange(of: businessProfileVM.isFinishedUpload){ _ in
+            self.businessProfileVM.getBusinessProfile()
             self.isPresent = false
-        }.onAppear{
-            businessProfileVM.getBusinessProfile()
         }
     }
 }

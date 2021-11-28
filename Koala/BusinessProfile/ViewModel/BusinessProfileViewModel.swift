@@ -10,7 +10,7 @@ import SwiftUI
 import Alamofire
 
 class BusinessProfileViewModel: ObservableObject{
-    
+    static let shared = BusinessProfileViewModel()
     @AppStorage("JWT", store: .standard) var token = ""
     @Published var inputBusinessProfileModel = InputBusinessProfileModel()
     @Published var businessProfileModel = BusinessProfileModel()
@@ -37,16 +37,16 @@ class BusinessProfileViewModel: ObservableObject{
         }
         
         guard let unwrappedInstagram = inputBusinessProfileModel.instagram else {return}
-        if unwrappedInstagram.containsWhitespace{
+        if unwrappedInstagram.containsWhitespace || !unwrappedInstagram.hasPrefix("@"){
             self.errorTitle = "Wrong Format"
-            self.errorMessage = "Make sure your Instagram account contains no space."
+            self.errorMessage = "Make sure your Instagram account contains no space and begins with @"
             self.dataError = true
             return
         }
         
         if !verifyUrl(urlString: inputBusinessProfileModel.website){
             self.errorTitle = "Wrong Format"
-            self.errorMessage = "Make sure your website link can be accessed."
+            self.errorMessage = "Make sure your website link can be accessed and begin with \"https://www.\""
             self.dataError = true
             return
         }
@@ -84,7 +84,7 @@ class BusinessProfileViewModel: ObservableObject{
         ]
         
         Alamofire.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append((profileImage ?? defaultImage) ?? Data(), withName: "image",fileName: "\(data.instagram).jpeg", mimeType: "image/jpeg")
+            multipartFormData.append((profileImage ?? defaultImage) ?? Data(), withName: "business_photo",fileName: "\(data.business_photo).jpeg", mimeType: "image/jpeg")
             
             for (key, value) in parameters {
                         if let temp = value as? String {
@@ -96,7 +96,6 @@ class BusinessProfileViewModel: ObservableObject{
                     }
         }, to: HttpUtility.endpoint + "profile/update", method: .post , headers: headers)
         { (result) in
-            print(result)
             switch result {
             case .success(let upload, _, _):
                 
@@ -131,7 +130,8 @@ class BusinessProfileViewModel: ObservableObject{
         businessProfileService.getBusinessProfile(completionHandler: { response in
             if let response = response{
                 if response.code == 201{
-                    profile = BusinessProfileModel(business_photo: response.business_photo, business_name: response.business_name, instagram: response.instagram, location: response.location, website: response.website, description: response.description)
+                    var business_photo = response.business_photo?.withReplacedCharacters(" ", by: "%")
+                    profile = BusinessProfileModel(business_photo: business_photo, business_name: response.business_name, instagram: response.instagram, location: response.location, website: response.website, description: response.description)
                 }
                 
                 DispatchQueue.main.async {
@@ -142,5 +142,12 @@ class BusinessProfileViewModel: ObservableObject{
 
         })
             
+    }
+}
+
+extension String {
+    func withReplacedCharacters(_ oldChar: String, by newChar: String) -> String {
+        let newStr = self.replacingOccurrences(of: oldChar, with: newChar, options: .literal, range: nil)
+        return newStr
     }
 }

@@ -24,22 +24,34 @@ struct BusinessProfileForm: View {
                 Text("Location")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
-                HStack{
-                    Section{
-                        Picker("Number of people", selection: $inputBusinessProfileModel.location) {
-                            ForEach(locationProvince.allCases, id: \.self) { value in
-                                Text("\(value.rawValue)").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
+                ZStack{
+                    HStack{
+                        Section{
+                            Picker("Number of people", selection: $inputBusinessProfileModel.location) {
+                                ForEach(locationProvince.allCases, id: \.self) { value in
+                                    Text("\(value.rawValue)").font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray)
+                                }
                             }
-                        }
-                        .font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray).accentColor(inputBusinessProfileModel.location == .defaultValue ? ThemeColor.grayDark : .black)
-                    }.padding(8).padding(.leading, 7)
-                    Spacer()
+                            .font(Font.custom(ThemeFont.poppinsRegular, size: 14)).foregroundColor(.gray).accentColor(inputBusinessProfileModel.location == .defaultValue ? ThemeColor.grayDark : .black)
+                        }.padding(8).padding(.leading, 7)
+                        Spacer()
+                    }
+                    .background(Color("lightGray"))
+                    .cornerRadius(10)
+                    .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
+                    .padding(.bottom, 5)
+                    .padding(.top, -5)
+                    HStack{
+                        Spacer()
+                        Image(uiImage: UIImage(systemName: "chevron.right") ?? UIImage())
+                            .renderingMode(.template)
+                            .foregroundColor(ThemeColor.grayDark)
+                            .frame(width: 32, height: 32)
+                            .padding(.bottom, 5)
+                    }
+                    
                 }
-                .background(Color("lightGray"))
-                .cornerRadius(10)
-                .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                .padding(.bottom, 5)
-                .padding(.top, -5)
+                
             }
             
             VStack(alignment: .leading, spacing: 12){
@@ -52,7 +64,7 @@ struct BusinessProfileForm: View {
                 Text("Website")
                     .font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     .foregroundColor(ThemeColor.grayDark)
-                TextField("Enter your website", text: $inputBusinessProfileModel.website ?? "").textFieldStyle(OvalTextFieldStyleForm())
+                TextField("Enter your website (with https://www.)", text: $inputBusinessProfileModel.website ?? "").textFieldStyle(OvalTextFieldStyleForm())
             }
             
             VStack(alignment: .leading, spacing: 12){

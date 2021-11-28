@@ -17,7 +17,6 @@ struct BusinessProfileService {
         
         HttpUtility.shared.request(request as URLRequest, resultType: BusinessProfileResponse.self) { response in
             _ = completionHandler(response)
-            print(response)
         }
     }
 }
