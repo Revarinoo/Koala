@@ -2,6 +2,7 @@
 import Foundation
 
 class InfluencerCampaignDetailViewModel: ObservableObject {
+    
     static let shared = InfluencerCampaignDetailViewModel()
     @Published var campaignModel = InfluencerCampaignDetailModel()
     @Published var campaignDetailModel: [InfluencerCampaignDetailContentModel] = []

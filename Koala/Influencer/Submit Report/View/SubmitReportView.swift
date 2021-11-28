@@ -13,6 +13,7 @@ struct SubmitReportView: View {
     @StateObject var reportVM = SubmitReportViewModel()
     @StateObject var orderDetailVM = InfluencerCampaignDetailViewModel.shared
     @State var uploadingView = false
+    
     var orderId: Int
     
     var body: some View {
