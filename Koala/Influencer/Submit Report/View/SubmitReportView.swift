@@ -65,7 +65,7 @@ struct SubmitReportView: View {
         
         // MARK: Sementara, nanti hapus -/\-
         .onAppear {
-            orderDetailVM.getOrderDetails(id: 3)
+            orderDetailVM.getOrderDetails(id: 1)
         }
         
     }

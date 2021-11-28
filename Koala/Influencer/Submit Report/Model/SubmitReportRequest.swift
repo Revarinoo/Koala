@@ -14,6 +14,7 @@ struct ReportRequest: Encodable {
     let comments: Int?
     let reach: Int?
     let impressions: Int?
+    let post_photo: String?
     let order_detail_id: Int
 }
 
