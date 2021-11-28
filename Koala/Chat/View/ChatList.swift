@@ -33,7 +33,7 @@ struct ChatList: View {
             Divider().background(Color.init(hex: "A7A7A7"))
             if showUpdateProfile{
                 Spacer()
-                UpdateProfileInfluencer(showSheet: $showUpdateProfile)
+                UpdateProfileInfluencer(showSheet: $updateProfileSheet)
                 Spacer()
             } else {
                 ScrollView (.vertical, showsIndicators: false){
