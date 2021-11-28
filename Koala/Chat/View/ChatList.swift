@@ -13,15 +13,16 @@ struct ChatList: View {
     @AppStorage("role", store: .standard) var role = ""
     @StateObject var chatRoomVM = ChatRoomViewModel.shared
     static let shared = ChatList()
+    @StateObject var tabBarVM = TabBarViewModelInfluencer.shared
     
     var body: some View {
         
         if role == "Business" {
             chatContent
         } else {
-            NavigationView {
+            //NavigationView {
                 chatContent
-            }
+            //}
         }
     }
     
@@ -41,7 +42,7 @@ struct ChatList: View {
             }
         }
         .background(Color.bgColorView.ignoresSafeArea())
-        .navigationTitle("Chats")
+        .navigationTitle("\(tabBarVM.titleBar)")
         .navigationBarTitleDisplayMode(.large)
         .onAppear(perform: {
             chatRoomVM.fetchData()

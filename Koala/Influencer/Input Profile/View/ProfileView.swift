@@ -14,9 +14,10 @@ struct ProfileView: View {
     @StateObject var updateProfileVM = InfluencerProfileViewModel()
     @State var signOut = false
     @State var toEditProfile = false
+    @StateObject var tabBarVM = TabBarViewModelInfluencer.shared
     
     var body: some View {
-        NavigationView{
+        //NavigationView{
             ScrollView (showsIndicators: false){
                 VStack(alignment: .leading){
                     HStack{
@@ -68,7 +69,7 @@ struct ProfileView: View {
                     }
                 }.padding([.leading, .trailing], 16)
             }
-            .navigationTitle("Profile")
+            .navigationTitle("\(tabBarVM.getTitle())")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(){
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -82,7 +83,7 @@ struct ProfileView: View {
             }
             .background(ThemeColor.background.ignoresSafeArea())
             
-        }
+        //}
         
             .onAppear(){
                 updateProfileVM.callInfluencerData()

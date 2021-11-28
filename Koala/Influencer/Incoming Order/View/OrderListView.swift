@@ -17,9 +17,8 @@ struct OrderListView: View {
     @StateObject var orderListVM = OrderListViewModel()
     @State private var orderTypeSelected : OrderListStatus = .incoming
     @StateObject var userProfile = UserProfileViewModel.shared
-    
+    @StateObject var tabBarVM = TabBarViewModelInfluencer.shared
     init(){
-        
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ThemeColor.primary)
         UISegmentedControl.appearance().backgroundColor = UIColor(ThemeColor.background)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
@@ -28,7 +27,7 @@ struct OrderListView: View {
     
     var body: some View {
         
-        NavigationView {
+        //NavigationView {
             VStack (alignment: .leading) {
                 Picker("", selection: $orderTypeSelected) {
                     ForEach (OrderListStatus.allCases, id: \.self){
@@ -63,10 +62,10 @@ struct OrderListView: View {
                 
                 Spacer()
             }
-            .navigationBarTitle("Order List")
+            .navigationBarTitle("\(tabBarVM.getTitle())")
             .background(Color.init(hex: "F2F2F2"))
             .edgesIgnoringSafeArea(.top)
-        }
+        //}
         .onAppear {
             orderListVM.fetchOrderList()
             userProfile.callData()
