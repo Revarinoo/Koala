@@ -58,7 +58,7 @@ struct InfluencerDetailView: View {
                                FollowerProfile(projects: influencerDetailViewModel.influencerModel?.projects ?? [])
                                
                                ReviewView(projects: influencerDetailViewModel.influencerModel?.projects ?? [])
-//                                   .padding(.top, 16)
+
                                    .padding(.leading, 16)
                               
                                SpecialtyView(categories: influencerDetailViewModel.influencerModel?.categories ?? [])
