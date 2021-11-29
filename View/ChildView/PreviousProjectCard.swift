@@ -49,7 +49,7 @@ struct PreviousProjectCard: View {
                             .font(Font.custom(ThemeFont.poppinsSemiBold, size: 16))
                             .padding(.trailing,8)
                     }
-                    VStack(alignment: .leading, spacing: 10){
+                    VStack(alignment: .leading, spacing: 16){
                         Text("Comments")
                             .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
                         Text("Likes")
