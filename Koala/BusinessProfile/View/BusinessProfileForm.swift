@@ -44,10 +44,12 @@ struct BusinessProfileForm: View {
                     HStack{
                         Spacer()
                         Image(uiImage: UIImage(systemName: "chevron.right") ?? UIImage())
-                            .renderingMode(.template)
-                            .foregroundColor(ThemeColor.grayDark)
-                            .frame(width: 32, height: 32)
-                            .padding(.bottom, 5)
+                                .renderingMode(.template)
+                                .foregroundColor(ThemeColor.grayDark)
+                                .frame(width: 22, height: 22)
+                                .padding(.bottom, 8)
+                                .padding(.trailing, 16)
+                        
                     }
                     
                 }
