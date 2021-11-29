@@ -119,16 +119,14 @@ struct LoginView: View {
                 .padding(31)
                 .background(Color.white.ignoresSafeArea(edges: .bottom))
                 .cornerRadius(15)
-//                .fullScreenCover(isPresented: .constant(nextNavigation && !isNavigate) ){
-//                    if role == "Business" {
-//                        TabBar(selectedTab: $tabBarVM.selectedTab)
-//                    }
-//                    else {
+                .fullScreenCover(isPresented: $nextNavigation){
+                        TabBar(selectedTab: $tabBarVM.selectedTab)
+                }
+//                .fullScreenCover(isPresented: $isNavigate){
+//
 //                        TabBarInfluencer(selectedTab: $tabBarInfluencerVM.selectedTab)
-//                        self.isNavigate = true
-//                    }
 //                }
-                .navigate(to: TabBar(selectedTab: $tabBarVM.selectedTab), when: $nextNavigation)
+//                .navigate(to: TabBar(selectedTab: $tabBarVM.selectedTab), when: $nextNavigation)
                 .navigate(to: TabBarInfluencer(selectedTab: $tabBarInfluencerVM.selectedTab), when: $isNavigate)
             }
         
