@@ -14,9 +14,6 @@ struct ChatList: View {
     @StateObject var chatRoomVM = ChatRoomViewModel.shared
     static let shared = ChatList()
     @StateObject var tabBarVM = TabBarViewModelInfluencer.shared
-    @StateObject var updateProfileVM = InfluencerProfileViewModel()
-    @State var showUpdateProfile = false
-    @State var updateProfileSheet = false
     
     var body: some View {
         
@@ -32,12 +29,7 @@ struct ChatList: View {
     var chatContent: some View {
         VStack {
             Divider().background(Color.init(hex: "A7A7A7"))
-            if showUpdateProfile{
-                Spacer()
-                UpdateProfileInfluencer(showSheet: $updateProfileSheet)
-                Spacer()
-            } else {
-                ScrollView (.vertical, showsIndicators: false){
+            ScrollView (.vertical, showsIndicators: false){
                     VStack {
                         ForEach(chatRoomVM.chatData, id: \.id) { data in
                             NavigationLink(destination: PersonalChat(chatRoom: data.chatRooms, personName: data.targetUser.name, photoURL: data.targetUser.photo)) {
@@ -47,7 +39,6 @@ struct ChatList: View {
                         }
                     }
                 }
-            }
         }
         .background(Color.bgColorView.ignoresSafeArea())
         .navigationTitle("\(tabBarVM.titleBar)")
@@ -55,14 +46,8 @@ struct ChatList: View {
         .onAppear(perform: {
             chatRoomVM.fetchData()
             self.dismissKeyboard()
-            updateProfileVM.callInfluencerData()
-            if updateProfileVM.influencerProfile.location == ""{
-                showUpdateProfile = true
-            }
         })
-        .sheet(isPresented: $updateProfileSheet){
-            InputProfileView(isPresent: $updateProfileSheet)
-        }
+        
     }
 }
 
