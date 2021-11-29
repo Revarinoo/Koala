@@ -19,6 +19,9 @@ struct InfluencerDetailView: View {
     var previousView : String
     @Binding var influencerID: Int
     var fromBackButton : Bool
+    @StateObject var chatVM = ChatRoomViewModel()
+    @State var isNavigateToChat = false
+    @StateObject var userVM = UserProfileViewModel.shared
     
 //    init(influencerID: Int, fromBackButton: Bool) {
 //        UIScrollView.appearance().bounces = false
@@ -79,11 +82,6 @@ struct InfluencerDetailView: View {
                        }
                    }
                }
-//               VStack{
-//                   Rectangle().fill(ThemeColor.primary)
-//                       .frame(height: 88)//.padding(.top,)
-//                   Spacer()
-//               }
                VStack{
                    Spacer()
                    HStack{
@@ -91,7 +89,14 @@ struct InfluencerDetailView: View {
                            .font(Font.custom(ThemeFont.poppinsMedium, size: 16))
                            .foregroundColor(.black)
                            .padding(.trailing, 51)
-                       ChatButton()
+                       NavigationLink(destination: ChatList.shared, isActive: $isNavigateToChat) {
+                           Button(action: {
+                               self.isNavigateToChat = chatVM.createChatRoom(target: influencerDetailViewModel.influencerModel?.influencer_profile.user_id ?? 0)
+                               chatVM.removeData()
+                           }, label: {
+                               ChatButton()
+                           })
+                       }
                            .padding(.trailing, 10)
                        NavigationLink(destination: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign(isPresent: .constant(true)).navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0))){
                            
@@ -100,20 +105,16 @@ struct InfluencerDetailView: View {
                         }
                         
                    }.padding(.vertical)
-//                       .padding(.horizontal, 30)
                    .frame(minWidth: 390, minHeight: 93)
                        .background(ThemeColor.grayLight)
                    
                }
            }
-            
-            
             .background(ThemeColor.primary.ignoresSafeArea())
             .ignoresSafeArea()
             .onAppear(perform: {
-//                influencerDetailViewModel.callGetInfluencerDetail(influencer_id: influencerID)
                 campaignList.callGetCampaigns()
-                    //UINavigationBarAppearance().backgroundColor = UIColor(ThemeColor.primary)
+                userVM.callData()
             })
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(false).accentColor(.white)
@@ -132,14 +133,14 @@ struct InfluencerDetailView: View {
             }
 
         }
+//       .navigate(to: PersonalChat(chatRoom: chatVM.chatData[0].chatRooms, personName: influencerDetailViewModel.influencerModel?.influencer_profile.name ?? "", photoURL: influencerDetailViewModel.influencerModel?.influencer_profile.photo ?? ""), when: $isNavigateToChat)
+//       .navigate(to: NavigationView {
+//           ChatList.shared
+//       }
+//                    , when: $isNavigateToChat)
     }
 }
 
-//struct InfluencerDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        //InfluencerDetailView(influencerDetailViewModel: <#Binding<InfluencerDetailViewModel>#>, isPresent: .constant(true), previousView: "Influencer List", influencerID: 1, fromBackButton: true)
-//    }
-//}
 
 struct OrderButton: View {
     var body: some View{

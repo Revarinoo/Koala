@@ -19,7 +19,7 @@ struct InfluencerCampaignDetailView: View {
     @State private var seletedType = ""
     @State private var seletedOrderID = 0
     @State private var showingWaitingButton = false
-    @StateObject var chatRoomVM = ChatRoomViewModel.shared
+    @StateObject var chatRoomVM = ChatRoomViewModel()
     @State private var isChat = false
     
     var id: Int
@@ -170,7 +170,7 @@ struct InfluencerCampaignDetailView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: TabBarInfluencer(selectedTab: .constant(1)), isActive: $isChat) {
+                    NavigationLink(destination: TabBarInfluencer(selectedTab: .constant(1)).navigationBarHidden(true), isActive: $isChat) {
                         Button {
                             self.isChat = chatRoomVM.createChatRoom(target: campaignVM.targetUserId)
                             

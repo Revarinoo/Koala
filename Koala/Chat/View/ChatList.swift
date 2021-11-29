@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct ChatList: View {
     
     @AppStorage("role", store: .standard) var role = ""
-    @StateObject var chatRoomVM = ChatRoomViewModel.shared
+    @StateObject var chatRoomVM = ChatRoomViewModel()
     static let shared = ChatList()
     @StateObject var tabBarVM = TabBarViewModelInfluencer.shared
     
@@ -41,7 +41,7 @@ struct ChatList: View {
                 }
         }
         .background(Color.bgColorView.ignoresSafeArea())
-        .navigationTitle("\(tabBarVM.titleBar)")
+        .navigationTitle("Chats")
         .navigationBarTitleDisplayMode(.large)
         .onAppear(perform: {
             chatRoomVM.removeData()

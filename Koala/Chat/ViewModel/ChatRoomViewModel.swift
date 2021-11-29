@@ -26,10 +26,7 @@ class ChatRoomViewModel: ObservableObject {
     }
     
     func fetchData() {
-//        if !chatRooms.isEmpty || !chatData.isEmpty {
-//            chatRooms.removeAll()
-//            chatData.removeAll()
-//        }
+        removeData()
         db.collection("chatrooms").whereField("users", arrayContains: userVM.user.id).addSnapshotListener { snapshot, error in
                 guard let documents = snapshot?.documents else {
                     return
@@ -51,6 +48,7 @@ class ChatRoomViewModel: ObservableObject {
     }
     
     func createChatRoom(target: Int) -> Bool {
+        userVM.callData()
         if isCreated(user: userVM.user.id, target: target) { return false }
         var target1 = userVM.user.id
         var target2 = target
