@@ -48,7 +48,7 @@ struct CampaignDetailReportView: View {
                 ScrollView(.vertical, showsIndicators: false){
                     ZStack(alignment: .top){
                         VStack{
-                            WebImage(url: URL(string: "https://pbs.twimg.com/profile_images/949787136030539782/LnRrYf6e.jpg"))
+                            WebImage(url: URL(string: campaignReportVM.campaignReportBusinessModel?.campaign_logo ?? ""))
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                         }.frame(width: 390,height: 390)
