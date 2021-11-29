@@ -26,13 +26,13 @@ struct HomepageView: View {
                 HStack(spacing: 5){
                     ProfileButton(photoURL: .constant(userProfile.user.photo), name: token != "" ? .constant(userProfile.user.name) : .constant("Sign in"))
                     Spacer()
-                    Button(action:{
-                        token = ""
-                        userProfile.signOut()
-                    }){
-                        Image(systemName: "bell")
-                            .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
-                    }
+//                    Button(action:{
+//                        token = ""
+//                        userProfile.signOut()
+//                    }){
+//                        Image(systemName: "bell")
+//                            .font(.system(size: 22, weight: .regular)).foregroundColor(.black)
+//                    }
                     
                     NavigationLink(destination: (token != "") ? AnyView(ChatList.shared) : AnyView(LoginView())){
                         Image(systemName: "message")
