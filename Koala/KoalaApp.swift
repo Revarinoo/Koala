@@ -24,8 +24,7 @@ struct KoalaApp: App {
 //            PaymentView()
             if token != "" {
                 if role == "Business" {
-                    BusinessProfileView()
-//                    TabBar(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
+                    TabBar(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
                 }
                 else {
                     TabBarInfluencer(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
