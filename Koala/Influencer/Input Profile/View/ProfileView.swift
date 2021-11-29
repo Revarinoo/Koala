@@ -76,13 +76,13 @@ struct ProfileView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(){
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    if !showUpdateProfile{
+                   // if !showUpdateProfile{
                         Button(action: {
                             self.toEditProfile = true
                         }){
                             Text("Edit")
                         }.foregroundColor(ThemeColor.primary)
-                    }
+                    //}
                 }
             }
             .background(ThemeColor.background.ignoresSafeArea())
@@ -99,7 +99,7 @@ struct ProfileView: View {
                 InputProfileView(isPresent: $toEditProfile)
             }
             
-            .navigate(to: LoginView(), when: $signOut)
+            //.navigate(to: LoginView(), when: $signOut)
     }
 }
 

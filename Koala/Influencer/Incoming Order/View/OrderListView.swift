@@ -21,7 +21,7 @@ struct OrderListView: View {
     @StateObject var updateProfileVM = InfluencerProfileViewModel()
     @State var showUpdateProfile = false
     @State var updateProfileSheet = false
-    
+    @AppStorage("JWT", store: .standard) var token = ""
     
     init(){
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ThemeColor.primary)
@@ -76,6 +76,7 @@ struct OrderListView: View {
             if updateProfileVM.influencerProfile.location == ""{
                 showUpdateProfile = true
             }
+            print("TOKEN ORDER LIST \(token)")
         }
         .sheet(isPresented: $updateProfileSheet){
             InputProfileView(isPresent: $updateProfileSheet)
