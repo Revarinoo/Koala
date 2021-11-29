@@ -154,6 +154,7 @@
 		D2131CB12729AC7D006ACDC2 /* MyOrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CB02729AC7D006ACDC2 /* MyOrderService.swift */; };
 		D2131CB32729BE1D006ACDC2 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131CB22729BE1D006ACDC2 /* OrderModel.swift */; };
 		D21476242723F4B2009985BD /* RecommendationInfluencerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21476232723F4B2009985BD /* RecommendationInfluencerModel.swift */; };
+		D21AD2F427536F6E00073246 /* UpdateProfileInfluencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21AD2F327536F6E00073246 /* UpdateProfileInfluencer.swift */; };
 		D23703B627498725000D4B2C /* NavigationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23703B527498725000D4B2C /* NavigationModifier.swift */; };
 		D23FB800273C180A0099AC01 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23FB7FF273C180A0099AC01 /* KeyboardExtension.swift */; };
 		D23FB802273C37B60099AC01 /* DateCalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23FB801273C37B60099AC01 /* DateCalendarExtension.swift */; };
@@ -237,6 +238,7 @@
 		F7AD44DF274BB4440030D380 /* OrderListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AD44DE274BB4440030D380 /* OrderListService.swift */; };
 		F7AD44E1274BB44F0030D380 /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AD44E0274BB44F0030D380 /* OrderListViewModel.swift */; };
 		F7AD44E4274BB47B0030D380 /* OrderListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AD44E3274BB47B0030D380 /* OrderListModel.swift */; };
+		F7B01D3D27547B0C00095417 /* NavbarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B01D3C27547B0C00095417 /* NavbarExtension.swift */; };
 		F7BD4CB42747E4040035E12E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F7BD4CB32747E4040035E12E /* FirebaseAuth */; };
 		F7BD4CB62747E4040035E12E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F7BD4CB52747E4040035E12E /* FirebaseFirestore */; };
 		F7BD4CB82747E5820035E12E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7BD4CB72747E5820035E12E /* GoogleService-Info.plist */; };
@@ -396,6 +398,7 @@
 		D2131CB02729AC7D006ACDC2 /* MyOrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderService.swift; sourceTree = "<group>"; };
 		D2131CB22729BE1D006ACDC2 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		D21476232723F4B2009985BD /* RecommendationInfluencerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationInfluencerModel.swift; sourceTree = "<group>"; };
+		D21AD2F327536F6E00073246 /* UpdateProfileInfluencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileInfluencer.swift; sourceTree = "<group>"; };
 		D23703B527498725000D4B2C /* NavigationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModifier.swift; sourceTree = "<group>"; };
 		D23FB7FF273C180A0099AC01 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		D23FB801273C37B60099AC01 /* DateCalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalendarExtension.swift; sourceTree = "<group>"; };
@@ -480,6 +483,7 @@
 		F7AD44DE274BB4440030D380 /* OrderListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListService.swift; sourceTree = "<group>"; };
 		F7AD44E0274BB44F0030D380 /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewModel.swift; sourceTree = "<group>"; };
 		F7AD44E3274BB47B0030D380 /* OrderListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListModel.swift; sourceTree = "<group>"; };
+		F7B01D3C27547B0C00095417 /* NavbarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavbarExtension.swift; sourceTree = "<group>"; };
 		F7BD4CB72747E5820035E12E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F7BD4CB92747E8820035E12E /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		F7BD4CBB2747E8BA0035E12E /* ChatRoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomModel.swift; sourceTree = "<group>"; };
@@ -734,6 +738,7 @@
 				D23703B527498725000D4B2C /* NavigationModifier.swift */,
 				2FA152AF2748A15000231492 /* ArrayExtension.swift */,
 				2FE6E5A327533AA7009CB75B /* DataExtension.swift */,
+				F7B01D3C27547B0C00095417 /* NavbarExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1511,6 +1516,7 @@
 				2F1D577F2726539800E4354C /* SearchBar.swift */,
 				F7ED1FC027422ABC00BCE02C /* TabBarViewModel.swift */,
 				F7AD44D8274B9A500030D380 /* TabBarInfluencer.swift */,
+				D21AD2F327536F6E00073246 /* UpdateProfileInfluencer.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1924,6 +1930,7 @@
 				D2577BCA271F244100E7AC5D /* RecommendationInfluencerCard.swift in Sources */,
 				D28D625C2720957500BE7345 /* PromotionCard.swift in Sources */,
 				2FD875A92731460B0052DA4D /* ReviewInfluencerView.swift in Sources */,
+				F7B01D3D27547B0C00095417 /* NavbarExtension.swift in Sources */,
 				780C8EBA274FC4B4008BD574 /* SpecialtyView.swift in Sources */,
 				2F2DDD76272F6637007FA0FC /* CampaignService.swift in Sources */,
 				2FBC8B97271C2E09007E7B76 /* HttpUtility.swift in Sources */,
@@ -1958,6 +1965,7 @@
 				F7A52B94272707C70067D3E6 /* ImageSlider.swift in Sources */,
 				F768344F274E4FD20051F7FC /* PostForm.swift in Sources */,
 				2FE6E59E2751EA5A009CB75B /* SubmitPriceViewModel.swift in Sources */,
+				D21AD2F427536F6E00073246 /* UpdateProfileInfluencer.swift in Sources */,
 				F76174062732475900019B79 /* CampaignUpcomingService.swift in Sources */,
 				D2900DC527267CA700D6E901 /* TabBar.swift in Sources */,
 				780C8EBC274FCD15008BD574 /* LocationView.swift in Sources */,

@@ -14,6 +14,9 @@ struct ChatList: View {
     @StateObject var chatRoomVM = ChatRoomViewModel.shared
     static let shared = ChatList()
     @StateObject var tabBarVM = TabBarViewModelInfluencer.shared
+    @StateObject var updateProfileVM = InfluencerProfileViewModel()
+    @State var showUpdateProfile = false
+    @State var updateProfileSheet = false
     
     var body: some View {
         
@@ -29,14 +32,19 @@ struct ChatList: View {
     var chatContent: some View {
         VStack {
             Divider().background(Color.init(hex: "A7A7A7"))
-            
-            ScrollView (.vertical, showsIndicators: false){
-                VStack {
-                    ForEach(chatRoomVM.chatData, id: \.id) { data in
-                        NavigationLink(destination: PersonalChat(chatRoom: data.chatRooms, personName: data.targetUser.name, photoURL: data.targetUser.photo)) {
-                            ChatListChildView(chatroomId: data.chatRooms.id, photoURL: data.targetUser.photo, name: data.targetUser.name)
+            if showUpdateProfile{
+                Spacer()
+                UpdateProfileInfluencer(showSheet: $updateProfileSheet)
+                Spacer()
+            } else {
+                ScrollView (.vertical, showsIndicators: false){
+                    VStack {
+                        ForEach(chatRoomVM.chatData, id: \.id) { data in
+                            NavigationLink(destination: PersonalChat(chatRoom: data.chatRooms, personName: data.targetUser.name, photoURL: data.targetUser.photo)) {
+                                ChatListChildView(chatroomId: data.chatRooms.id, photoURL: data.targetUser.photo, name: data.targetUser.name)
+                            }
+                            Divider().background(Color.init(hex: "E4E4E4"))
                         }
-                        Divider().background(Color.init(hex: "E4E4E4"))
                     }
                 }
             }
@@ -47,7 +55,14 @@ struct ChatList: View {
         .onAppear(perform: {
             chatRoomVM.fetchData()
             self.dismissKeyboard()
+            updateProfileVM.callInfluencerData()
+            if updateProfileVM.influencerProfile.location == ""{
+                showUpdateProfile = true
+            }
         })
+        .sheet(isPresented: $updateProfileSheet){
+            InputProfileView(isPresent: $updateProfileSheet)
+        }
     }
 }
 
