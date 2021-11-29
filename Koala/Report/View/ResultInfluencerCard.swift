@@ -46,7 +46,7 @@ struct ResultInfluencerCard: View {
         .frame(width: 357, height: 169)
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(color: .gray, radius: 3, x: 1, y: 2)
+        .shadow(color: Color.init(hex: "BFBFBF").opacity(0.5), radius: 3, x: 1, y: 2)
     }
 }
 
