@@ -15,12 +15,12 @@ struct ProfileButton: View {
     @State var notLoggedIn = false
     var body: some View {
         ZStack(alignment:.leading){
-            NavigationLink(destination: LoginView(), isActive: $notLoggedIn) {
-                Button(action: {
-                    if token == "" {
-                        notLoggedIn = true
-                    }
-                }) {
+            NavigationLink(destination: token == "" ? AnyView(LoginView()) : AnyView(BusinessProfileView())) {
+//                Button(action: {
+//                    if token == "" {
+//                        notLoggedIn = true
+//                    }
+//                }) {
                     HStack{
                         if photoURL == "" {
                             Image("profile").resizable()
@@ -39,7 +39,7 @@ struct ProfileButton: View {
                             .foregroundColor(.black)
                         Spacer()
                     }
-                }
+//                }
             }
                 .frame(width: 122.0, height: 36.0)
                 .background(Color.white)

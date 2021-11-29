@@ -47,6 +47,7 @@ struct BusinessProfileView: View {
                             .padding(.bottom, 100)
                         Button(action:{
                             token = ""
+                            UserProfileViewModel.shared.signOut()
                             UserDefaults.standard.removeObject(forKey: "JWT")
                             UserDefaults.standard.synchronize()
                             self.signOut = true
