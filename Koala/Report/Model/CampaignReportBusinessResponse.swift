@@ -14,6 +14,7 @@ struct CampaignReportBusinessResponse: Codable {
 
 struct CampaignDetailReportBusiness: Codable {
     let content_name: String
+    let start_date: String
     let end_date: String
     let campaign_logo: String?
     let totalExpense: Int?

@@ -16,7 +16,7 @@ struct CampaignDetailReportView: View {
     
     private func dateFormatter(dateBefore: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMMM yyyy"
+        dateFormatter.dateFormat = "dd MMM yyyy"
 
         return dateFormatter.string(from: dateBefore)
     }
@@ -65,7 +65,7 @@ struct CampaignDetailReportView: View {
                                     Text(campaignReportVM.campaignReportBusinessModel?.content_name ?? "not found").font(Font.custom(ThemeFont.poppinsSemiBold, size: 24))
                                         .multilineTextAlignment(.center)
                                     
-                                    Text(dateFormatter(dateBefore:campaignReportVM.campaignReportBusinessModel?.dueDate ?? Date())).font(Font.custom(ThemeFont.poppinsMedium, size: 16)).padding(.bottom, 15)
+                                    Text("\(dateFormatter(dateBefore:campaignReportVM.campaignReportBusinessModel?.start_date ?? Date())) - \(dateFormatter(dateBefore:campaignReportVM.campaignReportBusinessModel?.dueDate ?? Date()))").font(Font.custom(ThemeFont.poppinsMedium, size: 16)).padding(.bottom, 15).foregroundColor(Color.init(hex: "A7A7A7"))
                                     
                                     Divider()
                                 }
@@ -77,6 +77,10 @@ struct CampaignDetailReportView: View {
                                         .padding(.leading)
                                     VStack (alignment: .center) {
                                         ResultExpenseCard(price: Int(campaignReportVM.campaignReportBusinessModel?.totalExpense ?? 0))
+                                        Rectangle()
+                                            .frame(maxWidth: .infinity, maxHeight: 5)
+                                            .foregroundColor(.white)
+                                            .shadow(color: Color.init(hex: "BFBFBF").opacity(0.5), radius: 2, x: 0, y: 3)
                                         HStack (alignment: .center) {
                                             ForEach((campaignReportVM.campaignReportBusinessModel?.analytics) ?? [])
                                             { analytic in
@@ -84,15 +88,23 @@ struct CampaignDetailReportView: View {
                                                 ResultTypeCard(type: "\(words.last ?? "")", reachNum: "\(numberPrint(number: analytic.total_reach))", impressionNum: "\(numberPrint(number: analytic.total_imp))")
                                             }
                                         }
+                                        Rectangle()
+                                            .frame(maxWidth: .infinity, maxHeight: 5)
+                                            .foregroundColor(.white)
+                                            .shadow(color: Color.init(hex: "BFBFBF").opacity(0.5), radius: 2, x: 0, y: 3)
                                     }
                                     if ((campaignReportVM.campaignReportBusinessModel?.influencers?.isEmpty) != nil) {
                                         Text("Influencer List")
                                             .font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                                             .foregroundColor(.black)
                                             .padding(.leading)
+                                            .padding(.top, 15)
                                         VStack (alignment: .center){
+                                            Rectangle()
+                                                .frame(maxWidth: .infinity, maxHeight: 1)
                                             ForEach ((campaignReportVM.campaignReportBusinessModel?.influencers) ?? []) { influencer in
                                                 ResultInfluencerCard(photoURL: influencer.photo, name: influencer.name, price: influencer.total_price, likeNum: "\(numberPrint(number: influencer.total_likes))", commentNum: "\(numberPrint(number: influencer.total_comments))", erNum: "\(engagePrint(number: influencer.engagement_rate))")
+                                                    .padding(.bottom, 10)
                                             }
                                         }
                                     }
@@ -101,7 +113,7 @@ struct CampaignDetailReportView: View {
                             }.frame(width: UIScreen.main.bounds.width, alignment: .top)
                                 .ignoresSafeArea()
                                 .padding(.top, 25)
-                                .padding(.bottom, 100)
+                                .padding(.bottom, 10)
                             .background(Color.white)
                             .cornerRadius(20, corners: [.topLeft, .topRight])
                             
@@ -109,7 +121,7 @@ struct CampaignDetailReportView: View {
                     }
                 }
             }
-            .background(ThemeColor.primary.ignoresSafeArea())
+            .background(Color.white.ignoresSafeArea())
             .ignoresSafeArea()
             .onAppear(perform: {
                 campaignReportVM.callGetCampaignReports(campaign_id: campaignID)

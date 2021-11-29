@@ -10,6 +10,7 @@ import Foundation
 struct CampaignDetailReportBusinessModel: Identifiable {
     let id: UUID = UUID()
     let content_name: String
+    let start_date: Date
     let dueDate: Date
     let campaign_logo: String
     let totalExpense: Int

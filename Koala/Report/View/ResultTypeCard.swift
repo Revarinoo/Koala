@@ -22,8 +22,9 @@ struct ResultTypeCard: View {
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 18))
                     .foregroundColor(Color.init(hex: "541605"))
             }
-            .padding(.bottom, 10)
+            .padding(.bottom, 8)
             TypeInfo(numbers: "\(reachNum)", desc: "Reach")
+                .padding(.bottom, 1)
             TypeInfo(numbers: "\(impressionNum)", desc: "Impression")
         }
         .frame(width: 106, height: 182, alignment: .center)
