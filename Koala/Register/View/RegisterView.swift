@@ -33,6 +33,7 @@ struct RegisterView: View {
                     .foregroundColor(.white)
                     .padding(EdgeInsets(top: 0, leading: 28, bottom: 0, trailing: 0))
             }
+//            .padding(.top, 40)
 //
             VStack {
                 VStack(alignment: .leading) {
@@ -96,14 +97,14 @@ struct RegisterView: View {
                         })
                 }
             }
-            .navigationTitle("Create Account")
-            .navigationBarTitleDisplayMode(.large)
-            .navigationBarHidden(false)
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
             .frame(maxHeight: .infinity, alignment: .center)
             .padding(31)
             .background(Color.white.ignoresSafeArea(edges: .bottom))
             .cornerRadius(15)
-            //.padding(.top, 88)
+            .padding(.top, 150)
+            .edgesIgnoringSafeArea(.top)
             .onTapGesture{
                 self.dismissKeyboard()
             }

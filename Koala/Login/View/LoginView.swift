@@ -23,7 +23,9 @@ struct LoginView: View {
     @StateObject var userProfile = UserProfileViewModel()
     @State var nextNavigation = false
     @StateObject var tabBarVM = TabBarViewModel.shared
+    @StateObject var tabBarInfluencerVM = TabBarViewModelInfluencer.shared
     @AppStorage("role", store: .standard) var role = ""
+    @State var isNavigate = false
     
     var body: some View {
             ZStack(alignment: .topLeading) {
@@ -44,12 +46,13 @@ struct LoginView: View {
                         .foregroundColor(.white)
                         .padding(EdgeInsets(top: 0, leading: 28, bottom: 0, trailing: 0))
                 }
+                .padding(.top, 40)
                 
                 VStack {
                     VStack(alignment: .leading) {
-                        Text("Welcome back")
+                        Text("Get Started")
                             .font(Font.custom(ThemeFont.poppinsSemiBold, size: 24))
-                        Text("You've been missed!")
+                        Text("Sign in to discover more feature")
                             .font(Font.custom(ThemeFont.poppinsSemiBold, size: 12))
                             .foregroundColor(ThemeColor.grayDark)
                             .padding(.bottom)
@@ -68,7 +71,14 @@ struct LoginView: View {
                                 if(loginVM.validateUserInputs()) {
                                     loginVM.login()
                                     userProfile.callData()
-                                    self.nextNavigation = true
+                                    // nanti hapus kalo gaperlu
+                                    if role == "Business" {
+                                        self.nextNavigation = true
+                                    }
+                                    else {
+                                        self.isNavigate = true
+                                    }
+                                    
                                 }
                             } label: {
                                 Text("Sign In")
@@ -102,24 +112,19 @@ struct LoginView: View {
                         )
                     }
                 }
-                .navigationTitle("Sign In")
-                .navigationBarTitleDisplayMode(.large)
-                .navigationBarHidden(false)
-                .navigationBarColor(backgroundColor: UIColor(ThemeColor.primary), titleColor: .white, tintColor: .white)
                 .frame(maxHeight: .infinity, alignment: .center)
                 .padding(31)
                 .background(Color.white.ignoresSafeArea(edges: .bottom))
                 .cornerRadius(15)
+                .padding(.top, 150)
                 .fullScreenCover(isPresented: $nextNavigation){
                     if role == "Business" {
                         TabBar(selectedTab: $tabBarVM.selectedTab)
                     }
-                    else {
-                        TabBarInfluencer(selectedTab: $tabBarVM.selectedTab)
-                    }
                 }
             }
-        
+            .edgesIgnoringSafeArea(.top)
+        .navigate(to: TabBarInfluencer(selectedTab: $tabBarInfluencerVM.selectedTab), when: $isNavigate)
         .onTapGesture{
             self.dismissKeyboard()
         }

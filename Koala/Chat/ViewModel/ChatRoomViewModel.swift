@@ -11,23 +11,27 @@ import SwiftUI
 
 
 class ChatRoomViewModel: ObservableObject {
+    static let shared = ChatRoomViewModel()
     @Published var chatRooms: [ChatRoom] = []
     private var db = Firestore.firestore()
     private var userService = UserProfileService()
     @Published var chatData: [ChatData] = []
     @ObservedObject var userVM = UserProfileViewModel.shared
     @AppStorage("role", store: .standard) var role = ""
+
+    
+    func removeData() {
+        self.chatRooms.removeAll()
+        self.chatData.removeAll()
+    }
     
     func fetchData() {
-        print("INIIII \(userVM.user)")
-        if !chatRooms.isEmpty || !chatData.isEmpty {
-            chatRooms.removeAll()
-            chatData.removeAll()
-        }
+        removeData()
         db.collection("chatrooms").whereField("users", arrayContains: userVM.user.id).addSnapshotListener { snapshot, error in
                 guard let documents = snapshot?.documents else {
                     return
                 }
+            self.removeData()
                 self.chatRooms = documents.map({ docSnaphot -> ChatRoom in
                     let data = docSnaphot.data()
                     let docId = docSnaphot.documentID
@@ -39,13 +43,20 @@ class ChatRoomViewModel: ObservableObject {
                     }
                     return ChatRoom(id: docId, users: users)
                 })
-                
+            print(self.chatRooms.count)
             }
     }
     
     func createChatRoom(target: Int) -> Bool {
+        userVM.callData()
         if isCreated(user: userVM.user.id, target: target) { return false }
-        db.collection("chatrooms").addDocument(data: ["users": [userVM.user.id, target]]) { err in
+        var target1 = userVM.user.id
+        var target2 = target
+        if role == "Influencer" {
+            target1 = target
+            target2 = userVM.user.id
+        }
+        db.collection("chatrooms").addDocument(data: ["users": [target1, target2]]) { err in
             if let err = err {
                 print(err.localizedDescription)
             }

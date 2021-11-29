@@ -12,6 +12,7 @@ import Firebase
 struct KoalaApp: App {
     @AppStorage("JWT", store: .standard) var token = ""
     @StateObject var tabBarVM = TabBarViewModel.shared
+    @StateObject var tabBarVMInfluencer = TabBarViewModelInfluencer.shared
     @AppStorage("role", store: .standard) var role = ""
     
     init() {
@@ -27,7 +28,7 @@ struct KoalaApp: App {
                     TabBar(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
                 }
                 else {
-                    TabBarInfluencer(selectedTab: $tabBarVM.selectedTab).environment(\.colorScheme, .light)
+                    TabBarInfluencer(selectedTab: $tabBarVMInfluencer.selectedTab).environment(\.colorScheme, .light)
                 }
             }
             else {

@@ -3,7 +3,7 @@
 //  Koala
 //
 //  Created by Revarino Putra on 22/11/21.
-//
+// 
 
 import SwiftUI
 
@@ -17,19 +17,22 @@ struct OrderListView: View {
     @StateObject var orderListVM = OrderListViewModel()
     @State private var orderTypeSelected : OrderListStatus = .incoming
     @StateObject var userProfile = UserProfileViewModel.shared
+    @StateObject var tabBarVM = TabBarViewModelInfluencer.shared
+    @StateObject var updateProfileVM = InfluencerProfileViewModel()
+    @State var showUpdateProfile = false
+    @State var updateProfileSheet = false
+    @AppStorage("JWT", store: .standard) var token = ""
     
     init(){
-        
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ThemeColor.primary)
         UISegmentedControl.appearance().backgroundColor = UIColor(ThemeColor.background)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
-        UINavigationBar.appearance().backgroundColor = UIColor(.clear)
     }
     
     var body: some View {
         
-        NavigationView {
+        //NavigationView {
             VStack (alignment: .leading) {
                 Picker("", selection: $orderTypeSelected) {
                     ForEach (OrderListStatus.allCases, id: \.self){
@@ -45,32 +48,38 @@ struct OrderListView: View {
                         switch orderTypeSelected {
                         case .incoming:
                             ForEach(orderListVM.incomingOrders, id: \.id) { order in
-                                OrderListCard(orderList: order, status: OrderListStatus.incoming.rawValue)
+                                OrderListCard(orderList: order, status: order.campaignStatus)
                             }
                         case .ongoing:
                             ForEach(orderListVM.ongoingOrders, id: \.id) { order in
-                                OrderListCard(orderList: order, status: OrderListStatus.ongoing.rawValue)
+                                OrderListCard(orderList: order, status: order.campaignStatus)
                             }
                         case .completed:
                             ForEach(orderListVM.completedOrders, id: \.id) { order in
-                                OrderListCard(orderList: order, status: OrderListStatus.completed.rawValue)
+                                OrderListCard(orderList: order, status: order.campaignStatus)
                             }
                         }
+                        
                     }
                     .padding()
-                    
-                
+                    Spacer()
                 }
-                
-                Spacer()
             }
-            .navigationBarTitle("Order List")
+            .navigationBarTitle("\(tabBarVM.getTitle())")
             .background(Color.init(hex: "F2F2F2"))
             .edgesIgnoringSafeArea(.top)
-        }
+        //}
         .onAppear {
             orderListVM.fetchOrderList()
             userProfile.callData()
+            updateProfileVM.callInfluencerData()
+            if updateProfileVM.influencerProfile.location == ""{
+                showUpdateProfile = true
+            }
+            print("TOKEN ORDER LIST \(token)")
+        }
+        .sheet(isPresented: $updateProfileSheet){
+            InputProfileView(isPresent: $updateProfileSheet)
         }
     }
 }

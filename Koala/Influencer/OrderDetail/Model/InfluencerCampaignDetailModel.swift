@@ -23,3 +23,10 @@ struct InfluencerCampaignDetailContentModel: Identifiable {
     var content_type: String = ""
     var content_detail: String = ""
 }
+
+struct InfluencerCampaignPriceModel: Identifiable {
+    var id = UUID()
+    var order_detail_id: Int = 0
+    var price: Int = 0
+    var content_type: String = ""
+}

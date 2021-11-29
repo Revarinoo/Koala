@@ -14,12 +14,11 @@ struct ProfileView: View {
     @StateObject var updateProfileVM = InfluencerProfileViewModel()
     @State var signOut = false
     @State var toEditProfile = false
+    @StateObject var tabBarVM = TabBarViewModelInfluencer.shared
+    @State var showUpdateProfile = false
     
-//    init(){
-//        updateProfileVM.callInfluencerData()
-//    }
     var body: some View {
-        NavigationView{
+        //NavigationView{
             ScrollView (showsIndicators: false){
                 VStack(alignment: .leading){
                     HStack{
@@ -69,31 +68,38 @@ struct ProfileView: View {
                             )
                             .padding(.top, 24)
                     }
-                }.padding([.leading, .trailing], 16)
+                }
+                
             }
-            .navigationTitle("Profile")
+            .padding([.leading, .trailing], 16)
+            .navigationTitle("\(tabBarVM.getTitle())")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(){
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        self.toEditProfile = true
-                    }){
-                        Text("Edit")
-                        
-                    }.foregroundColor(ThemeColor.primary)
+                   // if !showUpdateProfile{
+                        Button(action: {
+                            self.toEditProfile = true
+                        }){
+                            Text("Edit")
+                        }.foregroundColor(ThemeColor.primary)
+                    //}
                 }
             }
             .background(ThemeColor.background.ignoresSafeArea())
             
-        }
+        //}
         
             .onAppear(){
                 updateProfileVM.callInfluencerData()
+                if updateProfileVM.influencerProfile.location == ""{
+                    showUpdateProfile = true
+                }
             }
             .sheet(isPresented: $toEditProfile){
                 InputProfileView(isPresent: $toEditProfile)
             }
-            .navigate(to: LoginView(), when: $signOut)
+            
+            //.navigate(to: LoginView(), when: $signOut)
     }
 }
 

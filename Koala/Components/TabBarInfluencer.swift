@@ -10,16 +10,17 @@ import SwiftUI
 struct TabBarInfluencer: View {
     
     @Binding var selectedTab: Int
-    
+    @StateObject var tabBarVM = TabBarViewModelInfluencer.shared
+
     init(selectedTab: Binding<Int>) {
-        _selectedTab = selectedTab
-        UITabBar.appearance().backgroundColor = UIColor(ThemeColor.background)
-    }
+            _selectedTab = selectedTab
+            UITabBar.appearance().backgroundColor = UIColor(ThemeColor.background)
+        }
     
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab){
-                    OrderListView()
+                OrderListView()
                         .tabItem{
                             selectedTab == 0 ? Image(systemName: "list.star") : Image(systemName: "list.bullet")
                             Text("Order")
@@ -36,8 +37,9 @@ struct TabBarInfluencer: View {
                     }.tag(2)
                 }
                 .accentColor(Color(UIColor(named: "primary")!))
-                .navigationBarHidden(true)
-                .navigationBarBackButtonHidden(true)
+                .navigationBarTitle("\(tabBarVM.getTitle())")
+                //.navigationBarHidden(true)
+                //.navigationBarBackButtonHidden(true)
         }
     }
 }
