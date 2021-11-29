@@ -23,6 +23,7 @@ struct LoginView: View {
     @StateObject var userProfile = UserProfileViewModel()
     @State var nextNavigation = false
     @StateObject var tabBarVM = TabBarViewModel.shared
+    @StateObject var tabBarInfluencerVM = TabBarViewModelInfluencer.shared
     @AppStorage("role", store: .standard) var role = ""
     
     var body: some View {
@@ -115,7 +116,7 @@ struct LoginView: View {
                         TabBar(selectedTab: $tabBarVM.selectedTab)
                     }
                     else {
-                        TabBarInfluencer(selectedTab: $tabBarVM.selectedTab)
+                        TabBarInfluencer(selectedTab: $tabBarInfluencerVM.selectedTab)
                     }
                 }
             }

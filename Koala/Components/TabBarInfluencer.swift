@@ -11,11 +11,11 @@ struct TabBarInfluencer: View {
     
     @Binding var selectedTab: Int
     @StateObject var tabBarVM = TabBarViewModelInfluencer.shared
-    
+
     init(selectedTab: Binding<Int>) {
-        _selectedTab = selectedTab
-        UITabBar.appearance().backgroundColor = UIColor(ThemeColor.background)
-    }
+            _selectedTab = selectedTab
+            UITabBar.appearance().backgroundColor = UIColor(ThemeColor.background)
+        }
     
     var body: some View {
         NavigationView {
