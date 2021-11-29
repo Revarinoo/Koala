@@ -12,9 +12,9 @@ struct RegisterBusinessView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Welcome")
+            Text("Hello Friends,")
                 .font(Font.custom(ThemeFont.poppinsSemiBold, size: 24))
-            Text("Hello friends, sign up to continue")
+            Text("Sign up to start your journey")
                 .font(Font.custom(ThemeFont.poppinsSemiBold, size: 12))
                 .foregroundColor(ThemeColor.grayDark)
                 .padding(.bottom)

@@ -81,7 +81,6 @@ struct HomepageView: View {
             .onAppear(perform: {
                 userProfile.callData()
                 recomenndationList.callGetInfluencerList(categories: categoriesDefault.object(forKey: "myKey") as? [String] ?? [""])
-                print("homepage id ye \(influencerID)")
                 
             })
             .padding(.top, 25)
@@ -90,9 +89,6 @@ struct HomepageView: View {
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
             .navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))
-//            .onTapGesture {
-//                self.dismissKeyboard()
-//            }
             .fullScreenCover(isPresented: $showDetails){
                 InfluencerDetailView(influencerDetailViewModel: $influencerDetailViewModel, isPresent: $showDetails, previousView: "Discover", influencerID: $influencerID, fromBackButton: false)
             }
