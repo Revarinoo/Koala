@@ -985,8 +985,32 @@
 			isa = PBXGroup;
 			children = (
 				2FE6E59B2751E88C009CB75B /* SubmitPriceService.swift */,
-				);
+			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		2FE6E5922751E585009CB75B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FE6E59D2751EA5A009CB75B /* SubmitPriceViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FE6E5932751E591009CB75B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FE6E5952751E5B5009CB75B /* SubmitPriceView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FE6E5942751E598009CB75B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FE6E5992751E843009CB75B /* SubmitPriceRequestResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		780C8EBF2751C8BB008BD574 /* BusinessProfile */ = {
@@ -1008,22 +1032,6 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		2FE6E5922751E585009CB75B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				2FE6E59D2751EA5A009CB75B /* SubmitPriceViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		2FE6E5932751E591009CB75B /* View */ = {
-			isa = PBXGroup;
-			children = (
-				2FE6E5952751E5B5009CB75B /* SubmitPriceView.swift */,
-				);
-			path = View;
-			sourceTree = "<group>";
-		};
 		780C8EC12751C8F2008BD574 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1042,14 +1050,6 @@
 				780C8ED22753E3F4008BD574 /* BusinessProfileView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		2FE6E5942751E598009CB75B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2FE6E5992751E843009CB75B /* SubmitPriceRequestResponse.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		780C8EC32751C904008BD574 /* ViewModel */ = {
@@ -2318,7 +2318,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Koala/Preview Content\"";
-				DEVELOPMENT_TEAM = PKF8ACHM24;
+				DEVELOPMENT_TEAM = SB885LAGT7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Koala/Info.plist;
@@ -2351,7 +2351,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Koala/Preview Content\"";
-				DEVELOPMENT_TEAM = PKF8ACHM24;
+				DEVELOPMENT_TEAM = SB885LAGT7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Koala/Info.plist;
