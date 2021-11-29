@@ -18,16 +18,19 @@ class ChatRoomViewModel: ObservableObject {
     @Published var chatData: [ChatData] = []
     @ObservedObject var userVM = UserProfileViewModel.shared
     @AppStorage("role", store: .standard) var role = ""
+
     
     func fetchData() {
-        if !chatRooms.isEmpty || !chatData.isEmpty {
+//        if !chatRooms.isEmpty || !chatData.isEmpty {
             chatRooms.removeAll()
             chatData.removeAll()
-        }
+//        }
         db.collection("chatrooms").whereField("users", arrayContains: userVM.user.id).addSnapshotListener { snapshot, error in
                 guard let documents = snapshot?.documents else {
                     return
                 }
+            self.chatRooms.removeAll()
+            self.chatData.removeAll()
                 self.chatRooms = documents.map({ docSnaphot -> ChatRoom in
                     let data = docSnaphot.data()
                     let docId = docSnaphot.documentID
