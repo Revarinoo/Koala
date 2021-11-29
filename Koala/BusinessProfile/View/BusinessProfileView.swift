@@ -46,8 +46,10 @@ struct BusinessProfileView: View {
                         ProfileElement(title:"Description", data: $businessProfileVM.businessProfileModel.description ?? "")
                             .padding(.bottom, 100)
                         Button(action:{
-                            self.signOut = true
                             token = ""
+                            UserDefaults.standard.removeObject(forKey: "JWT")
+                            UserDefaults.standard.synchronize()
+                            self.signOut = true
                         }){
                             Text("Sign Out").font(Font.custom(ThemeFont.poppinsSemiBold, size: 18))
                                 .foregroundColor(.white)

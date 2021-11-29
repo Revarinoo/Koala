@@ -116,6 +116,7 @@
 		780C8ECF2751E1D5008BD574 /* BusinessProfileForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8ECE2751E1D5008BD574 /* BusinessProfileForm.swift */; };
 		780C8ED12753D730008BD574 /* BusinessProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8ED02753D72F008BD574 /* BusinessProfileResponse.swift */; };
 		780C8ED32753E3F4008BD574 /* BusinessProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8ED22753E3F4008BD574 /* BusinessProfileView.swift */; };
+		780C8ED52754A8FD008BD574 /* PaymentProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780C8ED42754A8FD008BD574 /* PaymentProcessView.swift */; };
 		782E328E2730EC0100FA9795 /* RescheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E328D2730EC0100FA9795 /* RescheduleView.swift */; };
 		782E3290273248E600FA9795 /* RescheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E328F273248E600FA9795 /* RescheduleViewModel.swift */; };
 		78B933362726704B0040882D /* InfluencerDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B933352726704B0040882D /* InfluencerDetailResponse.swift */; };
@@ -368,6 +369,7 @@
 		780C8ECE2751E1D5008BD574 /* BusinessProfileForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessProfileForm.swift; sourceTree = "<group>"; };
 		780C8ED02753D72F008BD574 /* BusinessProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessProfileResponse.swift; sourceTree = "<group>"; };
 		780C8ED22753E3F4008BD574 /* BusinessProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessProfileView.swift; sourceTree = "<group>"; };
+		780C8ED42754A8FD008BD574 /* PaymentProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessView.swift; sourceTree = "<group>"; };
 		782E328D2730EC0100FA9795 /* RescheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleView.swift; sourceTree = "<group>"; };
 		782E328F273248E600FA9795 /* RescheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleViewModel.swift; sourceTree = "<group>"; };
 		78B933352726704B0040882D /* InfluencerDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfluencerDetailResponse.swift; path = Model/InfluencerDetailResponse.swift; sourceTree = SOURCE_ROOT; };
@@ -1092,10 +1094,10 @@
 		7850CEE1274C989500841ACE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				780C8E87274CA0B0008BD574 /* PaymentProcessView.swift */,
 				780C8E97274E0690008BD574 /* PaymentView.swift */,
 				780C8E99274E91E3008BD574 /* WebView.swift */,
 				F7A3BBE2274F9A9E000CF2AA /* PaymentOrderDetail.swift */,
+				780C8ED42754A8FD008BD574 /* PaymentProcessView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2101,6 +2103,7 @@
 				D2577BC4271F11BD00E7AC5D /* HomepageView.swift in Sources */,
 				F7C683B027338A72005BFE6D /* CampaingUpcomingFieldView.swift in Sources */,
 				2FD875A72731460B0052DA4D /* ReviewModel.swift in Sources */,
+				780C8ED52754A8FD008BD574 /* PaymentProcessView.swift in Sources */,
 				2FCB0B1D2724E8160017C9D6 /* RegisterRequest.swift in Sources */,
 				2FBC8BB1271C3725007E7B76 /* InfluencerListService.swift in Sources */,
 				D283B9F7272A5A2E00CA87EC /* OngoingCardScrollView.swift in Sources */,
@@ -2318,7 +2321,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Koala/Preview Content\"";
-				DEVELOPMENT_TEAM = SB885LAGT7;
+				DEVELOPMENT_TEAM = 3BJK86B698;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Koala/Info.plist;
@@ -2351,7 +2354,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Koala/Preview Content\"";
-				DEVELOPMENT_TEAM = SB885LAGT7;
+				DEVELOPMENT_TEAM = 3BJK86B698;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Koala/Info.plist;
