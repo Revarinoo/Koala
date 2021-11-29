@@ -23,12 +23,11 @@ struct BusinessProfileView: View {
                     HStack{
                         Spacer()
                         if businessProfileVM.businessProfileModel.business_photo != "" {
-                            WebImage(url: URL(string: "http://127.0.0.1:8000/storage/images/1638126265<UIImage:0x600001b50fc0 anonymous {4032, 3024} renderingMode=automatic>.jpeg"))
+                            WebImage(url: URL(string: businessProfileVM.businessProfileModel.business_photo ?? ""))
                                 .resizable()
-                                .scaledToFit()
+                                .scaledToFill()
                                 .frame(width: 127, height: 127)
                                 .cornerRadius(20.0)
-                            Text(businessProfileVM.businessProfileModel.business_photo ?? "")
                         }
                         else {
                             Image(systemName: "person").font(.system(size: 36)).foregroundColor(.gray).scaledToFill().frame(width: 127, height: 127)

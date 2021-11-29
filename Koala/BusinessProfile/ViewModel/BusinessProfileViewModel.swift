@@ -83,17 +83,18 @@ class BusinessProfileViewModel: ObservableObject{
             "Content-type": "multipart/form-data"
         ]
         
+        
+        
         Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append((profileImage ?? defaultImage) ?? Data(), withName: "business_photo",fileName: "\(data.business_photo).jpeg", mimeType: "image/jpeg")
-            
             for (key, value) in parameters {
-                        if let temp = value as? String {
-                            multipartFormData.append(temp.data(using: .utf8)!, withName: key)
-                        }
-                        if let temp = value as? Int {
-                            multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
-                        }
-                    }
+                if let temp = value as? String {
+                    multipartFormData.append(temp.data(using: .utf8)!, withName: key)
+                }
+                if let temp = value as? Int {
+                    multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
+                }
+            }
         }, to: HttpUtility.endpoint + "profile/update", method: .post , headers: headers)
         { (result) in
             switch result {
@@ -130,8 +131,7 @@ class BusinessProfileViewModel: ObservableObject{
         businessProfileService.getBusinessProfile(completionHandler: { response in
             if let response = response{
                 if response.code == 201{
-                    var business_photo = response.business_photo?.withReplacedCharacters(" ", by: "%")
-                    profile = BusinessProfileModel(business_photo: business_photo, business_name: response.business_name, instagram: response.instagram, location: response.location, website: response.website, description: response.description)
+                    profile = BusinessProfileModel(business_photo: response.business_photo, business_name: response.business_name, instagram: response.instagram, location: response.location, website: response.website, description: response.description)
                 }
                 
                 DispatchQueue.main.async {
@@ -142,12 +142,5 @@ class BusinessProfileViewModel: ObservableObject{
 
         })
             
-    }
-}
-
-extension String {
-    func withReplacedCharacters(_ oldChar: String, by newChar: String) -> String {
-        let newStr = self.replacingOccurrences(of: oldChar, with: newChar, options: .literal, range: nil)
-        return newStr
     }
 }

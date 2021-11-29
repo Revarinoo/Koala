@@ -49,16 +49,6 @@ struct InputBusinessProfileView: View {
                         BusinessProfileForm(inputBusinessProfileModel: $businessProfileVM.inputBusinessProfileModel)
                             .padding(.bottom, 42)
                         
-                        Button(action:{
-                            uploadingView.toggle()
-                            businessProfileVM.validateInput()
-                        }){
-                            Text("Submit")
-                                .frame(width: 358, height: 50)
-                                .foregroundColor(Color.white)
-                                .background(ThemeColor.primary)
-                                .cornerRadius(15)
-                        }
                     }.padding([.leading, .trailing], 16)
                     
                 }
@@ -101,7 +91,14 @@ struct InputBusinessProfileView: View {
                         self.isPresent = false
                     }){
                         Text("Cancel")
-                        
+                    }.foregroundColor(ThemeColor.primary)
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(action: {
+                        uploadingView.toggle()
+                        businessProfileVM.validateInput()
+                    }){
+                        Text("Save")
                     }.foregroundColor(ThemeColor.primary)
                 }
             }
@@ -110,7 +107,10 @@ struct InputBusinessProfileView: View {
         .navigationAppearance(backgroundColor: UIColor(ThemeColor.background), foregroundColor: .black)
         .onChange(of: businessProfileVM.isFinishedUpload){ _ in
             self.businessProfileVM.getBusinessProfile()
+            self.businessProfileVM.isFinishedUpload = false
+            self.uploadingView = false
             self.isPresent = false
+
         }
     }
 }
