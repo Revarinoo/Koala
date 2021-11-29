@@ -43,7 +43,7 @@ enum locationProvince: String, CaseIterable, Equatable{
     case sumaterabarat = "Sumatera Barat"
     case sumateraselatan = "Sumatera Selatan"
     case sumaterautara = "Sumatera Utara"
-    case defaultValue = "Choose your location"
+    case defaultValue = "Choose your location                                         "
 }
 
 class InfluencerSpecialty: ObservableObject {

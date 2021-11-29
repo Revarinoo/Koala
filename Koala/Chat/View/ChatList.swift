@@ -44,6 +44,7 @@ struct ChatList: View {
         .navigationTitle("\(tabBarVM.titleBar)")
         .navigationBarTitleDisplayMode(.large)
         .onAppear(perform: {
+            chatRoomVM.removeData()
             chatRoomVM.fetchData()
             self.dismissKeyboard()
         })

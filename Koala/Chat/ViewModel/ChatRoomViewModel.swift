@@ -18,16 +18,23 @@ class ChatRoomViewModel: ObservableObject {
     @Published var chatData: [ChatData] = []
     @ObservedObject var userVM = UserProfileViewModel.shared
     @AppStorage("role", store: .standard) var role = ""
+
+    
+    func removeData() {
+        self.chatRooms.removeAll()
+        self.chatData.removeAll()
+    }
     
     func fetchData() {
-        if !chatRooms.isEmpty || !chatData.isEmpty {
-            chatRooms.removeAll()
-            chatData.removeAll()
-        }
+//        if !chatRooms.isEmpty || !chatData.isEmpty {
+//            chatRooms.removeAll()
+//            chatData.removeAll()
+//        }
         db.collection("chatrooms").whereField("users", arrayContains: userVM.user.id).addSnapshotListener { snapshot, error in
                 guard let documents = snapshot?.documents else {
                     return
                 }
+            self.removeData()
                 self.chatRooms = documents.map({ docSnaphot -> ChatRoom in
                     let data = docSnaphot.data()
                     let docId = docSnaphot.documentID
@@ -39,7 +46,7 @@ class ChatRoomViewModel: ObservableObject {
                     }
                     return ChatRoom(id: docId, users: users)
                 })
-                
+            print(self.chatRooms.count)
             }
     }
     
