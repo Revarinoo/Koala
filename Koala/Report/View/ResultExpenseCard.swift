@@ -15,6 +15,7 @@ struct ResultExpenseCard: View {
                 Image("expense")
                     .resizable()
                     .frame(width: 45, height: 45)
+                    .shadow(color: Color.init(hex: "BFBFBF").opacity(0.5), radius: 1, x: -1, y: 2)
                 Text("Expense")
                     .font(Font.custom(ThemeFont.poppinsMedium, size: 18))
                     .foregroundColor(Color.init(hex: "541605"))
@@ -26,10 +27,7 @@ struct ResultExpenseCard: View {
                 .padding(.top, -15)
                 .foregroundColor(Color.init(hex: "541605"))
         }
-        .frame(width: 357, height: 103, alignment: .leading)
-        .background(Color.init(hex: "FFF1ED"))
-        .cornerRadius(10)
-        .shadow(color: .gray, radius: 3, x: 1, y: 2)
+        .frame(minWidth: 357, minHeight: 103, alignment: .leading)
     }
 }
 

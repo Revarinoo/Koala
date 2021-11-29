@@ -137,6 +137,8 @@
 		84CDC3D22730EDAB0012304A /* ResultInfluencerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3D12730EDAA0012304A /* ResultInfluencerCard.swift */; };
 		84DA5AA1274AC68300A2A349 /* ChatListChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DA5AA0274AC68300A2A349 /* ChatListChildView.swift */; };
 		84DA5AA3274CA16900A2A349 /* ChatTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DA5AA2274CA16900A2A349 /* ChatTextFieldStyle.swift */; };
+		84FEA1A12754711E0062AA33 /* ProductTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FEA1A02754711E0062AA33 /* ProductTypeModel.swift */; };
+		84FEA1A3275471AA0062AA33 /* ProductTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FEA1A2275471AA0062AA33 /* ProductTypeViewModel.swift */; };
 		D201AF8A273C064700FB0DFA /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = D201AF89273C064700FB0DFA /* KeyboardGuardian.swift */; };
 		D20B099E2737AF62007B1636 /* CreateCampaignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B099D2737AF62007B1636 /* CreateCampaignService.swift */; };
 		D20B09A027381C42007B1636 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B099F27381C42007B1636 /* ImagePicker.swift */; };
@@ -372,6 +374,8 @@
 		84CDC3D12730EDAA0012304A /* ResultInfluencerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultInfluencerCard.swift; sourceTree = "<group>"; };
 		84DA5AA0274AC68300A2A349 /* ChatListChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListChildView.swift; sourceTree = "<group>"; };
 		84DA5AA2274CA16900A2A349 /* ChatTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextFieldStyle.swift; sourceTree = "<group>"; };
+		84FEA1A02754711E0062AA33 /* ProductTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTypeModel.swift; sourceTree = "<group>"; };
+		84FEA1A2275471AA0062AA33 /* ProductTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTypeViewModel.swift; sourceTree = "<group>"; };
 		D201AF89273C064700FB0DFA /* KeyboardGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
 		D20B099D2737AF62007B1636 /* CreateCampaignService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateCampaignService.swift; path = "Koala/Create Campaign/View/CreateCampaignService.swift"; sourceTree = SOURCE_ROOT; };
 		D20B099F27381C42007B1636 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -1110,6 +1114,7 @@
 			isa = PBXGroup;
 			children = (
 				8475D64C273239BE0021E87A /* CampaignReportBusinessViewModel.swift */,
+				84FEA1A2275471AA0062AA33 /* ProductTypeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1119,6 +1124,7 @@
 			children = (
 				8475D65027323C840021E87A /* CampaignReportBusinessResponse.swift */,
 				8475D65227323EF10021E87A /* CampaignReportBusinessModel.swift */,
+				84FEA1A02754711E0062AA33 /* ProductTypeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1928,6 +1934,7 @@
 				D28D625827201ECB00BE7345 /* CategoriesServices.swift in Sources */,
 				2F95BCCF273A2EDD00F78F83 /* IndicatorPoint.swift in Sources */,
 				2FBC8BB3271C37CC007E7B76 /* InfluencerListResponse.swift in Sources */,
+				84FEA1A3275471AA0062AA33 /* ProductTypeViewModel.swift in Sources */,
 				78B9333A27267C480040882D /* InfluencerDetailViewModel.swift in Sources */,
 				78B933362726704B0040882D /* InfluencerDetailResponse.swift in Sources */,
 				D291A3D227303FAD00BAAA75 /* UserProfileService.swift in Sources */,
@@ -1957,6 +1964,7 @@
 				D283B9F9272A8BCB00CA87EC /* CompletedCardScrollView.swift in Sources */,
 				D2577BC4271F11BD00E7AC5D /* HomepageView.swift in Sources */,
 				F7C683B027338A72005BFE6D /* CampaingUpcomingFieldView.swift in Sources */,
+				84FEA1A12754711E0062AA33 /* ProductTypeModel.swift in Sources */,
 				2FD875A72731460B0052DA4D /* ReviewModel.swift in Sources */,
 				2FCB0B1D2724E8160017C9D6 /* RegisterRequest.swift in Sources */,
 				2FBC8BB1271C3725007E7B76 /* InfluencerListService.swift in Sources */,

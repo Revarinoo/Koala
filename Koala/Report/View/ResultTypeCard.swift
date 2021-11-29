@@ -13,29 +13,20 @@ struct ResultTypeCard: View {
     var impressionNum: String
     var body: some View {
         VStack (alignment: .center) {
-            Circle()
-                .fill(Color.white)
-                .frame(width: 82, height: 82)
-                .overlay(
-                    VStack {
-                        Image("ig")
-                            .resizable()
-                            .frame(width: 45, height: 45)
-                            .padding(.bottom, -20)
-                        Text("\(type)")
-                            .font(Font.custom(ThemeFont.poppinsMedium, size: 18))
-                            .foregroundColor(Color.init(hex: "541605"))
-                    }
-                ,alignment: .center)
-                .overlay(Circle().stroke(Color.init(hex: "FE724C"), lineWidth: 2))
-            
+            VStack {
+                Image("ig")
+                    .resizable()
+                    .frame(width: 45, height: 45)
+                    .padding(.bottom, -20)
+                Text("\(type)")
+                    .font(Font.custom(ThemeFont.poppinsMedium, size: 18))
+                    .foregroundColor(Color.init(hex: "541605"))
+            }
+            .padding(.bottom, 10)
             TypeInfo(numbers: "\(reachNum)", desc: "Reach")
             TypeInfo(numbers: "\(impressionNum)", desc: "Impression")
         }
         .frame(width: 106, height: 182, alignment: .center)
-        .background(Color.init(hex: "FFF1ED"))
-        .cornerRadius(10)
-        .shadow(color: .gray, radius: 3, x: 1, y: 2)
         .padding(.vertical, 5)
         .padding(.trailing, 5)
     }
