@@ -25,6 +25,7 @@ struct LoginView: View {
     @StateObject var tabBarVM = TabBarViewModel.shared
     @StateObject var tabBarInfluencerVM = TabBarViewModelInfluencer.shared
     @AppStorage("role", store: .standard) var role = ""
+    @State var isNavigate = false
     
     var body: some View {
             ZStack(alignment: .topLeading) {
@@ -69,7 +70,14 @@ struct LoginView: View {
                                 if(loginVM.validateUserInputs()) {
                                     loginVM.login()
                                     userProfile.callData()
-                                    self.nextNavigation = true
+                                    // nanti hapus kalo gaperlu
+                                    if role == "Business" {
+                                        self.nextNavigation = true
+                                    }
+                                    else {
+                                        self.isNavigate = true
+                                    }
+                                    
                                 }
                             } label: {
                                 Text("Sign In")
@@ -111,14 +119,17 @@ struct LoginView: View {
                 .padding(31)
                 .background(Color.white.ignoresSafeArea(edges: .bottom))
                 .cornerRadius(15)
-                .fullScreenCover(isPresented: $nextNavigation){
-                    if role == "Business" {
-                        TabBar(selectedTab: $tabBarVM.selectedTab)
-                    }
-                    else {
-                        TabBarInfluencer(selectedTab: $tabBarInfluencerVM.selectedTab)
-                    }
-                }
+//                .fullScreenCover(isPresented: .constant(nextNavigation && !isNavigate) ){
+//                    if role == "Business" {
+//                        TabBar(selectedTab: $tabBarVM.selectedTab)
+//                    }
+//                    else {
+//                        TabBarInfluencer(selectedTab: $tabBarInfluencerVM.selectedTab)
+//                        self.isNavigate = true
+//                    }
+//                }
+                .navigate(to: TabBar(selectedTab: $tabBarVM.selectedTab), when: $nextNavigation)
+                .navigate(to: TabBarInfluencer(selectedTab: $tabBarInfluencerVM.selectedTab), when: $isNavigate)
             }
         
         .onTapGesture{
