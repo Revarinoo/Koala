@@ -19,6 +19,25 @@ struct OngoingCard: View {
     
     var body: some View {
         VStack{
+            HStack {
+                Image("ig")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 25, height: 25)
+                ForEach (productType, id: \.self){
+                    product in Text(product).font(Font.custom(ThemeFont.poppinsRegular, size: 14))
+                }
+                
+                Spacer()
+                Text("12.12 Campaign")
+                    .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
+                    .foregroundColor(Color.init(hex: "A7A7A7"))
+            }
+            .padding(.horizontal, 15)
+            .padding(.bottom, -10)
+            .padding(.vertical, 10)
+            .padding(.trailing, 2)
+            Divider()
             HStack(spacing: 18){
                 WebImage(url: URL(string: photo))
                     .resizable()
@@ -26,18 +45,7 @@ struct OngoingCard: View {
                     .frame(width: 82, height: 88)
                     .cornerRadius(10)
                 VStack (alignment: .leading, spacing: 6){
-                    HStack (spacing: 9){
-                        ForEach (productType, id: \.self){
-                            product in Text(product).scaledToFill()
-                                .font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 2)
-                                .foregroundColor(ThemeColor.primary)
-                                .frame(minWidth: 71, minHeight: 20, alignment: .center)
-                                .background(ThemeColor.primaryLight)
-                                .cornerRadius(5)
-                        }
-                    }
+                    
                     Text(name).font(Font.custom(ThemeFont.poppinsMedium, size: 18))
                     HStack{
                         Image(systemName: "calendar")
@@ -48,7 +56,7 @@ struct OngoingCard: View {
                         .foregroundColor(Color.gray)
                 }
                 Spacer()
-            }.padding([.top, .leading, .trailing], 16)
+            }.padding([.top, .leading, .trailing], 16).padding(.top, -5)
             HStack{
                 Spacer()
                 Button(action: {

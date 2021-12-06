@@ -16,6 +16,7 @@ struct Order: Codable{
     var influencer_name: String
     var influencer_photo: String
     var content_id: Int
+    var campaign_name: String
     var order_date: String
     var status: String
     var product_data : [OrderProductData]
@@ -24,8 +25,8 @@ struct Order: Codable{
 
 struct OrderProductData: Codable{
     var product_type: String
-    var reach: Int?
-    var impression: Int?
+    var data1: Int?
+    var data2: Int?
     var er: Double?
 }
 

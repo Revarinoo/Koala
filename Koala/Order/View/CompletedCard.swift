@@ -20,6 +20,22 @@ struct CompletedCard: View {
     
     var body: some View {
         VStack{
+            HStack {
+                Image("ig")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 25, height: 25)
+                Text("Post").font(Font.custom(ThemeFont.poppinsRegular, size: 14))
+                Spacer()
+                Text("12.12 Campaign")
+                    .font(Font.custom(ThemeFont.poppinsRegular, size: 12))
+                    .foregroundColor(Color.init(hex: "A7A7A7"))
+            }
+            .padding(.horizontal, 15)
+            .padding(.bottom, -10)
+            .padding(.vertical, 10)
+            .padding(.trailing, 2)
+            Divider()
             HStack(spacing: 18){
                 WebImage(url: URL(string: photo))
                     .resizable()
@@ -47,7 +63,7 @@ struct CompletedCard: View {
                     }
                 }
                 Spacer()
-            }.padding(.top, 16).padding(.leading, 16)
+            }.padding(.top, 16).padding(.leading, 16).padding(.top, -5)
             HStack{
                 Spacer()
                 Button(action:{
@@ -61,15 +77,6 @@ struct CompletedCard: View {
                     .background(ThemeColor.primary)
                     .cornerRadius(10)
                 }
-//                NavigationLink(destination: ReviewInfluencerView(photoURL: photo, name: name, orderId: orderId)) {
-//                        Text("Review").font(Font.custom(ThemeFont.poppinsMedium, size: 12))
-//                            .foregroundColor(.white)
-//                            .padding()
-//                            .padding([.leading, .trailing])
-//                   .frame(height: 38)
-//                        .background(ThemeColor.primary)
-//                        .cornerRadius(10)
-//                }
             }.padding(.bottom, 9).padding(.trailing, 16)
             
                 .fullScreenCover(isPresented: $showReview){

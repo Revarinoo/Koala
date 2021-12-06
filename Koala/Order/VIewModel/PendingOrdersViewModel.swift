@@ -42,10 +42,10 @@ class OrderViewModel: ObservableObject{
                             } else if (order.product_data[index].product_type == "Instagram Reels"){
                                 productType.append("Reels")
                             }
-                            if let reach = order.product_data[index].reach{
+                            if let reach = order.product_data[index].data1{
                                 reachArr.append(reach)
                             }
-                            if let impression = order.product_data[index].impression{
+                            if let impression = order.product_data[index].data2{
                                 impressionArr.append(impression)
                             }
                             if let er = order.product_data[index].er{
@@ -88,10 +88,3 @@ class OrderViewModel: ObservableObject{
         }
     }
 }
-
-//private func dateFormatter(dateBefore: String) -> Date {
-//        let dateFormatterGet = DateFormatter()
-//        dateFormatterGet.dateFormat = "yyyy-MM-dd"
-//
-//        return dateFormatterGet.date(from: dateBefore) ?? Date()
-//    }
