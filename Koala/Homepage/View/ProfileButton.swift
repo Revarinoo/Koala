@@ -15,7 +15,7 @@ struct ProfileButton: View {
     @State var notLoggedIn = false
     var body: some View {
         ZStack(alignment:.leading){
-            NavigationLink(destination: token == "" ? AnyView(LoginView()) : AnyView(BusinessProfileView())) {
+//            NavigationLink(destination: token == "" ? AnyView(LoginView()) : AnyView(BusinessProfileView())) {
 //                Button(action: {
 //                    if token == "" {
 //                        notLoggedIn = true
@@ -40,7 +40,7 @@ struct ProfileButton: View {
                         Spacer()
                     }
 //                }
-            }
+            //}
                 .frame(width: 122.0, height: 36.0)
                 .background(Color.white)
                 .cornerRadius(50)

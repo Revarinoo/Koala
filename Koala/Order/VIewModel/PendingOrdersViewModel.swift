@@ -53,9 +53,9 @@ class OrderViewModel: ObservableObject{
                             }
                         }
                         //let dt = order.order_date.dateFormatter(dateBefore: order.order_date)
-                        avgReach = reachArr.reduce(0, +)/reachArr.count
-                        avgImpression = impressionArr.reduce(0, +)/impressionArr.count
-                        avgER = erArr.average
+                        //avgReach = reachArr.reduce(0, +)/reachArr.count
+                        //avgImpression = impressionArr.reduce(0, +)/impressionArr.count
+                        //avgER = erArr.average
                     }
                     let myorder = MyOrders(orderID: order.order_id, name: order.influencer_name, photo: order.influencer_photo, dueDate: order.order_date.dateFormatter(dateBefore: order.order_date), eR: String(avgER),orderStatus: order.status,  productType: productType, avgReach: String(Double(avgReach).thousandsFormatter()), avgImpression: String(Double(avgImpression).thousandsFormatter()), avgER: avgER, availableToPay: order.availableToPay == 1 ? true : false)
                     orderData.append(myorder)
