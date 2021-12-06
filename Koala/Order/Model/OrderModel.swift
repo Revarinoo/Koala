@@ -35,7 +35,7 @@ struct PendingOrder: Identifiable{
     var index: Int
     var order_id: Int
     var name: String
-    var productType : [String]
+    var productType : [productTypeModel]
     var dueDate : String
     var photo: String
     var availableToPay: Bool

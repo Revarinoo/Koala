@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct OngoingCard: View {
     let order_id: Int
     let name: String
-    let productType : [String]
+    let productType : [productTypeModel]
     let dueDate : String
     let photo: String
     @State var showDatePicker: Bool = false
@@ -24,8 +24,7 @@ struct OngoingCard: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 25, height: 25)
-                ForEach (productType, id: \.self){
-                    product in Text(product).font(Font.custom(ThemeFont.poppinsRegular, size: 14))
+                ForEach(productType){ product in Text(product.productType).font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                 }
                 
                 Spacer()
@@ -89,7 +88,7 @@ struct OngoingCard: View {
 
 struct OngoingCard_Previews: PreviewProvider {
     static var previews: some View {
-        OngoingCard(order_id: 1,name: "Bella Anastasia", productType: ["Post"], dueDate: "28 November 2021", photo: "").previewLayout(.sizeThatFits)
+        OngoingCard(order_id: 1,name: "Bella Anastasia", productType: [productTypeModel(productType: "Post", data1: 10, data2: 10, er: 10.1)], dueDate: "28 November 2021", photo: "").previewLayout(.sizeThatFits)
     }
 }
 

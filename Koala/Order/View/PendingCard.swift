@@ -21,9 +21,8 @@ struct PendingCard: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 25, height: 25)
-                ForEach (pendingOrder.productType, id: \.self){
-                    product in
-                    Text(product).font(Font.custom(ThemeFont.poppinsRegular, size: 14))
+                ForEach (pendingOrder.productType){ product in
+                    Text(product.productType).font(Font.custom(ThemeFont.poppinsRegular, size: 14))
                     }
                 Spacer()
                 Text("12.12 Campaign")
