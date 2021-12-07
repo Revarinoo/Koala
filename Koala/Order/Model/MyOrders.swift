@@ -13,11 +13,15 @@ struct MyOrders: Identifiable{
     var name: String
     var photo: String
     var dueDate: String
-    var eR : String
     var orderStatus : String
-    var productType: [String]
-    var avgReach : String
-    var avgImpression: String
-    var avgER: Double
     var availableToPay: Bool
+    var productType: [productTypeModel]
+}
+
+struct productTypeModel: Identifiable{
+    let id = UUID()
+    var productType: String
+    var data1: Int
+    var data2: Int
+    var er: Double
 }

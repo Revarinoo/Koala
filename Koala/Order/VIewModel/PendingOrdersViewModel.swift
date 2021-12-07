@@ -23,41 +23,20 @@ class OrderViewModel: ObservableObject{
         orderService.getMyOrder(){ response in
             if let responseData = response?.data{
                 for order in responseData{
-                    var avgReach = 0
-                    var avgImpression = 0
-                    var avgER : Double = 0
-                    var productType : [String] = []
+                    var productType : [productTypeModel] = []
                     
                     if order.product_data.count > 0 {
-                        
-                        var reachArr : [Int] = []
-                        var impressionArr : [Int] = []
-                        var erArr : [Double] = []
-                        
                         for index in 0..<order.product_data.count{
                             if (order.product_data[index].product_type == "Instagram Story"){
-                                productType.append("Story")
+                                productType.append(productTypeModel(productType: "Story", data1: order.product_data[index].data1 ?? 0, data2: order.product_data[index].data2 ?? 0, er: order.product_data[index].er ?? 0))
                             } else if (order.product_data[index].product_type == "Instagram Post"){
-                                productType.append("Post")
+                                productType.append(productTypeModel(productType: "Post", data1: order.product_data[index].data1 ?? 0, data2: order.product_data[index].data2 ?? 0, er: order.product_data[index].er ?? 0))
                             } else if (order.product_data[index].product_type == "Instagram Reels"){
-                                productType.append("Reels")
-                            }
-                            if let reach = order.product_data[index].reach{
-                                reachArr.append(reach)
-                            }
-                            if let impression = order.product_data[index].impression{
-                                impressionArr.append(impression)
-                            }
-                            if let er = order.product_data[index].er{
-                                erArr.append(er)
+                                productType.append(productTypeModel(productType: "Reels", data1: order.product_data[index].data1 ?? 0, data2: order.product_data[index].data2 ?? 0, er: order.product_data[index].er ?? 0))
                             }
                         }
-                        //let dt = order.order_date.dateFormatter(dateBefore: order.order_date)
-                        //avgReach = reachArr.reduce(0, +)/reachArr.count
-                        //avgImpression = impressionArr.reduce(0, +)/impressionArr.count
-                        //avgER = erArr.average
                     }
-                    let myorder = MyOrders(orderID: order.order_id, name: order.influencer_name, photo: order.influencer_photo, dueDate: order.order_date.dateFormatter(dateBefore: order.order_date), eR: String(avgER),orderStatus: order.status,  productType: productType, avgReach: String(Double(avgReach).thousandsFormatter()), avgImpression: String(Double(avgImpression).thousandsFormatter()), avgER: avgER, availableToPay: order.availableToPay == 1 ? true : false)
+                    let myorder = MyOrders(orderID: order.order_id, name: order.influencer_name, photo: order.influencer_photo, dueDate: order.order_date.dateFormatter(dateBefore: order.order_date),orderStatus: order.status, availableToPay: order.availableToPay == 1 ? true : false, productType: productType)
                     orderData.append(myorder)
                 }
             }
@@ -88,10 +67,3 @@ class OrderViewModel: ObservableObject{
         }
     }
 }
-
-//private func dateFormatter(dateBefore: String) -> Date {
-//        let dateFormatterGet = DateFormatter()
-//        dateFormatterGet.dateFormat = "yyyy-MM-dd"
-//
-//        return dateFormatterGet.date(from: dateBefore) ?? Date()
-//    }
