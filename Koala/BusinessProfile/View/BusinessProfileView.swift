@@ -17,7 +17,7 @@ struct BusinessProfileView: View {
     @State var toEditProfile = false
 
     var body: some View {
-       // NavigationView{
+        NavigationView{
             ScrollView (showsIndicators: false){
                 VStack(alignment: .leading){
                     HStack{
@@ -83,7 +83,7 @@ struct BusinessProfileView: View {
             }
             .background(ThemeColor.background.ignoresSafeArea())
             
-        //}
+        }
         .onAppear{
             businessProfileVM.getBusinessProfile()
         }

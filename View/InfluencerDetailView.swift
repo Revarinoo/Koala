@@ -23,6 +23,8 @@ struct InfluencerDetailView: View {
     @StateObject var chatVM = ChatRoomViewModel()
     @State var isNavigateToChat = false
     @StateObject var userVM = UserProfileViewModel.shared
+    @State var isScrolling = false
+    
     
 //    init(influencerID: Int, fromBackButton: Bool) {
 //        UIScrollView.appearance().bounces = false
@@ -33,7 +35,6 @@ struct InfluencerDetailView: View {
     var body: some View {
        NavigationView{
            ZStack{
-               
                ScrollView(.vertical, showsIndicators: false){
                    ZStack(alignment: .top){
                        
@@ -83,6 +84,15 @@ struct InfluencerDetailView: View {
                        }
                    }
                }
+               .gesture(
+                  DragGesture().onChanged { value in
+                     if value.translation.height > 0 {
+                        isScrolling = false
+                     } else {
+                        isScrolling = true
+                     }
+                  }
+               )
                VStack{
                    Spacer()
                    HStack{
@@ -121,15 +131,28 @@ struct InfluencerDetailView: View {
             .navigationBarHidden(false).accentColor(.white)
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        self.isPresent = false
-                    }){
-                        HStack{
-                            Image(systemName: "chevron.left")
-                            Text(previousView)
-                        }
-                        
-                    }.foregroundColor(.white)
+                    if isScrolling {
+                        Button(action: {
+                            self.isPresent = false
+                        }){
+                            HStack{
+                                Image(systemName: "chevron.left")
+                                //Text(previousView)
+                            }
+                            
+                        }.foregroundColor(ThemeColor.primary)
+                    } else {
+                        Button(action: {
+                            self.isPresent = false
+                        }){
+                            HStack{
+                                Image(systemName: "chevron.left")
+                                //Text(previousView)
+                            }
+                            
+                        }.foregroundColor(.white)
+                    }
+                    
                 }
             }
 
