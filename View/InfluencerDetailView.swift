@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 import Introspect
 
 struct InfluencerDetailView: View {
+    @AppStorage("JWT", store: .standard) var token = ""
     @Binding var influencerDetailViewModel : InfluencerDetailViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var campaignList = CampaignViewModel.shared
@@ -98,7 +99,7 @@ struct InfluencerDetailView: View {
                            })
                        }
                            .padding(.trailing, 10)
-                       NavigationLink(destination: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign(isPresent: .constant(true)).navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0))){
+                       NavigationLink(destination: campaignList.campaignModel.count == 0 && token != "" ? AnyView(CreateCampaign(isPresent: .constant(true)).navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0))){
                            
                            OrderButton()
                                 
