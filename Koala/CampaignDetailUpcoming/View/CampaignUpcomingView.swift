@@ -13,6 +13,7 @@ struct CampaignUpcomingView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Binding var id: Int 
     @Binding var isPresent : Bool
+    @State var isScrolling = false
     
     var body: some View {
         NavigationView{
@@ -44,6 +45,15 @@ struct CampaignUpcomingView: View {
                         }.padding(.top, 157)
                     }
                 }
+                .gesture(
+                    DragGesture().onChanged { value in
+                       if value.translation.height > 0 {
+                          isScrolling = false
+                       } else {
+                          isScrolling = true
+                       }
+                    }
+                 )
                 VStack{
                     Rectangle().fill(ThemeColor.primary)
                         .frame(height: 88).padding(.top,0).ignoresSafeArea(.all)
@@ -58,15 +68,28 @@ struct CampaignUpcomingView: View {
             }
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        self.isPresent = false
-                    }){
-                        HStack{
-                            Image(systemName: "chevron.left")
-                            Text("My Campaigns")
-                        }
-                        
-                    }.foregroundColor(.white)
+                    if isScrolling{
+                        Button(action: {
+                            self.isPresent = false
+                        }){
+                            HStack{
+                                Image(systemName: "chevron.left")
+                                Text("My Campaigns")
+                            }
+                            
+                        }.foregroundColor(ThemeColor.primary)
+                    } else {
+                        Button(action: {
+                            self.isPresent = false
+                        }){
+                            HStack{
+                                Image(systemName: "chevron.left")
+                                Text("My Campaigns")
+                            }
+                            
+                        }.foregroundColor(.white)
+                    }
+                    
                 }
             }
             .background(ThemeColor.primary.ignoresSafeArea())

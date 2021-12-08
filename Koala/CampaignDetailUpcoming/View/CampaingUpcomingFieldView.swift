@@ -68,7 +68,7 @@ struct DetailField: View {
             Text(title)
                 .font(.custom(ThemeFont.poppinsRegular, size: 14))
                 .foregroundColor(Color.init(hex: "A7A7A7"))
-            Text(data)
+            Text(data).fixedSize(horizontal: false, vertical: true)
                 .font(.custom(font, size: fontSize))
                 .frame(maxWidth: 334, alignment: .leading)
         }
