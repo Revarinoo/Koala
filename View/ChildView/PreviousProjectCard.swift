@@ -16,13 +16,10 @@ struct PreviousProjectCard: View {
     let total_likes: String
     let engagement_rate: String
     
-    //ini buat ddemo doang
-    let img : [String] = ["https://upload.wikimedia.org/wikipedia/commons/f/f8/Love_Coffee.jpg"]
-    
     var body: some View {
         HStack{
             if(post_photo != ""){
-                WebImage(url: URL(string: img[0]))
+                WebImage(url: URL(string: post_photo))
                     .resizable()
                     .imageScale(.large)
                     .frame(width: 140, height: 140)
