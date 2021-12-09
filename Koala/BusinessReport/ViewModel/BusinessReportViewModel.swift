@@ -23,7 +23,7 @@ class BusinessReportViewModel: ObservableObject {
         reportingService.getReport() { response in
             if let reports = response?.reports {
                 thisMonthExpense = reports.first(where: {$0.month == self.thisMonthInt})?.total_expense ?? 0
-                
+
                 let avgReachData = reports.first(where: {$0.month == self.thisMonthInt})?.overview_data?.avg_reach?.data ?? "0"
                 let avgReachDiff = reports.first(where: {$0.month == self.thisMonthInt})?.overview_data?.avg_reach?.diff ?? "0"
                 let avgImpressionData = reports.first(where: {$0.month == self.thisMonthInt})?.overview_data?.avg_impression?.data ?? "0"

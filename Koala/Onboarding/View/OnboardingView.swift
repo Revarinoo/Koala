@@ -99,7 +99,7 @@ struct OnboardingView: View {
             .padding(.horizontal)
             .navigationBarTitle("")
             .navigationBarHidden(true)
-//            .navigate(to: TabBarNotLoggedIn(selectedTab: $tabBarVM.selectedTab), when: $nextNavigation)
+            //.navigate(to: TabBarNotLoggedIn(selectedTab: $tabBarVM.selectedTab), when: $nextNavigation)
             .fullScreenCover(isPresented: $nextNavigation){
                 TabBar(selectedTab: $tabBarVM.selectedTab)
             }
