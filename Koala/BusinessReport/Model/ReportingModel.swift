@@ -22,5 +22,5 @@ struct OverviewDataModel {
 
 struct AvgDataModel {
     var data = ""
-    var diff = ""
+    var diff = "100"
 }

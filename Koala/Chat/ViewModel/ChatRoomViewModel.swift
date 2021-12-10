@@ -11,7 +11,6 @@ import SwiftUI
 
 
 class ChatRoomViewModel: ObservableObject {
-    static let shared = ChatRoomViewModel()
     @Published var chatRooms: [ChatRoom] = []
     private var db = Firestore.firestore()
     private var userService = UserProfileService()
@@ -26,7 +25,6 @@ class ChatRoomViewModel: ObservableObject {
     }
     
     func fetchData() {
-        removeData()
         db.collection("chatrooms").whereField("users", arrayContains: userVM.user.id).addSnapshotListener { snapshot, error in
                 guard let documents = snapshot?.documents else {
                     return
@@ -43,7 +41,6 @@ class ChatRoomViewModel: ObservableObject {
                     }
                     return ChatRoom(id: docId, users: users)
                 })
-            print(self.chatRooms.count)
             }
     }
     
