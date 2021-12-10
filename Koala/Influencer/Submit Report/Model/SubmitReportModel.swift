@@ -6,20 +6,20 @@
 //
 
 struct PostModel {
-    var likes: Int = Int()
-    var comments: Int = Int()
-    var link: String = String()
+    var likes: Int = 0
+    var comments: Int = 0
+    var link: String = ""
 }
 
 struct StoryModel {
-    var views: Int = Int()
-    var reach: Int = Int()
-    var impression: Int = Int()
+    var views: Int = 0
+    var reach: Int = 0
+    var impression: Int = 0
 }
 
 struct ReelsModel {
-    var views: Int = Int()
-    var likes: Int = Int()
-    var comments: Int = Int()
-    var link: String = String()
+    var views: Int = 0
+    var likes: Int = 0
+    var comments: Int = 0
+    var link: String = ""
 }
