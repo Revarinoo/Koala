@@ -38,6 +38,7 @@ class SubmitReportViewModel: ObservableObject {
         for content in contents {
             switch content.type {
             case .Post:
+                print("content post")
                 igThumbnailFetcher.fetchInfo(igPost.link) { [unowned self] result in
                     
                     switch result {
@@ -50,7 +51,7 @@ class SubmitReportViewModel: ObservableObject {
                             guard let image = image else { return }
 
                             // use image here
-                            let imgData = Data(image.jpegData(compressionQuality: 1)! ?? Data())
+                            let imgData = image.jpegData(compressionQuality: 1)
                             let defaultImage = UIImage(named: "defaultCampaign")!.jpegData(compressionQuality: 0.5)
                             var imageSize: Int = imgData.count
                             print("actual size of image in KB: %f ", Double(imageSize) / 1000.0)
@@ -59,13 +60,13 @@ class SubmitReportViewModel: ObservableObject {
                             
                             let parameters = [
                                 "post_url": submitReportReq.post_url ?? "",
-                                "views": submitReportReq.views ?? 0,
-                                "likes": submitReportReq.likes ?? 0,
-                                "comments": submitReportReq.comments ?? 0,
-                                "impressions": submitReportReq.impressions ?? 0,
-                                "reach": submitReportReq.reach ?? 0,
-                                "order_detail_id": submitReportReq.order_detail_id
-                            ] as [String : Any]
+                                "views": String(submitReportReq.views ?? 0),
+                                "likes": String(submitReportReq.likes ?? 0),
+                                "comments": String(submitReportReq.comments ?? 0),
+                                "impressions": String(submitReportReq.impressions ?? 0),
+                                "reach": String(submitReportReq.reach ?? 0),
+                                "order_detail_id": String(submitReportReq.order_detail_id)
+                            ]
                             
                             //      MARK: header buat yg server
                             let headers: HTTPHeaders = [
@@ -74,10 +75,10 @@ class SubmitReportViewModel: ObservableObject {
                             ]
                             
                             Alamofire.upload(multipartFormData: { multipartFormData in
-                                multipartFormData.append((imgData ?? defaultImage) ?? Data(), withName: "post_photo",fileName: "file.jpeg", mimeType: "image/jpeg")
+                                multipartFormData.append(imgData ?? defaultImage, withName: "post_photo",fileName: "file.jpeg", mimeType: "image/jpeg")
                                 
                                 for (key, value) in parameters {
-                                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
+                                    multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
                                 }
                             }, to:serverURLnya, method: .post , headers: headers)
                             { (result) in
@@ -99,8 +100,6 @@ class SubmitReportViewModel: ObservableObject {
                                                 DispatchQueue.main.async {
                                                     self.isSucceed = true
                                                 }
-                                            } else {
-                                                self.isSucceed = false
                                             }
                                         }
                                     }
@@ -118,6 +117,7 @@ class SubmitReportViewModel: ObservableObject {
                 }
                 
             case .Story:
+                print("content story")
                 service.submitReport(requestBody: ReportRequest(post_url: nil, views: igStory.views, likes: nil, comments: nil, reach: igStory.reach, impressions: igStory.impression, post_photo: nil ,order_detail_id: content.orderDetailId)) { result in
                     if let response = result {
                         if response.code == 201 {
@@ -129,22 +129,23 @@ class SubmitReportViewModel: ObservableObject {
                 }
                 
             case .Reels:
-                
-                igThumbnailFetcher.fetchInfo(igPost.link) { [unowned self] result in
-                    
+                print("content reels")
+                print(igReels.link)
+                igThumbnailFetcher.fetchInfo(igReels.link) { [unowned self] result in
+                    print("masuk ya")
                     switch result {
                     case .success(let media):
                         
-                        self.post_photo = media.images.thumbnail
-                        print("self.post_photo")
-                        print(self.post_photo)
+                        let reelsImg = media.images.thumbnail
+                        print("reelsImg")
+                        print(reelsImg)
                         
                         let downloader = SDWebImageManager()
-                        downloadImage(self.post_photo ) { image in
+                        downloadImage(reelsImg) { image in
                             guard let image = image else { return }
 
                             // use image here
-                            let imgData = Data(image.jpegData(compressionQuality: 1)! )
+                            let imgData = image.jpegData(compressionQuality: 1)
                             let defaultImage = UIImage(named: "defaultCampaign")!.jpegData(compressionQuality: 0.5)
                             var imageSize: Int = imgData.count
                             print("actual size of image in KB: %f ", Double(imageSize) / 1000.0)
@@ -153,13 +154,13 @@ class SubmitReportViewModel: ObservableObject {
                             
                             let parameters = [
                                 "post_url": submitReportReq.post_url ?? "",
-                                "views": submitReportReq.views ?? 0,
-                                "likes": submitReportReq.likes ?? 0,
-                                "comments": submitReportReq.comments ?? 0,
-                                "impressions": submitReportReq.impressions ?? 0,
-                                "reach": submitReportReq.reach ?? 0,
-                                "order_detail_id": submitReportReq.order_detail_id
-                            ] as [String : Any]
+                                "views": String(submitReportReq.views ?? 0),
+                                "likes": String(submitReportReq.likes ?? 0),
+                                "comments": String(submitReportReq.comments ?? 0),
+                                "impressions": String(submitReportReq.impressions ?? 0),
+                                "reach": String(submitReportReq.reach ?? 0),
+                                "order_detail_id": String(submitReportReq.order_detail_id)
+                            ]
                             
                             //      MARK: header buat yg server
                             let headers: HTTPHeaders = [
@@ -168,10 +169,10 @@ class SubmitReportViewModel: ObservableObject {
                             ]
                             
                             Alamofire.upload(multipartFormData: { multipartFormData in
-                                multipartFormData.append((imgData ?? defaultImage) ?? Data(), withName: "post_photo",fileName: "file.jpeg", mimeType: "image/jpeg")
+                                multipartFormData.append((imgData ?? defaultImage) ?? Data(), withName: "post_photo", fileName: "file.jpeg", mimeType: "image/jpeg")
                                 
                                 for (key, value) in parameters {
-                                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
+                                    multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
                                 }
                             }, to:serverURLnya, method: .post , headers: headers)
                             { (result) in
@@ -193,8 +194,6 @@ class SubmitReportViewModel: ObservableObject {
                                                 DispatchQueue.main.async {
                                                     self.isSucceed = true
                                                 }
-                                            } else {
-                                                self.isSucceed = false
                                             }
                                         }
                                     }

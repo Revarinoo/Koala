@@ -12,7 +12,6 @@ struct InstaMediaModel: Codable {
 }
 
 struct InstaMediaData: Codable {
-    let owner_id: Int
     let images: InstaImageData
 }
 
