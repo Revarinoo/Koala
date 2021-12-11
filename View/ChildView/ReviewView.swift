@@ -31,7 +31,9 @@ struct ReviewView: View {
                                 ReviewCard(business_name: project.business_name, message: project.comment)
                             }
                         }
-                    }.padding(.bottom, 8)
+                    }
+                    .padding(.bottom, 8)
+                    .padding(.leading, 5)
                 }
                 
                 
