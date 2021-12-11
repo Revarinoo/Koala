@@ -34,6 +34,7 @@ struct ReviewView: View {
                     }
                     .padding(.bottom, 8)
                     .padding(.leading, 5)
+                    .padding(.top, 8)
                 }
                 
                 

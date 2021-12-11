@@ -94,6 +94,7 @@ struct HomepageView: View {
                 InfluencerDetailView(influencerDetailViewModel: $influencerDetailViewModel, isPresent: $showDetails, previousView: "Discover", influencerID: $influencerID, fromBackButton: false)
             }
         }
+        .preferredColorScheme(.light)
     }
 }
 

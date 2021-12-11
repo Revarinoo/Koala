@@ -97,6 +97,7 @@ struct CampaignUpcomingView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(false)
         }
+        .preferredColorScheme(.light)
         
     }
     

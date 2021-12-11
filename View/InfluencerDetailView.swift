@@ -157,6 +157,7 @@ struct InfluencerDetailView: View {
             }
 
         }
+       .preferredColorScheme(.light)
 //       .navigate(to: PersonalChat(chatRoom: chatVM.chatData[0].chatRooms, personName: influencerDetailViewModel.influencerModel?.influencer_profile.name ?? "", photoURL: influencerDetailViewModel.influencerModel?.influencer_profile.photo ?? ""), when: $isNavigateToChat)
 //       .navigate(to: NavigationView {
 //           ChatList.shared

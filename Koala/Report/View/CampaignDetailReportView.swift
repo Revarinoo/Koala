@@ -142,6 +142,7 @@ struct CampaignDetailReportView: View {
                 }
             }
         }
+        .preferredColorScheme(.light)
     }
 }
 

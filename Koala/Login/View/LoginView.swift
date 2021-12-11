@@ -128,6 +128,7 @@ struct LoginView: View {
         .onTapGesture{
             self.dismissKeyboard()
         }
+        .preferredColorScheme(.light)
     }
 }
 

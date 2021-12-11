@@ -109,6 +109,7 @@ struct RegisterView: View {
                 self.dismissKeyboard()
             }
         }
+        .preferredColorScheme(.light)
     }
 }
 
