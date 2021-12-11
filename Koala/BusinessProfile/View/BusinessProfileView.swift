@@ -69,8 +69,8 @@ struct BusinessProfileView: View {
                     }
                 }.padding([.leading, .trailing], 16)
             }
-            .navigationTitle("Profile")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle("Profile", displayMode: .inline)
+            .navigationBarHidden(false)
             .toolbar(){
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {

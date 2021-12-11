@@ -24,7 +24,9 @@ struct HomepageView: View {
         NavigationView {
             VStack {
                 HStack(spacing: 5){
-                    ProfileButton(photoURL: .constant(userProfile.user.photo), name: token != "" ? .constant(userProfile.user.name) : .constant("Sign in"))
+                    NavigationLink(destination: token == "" ? AnyView(LoginView()) : AnyView(BusinessProfileView())) {
+                        ProfileButton(photoURL: .constant(userProfile.user.photo), name: token != "" ? .constant(userProfile.user.name) : .constant("Sign in"))
+                    }
                     Spacer()
 //                    Button(action:{
 //                        token = ""
@@ -87,7 +89,6 @@ struct HomepageView: View {
             .background(ThemeColor.background.ignoresSafeArea())
             .navigationBarTitle("Discover", displayMode: .inline)
             .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
             .navigationBarColor(backgroundColor: .clear, titleColor: .black, tintColor: UIColor(ThemeColor.primary))
             .fullScreenCover(isPresented: $showDetails){
                 InfluencerDetailView(influencerDetailViewModel: $influencerDetailViewModel, isPresent: $showDetails, previousView: "Discover", influencerID: $influencerID, fromBackButton: false)

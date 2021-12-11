@@ -13,22 +13,23 @@ struct ProfileButton: View {
     @Binding var photoURL: String
     @Binding var name: String
     @State var notLoggedIn = false
+    @StateObject var businessProfileVM = BusinessProfileViewModel.shared
     var body: some View {
         ZStack(alignment:.leading){
-            NavigationLink(destination: token == "" ? AnyView(LoginView()) : AnyView(BusinessProfileView())) {
+//            NavigationLink(destination: token == "" ? AnyView(LoginView()) : AnyView(BusinessProfileView())) {
 //                Button(action: {
 //                    if token == "" {
 //                        notLoggedIn = true
 //                    }
 //                }) {
                     HStack{
-                        if photoURL == "" {
+                        if businessProfileVM.businessProfileModel.business_photo == "" {
                             Image("profile").resizable()
                                 .scaledToFill()
                                 .clipShape(Circle())
                                 .frame(width: 36, height: 36)
                         } else {
-                            WebImage(url: URL(string: photoURL))
+                            WebImage(url: URL(string: businessProfileVM.businessProfileModel.business_photo ?? ""))
                                 .resizable()
                                 .scaledToFill()
                                 .clipShape(Circle())
@@ -40,7 +41,7 @@ struct ProfileButton: View {
                         Spacer()
                     }
 //                }
-            }
+            //}
                 .frame(width: 122.0, height: 36.0)
                 .background(Color.white)
                 .cornerRadius(50)

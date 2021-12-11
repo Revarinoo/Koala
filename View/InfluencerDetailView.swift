@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 import Introspect
 
 struct InfluencerDetailView: View {
+    @AppStorage("JWT", store: .standard) var token = ""
     @Binding var influencerDetailViewModel : InfluencerDetailViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var campaignList = CampaignViewModel.shared
@@ -22,6 +23,8 @@ struct InfluencerDetailView: View {
     @StateObject var chatVM = ChatRoomViewModel()
     @State var isNavigateToChat = false
     @StateObject var userVM = UserProfileViewModel.shared
+    @State var isScrolling = false
+    
     
 //    init(influencerID: Int, fromBackButton: Bool) {
 //        UIScrollView.appearance().bounces = false
@@ -32,7 +35,6 @@ struct InfluencerDetailView: View {
     var body: some View {
        NavigationView{
            ZStack{
-               
                ScrollView(.vertical, showsIndicators: false){
                    ZStack(alignment: .top){
                        
@@ -82,6 +84,15 @@ struct InfluencerDetailView: View {
                        }
                    }
                }
+               .gesture(
+                  DragGesture().onChanged { value in
+                     if value.translation.height > 0 {
+                        isScrolling = false
+                     } else {
+                        isScrolling = true
+                     }
+                  }
+               )
                VStack{
                    Spacer()
                    HStack{
@@ -98,7 +109,7 @@ struct InfluencerDetailView: View {
                            })
                        }
                            .padding(.trailing, 10)
-                       NavigationLink(destination: campaignList.campaignModel.count == 0 ? AnyView(CreateCampaign(isPresent: .constant(true)).navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0))){
+                       NavigationLink(destination: campaignList.campaignModel.count == 0 && token != "" ? AnyView(CreateCampaign(isPresent: .constant(true)).navigationBarHidden(true)) : AnyView(CampaignListView(influencerID: influencerDetailViewModel.influencerModel?.influencer_profile.id ?? 0))){
                            
                            OrderButton()
                                 
@@ -120,15 +131,28 @@ struct InfluencerDetailView: View {
             .navigationBarHidden(false).accentColor(.white)
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        self.isPresent = false
-                    }){
-                        HStack{
-                            Image(systemName: "chevron.left")
-                            Text(previousView)
-                        }
-                        
-                    }.foregroundColor(.white)
+                    if isScrolling {
+                        Button(action: {
+                            self.isPresent = false
+                        }){
+                            HStack{
+                                Image(systemName: "chevron.left")
+                                //Text(previousView)
+                            }
+                            
+                        }.foregroundColor(ThemeColor.primary)
+                    } else {
+                        Button(action: {
+                            self.isPresent = false
+                        }){
+                            HStack{
+                                Image(systemName: "chevron.left")
+                                //Text(previousView)
+                            }
+                            
+                        }.foregroundColor(.white)
+                    }
+                    
                 }
             }
 
